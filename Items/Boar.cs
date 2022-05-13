@@ -49,7 +49,7 @@ namespace WarframeMod.Items
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-			position += velocity.SafeNormalize(Vector2.Zero) * Item.width;
+			WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
 			for (int i = 0; i < 4; i++)
             {
 				int projectileID = Projectile.NewProjectile(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(16 * (i + 1))), type, damage, knockback, player.whoAmI);

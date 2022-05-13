@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
+using Terraria.DataStructures;
 
 namespace WarframeMod.Items
 {
@@ -14,10 +15,10 @@ namespace WarframeMod.Items
         }
         public override void SetDefaults()
         {
-            Item.damage = 15;
+            Item.damage = 16;
             Item.crit = 0;
             Item.DamageType = DamageClass.Magic;
-            Item.mana = 5;
+            Item.mana = 8;
             Item.width = 95;
             Item.height = 15;
             Item.scale = 1f;
@@ -50,6 +51,12 @@ namespace WarframeMod.Items
             recipe.AddIngredient(ItemID.Emerald, 4);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
+        }
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width * 0.75f);
+            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+            return false;
         }
     }
 }

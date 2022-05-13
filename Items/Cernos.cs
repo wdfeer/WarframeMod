@@ -48,7 +48,7 @@ namespace WarframeMod.Items
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            position += velocity.SafeNormalize(Vector2.Zero) * Item.width;
+            WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
             int projectileID = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
             Projectile projectile = Main.projectile[projectileID];
             if (projectile.penetrate != -1) projectile.penetrate++;
