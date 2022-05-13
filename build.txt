@@ -1,0 +1,3 @@
+displayName = Warframe Mod
+author = wdfeer
+version = 0.1
