@@ -1,1 +1,1 @@
-Warframe Mod is a pretty cool mod, it does...this. Modify this file with a description of your mod.
+Warframe Mod is a pretty cool 1.4 mod, it does...this. Modify this file with a description of your mod.
