@@ -16,7 +16,7 @@ namespace WarframeMod.Items
         }
         public override void SetDefaults()
         {
-            Item.damage = 9;
+            Item.damage = 10;
             Item.crit = -2;
             Item.DamageType = DamageClass.Magic;
             Item.width = 32;
