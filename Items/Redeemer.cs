@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
+using WarframeMod.Projectiles;
 
 namespace WarframeMod.Items
 {
@@ -11,11 +12,11 @@ namespace WarframeMod.Items
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Fires 6 pellets without consuming ammo");
+            Tooltip.SetDefault("Fires 6 pellets without consuming ammo\nHas linear damage falloff");
         }
         public override void SetDefaults()
         {
-            Item.damage = 14;
+            Item.damage = 21;
             Item.crit = 10;
             Item.DamageType = DamageClass.Melee;
             Item.width = 48;
@@ -52,7 +53,7 @@ namespace WarframeMod.Items
             WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
             for (int i = 0; i < 6; i++)
             {
-                int projectileID = Projectile.NewProjectile(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(15)), type, damage, knockback, player.whoAmI);
+                int projectileID = Projectile.NewProjectile(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(15)), ModContent.ProjectileType<RedeemerBullet>(), damage, knockback, player.whoAmI);
                 var projectile = Main.projectile[projectileID];
                 projectile.DamageType = DamageClass.Melee;
             }
