@@ -13,7 +13,7 @@ namespace WarframeMod.Items
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("+100% Critical Damage\nLimited range");
+            Tooltip.SetDefault("+100% Critical Damage");
         }
         public override void SetDefaults()
         {

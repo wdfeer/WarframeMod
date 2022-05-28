@@ -120,7 +120,6 @@ namespace WarframeMod.Projectiles
 
 		private void SpawnDusts(Player player)
 		{
-			Vector2 unit = Projectile.velocity * -1;
 			Vector2 dustPos = player.Center + Projectile.velocity * Distance;
 
 			for (int i = 0; i < 2; ++i)
@@ -131,12 +130,6 @@ namespace WarframeMod.Projectiles
 				Dust dust = Main.dust[Dust.NewDust(dustPos, 0, 0, DustID.OrangeTorch, dustVel.X, dustVel.Y)];
 				dust.noGravity = true;
 				dust.scale = 1.2f;
-				dust = Dust.NewDustDirect(Main.player[Projectile.owner].Center, 0, 0, 31,
-					-unit.X * Distance, -unit.Y * Distance);
-				dust.fadeIn = 0f;
-				dust.noGravity = true;
-				dust.scale = 0.88f;
-				dust.color = Color.Orange;
 			}
 
 			if (Main.rand.NextBool(5))
@@ -145,7 +138,7 @@ namespace WarframeMod.Projectiles
 				Dust dust = Main.dust[Dust.NewDust(dustPos + offset - Vector2.One * 4f, 8, 8, 31, 0.0f, 0.0f, 100, new Color(), 1.5f)];
 				dust.velocity *= 0.5f;
 				dust.velocity.Y = -Math.Abs(dust.velocity.Y);
-				unit = dustPos - Main.player[Projectile.owner].Center;
+				Vector2 unit = dustPos - Main.player[Projectile.owner].Center;
 				unit.Normalize();
 				dust = Main.dust[Dust.NewDust(Main.player[Projectile.owner].Center + 55 * unit, 8, 8, 31, 0.0f, 0.0f, 100, new Color(), 1.5f)];
 				dust.velocity = dust.velocity * 0.5f;
@@ -158,7 +151,7 @@ namespace WarframeMod.Projectiles
 		*/
 		private void SetLaserPosition(Player player)
 		{
-			for (Distance = MOVE_DISTANCE; Distance <= 2200f; Distance += 5f)
+			for (Distance = MOVE_DISTANCE; Distance <= 1200f; Distance += 5f)
 			{
 				var start = player.Center + Projectile.velocity * Distance;
 				bool noTileCollision = Collision.CanHit(player.Center, 1, 1, start, 1, 1);
