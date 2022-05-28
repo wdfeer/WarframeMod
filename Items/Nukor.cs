@@ -19,6 +19,7 @@ namespace WarframeMod.Items
             Item.damage = 10;
             Item.crit = -2;
             Item.DamageType = DamageClass.Magic;
+            Item.channel = true;
             Item.width = 32;
             Item.height = 24;
             Item.useTime = 7;
