@@ -28,7 +28,7 @@ namespace WarframeMod.Projectiles
             }
             Projectile.Center = target.Center;
 
-            Projectile[] projectiles = GetIntersectingProjectiles();
+            Projectile[] projectiles = GetValidIntersectingProjectiles();
             foreach (var proj in projectiles)
             {
                 proj.velocity += Vector2.Normalize(Projectile.Center - proj.Center);
@@ -37,9 +37,15 @@ namespace WarframeMod.Projectiles
             SpawnDusts();
         }
         public override bool ShouldUpdatePosition() => false;
-        Projectile[] GetIntersectingProjectiles()
+        Projectile[] GetValidIntersectingProjectiles()
         {
-            return Main.projectile.Where(x => x.active && x.friendly && !Main.projPet[x.type] && x.Center.Distance(Projectile.Center) < Projectile.width).ToArray();
+            return Main.projectile.Where(x =>
+            {
+                return x.active
+                       && x.friendly
+                       && !Main.projPet[x.type]
+                       && x.Center.Distance(Projectile.Center) < Projectile.width;
+            }).ToArray();
         }
         void SpawnDusts()
         {

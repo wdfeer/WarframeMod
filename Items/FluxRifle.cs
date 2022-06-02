@@ -27,7 +27,7 @@ namespace WarframeMod.Items
             Item.knockBack = 0;
             Item.value = Item.sellPrice(gold: 2);
             Item.rare = 3;
-            Item.UseSound = SoundID.Item11.WithVolume(0.32f).WithPitchVariance(0.75f);
+            Item.UseSound = WeaponCommon.ModifySoundStyle(SoundID.Item11, 0.32f, 0.6f);
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<Projectiles.FluxRifleProj>();
             Item.shootSpeed = 16f;
@@ -40,7 +40,7 @@ namespace WarframeMod.Items
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.PlatinumBar, 9);
-            recipe.AddIngredient(ItemID.TissueSample,9);
+            recipe.AddIngredient(ItemID.TissueSample, 9);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
             recipe = CreateRecipe();

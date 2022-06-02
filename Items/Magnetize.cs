@@ -44,7 +44,11 @@ namespace WarframeMod.Items
         private NPC FindTarget(Vector2 mousePosition)
         {
             NPC potentialTarget = Main.npc.MinBy(x => x.Center.Distance(mousePosition));
-            if (!Main.projectile.Any(p => p.ModProjectile is MagnetizeProjectile && (p.ModProjectile as MagnetizeProjectile).target == potentialTarget) && potentialTarget.CanBeChasedBy() && potentialTarget.Center.Distance(mousePosition) < 80f)
+            if (!Main.projectile.Any(p => p.active
+                                          && p.ModProjectile is MagnetizeProjectile
+                                          && (p.ModProjectile as MagnetizeProjectile).target == potentialTarget) 
+                                          && potentialTarget.CanBeChasedBy() 
+                                          && potentialTarget.Center.Distance(mousePosition) < 80f)
                 return potentialTarget;
             return null;
         }
