@@ -35,7 +35,7 @@ namespace WarframeMod.Projectiles
 				Projectile projectile = Main.projectile[projectileID];
 				projectile.timeLeft = 45;
 				projectile.usesLocalNPCImmunity = true;
-				projectile.localNPCHitCooldown = -1;
+				projectile.localNPCHitCooldown = 12;
 			}
 		}
 	}

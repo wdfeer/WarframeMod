@@ -5,6 +5,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using WarframeMod.Projectiles;
+using Terraria.Audio;
 
 namespace WarframeMod.Items.Weapons
 {
@@ -16,9 +17,10 @@ namespace WarframeMod.Items.Weapons
         }
         public override void SetDefaults()
         {
-            Item.damage = 21;
+            Item.damage = 22;
             Item.crit = 10;
             Item.DamageType = DamageClass.Melee;
+            Item.noMelee = true;
             Item.width = 48;
             Item.height = 24;
             Item.scale = 1f;
@@ -31,7 +33,7 @@ namespace WarframeMod.Items.Weapons
             Item.autoReuse = false;
             Item.shoot = ProjectileID.Bullet;
             Item.shootSpeed = 12f;
-            Item.UseSound = WeaponCommon.ModifySoundStyle(SoundID.Item36, 0.9f, -0.1f);
+            Item.UseSound = WeaponCommon.ModifySoundStyle(new SoundStyle("WarframeMod/Sounds/RedeemerPrimeSound"), 0.8f, -0.1f);
         }
 
         public override void AddRecipes()
