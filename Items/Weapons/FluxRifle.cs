@@ -17,6 +17,7 @@ namespace WarframeMod.Items.Weapons
         {
             Item.damage = 11;
             Item.crit = 6;
+            Item.channel = true;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 45;
             Item.height = 16;
@@ -29,7 +30,6 @@ namespace WarframeMod.Items.Weapons
             Item.rare = 3;
             Item.UseSound = WeaponCommon.ModifySoundStyle(SoundID.Item11, 0.32f, 0.6f);
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<Projectiles.FluxRifleProj>();
             Item.shootSpeed = 16f;
         }
         public override Vector2? HoldoutOffset()
