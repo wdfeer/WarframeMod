@@ -7,24 +7,28 @@ using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using WarframeMod.Items.Accessories;
+using WarframeMod.Items.Weapons;
 
 namespace WarframeMod
 {
     internal class NPCLoot : GlobalNPC
     {
-        public IItemDropRule GetItemDropRuleForType(int type)
+        public IItemDropRule GetItemDropRule(int type)
         {
             switch (type)
             {
+                case NPCID.FireImp:
+                    return ItemDropRule.Common(ModContent.ItemType<Blaze>(), 12);
                 case NPCID.SkeletronPrime:
-                    return ItemDropRule.Common(ModContent.ItemType<Items.Weapons.Magnetize>(), 10);
+                    return ItemDropRule.Common(ModContent.ItemType<Magnetize>(), 10);
                 default:
                     return null;
             }
         }
         public override void ModifyNPCLoot(NPC npc, Terraria.ModLoader.NPCLoot npcLoot)
         {
-            var dropRule = GetItemDropRuleForType(npc.type);
+            var dropRule = GetItemDropRule(npc.type);
             if (dropRule != null)
                 npcLoot.Add(dropRule);
         }
