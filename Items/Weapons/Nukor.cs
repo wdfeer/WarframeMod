@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Audio;
 using Terraria.DataStructures;
 using WarframeMod.Projectiles;
 
-namespace WarframeMod.Items
+namespace WarframeMod.Items.Weapons
 {
     public class Nukor : ModItem
     {
@@ -31,7 +31,7 @@ namespace WarframeMod.Items
             Item.value = Item.buyPrice(silver: 45);
             Item.rare = 3;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<Projectiles.NukorProjectile>();
+            Item.shoot = ModContent.ProjectileType<NukorProjectile>();
             Item.shootSpeed = 12f;
             Item.mana = 3;
         }
@@ -52,7 +52,7 @@ namespace WarframeMod.Items
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
-            Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity , type, damage, knockback, player.whoAmI);
+            Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
             NukorProjectile modProjectile = projectile.ModProjectile as NukorProjectile;
             modProjectile.iFrames = Item.useTime;
             return false;

@@ -4,7 +4,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace WarframeMod.Items
+namespace WarframeMod.Items.Weapons
 {
     public class Boar : ModItem
     {

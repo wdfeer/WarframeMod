@@ -7,7 +7,7 @@ using Terraria.DataStructures;
 using System.Linq;
 using WarframeMod.Projectiles;
 
-namespace WarframeMod.Items
+namespace WarframeMod.Items.Weapons
 {
     public class Magnetize : ModItem
     {
@@ -46,8 +46,8 @@ namespace WarframeMod.Items
             NPC potentialTarget = Main.npc.MinBy(x => x.Center.Distance(mousePosition));
             if (!Main.projectile.Any(p => p.active
                                           && p.ModProjectile is MagnetizeProjectile
-                                          && (p.ModProjectile as MagnetizeProjectile).target == potentialTarget) 
-                                          && potentialTarget.CanBeChasedBy() 
+                                          && (p.ModProjectile as MagnetizeProjectile).target == potentialTarget)
+                                          && potentialTarget.CanBeChasedBy()
                                           && potentialTarget.Center.Distance(mousePosition) < 80f)
                 return potentialTarget;
             return null;

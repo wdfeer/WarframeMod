@@ -5,7 +5,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 
-namespace WarframeMod.Items
+namespace WarframeMod.Items.Weapons
 {
     public class Ballistica : ModItem
     {
@@ -55,7 +55,7 @@ namespace WarframeMod.Items
             WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
             timeSinceLastShot = Main.time - lastShotTime;
             lastShotTime = Main.time;
-            float chargeMult = ((float)timeSinceLastShot / Item.useTime) * 0.6f;
+            float chargeMult = (float)timeSinceLastShot / Item.useTime * 0.6f;
             if (chargeMult < 1)
                 chargeMult = 1;
             else if (chargeMult > 2)

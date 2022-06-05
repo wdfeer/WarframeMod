@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 
-namespace WarframeMod.Items
+namespace WarframeMod.Items.Weapons
 {
     public class Sobek : ModItem
     {

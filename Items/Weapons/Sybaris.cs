@@ -3,59 +3,56 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
+using Terraria.Audio;
 
-namespace WarframeMod.Items
+namespace WarframeMod.Items.Weapons
 {
-    internal class Cernos : ModItem
+    internal class Sybaris : ModItem
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Shoots high velocity arrows with extra penetration");
+            Tooltip.SetDefault("Shoots a 2-round burst");
         }
         public override void SetDefaults()
         {
-            Item.damage = 16;
-            Item.crit = 32;
-            Item.knockBack = 7;
+            Item.damage = 17;
+            Item.crit = 21;
+            Item.knockBack = 3;
             Item.DamageType = DamageClass.Ranged;
             Item.noMelee = true;
-            Item.width = 36;
-            Item.height = 54;
+            Item.width = 46;
+            Item.height = 14;
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.UseSound = SoundID.Item5;
-            Item.useTime = 30;
-            Item.useAnimation = 30;
+            Item.useTime = 5;
+            Item.useAnimation = 10;
+            Item.reuseDelay = 30;
             Item.rare = 2;
-            Item.value = 6000;
-            Item.shoot = ProjectileID.WoodenArrowFriendly;
+            Item.value = Item.buyPrice(gold: 1, silver: 50);
+            Item.shoot = ProjectileID.Bullet;
             Item.shootSpeed = 16f;
-            Item.useAmmo = AmmoID.Arrow;
+            Item.useAmmo = AmmoID.Bullet;
         }
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(-4, 0);
+            return new Vector2(0, -0.5f);
         }
         public override void AddRecipes()
         {
-            int[] bowTypes = { ItemID.SilverBow, ItemID.TungstenBow, ItemID.LeadBow, ItemID.IronBow };
-            for (int i = 0; i < bowTypes.Length; i++)
-            {
-                Recipe recipe = CreateRecipe();
-                recipe.AddIngredient(bowTypes[i]);
-                recipe.AddIngredient(ItemID.JungleSpores, 5);
-                recipe.AddTile(TileID.Anvils);
-                recipe.Register();
-            }
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ItemID.Musket);
+            recipe.AddIngredient(ItemID.FlintlockPistol);
+            recipe.AddTile(TileID.Anvils);
+            recipe.Register();
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            SoundEngine.PlaySound(SoundID.Item11, position);
+
             WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
             int projectileID = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
             Projectile projectile = Main.projectile[projectileID];
-            if (projectile.penetrate != -1) projectile.penetrate++;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = -1;
-            projectile.extraUpdates += 1;
             return false;
         }
     }

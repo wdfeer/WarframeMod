@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using WarframeMod.Projectiles;
 
-namespace WarframeMod.Items
+namespace WarframeMod.Items.Weapons
 {
     public class Redeemer : ModItem
     {
