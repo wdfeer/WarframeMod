@@ -17,7 +17,7 @@ namespace WarframeMod
             switch (type)
             {
                 case NPCID.SkeletronPrime:
-                    return ItemDropRule.Common(ModContent.ItemType<WarframeMod.Items.Weapons.Magnetize>(), 10);
+                    return ItemDropRule.Common(ModContent.ItemType<Items.Weapons.Magnetize>(), 10);
                 default:
                     return null;
             }
