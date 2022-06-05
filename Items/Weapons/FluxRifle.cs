@@ -28,9 +28,9 @@ namespace WarframeMod.Items.Weapons
             Item.knockBack = 0;
             Item.value = Item.sellPrice(gold: 2);
             Item.rare = 3;
-            Item.UseSound = WeaponCommon.ModifySoundStyle(SoundID.Item11, 0.32f, 0.6f);
             Item.autoReuse = true;
             Item.shootSpeed = 16f;
+            Item.shoot = ModContent.ProjectileType<Projectiles.FluxRifleProjectile>();
         }
         public override Vector2? HoldoutOffset()
         {
