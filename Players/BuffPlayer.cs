@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace WarframeMod
+namespace WarframeMod.Players
 {
     public class BuffPlayer : ModPlayer
     {

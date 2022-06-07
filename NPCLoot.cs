@@ -20,6 +20,8 @@ namespace WarframeMod
             {
                 case NPCID.FireImp:
                     return ItemDropRule.Common(ModContent.ItemType<Blaze>(), 12);
+                case NPCID.SkeletronHead:
+                    return ItemDropRule.Common(ModContent.ItemType<Desecrate>(), 6);
                 case NPCID.SkeletronPrime:
                     return ItemDropRule.Common(ModContent.ItemType<Magnetize>(), 10);
                 default:
