@@ -9,7 +9,7 @@ using WarframeMod.Projectiles;
 
 namespace WarframeMod.Items.Weapons
 {
-    public class Nukor : ModItem
+    public class KuvaNukor : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -17,37 +17,24 @@ namespace WarframeMod.Items.Weapons
         }
         public override void SetDefaults()
         {
-            Item.damage = 10;
-            Item.crit = -2;
+            Item.damage = 22;
+            Item.crit = 3;
             Item.DamageType = DamageClass.Magic;
             Item.channel = true;
             Item.width = 32;
             Item.height = 24;
-            Item.useTime = 7;
-            Item.useAnimation = 7;
+            Item.useTime = 6;
+            Item.useAnimation = 6;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 0;
-            Item.value = Item.buyPrice(silver: 45);
-            Item.rare = 3;
+            Item.value = Item.buyPrice(gold: 10);
+            Item.rare = 5;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<NukorProjectile>();
+            Item.shoot = ModContent.ProjectileType<KuvaNukorProjectile>();
             Item.shootSpeed = 12f;
-            Item.mana = 3;
+            Item.mana = 6;
             Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Sounds/KuvaNukorStartSound");
-        }
-
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.DemoniteBar, 9);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
-
-            recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.CrimtaneBar, 9);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

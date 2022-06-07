@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.Enums;
@@ -10,10 +11,11 @@ using Terraria.ModLoader;
 
 namespace WarframeMod.Projectiles
 {
-	public class NukorProjectile : ModProjectile
+	public class KuvaNukorProjectile : ModProjectile
 	{
-		// The maximum charge value
-		private const float MAX_CHARGE = 40f;
+        public override string Texture => "WarframeMod/Projectiles/NukorProjectile";
+        // The maximum charge value
+        private const float MAX_CHARGE = 30f;
 		//The distance charge particle from the player center
 		private const float MOVE_DISTANCE = 60f;
 		public float Distance
@@ -21,16 +23,16 @@ namespace WarframeMod.Projectiles
 			get => Projectile.ai[0];
 			set => Projectile.ai[0] = value;
 		}
-
+		public Vector2 BeamEnd => Main.player[Projectile.owner].Center + Projectile.velocity * Distance;
+		private const int maxChildLasers = 3;
+		public Vector2[] childLaserDestinations = new Vector2[maxChildLasers];
 		// The actual charge value is stored in the localAI0 field
 		public float Charge
 		{
 			get => Projectile.localAI[0];
 			set => Projectile.localAI[0] = value;
 		}
-
 		public bool IsAtMaxCharge => Charge == MAX_CHARGE;
-
 		public override void SetDefaults()
 		{
 			Projectile.width = 10;
@@ -40,8 +42,8 @@ namespace WarframeMod.Projectiles
 			Projectile.tileCollide = false;
 			Projectile.DamageType = DamageClass.Magic;
 			Projectile.hide = true;
-			Projectile.usesLocalNPCImmunity = true;
-			Projectile.localNPCHitCooldown = 7;
+			Projectile.usesIDStaticNPCImmunity = true;
+			Projectile.idStaticNPCHitCooldown = 6;
 		}
         public override bool PreDraw(ref Color lightColor)
         {
@@ -51,11 +53,20 @@ namespace WarframeMod.Projectiles
 			if (IsAtMaxCharge)
 			{
 				DrawLaser(texture, Main.player[Projectile.owner].Center,
-					Projectile.velocity, 10, -1.57f, 1f, 1000f, Color.White, (int)MOVE_DISTANCE);
+					Projectile.velocity, 10, -1.57f, 1f, Distance, Color.White, (int)MOVE_DISTANCE);
+                for (int i = 0; i < childLaserDestinations.Length; i++)
+                {
+					Vector2 childEnd = childLaserDestinations[i];
+					Vector2 beamEnd = BeamEnd;
+					Vector2 childVector = Vector2.Normalize(childEnd - beamEnd);
+					float childLength = (childEnd - beamEnd).Length();
+					DrawLaser(texture, beamEnd,
+						childVector * Projectile.velocity.Length(), 10, -1.57f, 1f, childLength, Color.White, (int)(MOVE_DISTANCE * 0.64f));
+				}
 			}
 			return false;
 		}
-		public void DrawLaser(Texture2D texture, Vector2 start, Vector2 unit, float step, float rotation = 0f, float scale = 1f, float maxDist = 2000f, Color color = default(Color), int transDist = 50)
+		public void DrawLaser(Texture2D texture, Vector2 start, Vector2 unit, float step, float rotation = 0f, float scale = 1f, float Distance = 256f, Color color = default(Color), int transDist = 50)
 		{
 			float r = unit.ToRotation() + rotation;
 
@@ -77,7 +88,6 @@ namespace WarframeMod.Projectiles
 			Main.EntitySpriteDraw(texture, start + (Distance + step) * unit - Main.screenPosition,
 				new Rectangle(0, 52, 28, 26), Color.White, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
 		}
-
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 		{
 			// We can only collide if we are at max charge, which is when the laser is actually fired
@@ -88,10 +98,13 @@ namespace WarframeMod.Projectiles
 			float point = 0f;
 			// Run an AABB versus Line check to look for collisions, look up AABB collision first to see how it works
 			// It will look for collisions on the given line using AABB
-			return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), player.Center,
-				player.Center + unit * Distance, 22, ref point);
+			bool mainCollision = Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), player.Center,
+				BeamEnd, 22, ref point);
+			IEnumerable<bool> childCollisions = childLaserDestinations.Select(end => Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size()
+				,BeamEnd, end, 22, ref point));
+			bool childCollision = childCollisions.Any(boolean => boolean);
+			return mainCollision || childCollision;
 		}
-
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
 			if (crit)
@@ -115,8 +128,7 @@ namespace WarframeMod.Projectiles
 
 		private void SpawnDusts(Player player)
 		{
-			Vector2 dustPos = player.Center + Projectile.velocity * Distance;
-
+			Vector2 dustPos = BeamEnd;
 			for (int i = 0; i < 2; ++i)
 			{
 				float num1 = Projectile.velocity.ToRotation() + (Main.rand.NextBool() ? -1.0f : 1.0f) * 1.57f;
@@ -146,19 +158,32 @@ namespace WarframeMod.Projectiles
 		*/
 		private void SetLaserPosition(Player player)
 		{
+			bool Hostile(NPC npc) => npc.active && !npc.friendly;
+			childLaserDestinations = new Vector2[0];
 			for (Distance = MOVE_DISTANCE; Distance <= 1200f; Distance += 5f)
 			{
-				var start = player.Center + Projectile.velocity * Distance;
+				Vector2 start = BeamEnd;
 				bool tileCollision = !Collision.CanHit(player.Center, 1, 1, start, 1, 1);
-				bool npcCollision = Main.npc.Any(npc => npc.active && !npc.friendly && npc.getRect().Contains(start.ToPoint()));
+				NPC hitNPC = Array.Find(Main.npc,
+                            npc => Hostile(npc) && npc.getRect().Contains(start.ToPoint()));
 				if (tileCollision)
 				{
 					Distance -= 5f;
 					break;
 				}
-				if (npcCollision)
+				if (hitNPC != null)
 				{
-					Distance += 5f;
+					NPC[] nearbyNPCs = Array.FindAll(Main.npc,
+                                      npc => Hostile(npc)
+                                      && npc.whoAmI != hitNPC.whoAmI
+                                      && npc.Center.Distance(start) < 128
+                                      && Collision.CanHitLine(BeamEnd, 22, 1, npc.position, npc.width, npc.height));
+					if (nearbyNPCs.Length > 0)
+                    {
+						childLaserDestinations = nearbyNPCs.Take(maxChildLasers)
+                                         .Select(npc => npc.Center)
+                                         .ToArray();
+                    }
 					break;
 				}
 			}
