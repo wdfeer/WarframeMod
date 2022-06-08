@@ -20,6 +20,8 @@ namespace WarframeMod.Global
             {
                 case NPCID.FireImp:
                     return ItemDropRule.Common(ModContent.ItemType<Blaze>(), 12);
+                case NPCID.EyeofCthulhu:
+                    return ItemDropRule.Common(ModContent.ItemType<HunterMunitions>(), 2);
                 case NPCID.SkeletronHead:
                     return ItemDropRule.Common(ModContent.ItemType<Desecrate>(), 6);
                 case NPCID.QueenBee:

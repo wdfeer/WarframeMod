@@ -25,7 +25,7 @@ namespace WarframeMod.Global
         }
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
-            if (!npc.HasBuff(BuffID.Bleeding))
+            if (bleeds.Count == 0)
             {
                 ResetBleeds();
                 return;
