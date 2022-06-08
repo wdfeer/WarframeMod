@@ -22,10 +22,12 @@ namespace WarframeMod
                     return ItemDropRule.Common(ModContent.ItemType<Blaze>(), 12);
                 case NPCID.SkeletronHead:
                     return ItemDropRule.Common(ModContent.ItemType<Desecrate>(), 6);
+                case NPCID.QueenBee:
+                    return ItemDropRule.Common(ModContent.ItemType<Kohm>(), 2);
                 case NPCID.SkeletronPrime:
-                    return ItemDropRule.Common(ModContent.ItemType<Magnetize>(), 10);
+                    return ItemDropRule.Common(ModContent.ItemType<Magnetize>(), 3);
                 case NPCID.TheDestroyer:
-                    return ItemDropRule.Common(ModContent.ItemType<KuvaNukor>(), 3);
+                    return ItemDropRule.Common(ModContent.ItemType<KuvaNukor>(), 2);
                 default:
                     return null;
             }
