@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace WarframeMod
+namespace WarframeMod.Global
 {
     internal class BleedingGlobalNPC : GlobalNPC
     {

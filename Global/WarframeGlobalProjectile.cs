@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace WarframeMod.Projectiles
+namespace WarframeMod.Global
 {
     internal class WarframeGlobalProjectile : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
-        public Func<Projectile, int, Entity, int> modifyDamage = (Projectile proj, int oldDamage, Entity target) => oldDamage;
+        public Func<Projectile, int, Entity, int> modifyDamage = (proj, oldDamage, target) => oldDamage;
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
             damage = modifyDamage(projectile, damage, target);

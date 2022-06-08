@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 using WarframeMod.Items.Accessories;
 using WarframeMod.Items.Weapons;
 
-namespace WarframeMod
+namespace WarframeMod.Global
 {
     internal class NPCLoot : GlobalNPC
     {
