@@ -14,11 +14,15 @@ namespace WarframeMod
             this.time = time;
             this.chance = chance;
         }
+        public void Apply(NPC npc)
+        {
+            npc.AddBuff(type, time);
+        }
         public void RollAndApply(NPC npc)
         {
             if (Main.rand.NextFloat() > chance)
                 return;
-            npc.AddBuff(type, time);
+            Apply(npc);
         }
         public static void ApplyBuffs(NPC target, IEnumerable<BuffChance> buffChances)
         {

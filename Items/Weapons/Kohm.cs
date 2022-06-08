@@ -12,7 +12,7 @@ namespace WarframeMod.Items.Weapons
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Takes a while to spool up while increasing Multishot up to 5 pellets\nLinear damage falloff\n+15% Critical Damage");
+            Tooltip.SetDefault("Takes a while to spool up while increasing Multishot up to 5 pellets\n33% chance to apply bleeding on hit\nLinear damage falloff\n+15% Critical Damage");
         }
         const int maxUseTime = 82;
         const int minUseTime = 17;
@@ -80,13 +80,25 @@ namespace WarframeMod.Items.Weapons
             {
                 float spread = (timeSinceLastShot > 46 ? 0.015f : 0.1f);
                 var proj = Projectile.NewProjectileDirect(source, position, velocity.RotatedByRandom(spread), type, damage, knockback, player.whoAmI);
-                var globalProj = proj.GetGlobalProjectile<WarframeGlobalProjectile>();
-                proj.timeLeft = 120;
-                int defaultTimeLeft = proj.timeLeft;
-                globalProj.modifyDamage = (Projectile projectile, int oldDamage, Entity target) =>
                 {
-                    return oldDamage * projectile.timeLeft / defaultTimeLeft;
-                };
+                    var globalProj = proj.GetGlobalProjectile<WarframeGlobalProjectile>();
+                    proj.timeLeft = 120;
+                    int defaultTimeLeft = proj.timeLeft;
+                    globalProj.modifyDamage = (Projectile projectile, int oldDamage, Entity target) =>
+                    {
+                        if (target is NPC && Main.rand.NextBool(3))
+                        {
+                            NPC npc = target as NPC;
+                            var bleedNPC = npc.GetGlobalNPC<BleedingGlobalNPC>();
+                            bleedNPC.bleeds.Add(new BleedingBuff(projectile.damage / 5, 300));
+                        }
+                        return oldDamage * projectile.timeLeft / defaultTimeLeft;
+                    };
+                }
+                {
+                    var buffProj = proj.GetGlobalProjectile<BuffGlobalProjectile>();
+                    buffProj.buffChances.Add(new BuffChance(BuffID.Bleeding, 300, 0.3f));
+                }
             }
             return false;
         }
