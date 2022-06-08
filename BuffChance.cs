@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using System.Collections.Generic;
+using Terraria;
 
 namespace WarframeMod
 {
@@ -18,6 +19,13 @@ namespace WarframeMod
             if (Main.rand.NextFloat() > chance)
                 return;
             npc.AddBuff(type, time);
+        }
+        public static void ApplyBuffs(NPC target, IEnumerable<BuffChance> buffChances)
+        {
+            foreach (BuffChance chance in buffChances)
+            {
+                chance.RollAndApply(target);
+            }
         }
     }
 }

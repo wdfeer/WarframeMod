@@ -17,18 +17,11 @@ namespace WarframeMod.Players
         }
         public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
         {
-            ApplyBuffs(target, OnNPCHit);
+            BuffChance.ApplyBuffs(target, OnNPCHit);
         }
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-            ApplyBuffs(target, OnNPCHit);
-        }
-        private void ApplyBuffs(NPC target, IEnumerable<BuffChance> buffChances)
-        {
-            foreach (BuffChance chance in buffChances)
-            {
-                chance.RollAndApply(target);
-            }
+            BuffChance.ApplyBuffs(target, OnNPCHit);
         }
     }
 }
