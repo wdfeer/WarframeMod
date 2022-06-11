@@ -11,18 +11,19 @@ namespace WarframeMod.Global
     internal class WarframeGlobalProjectile : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
+        public float CritMultiplier { get; set; } = 1f;
         public Func<Projectile, int, Entity, int> modifyDamage = (proj, oldDamage, target) => oldDamage;
+        void ModifyDamage(Projectile projectile, Entity target, ref int damage, ref bool crit)
+        {
+            damage = modifyDamage(projectile, damage, target);
+            if (crit)
+                damage = (int)(damage * CritMultiplier);
+        }
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-        {
-            damage = modifyDamage(projectile, damage, target);
-        }
+            => ModifyDamage(projectile, target, ref damage, ref crit);
         public override void ModifyHitPlayer(Projectile projectile, Player target, ref int damage, ref bool crit)
-        {
-            damage = modifyDamage(projectile, damage, target);
-        }
+            => ModifyDamage(projectile, target, ref damage, ref crit);
         public override void ModifyHitPvp(Projectile projectile, Player target, ref int damage, ref bool crit)
-        {
-            damage = modifyDamage(projectile, damage, target);
-        }
+            => ModifyDamage(projectile, target, ref damage, ref crit);
     }
 }

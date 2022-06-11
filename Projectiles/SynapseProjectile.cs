@@ -91,12 +91,6 @@ namespace WarframeMod.Projectiles
 			return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), player.Center,
 				player.Center + unit * Distance, 22, ref point);
 		}
-
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-        {
-			if (crit)
-				damage = (int)(damage * 1.35f);
-        }
         public override void AI()
 		{
 			Player player = Main.player[Projectile.owner];

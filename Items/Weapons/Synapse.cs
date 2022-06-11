@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Terraria.DataStructures;
 using WarframeMod.Projectiles;
+using WarframeMod.Global;
 
 namespace WarframeMod.Items.Weapons
 {
@@ -50,6 +51,7 @@ namespace WarframeMod.Items.Weapons
         {
             WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
             Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+            projectile.GetGlobalProjectile<WarframeGlobalProjectile>().CritMultiplier = 1.35f;
             return false;
         }
     }
