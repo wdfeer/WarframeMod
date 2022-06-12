@@ -11,10 +11,10 @@ namespace WarframeMod.Items
 {
     public static class WeaponCommon
     {
-        public static SoundStyle ModifySoundStyle(SoundStyle style, float volume = 1f, float pitch = 1f)
+        public static SoundStyle ModifySoundStyle(SoundStyle style, float volume = 1f, float pitchVariance = 0f)
         {
             style.Volume *= volume;
-            style.Pitch *= pitch;
+            style.PitchVariance = pitchVariance;
             return style;
         }
         public static void ModifyProjectileSpawnPosition(ref Vector2 position, Vector2 velocity, float offset)

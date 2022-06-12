@@ -28,7 +28,7 @@ namespace WarframeMod.Items.Weapons
             Item.value = Item.sellPrice(gold: 2);
             Item.rare = 3;
             Item.autoReuse = true;
-            Item.UseSound = WeaponCommon.ModifySoundStyle(SoundID.Item36, 0.6f, -0.1f);
+            Item.UseSound = WeaponCommon.ModifySoundStyle(SoundID.Item36, 0.6f, 0.05f);
             Item.shoot = 10;
             Item.shootSpeed = 16f;
             Item.useAmmo = AmmoID.Bullet; // The "ammo Id" of the ammo Item that this weapon uses. Note that this is not an Item Id, but just a magic value.

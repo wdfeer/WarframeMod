@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using WarframeMod.Projectiles;
 using WarframeMod.Global;
+using Terraria.Audio;
 
 namespace WarframeMod.Items.Weapons
 {
@@ -36,7 +37,7 @@ namespace WarframeMod.Items.Weapons
             Item.shoot = 10;
             Item.shootSpeed = 14f;
             Item.useAmmo = AmmoID.Bullet;
-            Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Sounds/KuvaKohmSound");
+            Item.UseSound = WeaponCommon.ModifySoundStyle(new SoundStyle("WarframeMod/Sounds/KuvaKohmSound"), pitchVariance: 0.15f);
         }
         int lastShotTime = 0;
         int timeSinceLastShot = 60;
@@ -86,19 +87,11 @@ namespace WarframeMod.Items.Weapons
                     proj.timeLeft = 120;
                     int defaultTimeLeft = proj.timeLeft;
                     globalProj.modifyDamage = (Projectile projectile, int oldDamage, Entity target) =>
-                    {
-                        if (target is NPC && Main.rand.NextBool(3))
-                        {
-                            NPC npc = target as NPC;
-                            var bleedNPC = npc.GetGlobalNPC<BleedingGlobalNPC>();
-                            bleedNPC.bleeds.Add(new BleedingBuff(projectile.damage / 5, 300));
-                        }
-                        return oldDamage * projectile.timeLeft / defaultTimeLeft;
-                    };
+                        oldDamage * projectile.timeLeft / defaultTimeLeft;
                 }
                 {
                     var buffProj = proj.GetGlobalProjectile<BuffGlobalProjectile>();
-                    buffProj.buffChances.Add(new BuffChance(BuffID.Bleeding, 300, 0.3f));
+                    buffProj.bleedingChance = 0.33f;
                 }
             }
             return false;

@@ -35,7 +35,6 @@ namespace WarframeMod.Items.Weapons
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<SynapseProjectile>();
             Item.shootSpeed = 16f;
-            Item.UseSound = SoundID.Item91;
         }
 
         public override void AddRecipes()

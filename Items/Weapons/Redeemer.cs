@@ -33,7 +33,7 @@ namespace WarframeMod.Items.Weapons
             Item.autoReuse = false;
             Item.shoot = ProjectileID.Bullet;
             Item.shootSpeed = 12f;
-            Item.UseSound = WeaponCommon.ModifySoundStyle(new SoundStyle("WarframeMod/Sounds/RedeemerPrimeSound"), 0.8f, -0.1f);
+            Item.UseSound = WeaponCommon.ModifySoundStyle(new SoundStyle("WarframeMod/Sounds/RedeemerPrimeSound"), 0.8f, 0.06f);
         }
 
         public override void AddRecipes()
