@@ -18,12 +18,14 @@ namespace WarframeMod.Global
         {
             switch (type)
             {
+                case NPCID.BloodZombie or NPCID.Drippler:
+                    return ItemDropRule.Common(ModContent.ItemType<PiercingHit>(), 100);
                 case NPCID.FireImp:
-                    return ItemDropRule.Common(ModContent.ItemType<Blaze>(), 12);
+                    return ItemDropRule.Common(ModContent.ItemType<Blaze>(), 16);
                 case NPCID.EyeofCthulhu:
                     return ItemDropRule.Common(ModContent.ItemType<HunterMunitions>(), 2);
                 case NPCID.SkeletronHead:
-                    return ItemDropRule.Common(ModContent.ItemType<Desecrate>(), 6);
+                    return ItemDropRule.Common(ModContent.ItemType<Desecrate>(), 3);
                 case NPCID.QueenBee:
                     return ItemDropRule.Common(ModContent.ItemType<Kohm>(), 2);
                 case NPCID.SkeletronPrime:
