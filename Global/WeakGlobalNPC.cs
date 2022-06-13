@@ -20,7 +20,7 @@ namespace WarframeMod.Global
             if (npc.HasBuff(BuffID.Weak))
             {
                 weakPower++;
-                int buffIndex = Array.FindIndex(npc.buffType, x => x == BuffID.Weak);
+                int buffIndex = Array.IndexOf(npc.buffType, BuffID.Weak);
                 int buffTime = npc.buffTime[buffIndex];
                 if (weakTime < buffTime)
                     weakTime = buffTime;
