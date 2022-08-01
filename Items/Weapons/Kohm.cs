@@ -5,8 +5,8 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using WarframeMod.Projectiles;
-using WarframeMod.Global;
 using Terraria.Audio;
+using WarframeMod.Global;
 
 namespace WarframeMod.Items.Weapons
 {

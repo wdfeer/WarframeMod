@@ -50,7 +50,7 @@ namespace WarframeMod.Items.Weapons
         {
             WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
             Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-            projectile.GetGlobalProjectile<WarframeGlobalProjectile>().CritMultiplier = 1.35f;
+            projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 1.35f;
             return false;
         }
     }

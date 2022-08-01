@@ -85,7 +85,7 @@ namespace WarframeMod.Items.Weapons
                                            damage,
                                            knockback,
                                            player.whoAmI)
-                      .GetGlobalProjectile<WarframeGlobalProjectile>()
+                      .GetGlobalProjectile<CritGlobalProjectile>()
                       .CritMultiplier = 0.75f;
             return false;
         }
