@@ -29,7 +29,7 @@ namespace WarframeMod
             if (crit && critLevel > 0)
             {
                 damage = (int)(damage * Math.Pow(2, critLevel - 1));
-                OverCritVisuals(target, knockback);
+                OverCritVisuals(target, knockback, critLevel);
             }
         }
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
@@ -38,15 +38,17 @@ namespace WarframeMod
             if (crit && critLevel > 0)
             {
                 damage = (int)(damage * Math.Pow(2 * proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier, critLevel - 1));
-                OverCritVisuals(target, knockback);
+                OverCritVisuals(target, knockback, critLevel);
             }
         }
-        void OverCritVisuals(NPC target, float knockback)
+        void OverCritVisuals(NPC target, float knockback, int critlvl)
         {
+            Color dustColor = critlvl > 2 ? Color.Red : Color.Orange;
             for (int i = 0; i < 1 + knockback / 2; i++)
             {
-                var dust = Dust.NewDustDirect(target.position, target.width, target.height, DustID.Clentaminator_Red);
-                dust.scale = knockback / 8 + 0.2f;
+                var dust = Dust.NewDustDirect(target.position, target.width, target.height, DustID.PortalBoltTrail);
+                dust.scale = knockback * (critlvl / 2) / 6 + 0.16f;
+                dust.color = dustColor;
             }
         }
     }
