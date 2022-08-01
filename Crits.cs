@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.Config;
 
 namespace WarframeMod
 {
@@ -43,11 +44,14 @@ namespace WarframeMod
         }
         void OverCritVisuals(NPC target, float knockback, int critlvl)
         {
+            float intensity = ModContent.GetInstance<WarframeClientConfig>().OvercritVisualIntensity;
+            if (intensity <= 0.05f)
+                return;
             Color dustColor = critlvl > 2 ? Color.Red : Color.Orange;
-            for (int i = 0; i < 1 + knockback / 2; i++)
+            for (int i = 0; i < 1 + knockback * intensity / 2; i++)
             {
                 var dust = Dust.NewDustDirect(target.position, target.width, target.height, DustID.PortalBoltTrail);
-                dust.scale = knockback * (critlvl / 2) / 6 + 0.16f;
+                dust.scale = knockback * (critlvl / 2) / 6 * (intensity < 1 ? intensity : 1) + 0.16f;
                 dust.color = dustColor;
             }
         }
