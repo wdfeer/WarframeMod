@@ -20,14 +20,16 @@ namespace WarframeMod.Global
             {
                 case NPCID.Skeleton or NPCID.SkeletonAlien or NPCID.SkeletonAstonaut:
                     return ItemDropRule.Common(ModContent.ItemType<PointStrike>(), 30);
-                case NPCID.ZombieMushroom or NPCID.SporeBat or NPCID.SporeSkeleton:
-                    return ItemDropRule.Common(ModContent.ItemType<CriticalDelay>(), 50);
+                case NPCID.UndeadMiner:
+                    return ItemDropRule.Common(ModContent.ItemType<CriticalDelay>(), 2);
                 case NPCID.BloodZombie or NPCID.Drippler:
                     return ItemDropRule.Common(ModContent.ItemType<PiercingHit>(), 100);
                 case NPCID.FireImp:
                     return ItemDropRule.Common(ModContent.ItemType<Blaze>(), 16);
                 case NPCID.EyeofCthulhu:
                     return ItemDropRule.Common(ModContent.ItemType<HunterMunitions>(), 2);
+                case NPCID.EaterofWorldsHead or NPCID.BrainofCthulhu when !Main.npc.Any(npc => npc.type is NPCID.EaterofWorldsBody) :
+                    return ItemDropRule.Common(ModContent.ItemType<RaktaBallistica>(), 2);
                 case NPCID.SkeletronHead:
                     return ItemDropRule.Common(ModContent.ItemType<Desecrate>(), 3);
                 case NPCID.QueenBee:

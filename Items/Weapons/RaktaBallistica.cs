@@ -33,15 +33,6 @@ namespace WarframeMod.Items.Weapons
             Item.shootSpeed = 16;
             Item.useAmmo = AmmoID.Arrow; // The "ammo Id" of the ammo Item that this weapon uses. Note that this is not an Item Id, but just a magic value.
         }
-
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<Ballistica>());
-            recipe.AddIngredient(ItemID.TissueSample, 17);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
-        }
         double lastShotTime = 0;
         double timeSinceLastShot = 60;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
