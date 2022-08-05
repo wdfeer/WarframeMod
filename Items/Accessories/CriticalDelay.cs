@@ -10,11 +10,11 @@ using WarframeMod.Players;
 
 namespace WarframeMod.Items.Accessories
 {
-    public class PointStrike : ModItem
+    public class CriticalDelay : ModItem
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("+60% Crit Chance relative to the weapon's base crit chance");
+            Tooltip.SetDefault("+90% Crit Chance relative to the weapon's base crit chance, but -15% Fire Rate");
         }
         public override void SetDefaults()
         {
@@ -22,12 +22,13 @@ namespace WarframeMod.Items.Accessories
             Item.width = 44;
             Item.height = 64;
             Item.rare = 2;
-            Item.value = Terraria.Item.sellPrice(silver: 66);
+            Item.value = Terraria.Item.sellPrice(gold: 3);
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             if (player.HeldItem.damage > 0)
-                player.GetCritChance(DamageClass.Generic) += (player.HeldItem.crit + 4) * 0.6f;
+                player.GetCritChance(DamageClass.Generic) += (player.HeldItem.crit + 4) * 0.9f;
+            player.GetModPlayer<FireRatePlayer>().FireRateMultiplier -= 0.15f;
         }
     }
 }

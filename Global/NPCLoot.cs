@@ -18,8 +18,10 @@ namespace WarframeMod.Global
         {
             switch (type)
             {
-                case NPCID.GiantWormHead or NPCID.Skeleton:
-                    return ItemDropRule.Common(ModContent.ItemType<PointStrike>(), 20);
+                case NPCID.Skeleton or NPCID.SkeletonAlien or NPCID.SkeletonAstonaut:
+                    return ItemDropRule.Common(ModContent.ItemType<PointStrike>(), 30);
+                case NPCID.ZombieMushroom or NPCID.SporeBat or NPCID.SporeSkeleton:
+                    return ItemDropRule.Common(ModContent.ItemType<CriticalDelay>(), 50);
                 case NPCID.BloodZombie or NPCID.Drippler:
                     return ItemDropRule.Common(ModContent.ItemType<PiercingHit>(), 100);
                 case NPCID.FireImp:
