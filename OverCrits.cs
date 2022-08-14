@@ -38,7 +38,7 @@ namespace WarframeMod
             var critLevel = GetCritLevel(proj.CritChance);
             if (crit && critLevel > 0)
             {
-                damage = (int)(damage * Math.Pow(2 * proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier, critLevel - 1));
+                damage = (int)(damage * proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier * critLevel);
                 OverCritVisuals(target, knockback, critLevel);
             }
         }
