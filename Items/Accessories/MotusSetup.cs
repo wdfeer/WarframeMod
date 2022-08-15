@@ -37,6 +37,8 @@ namespace WarframeMod.Items.Accessories
         bool doubleJumping;
         public override void PostUpdate()
         {
+            if (!enabled)
+                return;
             bool touchingTiles = Player.TouchedTiles.Any();
             if (touchingTiles && doubleJumping)
             {
