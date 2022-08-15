@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Terraria.DataStructures;
 using WarframeMod.Projectiles;
+using WarframeMod.Global;
 
 namespace WarframeMod.Items.Weapons
 {
@@ -17,7 +18,7 @@ namespace WarframeMod.Items.Weapons
         }
         public override void SetDefaults()
         {
-            Item.damage = 256;
+            Item.damage = 197;
             Item.crit = 56;
             Item.DamageType = DamageClass.Ranged;
             Item.channel = true;

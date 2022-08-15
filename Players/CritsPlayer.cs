@@ -1,18 +1,25 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Config;
+using WarframeMod.Global;
 
-namespace WarframeMod
+namespace WarframeMod.Players
 {
     internal class CritsPlayer : ModPlayer
     {
+        public float critMultiplierPlayer = 1f;
+        public float relativeCritChance = 0f;
+        public override void ResetEffects()
+        {
+            critMultiplierPlayer = 1f;
+            relativeCritChance = 0f;
+        }
+        public override void PostUpdateEquips()
+        {
+            if (Player.HeldItem.damage > 0)
+                Player.GetCritChance(DamageClass.Generic) += (Player.HeldItem.crit + 4) * relativeCritChance;
+        }
         int GetCritLevel(int critChance)
         {
             int lvl = 0;
@@ -29,7 +36,8 @@ namespace WarframeMod
             var critLevel = GetCritLevel(Player.GetWeaponCrit(item));
             if (crit && critLevel > 0)
             {
-                damage = (int)(damage * Math.Pow(2, critLevel - 1));
+                float mult = critMultiplierPlayer;
+                damage = (int)(damage * mult * critLevel);
                 OverCritVisuals(target, knockback, critLevel);
             }
         }
@@ -38,7 +46,8 @@ namespace WarframeMod
             var critLevel = GetCritLevel(proj.CritChance);
             if (crit && critLevel > 0)
             {
-                damage = (int)(damage * proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier * critLevel);
+                float mult = critMultiplierPlayer * proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier;
+                damage = (int)(damage * mult * critLevel);
                 OverCritVisuals(target, knockback, critLevel);
             }
         }
@@ -55,10 +64,5 @@ namespace WarframeMod
                 dust.color = dustColor;
             }
         }
-    }
-    internal class CritGlobalProjectile : GlobalProjectile
-    {
-        public override bool InstancePerEntity => true;
-        public float CritMultiplier { get; set; } = 1f;
     }
 }

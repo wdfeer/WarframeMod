@@ -20,6 +20,8 @@ namespace WarframeMod.Global
             {
                 case NPCID.Skeleton or NPCID.SkeletonAlien or NPCID.SkeletonAstonaut:
                     return ItemDropRule.Common(ModContent.ItemType<PointStrike>(), 30);
+                case NPCID.CaveBat or NPCID.JungleBat:
+                    return ItemDropRule.Common(ModContent.ItemType<MotusSetup>(), 80);
                 case NPCID.UndeadMiner:
                     return ItemDropRule.Common(ModContent.ItemType<CriticalDelay>(), 2);
                 case NPCID.BloodZombie or NPCID.Drippler:

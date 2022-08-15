@@ -26,8 +26,7 @@ namespace WarframeMod.Items.Accessories
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.HeldItem.damage > 0)
-                player.GetCritChance(DamageClass.Generic) += (player.HeldItem.crit + 4) * 0.9f;
+            player.GetModPlayer<CritsPlayer>().relativeCritChance += 0.9f;
             player.GetModPlayer<FireRatePlayer>().FireRateMultiplier -= 0.15f;
         }
     }

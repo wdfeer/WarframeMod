@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using Terraria.Audio;
+using WarframeMod.Global;
 
 namespace WarframeMod.Items.Weapons
 {
@@ -111,6 +112,7 @@ namespace WarframeMod.Items.Weapons
             Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = -1;
+            projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = Mode == FireMode.Auto ? 1.4f : (Mode == FireMode.Burst ? 1.5f : 1.7f);
             return false;
         }
     }
