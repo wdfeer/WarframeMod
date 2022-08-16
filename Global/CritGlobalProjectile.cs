@@ -12,5 +12,6 @@ namespace WarframeMod.Global
     {
         public override bool InstancePerEntity => true;
         public float CritMultiplier { get; set; } = 1f;
+        public int critLevel;
     }
 }

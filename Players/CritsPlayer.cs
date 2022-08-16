@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using WarframeMod.Global;
+using WarframeMod.Items.Accessories;
 
 namespace WarframeMod.Players
 {
@@ -20,7 +21,7 @@ namespace WarframeMod.Players
             if (Player.HeldItem.damage > 0)
                 Player.GetCritChance(DamageClass.Generic) += (Player.HeldItem.crit + 4) * relativeCritChance;
         }
-        int GetCritLevel(int critChance)
+        public int GetCritLevel(int critChance)
         {
             int lvl = 0;
             while (critChance > 0)
@@ -39,6 +40,8 @@ namespace WarframeMod.Players
                 float mult = critMultiplierPlayer;
                 damage = (int)(damage * mult * critLevel);
                 OverCritVisuals(target, knockback, critLevel);
+
+                Player.GetModPlayer<HunterMunitionsPlayer>().TryBleed(target, damage * 2);
             }
         }
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
@@ -49,6 +52,8 @@ namespace WarframeMod.Players
                 float mult = critMultiplierPlayer * proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier;
                 damage = (int)(damage * mult * critLevel);
                 OverCritVisuals(target, knockback, critLevel);
+
+                Player.GetModPlayer<HunterMunitionsPlayer>().TryBleed(target, damage * 2);
             }
         }
         void OverCritVisuals(NPC target, float knockback, int critlvl)

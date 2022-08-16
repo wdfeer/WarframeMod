@@ -28,33 +28,23 @@ namespace WarframeMod.Items.Accessories
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<HunterMunitionsPlayer>().hunterMunitions = true;
+            player.GetModPlayer<HunterMunitionsPlayer>().enabled = true;
         }
     }
     internal class HunterMunitionsPlayer : ModPlayer
     {
-        public bool hunterMunitions = false;
+        public bool enabled = false;
         public override void ResetEffects()
         {
-            hunterMunitions = false;
+            enabled = false;
         }
-        void RollAndApplyBleed(NPC target, int damage, bool crit)
+        public void TryBleed(NPC target, int damageAfterCrit)
         {
-            if (crit && Main.rand.NextFloat() < HunterMunitions.bleedChance / 100f)
+            if (enabled && Main.rand.NextFloat() < HunterMunitions.bleedChance / 100f)
             {
                 ref var bleeds = ref target.GetGlobalNPC<BleedingGlobalNPC>().bleeds;
-                bleeds.Add(new BleedingBuff(damage * 2 / 5, 300));
+                bleeds.Add(new BleedingBuff(damageAfterCrit / 5, 300));
             }
-        }
-        public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
-        {
-            if (hunterMunitions)
-                RollAndApplyBleed(target, damage, crit);
-        }
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-        {
-            if (hunterMunitions)
-                RollAndApplyBleed(target, damage, crit);
         }
     }
 }
