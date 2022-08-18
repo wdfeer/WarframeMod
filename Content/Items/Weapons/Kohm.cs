@@ -1,7 +1,6 @@
 using Terraria.Audio;
 using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
-using WarframeMod.Content.Items;
 
 namespace WarframeMod.Content.Items.Weapons;
 
@@ -9,7 +8,7 @@ public class Kohm : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Takes a while to spool up while increasing Multishot up to 5 pellets\n33% chance to apply bleeding on hit\nLinear damage falloff\n+15% Critical Damage");
+        Tooltip.SetDefault("Takes a while to spool up while increasing Multishot up to 5 pellets\n33% chance to apply bleeding on hit\nLinear damage falloff starting at 32 tiles\n+15% Critical Damage");
     }
     const int maxUseTime = 82;
     const int minUseTime = 17;
@@ -77,17 +76,10 @@ public class Kohm : ModItem
         {
             float spread = timeSinceLastShot > 46 ? 0.015f : 0.1f;
             var proj = Projectile.NewProjectileDirect(source, position, velocity.RotatedByRandom(spread), type, damage, knockback, player.whoAmI);
-            {
-                var globalProj = proj.GetGlobalProjectile<CustomProjectileDamageModifier>();
-                proj.timeLeft = 120;
-                int defaultTimeLeft = proj.timeLeft;
-                globalProj.modifyDamage = (projectile, oldDamage, target) =>
-                    oldDamage * projectile.timeLeft / defaultTimeLeft;
-            }
-            {
-                var buffProj = proj.GetGlobalProjectile<BuffGlobalProjectile>();
-                buffProj.bleedingChance = 0.33f;
-            }
+            proj.timeLeft = 120;
+            proj.GetGlobalProjectile<FalloffGlobalProjectile>().SetFalloff(position, 16 * 32, 16 * 48, 0.4f);
+            var buffProj = proj.GetGlobalProjectile<BuffGlobalProjectile>();
+            buffProj.bleedingChance = 0.33f;
         }
         return false;
     }

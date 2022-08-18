@@ -1,5 +1,6 @@
 using Terraria.Audio;
 using Terraria.DataStructures;
+using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Items;
 using WarframeMod.Content.Projectiles;
 
@@ -9,7 +10,7 @@ public class Redeemer : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Fires 6 pellets without consuming ammo\nHas linear damage falloff");
+        Tooltip.SetDefault("Fires 6 pellets without consuming ammo\nHas linear damage falloff starting at 30 tiles");
     }
     public override void SetDefaults()
     {
@@ -51,9 +52,9 @@ public class Redeemer : ModItem
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
         for (int i = 0; i < 6; i++)
         {
-            int projectileID = Projectile.NewProjectile(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(15)), ModContent.ProjectileType<RedeemerBullet>(), damage, knockback, player.whoAmI);
-            var projectile = Main.projectile[projectileID];
+            Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(15)), type, damage, knockback, player.whoAmI);
             projectile.DamageType = DamageClass.Melee;
+            projectile.GetGlobalProjectile<FalloffGlobalProjectile>().SetFalloff(projectile.position, 30 * 16, 50 * 16, 0.6f);
         }
 
         return false;

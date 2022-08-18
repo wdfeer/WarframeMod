@@ -1,7 +1,6 @@
 using Terraria.Audio;
 using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
-using WarframeMod.Content.Items;
 
 namespace WarframeMod.Content.Items.Weapons;
 
@@ -11,7 +10,7 @@ public class KuvaKohm : ModItem
     {
         Tooltip.SetDefault($@"Takes a while to spool up while increasing Multishot up to {maxMultishot} pellets
 33% chance to apply bleeding on hit
-Linear damage falloff
+Linear damage falloff starting at 36 tiles
 +15% Critical Damage");
     }
     const int maxUseTime = 72;
@@ -87,17 +86,10 @@ Linear damage falloff
         {
             float spread = timeSinceLastShot > 46 ? 0.015f : 0.1f;
             var proj = Projectile.NewProjectileDirect(source, position, velocity.RotatedByRandom(spread), type, damage, knockback, player.whoAmI);
-            {
-                var globalProj = proj.GetGlobalProjectile<CustomProjectileDamageModifier>();
-                proj.timeLeft = 120;
-                int defaultTimeLeft = proj.timeLeft;
-                globalProj.modifyDamage = (projectile, oldDamage, target) =>
-                    oldDamage * projectile.timeLeft / defaultTimeLeft;
-            }
-            {
-                var buffProj = proj.GetGlobalProjectile<BuffGlobalProjectile>();
-                buffProj.bleedingChance = 0.35f;
-            }
+            proj.timeLeft = 120;
+            proj.GetGlobalProjectile<FalloffGlobalProjectile>().SetFalloff(position, 16 * 36, 16 * 48, 0.6f);
+            var buffProj = proj.GetGlobalProjectile<BuffGlobalProjectile>();
+            buffProj.bleedingChance = 0.35f;
         }
         return false;
     }
