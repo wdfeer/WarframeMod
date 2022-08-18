@@ -1,6 +1,6 @@
 ﻿namespace WarframeMod.Global;
 
-internal class WarframeGlobalProjectile : GlobalProjectile
+internal class CustomProjectileDamageModifier : GlobalProjectile
 {
     public override bool InstancePerEntity => true;
     public Func<Projectile, int, Entity, int> modifyDamage = (proj, oldDamage, target) => oldDamage;

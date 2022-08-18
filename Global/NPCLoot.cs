@@ -28,6 +28,8 @@ internal class NPCLoot : GlobalNPC
                 return ItemDropRule.Common(ModContent.ItemType<Desecrate>(), 3);
             case NPCID.QueenBee:
                 return ItemDropRule.Common(ModContent.ItemType<Kohm>(), 2);
+            case NPCID.WallofFlesh:
+                return ItemDropRule.Common(ModContent.ItemType<Bite>(), 4);
             case NPCID.SkeletronPrime:
                 return ItemDropRule.Common(ModContent.ItemType<Magnetize>(), 3);
             case NPCID.TheDestroyer:

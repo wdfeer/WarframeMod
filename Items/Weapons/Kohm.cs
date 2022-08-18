@@ -78,7 +78,7 @@ public class Kohm : ModItem
             float spread = (timeSinceLastShot > 46 ? 0.015f : 0.1f);
             var proj = Projectile.NewProjectileDirect(source, position, velocity.RotatedByRandom(spread), type, damage, knockback, player.whoAmI);
             {
-                var globalProj = proj.GetGlobalProjectile<WarframeGlobalProjectile>();
+                var globalProj = proj.GetGlobalProjectile<CustomProjectileDamageModifier>();
                 proj.timeLeft = 120;
                 int defaultTimeLeft = proj.timeLeft;
                 globalProj.modifyDamage = (Projectile projectile, int oldDamage, Entity target) =>

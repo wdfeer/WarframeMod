@@ -7,10 +7,14 @@ internal class CritsPlayer : ModPlayer
 {
     public float critMultiplierPlayer = 1f;
     public float relativeCritChance = 0f;
+    public int summonCritChance = 0;
+    public float summonCritMult = 1f;
     public override void ResetEffects()
     {
         critMultiplierPlayer = 1f;
         relativeCritChance = 0f;
+        summonCritChance = 0;
+        summonCritMult = 1f;
     }
     public override void PostUpdateEquips()
     {
@@ -42,10 +46,28 @@ internal class CritsPlayer : ModPlayer
     }
     public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
     {
+        if (proj.DamageType == DamageClass.Summon)
+        {
+            ModifyHitNPCWithMinion(proj, target, ref damage, ref knockback, ref crit);
+            return;
+        }
         var critLevel = GetCritLevel(proj.CritChance);
         if (crit && critLevel > 0)
         {
             float mult = critMultiplierPlayer * proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier;
+            damage = (int)(damage * mult * critLevel);
+            OverCritVisuals(target, knockback, critLevel);
+
+            Player.GetModPlayer<HunterMunitionsPlayer>().TryBleed(target, damage * 2);
+        }
+    }
+    void ModifyHitNPCWithMinion(Projectile minion, NPC target, ref int damage, ref float knockback, ref bool crit)
+    {
+        var critLevel = GetCritLevel(summonCritChance);
+        if (critLevel > 0)
+        {
+            crit = true;
+            float mult = critMultiplierPlayer * minion.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier * summonCritMult;
             damage = (int)(damage * mult * critLevel);
             OverCritVisuals(target, knockback, critLevel);
 

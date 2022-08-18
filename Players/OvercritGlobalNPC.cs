@@ -1,4 +1,4 @@
-﻿namespace WarframeMod;
+﻿namespace WarframeMod.Players;
 
 internal class OvercritNPCVisuals : GlobalNPC
 {
@@ -11,11 +11,11 @@ internal class OvercritNPCVisuals : GlobalNPC
         for (int i = 99; i >= 0; i--)
         {
             CombatText ctToCheck = Main.combatText[i];
-            if (ctToCheck.lifeTime == 60 || ctToCheck.lifeTime == 120 || (ctToCheck.dot && ctToCheck.lifeTime == 40))
+            if (ctToCheck.lifeTime == 60 || ctToCheck.lifeTime == 120 || ctToCheck.dot && ctToCheck.lifeTime == 40)
             {
                 if (ctToCheck.alpha == 1f)
                 {
-                    if ((ctToCheck.color == CombatText.DamagedHostile || ctToCheck.color == CombatText.DamagedHostileCrit))
+                    if (ctToCheck.color == CombatText.DamagedHostile || ctToCheck.color == CombatText.DamagedHostileCrit)
                     {
                         return Main.combatText[i];
                     }
@@ -33,7 +33,7 @@ internal class OvercritNPCVisuals : GlobalNPC
             {
                 if (ctToCheck.alpha == 1f)
                 {
-                    if ((ctToCheck.color == CombatText.DamagedHostile || ctToCheck.color == CombatText.DamagedHostileCrit))
+                    if (ctToCheck.color == CombatText.DamagedHostile || ctToCheck.color == CombatText.DamagedHostileCrit)
                     {
                         return Main.combatText[i];
                     }
