@@ -1,47 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿namespace WarframeMod.Global;
 
-namespace WarframeMod.Global
+internal class WeakGlobalNPC : GlobalNPC
 {
-    internal class WeakGlobalNPC : GlobalNPC
+    public override bool InstancePerEntity => true;
+    int weakPower = 0;
+    int weakTime = 0;
+    float DamageMultiplier => 1f / (MathF.Sqrt(weakPower) + 1f);
+    public override void AI(NPC npc)
     {
-        public override bool InstancePerEntity => true;
-        int weakPower = 0;
-        int weakTime = 0;
-        float DamageMultiplier => 1f / (MathF.Sqrt(weakPower) + 1f);
-        public override void AI(NPC npc)
+        if (npc.HasBuff(BuffID.Weak))
         {
-            if (npc.HasBuff(BuffID.Weak))
-            {
-                weakPower++;
-                int buffIndex = Array.IndexOf(npc.buffType, BuffID.Weak);
-                int buffTime = npc.buffTime[buffIndex];
-                if (weakTime < buffTime)
-                    weakTime = buffTime;
-                npc.DelBuff(buffIndex);
-            }
-            if (weakTime <= 0)
-            {
-                weakPower = 0;
-            }
-            else
-            {
-                weakTime--;
-            }
+            weakPower++;
+            int buffIndex = Array.IndexOf(npc.buffType, BuffID.Weak);
+            int buffTime = npc.buffTime[buffIndex];
+            if (weakTime < buffTime)
+                weakTime = buffTime;
+            npc.DelBuff(buffIndex);
         }
-        public override void ModifyHitPlayer(NPC npc, Player target, ref int damage, ref bool crit)
+        if (weakTime <= 0)
         {
-            damage = (int)(damage * DamageMultiplier);
+            weakPower = 0;
         }
-        public override void ModifyHitNPC(NPC npc, NPC target, ref int damage, ref float knockback, ref bool crit)
+        else
         {
-            damage = (int)(damage * DamageMultiplier);
+            weakTime--;
         }
+    }
+    public override void ModifyHitPlayer(NPC npc, Player target, ref int damage, ref bool crit)
+    {
+        damage = (int)(damage * DamageMultiplier);
+    }
+    public override void ModifyHitNPC(NPC npc, NPC target, ref int damage, ref float knockback, ref bool crit)
+    {
+        damage = (int)(damage * DamageMultiplier);
     }
 }

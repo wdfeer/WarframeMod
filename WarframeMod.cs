@@ -1,8 +1,5 @@
-using Terraria.ModLoader;
+namespace WarframeMod;
 
-namespace WarframeMod
+public class WarframeMod : Mod
 {
-	public class WarframeMod : Mod
-	{
-	}
 }

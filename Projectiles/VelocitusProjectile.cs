@@ -1,9 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using Terraria;
 using Terraria.Audio;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace WarframeMod;
 public class VelocitusProjectile : ModProjectile
@@ -22,7 +18,7 @@ public class VelocitusProjectile : ModProjectile
         Projectile.friendly = false;
     }
     public bool charged = false;
-    Vector2 HitboxLineEnd => Projectile.position + new Vector2(0,1).RotatedBy(Projectile.rotation) * 128;
+    Vector2 HitboxLineEnd => Projectile.position + new Vector2(0, 1).RotatedBy(Projectile.rotation) * 128;
 
     public override void AI()
     {
@@ -73,7 +69,7 @@ public class VelocitusProjectile : ModProjectile
         }
     }
     public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
-        =>  Collision.CheckAABBvLineCollision(targetHitbox.Location.ToVector2(),
+        => Collision.CheckAABBvLineCollision(targetHitbox.Location.ToVector2(),
             targetHitbox.Size(),
             Projectile.position,
             HitboxLineEnd);
