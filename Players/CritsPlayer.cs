@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using WarframeMod.Global;
+﻿using WarframeMod.Global;
 using WarframeMod.Items.Accessories;
 
 namespace WarframeMod.Players;
@@ -55,15 +54,17 @@ internal class CritsPlayer : ModPlayer
     }
     void OverCritVisuals(NPC target, float knockback, int critlvl)
     {
-        float intensity = ModContent.GetInstance<WarframeClientConfig>().OvercritVisualIntensity;
-        if (intensity <= 0.05f)
-            return;
-        Color dustColor = critlvl > 2 ? Color.Red : Color.Orange;
-        for (int i = 0; i < 1 + knockback * intensity / 2; i++)
+        if (critlvl < 2) return;
+        Color critColor = CombatText.DamagedHostile;
+        switch (critlvl)
         {
-            var dust = Dust.NewDustDirect(target.position, target.width, target.height, DustID.PortalBoltTrail);
-            dust.scale = knockback * (critlvl / 2) / 6 * (intensity < 1 ? intensity : 1) + 0.16f;
-            dust.color = dustColor;
+            case 2:
+                critColor = Color.Orange;
+                break;
+            default:
+                critColor = Color.Red;
+                break;
         }
+        target.GetGlobalNPC<OvercritNPCVisuals>().thisCritColor = critColor;
     }
 }

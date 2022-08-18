@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria.Audio;
+﻿using Terraria.Audio;
 
 namespace WarframeMod;
 public class VelocitusProjectile : ModProjectile

@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace WarframeMod.Projectiles;
+﻿namespace WarframeMod.Projectiles;
 
 internal class MagnetizeProjectile : ModProjectile
 {
