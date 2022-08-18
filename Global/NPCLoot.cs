@@ -6,8 +6,9 @@ namespace WarframeMod.Global;
 
 internal class NPCLoot : GlobalNPC
 {
-    public IItemDropRule GetItemDropRule(int type)
+    public IItemDropRule GetItemDropRule(NPC npc)
     {
+        int type = npc.type;
         switch (type)
         {
             case NPCID.Skeleton or NPCID.SkeletonAlien or NPCID.SkeletonAstonaut:
@@ -20,27 +21,13 @@ internal class NPCLoot : GlobalNPC
                 return ItemDropRule.Common(ModContent.ItemType<PiercingHit>(), 100);
             case NPCID.FireImp:
                 return ItemDropRule.Common(ModContent.ItemType<Blaze>(), 16);
-            case NPCID.EyeofCthulhu:
-                return ItemDropRule.Common(ModContent.ItemType<HunterMunitions>(), 2);
-            case NPCID.EaterofWorldsHead or NPCID.BrainofCthulhu when !Main.npc.Any(npc => npc.type is NPCID.EaterofWorldsBody):
-                return ItemDropRule.Common(ModContent.ItemType<RaktaBallistica>(), 2);
-            case NPCID.SkeletronHead:
-                return ItemDropRule.Common(ModContent.ItemType<Desecrate>(), 3);
-            case NPCID.QueenBee:
-                return ItemDropRule.Common(ModContent.ItemType<Kohm>(), 2);
-            case NPCID.WallofFlesh:
-                return ItemDropRule.Common(ModContent.ItemType<Bite>(), 4);
-            case NPCID.SkeletronPrime:
-                return ItemDropRule.Common(ModContent.ItemType<Magnetize>(), 3);
-            case NPCID.TheDestroyer:
-                return ItemDropRule.Common(ModContent.ItemType<KuvaNukor>(), 2);
             default:
                 return null;
         }
     }
     public override void ModifyNPCLoot(NPC npc, Terraria.ModLoader.NPCLoot npcLoot)
     {
-        var dropRule = GetItemDropRule(npc.type);
+        var dropRule = GetItemDropRule(npc);
         if (dropRule != null)
             npcLoot.Add(dropRule);
     }
