@@ -1,4 +1,4 @@
-﻿namespace WarframeMod.Projectiles;
+﻿namespace WarframeMod.Content.Projectiles;
 
 internal class MagnetizeProjectile : ModProjectile
 {

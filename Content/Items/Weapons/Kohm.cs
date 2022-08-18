@@ -1,8 +1,9 @@
 using Terraria.Audio;
 using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
+using WarframeMod.Content.Items;
 
-namespace WarframeMod.Items.Weapons;
+namespace WarframeMod.Content.Items.Weapons;
 
 public class Kohm : ModItem
 {
@@ -31,7 +32,7 @@ public class Kohm : ModItem
         Item.shoot = 10;
         Item.shootSpeed = 14f;
         Item.useAmmo = AmmoID.Bullet;
-        Item.UseSound = WeaponCommon.ModifySoundStyle(new SoundStyle("WarframeMod/Sounds/KuvaKohmSound"), pitchVariance: 0.15f);
+        Item.UseSound = new SoundStyle("WarframeMod/Content/Sounds/KuvaKohmSound").ModifySoundStyle(pitchVariance: 0.15f);
     }
     int lastShotTime = 0;
     int timeSinceLastShot = 60;
@@ -74,13 +75,13 @@ public class Kohm : ModItem
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width + 5);
         for (int i = 0; i < multishot; i++)
         {
-            float spread = (timeSinceLastShot > 46 ? 0.015f : 0.1f);
+            float spread = timeSinceLastShot > 46 ? 0.015f : 0.1f;
             var proj = Projectile.NewProjectileDirect(source, position, velocity.RotatedByRandom(spread), type, damage, knockback, player.whoAmI);
             {
                 var globalProj = proj.GetGlobalProjectile<CustomProjectileDamageModifier>();
                 proj.timeLeft = 120;
                 int defaultTimeLeft = proj.timeLeft;
-                globalProj.modifyDamage = (Projectile projectile, int oldDamage, Entity target) =>
+                globalProj.modifyDamage = (projectile, oldDamage, target) =>
                     oldDamage * projectile.timeLeft / defaultTimeLeft;
             }
             {

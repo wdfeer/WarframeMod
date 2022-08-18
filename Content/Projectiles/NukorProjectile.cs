@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.Enums;
 using Terraria.GameContent;
 
-namespace WarframeMod.Projectiles;
+namespace WarframeMod.Content.Projectiles;
 
 public class NukorProjectile : ModProjectile
 {
@@ -49,7 +49,7 @@ public class NukorProjectile : ModProjectile
         }
         return false;
     }
-    public void DrawLaser(Texture2D texture, Vector2 start, Vector2 unit, float step, float rotation = 0f, float scale = 1f, float maxDist = 2000f, Color color = default(Color), int transDist = 50)
+    public void DrawLaser(Texture2D texture, Vector2 start, Vector2 unit, float step, float rotation = 0f, float scale = 1f, float maxDist = 2000f, Color color = default, int transDist = 50)
     {
         float r = unit.ToRotation() + rotation;
 

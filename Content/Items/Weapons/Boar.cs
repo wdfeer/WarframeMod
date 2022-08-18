@@ -1,7 +1,8 @@
 using Terraria.Audio;
 using Terraria.DataStructures;
+using WarframeMod.Content.Items;
 
-namespace WarframeMod.Items.Weapons;
+namespace WarframeMod.Content.Items.Weapons;
 
 public class Boar : ModItem
 {
@@ -26,7 +27,7 @@ public class Boar : ModItem
         Item.value = Item.buyPrice(silver: 60);
         Item.rare = 2;
         Item.useAmmo = AmmoID.Bullet;
-        Item.UseSound = WeaponCommon.ModifySoundStyle(new SoundStyle("WarframeMod/Sounds/BoarPrimeSound"), 0.6f);
+        Item.UseSound = new SoundStyle("WarframeMod/Content/Sounds/BoarPrimeSound").ModifySoundStyle(0.6f);
         Item.shoot = ProjectileID.Bullet;
         Item.shootSpeed = 12;
         Item.autoReuse = true;

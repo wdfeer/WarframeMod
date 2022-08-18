@@ -1,6 +1,6 @@
 ﻿using WarframeMod.Common.Players;
 
-namespace WarframeMod.Items.Accessories;
+namespace WarframeMod.Content.Items.Accessories;
 
 public class CriticalDelay : ModItem
 {
@@ -14,7 +14,7 @@ public class CriticalDelay : ModItem
         Item.width = 44;
         Item.height = 64;
         Item.rare = 2;
-        Item.value = Terraria.Item.sellPrice(gold: 3);
+        Item.value = Item.sellPrice(gold: 3);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

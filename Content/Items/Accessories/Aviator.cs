@@ -1,4 +1,4 @@
-namespace WarframeMod.Items.Accessories;
+namespace WarframeMod.Content.Items.Accessories;
 
 public class Aviator : ModItem
 {

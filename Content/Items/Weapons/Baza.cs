@@ -1,7 +1,8 @@
 using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
+using WarframeMod.Content.Items;
 
-namespace WarframeMod.Items.Weapons;
+namespace WarframeMod.Content.Items.Weapons;
 
 public class Baza : ModItem
 {
@@ -23,7 +24,7 @@ public class Baza : ModItem
         Item.knockBack = 0;
         Item.value = 15000;
         Item.rare = 3;
-        Item.UseSound = WeaponCommon.ModifySoundStyle(SoundID.Item11, 0.1f);
+        Item.UseSound = SoundID.Item11.ModifySoundStyle(0.1f);
         Item.autoReuse = true;
         Item.shoot = 10;
         Item.shootSpeed = 16f;

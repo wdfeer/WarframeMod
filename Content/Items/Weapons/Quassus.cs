@@ -2,7 +2,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
 
-namespace WarframeMod.Items.Weapons;
+namespace WarframeMod.Content.Items.Weapons;
 
 public class Quassus : ModItem
 {

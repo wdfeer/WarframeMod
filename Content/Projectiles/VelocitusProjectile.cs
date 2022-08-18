@@ -1,6 +1,6 @@
 ﻿using Terraria.Audio;
 
-namespace WarframeMod;
+namespace WarframeMod.Content.Projectiles;
 public class VelocitusProjectile : ModProjectile
 {
     const float MOVE_DISTANCE = 128;

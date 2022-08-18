@@ -1,8 +1,9 @@
 using Terraria.Audio;
 using Terraria.DataStructures;
-using WarframeMod.Projectiles;
+using WarframeMod.Content.Items;
+using WarframeMod.Content.Projectiles;
 
-namespace WarframeMod.Items.Weapons;
+namespace WarframeMod.Content.Items.Weapons;
 
 public class Redeemer : ModItem
 {
@@ -28,7 +29,7 @@ public class Redeemer : ModItem
         Item.autoReuse = false;
         Item.shoot = ProjectileID.Bullet;
         Item.shootSpeed = 12f;
-        Item.UseSound = WeaponCommon.ModifySoundStyle(new SoundStyle("WarframeMod/Sounds/RedeemerPrimeSound"), 0.8f, 0.06f);
+        Item.UseSound = new SoundStyle("WarframeMod/Content/Sounds/RedeemerPrimeSound").ModifySoundStyle(0.8f, 0.06f);
     }
 
     public override void AddRecipes()

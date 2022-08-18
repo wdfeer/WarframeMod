@@ -1,7 +1,8 @@
 using Terraria.Audio;
 using Terraria.DataStructures;
+using WarframeMod.Content.Items;
 
-namespace WarframeMod.Items.Weapons;
+namespace WarframeMod.Content.Items.Weapons;
 
 internal class Sybaris : ModItem
 {

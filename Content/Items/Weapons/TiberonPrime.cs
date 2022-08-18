@@ -1,8 +1,9 @@
 using Terraria.Audio;
 using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
+using WarframeMod.Content.Items;
 
-namespace WarframeMod.Items.Weapons;
+namespace WarframeMod.Content.Items.Weapons;
 
 internal class TiberonPrime : ModItem
 {
@@ -108,7 +109,7 @@ internal class TiberonPrime : ModItem
         Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
         projectile.usesLocalNPCImmunity = true;
         projectile.localNPCHitCooldown = -1;
-        projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = Mode == FireMode.Auto ? 1.4f : (Mode == FireMode.Burst ? 1.5f : 1.7f);
+        projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = Mode == FireMode.Auto ? 1.4f : Mode == FireMode.Burst ? 1.5f : 1.7f;
         return false;
     }
 }

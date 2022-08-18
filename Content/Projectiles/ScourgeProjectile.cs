@@ -1,4 +1,4 @@
-namespace WarframeMod.Projectiles;
+namespace WarframeMod.Content.Projectiles;
 
 /// <summary>
 /// This the class that clones the vanilla Meowmere projectile using CloneDefaults().
@@ -29,7 +29,7 @@ public class ScourgeProjectile : ModProjectile
             launchVelocity = launchVelocity.RotatedBy(MathHelper.Pi * 2 / numOfProjectilesSpawnedOnKill);
 
             // Spawn a new projectile with the newly rotated velocity, belonging to the original projectile owner. The new projectile will inherit the spawning source of this projectile.
-            int projectileID = Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, launchVelocity, ProjectileID.EmeraldBolt, Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
+            int projectileID = Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), Projectile.Center, launchVelocity, ProjectileID.EmeraldBolt, Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
             Projectile projectile = Main.projectile[projectileID];
             projectile.timeLeft = 45;
             projectile.usesLocalNPCImmunity = true;

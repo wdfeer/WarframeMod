@@ -2,11 +2,11 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.Enums;
 using Terraria.GameContent;
 
-namespace WarframeMod.Projectiles;
+namespace WarframeMod.Content.Projectiles;
 
 public class KuvaNukorProjectile : ModProjectile
 {
-    public override string Texture => "WarframeMod/Projectiles/NukorProjectile";
+    public override string Texture => "WarframeMod/Content/Projectiles/NukorProjectile";
     // The maximum charge value
     private const float MAX_CHARGE = 30f;
     //The distance charge particle from the player center
@@ -59,7 +59,7 @@ public class KuvaNukorProjectile : ModProjectile
         }
         return false;
     }
-    public void DrawLaser(Texture2D texture, Vector2 start, Vector2 unit, float step, float rotation = 0f, float scale = 1f, float Distance = 256f, Color color = default(Color), int transDist = 50)
+    public void DrawLaser(Texture2D texture, Vector2 start, Vector2 unit, float step, float rotation = 0f, float scale = 1f, float Distance = 256f, Color color = default, int transDist = 50)
     {
         float r = unit.ToRotation() + rotation;
 

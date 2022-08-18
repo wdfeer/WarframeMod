@@ -1,7 +1,7 @@
 using Terraria.DataStructures;
-using WarframeMod.Projectiles;
+using WarframeMod.Content.Projectiles;
 
-namespace WarframeMod.Items.Weapons;
+namespace WarframeMod.Content.Items.Weapons;
 
 public class Magnetize : ModItem
 {

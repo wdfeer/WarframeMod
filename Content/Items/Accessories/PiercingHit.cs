@@ -1,6 +1,7 @@
+using WarframeMod.Common;
 using WarframeMod.Common.Players;
 
-namespace WarframeMod.Items.Accessories;
+namespace WarframeMod.Content.Items.Accessories;
 
 public class PiercingHit : ModItem
 {
@@ -14,7 +15,7 @@ public class PiercingHit : ModItem
         Item.width = 44;
         Item.height = 64;
         Item.rare = 2;
-        Item.value = Terraria.Item.sellPrice(silver: 20);
+        Item.value = Item.sellPrice(silver: 20);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

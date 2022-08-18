@@ -1,6 +1,6 @@
 using Terraria.DataStructures;
 
-namespace WarframeMod.Items.Weapons;
+namespace WarframeMod.Content.Items.Weapons;
 
 public class FluxRifle : ModItem
 {

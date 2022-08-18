@@ -1,6 +1,7 @@
-﻿using WarframeMod.Common.Players;
+﻿using WarframeMod.Common;
+using WarframeMod.Common.Players;
 
-namespace WarframeMod.Items.Accessories;
+namespace WarframeMod.Content.Items.Accessories;
 
 public class Blaze : ModItem
 {
@@ -14,7 +15,7 @@ public class Blaze : ModItem
         Item.width = 44;
         Item.height = 64;
         Item.rare = 2;
-        Item.value = Terraria.Item.sellPrice(gold: 1);
+        Item.value = Item.sellPrice(gold: 1);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

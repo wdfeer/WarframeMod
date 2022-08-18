@@ -1,6 +1,5 @@
 ﻿using Terraria.GameContent.ItemDropRules;
-using WarframeMod.Items.Accessories;
-using WarframeMod.Items.Weapons;
+using WarframeMod.Content.Items.Accessories;
 
 namespace WarframeMod.Common.GlobalNPCs;
 

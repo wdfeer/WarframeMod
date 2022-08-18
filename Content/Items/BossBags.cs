@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
-using WarframeMod.Items.Accessories;
-using WarframeMod.Items.Weapons;
+using WarframeMod.Content.Items.Accessories;
+using WarframeMod.Content.Items.Weapons;
 
-namespace WarframeMod.Items;
+namespace WarframeMod.Content.Items;
 internal class BossBags : GlobalItem
 {
     public override void ModifyItemLoot(Item item, ItemLoot itemLoot)

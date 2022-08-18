@@ -1,7 +1,7 @@
 ﻿using Terraria.ID;
 using WarframeMod.Common.Players;
 
-namespace WarframeMod.Items.Accessories;
+namespace WarframeMod.Content.Items.Accessories;
 
 public class Bite : ModItem
 {
@@ -15,7 +15,7 @@ public class Bite : ModItem
         Item.width = 44;
         Item.height = 64;
         Item.rare = ItemRarityID.LightRed;
-        Item.value = Terraria.Item.sellPrice(gold: 2);
+        Item.value = Item.sellPrice(gold: 2);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

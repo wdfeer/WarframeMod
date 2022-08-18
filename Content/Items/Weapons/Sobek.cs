@@ -1,6 +1,7 @@
 using Terraria.DataStructures;
+using WarframeMod.Content.Items;
 
-namespace WarframeMod.Items.Weapons;
+namespace WarframeMod.Content.Items.Weapons;
 
 public class Sobek : ModItem
 {
@@ -24,7 +25,7 @@ public class Sobek : ModItem
         Item.value = Item.sellPrice(gold: 2);
         Item.rare = 3;
         Item.autoReuse = true;
-        Item.UseSound = WeaponCommon.ModifySoundStyle(SoundID.Item36, 0.6f, 0.05f);
+        Item.UseSound = SoundID.Item36.ModifySoundStyle(0.6f, 0.05f);
         Item.shoot = 10;
         Item.shootSpeed = 16f;
         Item.useAmmo = AmmoID.Bullet; // The "ammo Id" of the ammo Item that this weapon uses. Note that this is not an Item Id, but just a magic value.

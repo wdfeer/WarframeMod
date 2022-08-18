@@ -1,6 +1,6 @@
 ﻿using WarframeMod.Common.Players;
 
-namespace WarframeMod.Items.Accessories;
+namespace WarframeMod.Content.Items.Accessories;
 
 public class PointStrike : ModItem
 {
@@ -14,7 +14,7 @@ public class PointStrike : ModItem
         Item.width = 44;
         Item.height = 64;
         Item.rare = 2;
-        Item.value = Terraria.Item.sellPrice(silver: 66);
+        Item.value = Item.sellPrice(silver: 66);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

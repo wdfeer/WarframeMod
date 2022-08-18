@@ -1,6 +1,6 @@
 ﻿using WarframeMod.Common.GlobalNPCs;
 using WarframeMod.Common.GlobalProjectiles;
-using WarframeMod.Items.Accessories;
+using WarframeMod.Content.Items.Accessories;
 
 namespace WarframeMod.Common.Players;
 
@@ -35,32 +35,39 @@ internal class CritsPlayer : ModPlayer
     }
     public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
     {
+        if (!crit)
+            return;
         var critLevel = GetCritLevel(Player.GetWeaponCrit(item));
-        if (crit && critLevel > 0)
-        {
-            float mult = critMultiplierPlayer;
-            damage = (int)(damage * mult * critLevel);
-            OverCritVisuals(target, knockback, critLevel);
+        if (critLevel < 1)
+            critLevel = 1;
+        float mult = critMultiplierPlayer;
+        damage = (int)(damage * mult * critLevel);
+        OverCritVisuals(target, knockback, critLevel);
 
-            Player.GetModPlayer<HunterMunitionsPlayer>().TryBleed(target, damage * 2);
-        }
+        Player.GetModPlayer<HunterMunitionsPlayer>().TryBleed(target, damage * 2);
     }
     public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
     {
         if (proj.DamageType == DamageClass.Summon)
         {
             ModifyHitNPCWithMinion(proj, target, ref damage, ref knockback, ref crit);
-            return;
         }
-        var critLevel = GetCritLevel(proj.CritChance);
-        if (crit && critLevel > 0)
+        else
         {
-            float mult = critMultiplierPlayer * proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier;
-            damage = (int)(damage * mult * critLevel);
-            OverCritVisuals(target, knockback, critLevel);
+            var critLevel = GetCritLevel(proj.CritChance);
+            if (crit)
+            {
+                if (critLevel < 1)
+                    critLevel = 1;
+                float mult = critMultiplierPlayer * proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier;
+                damage = (int)(damage * mult * critLevel);
+                OverCritVisuals(target, knockback, critLevel);
 
-            Player.GetModPlayer<HunterMunitionsPlayer>().TryBleed(target, damage * 2);
+                Player.GetModPlayer<HunterMunitionsPlayer>().TryBleed(target, damage * 2);
+            }
         }
+
+        proj.GetGlobalProjectile<BuffGlobalProjectile>().OnHitNPCAfterCritModifiersApplied(target, damage * 2);
     }
     void ModifyHitNPCWithMinion(Projectile minion, NPC target, ref int damage, ref float knockback, ref bool crit)
     {

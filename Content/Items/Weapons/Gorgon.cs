@@ -1,7 +1,8 @@
 using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
+using WarframeMod.Content.Items;
 
-namespace WarframeMod.Items.Weapons;
+namespace WarframeMod.Content.Items.Weapons;
 
 public class Gorgon : ModItem
 {
@@ -23,7 +24,7 @@ public class Gorgon : ModItem
         Item.knockBack = 1;
         Item.value = Item.buyPrice(gold: 3);
         Item.rare = 3;
-        Item.UseSound = WeaponCommon.ModifySoundStyle(SoundID.Item11, 0.75f);
+        Item.UseSound = SoundID.Item11.ModifySoundStyle(0.75f);
         Item.autoReuse = true;
         Item.shoot = 10;
         Item.shootSpeed = 12f;

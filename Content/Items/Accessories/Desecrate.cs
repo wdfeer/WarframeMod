@@ -1,4 +1,4 @@
-﻿namespace WarframeMod.Items.Accessories;
+﻿namespace WarframeMod.Content.Items.Accessories;
 
 public class Desecrate : ModItem
 {
@@ -14,7 +14,7 @@ public class Desecrate : ModItem
         Item.width = 32;
         Item.height = 32;
         Item.rare = 5;
-        Item.value = Terraria.Item.sellPrice(gold: 9);
+        Item.value = Item.sellPrice(gold: 9);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

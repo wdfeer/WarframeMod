@@ -1,4 +1,4 @@
-namespace WarframeMod.Projectiles;
+namespace WarframeMod.Content.Projectiles;
 
 /// <summary>
 /// This the class that clones the vanilla Meowmere projectile using CloneDefaults().
@@ -27,6 +27,6 @@ public class RedeemerBullet : ModProjectile
     }
     public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
     {
-        damage = (int)(damage * Projectile.timeLeft / 60);
+        damage = damage * Projectile.timeLeft / 60;
     }
 }

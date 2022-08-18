@@ -1,7 +1,7 @@
 using Terraria.DataStructures;
-using WarframeMod.Projectiles;
+using WarframeMod.Content.Projectiles;
 
-namespace WarframeMod.Items.Weapons;
+namespace WarframeMod.Content.Items.Weapons;
 
 public class Nukor : ModItem
 {
@@ -28,7 +28,7 @@ public class Nukor : ModItem
         Item.shoot = ModContent.ProjectileType<NukorProjectile>();
         Item.shootSpeed = 12f;
         Item.mana = 3;
-        Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Sounds/KuvaNukorStartSound");
+        Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/KuvaNukorStartSound");
     }
 
     public override void AddRecipes()

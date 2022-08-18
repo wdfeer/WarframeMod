@@ -1,6 +1,6 @@
 using WarframeMod.Common.Players;
 
-namespace WarframeMod.Items.Accessories;
+namespace WarframeMod.Content.Items.Accessories;
 
 public class MotusSetup : ModItem
 {
@@ -14,7 +14,7 @@ public class MotusSetup : ModItem
     {
         Item.accessory = true;
         Item.rare = 3;
-        Item.value = Terraria.Item.sellPrice(gold: 2);
+        Item.value = Item.sellPrice(gold: 2);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

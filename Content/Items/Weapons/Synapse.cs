@@ -1,8 +1,9 @@
 using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
-using WarframeMod.Projectiles;
+using WarframeMod.Content.Items;
+using WarframeMod.Content.Projectiles;
 
-namespace WarframeMod.Items.Weapons;
+namespace WarframeMod.Content.Items.Weapons;
 
 public class Synapse : ModItem
 {

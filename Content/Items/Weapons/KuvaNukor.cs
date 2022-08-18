@@ -1,7 +1,8 @@
 using Terraria.DataStructures;
-using WarframeMod.Projectiles;
+using WarframeMod.Content.Items;
+using WarframeMod.Content.Projectiles;
 
-namespace WarframeMod.Items.Weapons;
+namespace WarframeMod.Content.Items.Weapons;
 
 public class KuvaNukor : ModItem
 {
@@ -28,7 +29,7 @@ public class KuvaNukor : ModItem
         Item.shoot = ModContent.ProjectileType<KuvaNukorProjectile>();
         Item.shootSpeed = 12f;
         Item.mana = 6;
-        Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Sounds/KuvaNukorStartSound");
+        Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/KuvaNukorStartSound");
     }
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
