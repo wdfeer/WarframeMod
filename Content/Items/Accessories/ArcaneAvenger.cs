@@ -43,6 +43,8 @@ class AvengerPlayer : ModPlayer
     public int currentCritChance = 0;
     void ApplyBuff(int damage)
     {
+        if (!enabled)
+            return;
         currentCritChance = (int)MathF.Ceiling((float)damage / ArcaneAvenger.DAMAGE_TO_CRIT_RATIO);
         Player.AddBuff(ModContent.BuffType<ArcaneAvengerBuff>(), ArcaneAvenger.BUFF_DURATION);
     }
