@@ -4,13 +4,14 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class FluxRifle : ModItem
 {
+    public const int DEFENSE_PENETRATION = 9;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Doesn't consume ammo\n10 Defense penetration");
+        Tooltip.SetDefault($"Doesn't consume ammo\n{DEFENSE_PENETRATION} Defense penetration");
     }
     public override void SetDefaults()
     {
-        Item.damage = 11;
+        Item.damage = 9;
         Item.crit = 6;
         Item.channel = true;
         Item.DamageType = DamageClass.Ranged;

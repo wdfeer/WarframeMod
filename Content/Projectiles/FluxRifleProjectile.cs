@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Enums;
 using Terraria.GameContent;
+using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Projectiles;
 
@@ -33,7 +34,7 @@ public class FluxRifleProjectile : ModProjectile
         Projectile.penetrate = -1;
         Projectile.tileCollide = false;
         Projectile.DamageType = DamageClass.Magic;
-        Projectile.ArmorPenetration = 10;
+        Projectile.ArmorPenetration = FluxRifle.DEFENSE_PENETRATION;
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 5;
     }
