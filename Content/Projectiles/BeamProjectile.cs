@@ -26,6 +26,7 @@ public abstract class BeamProjectile : ModProjectile
     public Vector2 BeamEnd => Owner.Center + Projectile.velocity * Distance;
     public bool IsAtMaxCharge => Charge >= MaxCharge;
     public abstract int HitCooldown { get; }
+    public abstract DamageClass DamageClass { get; }
     public override void SetDefaults()
     {
         Projectile.width = 10;
@@ -36,6 +37,7 @@ public abstract class BeamProjectile : ModProjectile
         Projectile.hide = true;
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = HitCooldown;
+        Projectile.DamageType = DamageClass;
     }
     public override bool PreDraw(ref Color lightColor)
     {

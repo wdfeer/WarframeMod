@@ -15,4 +15,5 @@ public class SynapseProjectile : BeamProjectile
     protected override Color WeaponEnergyDustColor => Color.Orange;
     protected override int Contact1DustType => DustID.OrangeTorch;
     protected override int Contact2DustType => DustID.RedTorch;
+    public override DamageClass DamageClass => DamageClass.Magic;
 }

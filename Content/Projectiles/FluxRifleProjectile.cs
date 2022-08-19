@@ -28,4 +28,5 @@ public class FluxRifleProjectile : BeamProjectile
             d.velocity = Vector2.Normalize(Projectile.velocity) * 12 + Main.rand.NextVector2CircularEdge(5, 5);
         }
     };
+    public override DamageClass DamageClass => DamageClass.Ranged;
 }
