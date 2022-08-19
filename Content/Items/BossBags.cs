@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.GameContent.ItemDropRules;
-using Terraria.ModLoader;
+﻿using Terraria.GameContent.ItemDropRules;
 using WarframeMod.Content.Items.Accessories;
 using WarframeMod.Content.Items.Weapons;
 
@@ -15,11 +9,12 @@ internal class BossBags : GlobalItem
     {
         if (!ItemID.Sets.BossBag[item.type])
             return;
-        IItemDropRule extraDrop = GetDropRule(item.type);
+        IItemDropRule extraDrop = GetGeneralDropRule(item.type);
         if (extraDrop is not null)
             itemLoot.Add(extraDrop);
+        itemLoot.Add(GetArcanesDropRule());
     }
-    IItemDropRule GetDropRule(int bagType)
+    IItemDropRule GetGeneralDropRule(int bagType)
     {
         switch (bagType)
         {
@@ -45,4 +40,8 @@ internal class BossBags : GlobalItem
                 return null;
         }
     }
+    IItemDropRule GetArcanesDropRule()
+        => ItemDropRule.OneFromOptionsNotScalingWithLuck(
+            6,
+            new int[] { ModContent.ItemType<ArcaneAvenger>() });
 }
