@@ -1,4 +1,5 @@
 using Terraria.DataStructures;
+using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Projectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
@@ -47,7 +48,7 @@ public class Nukor : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
-        Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+        Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
         return false;
     }
 }

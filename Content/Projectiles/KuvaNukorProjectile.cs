@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Enums;
 using Terraria.GameContent;
+using Terraria.ID;
 
 namespace WarframeMod.Content.Projectiles;
 
@@ -135,12 +136,12 @@ public class KuvaNukorProjectile : ModProjectile
         if (Main.rand.NextBool(5))
         {
             Vector2 offset = Projectile.velocity.RotatedBy(1.57f) * ((float)Main.rand.NextDouble() - 0.5f) * Projectile.width;
-            Dust dust = Main.dust[Dust.NewDust(dustPos + offset - Vector2.One * 4f, 8, 8, 31, 0.0f, 0.0f, 100, new Color(), 1.5f)];
+            Dust dust = Main.dust[Dust.NewDust(dustPos + offset - Vector2.One * 4f, 8, 8, DustID.Smoke, 0.0f, 0.0f, 100, new Color(), 1.5f)];
             dust.velocity *= 0.5f;
             dust.velocity.Y = -Math.Abs(dust.velocity.Y);
             Vector2 unit = dustPos - Main.player[Projectile.owner].Center;
             unit.Normalize();
-            dust = Main.dust[Dust.NewDust(Main.player[Projectile.owner].Center + 55 * unit, 8, 8, 31, 0.0f, 0.0f, 100, new Color(), 1.5f)];
+            dust = Main.dust[Dust.NewDust(Main.player[Projectile.owner].Center + 55 * unit, 8, 8, DustID.Smoke, 0.0f, 0.0f, 100, new Color(), 1.5f)];
             dust.velocity = dust.velocity * 0.5f;
             dust.velocity.Y = -Math.Abs(dust.velocity.Y);
         }
