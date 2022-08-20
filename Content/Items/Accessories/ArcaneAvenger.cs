@@ -48,12 +48,8 @@ class AvengerPlayer : ModPlayer
         currentCritChance = (int)MathF.Ceiling((float)damage / ArcaneAvenger.DAMAGE_TO_CRIT_RATIO);
         Player.AddBuff(ModContent.BuffType<ArcaneAvengerBuff>(), ArcaneAvenger.BUFF_DURATION);
     }
-    public override void OnHitByNPC(NPC npc, int damage, bool crit)
+    public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
     {
-        ApplyBuff(damage);
-    }
-    public override void OnHitByProjectile(Projectile proj, int damage, bool crit)
-    {
-        ApplyBuff(damage);
+        ApplyBuff((int)damage);
     }
 }

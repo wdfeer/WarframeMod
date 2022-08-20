@@ -25,7 +25,7 @@ public class ArcaneStrike : ModItem
         Item.rare = -12;
         Item.width = 32;
         Item.height = 32;
-        Item.value = Item.buyPrice(gold: 4);
+        Item.value = Item.buyPrice(gold: 3);
     }
     public override void UpdateInventory(Player player)
     {
