@@ -4,7 +4,7 @@ public class Aviator : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("+25% Damage Resistance while airborne\nExpert Exclusive");
+        Tooltip.SetDefault("+20% Damage Resistance while airborne");
     }
 
     public override void SetDefaults()
@@ -40,7 +40,7 @@ class AviatorPlayer : ModPlayer
         Player.UpdateTouchingTiles();
         bool touchingTiles = Player.TouchedTiles.Any();
         if (!touchingTiles)
-            damage = (int)(damage * 0.2f);
+            damage = (int)(damage * 0.8f);
     }
 
     public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
