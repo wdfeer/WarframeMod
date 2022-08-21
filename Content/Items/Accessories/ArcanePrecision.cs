@@ -13,7 +13,7 @@ public class ArcanePrecision : ModItem
     public const int CHANCE = 20;
     public static float DamageBuff => Main.hardMode ? DAMAGE_BUFF_HARDMODE : DAMAGE_BUFF_PREHARDMODE;
     public const float DAMAGE_BUFF_PREHARDMODE = 0.1f;
-    public const float DAMAGE_BUFF_HARDMODE = 0.15f;
+    public const float DAMAGE_BUFF_HARDMODE = 0.16f;
     public const int BUFF_DURATION = 960;
     public override void SetStaticDefaults()
     {

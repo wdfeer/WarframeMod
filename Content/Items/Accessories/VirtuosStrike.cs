@@ -12,7 +12,7 @@ public class VirtuosStrike : ModItem
 {
     public const int CHANCE = 15;
     public const float EXTRA_CRIT_MULT = 0.33f;
-    public const int BUFF_DURATION = 300;
+    public const int BUFF_DURATION = 420;
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"On magic Critical hit: {CHANCE}% chance for +{(int)(EXTRA_CRIT_MULT * 100)}% Critical Damage for {BUFF_DURATION / 60} seconds");

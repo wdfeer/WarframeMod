@@ -7,7 +7,7 @@ public class Blaze : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("+10% damage, +10% chance to set enemies on fire");
+        Tooltip.SetDefault("+8% damage, +24% chance to set enemies on fire");
     }
     public override void SetDefaults()
     {
@@ -19,9 +19,9 @@ public class Blaze : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetDamage(DamageClass.Generic) += 0.1f;
+        player.GetDamage(DamageClass.Generic) += 0.08f;
 
-        BuffPlayer buffer = player.GetModPlayer<BuffPlayer>();
-        buffer.OnNPCHit.Add(new BuffChance(BuffID.OnFire, 300, 0.1f));
+        BuffPlayer buffman = player.GetModPlayer<BuffPlayer>();
+        buffman.OnNPCHit.Add(new BuffChance(BuffID.OnFire, 300, 0.24f));
     }
 }

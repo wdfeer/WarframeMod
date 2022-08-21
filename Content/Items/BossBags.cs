@@ -37,7 +37,11 @@ internal class BossBags : GlobalItem
             case ItemID.DestroyerBossBag:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<KuvaNukor>(), 2);
             case ItemID.TwinsBossBag:
-                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Vaporize>(), 2);
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
+                {
+                    ModContent.ItemType<Vaporize>(),
+                    ModContent.ItemType<Acceltra>()
+                });
             default:
                 return null;
         }
