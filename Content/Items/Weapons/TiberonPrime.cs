@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework.Audio;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
@@ -101,9 +102,11 @@ internal class TiberonPrime : ModItem
         }
         return base.CanUseItem(player);
     }
+
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        SoundEngine.PlaySound(SoundID.Item11, position);
+        SoundStyle soundStyle = new SoundStyle("WarframeMod/Content/Sounds/TiberonPrimeSound").ModifySoundStyle(pitchVariance: 0.1f);
+        SoundEngine.PlaySound(soundStyle, position);
 
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
         Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
