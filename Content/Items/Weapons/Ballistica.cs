@@ -1,5 +1,4 @@
 using Terraria.DataStructures;
-using WarframeMod.Content.Items;
 
 namespace WarframeMod.Content.Items.Weapons;
 

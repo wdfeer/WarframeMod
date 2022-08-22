@@ -1,5 +1,4 @@
 ﻿using Terraria.Audio;
-using Terraria.ID;
 
 namespace WarframeMod.Content.Projectiles;
 internal abstract class ExplosiveProjectile : ModProjectile

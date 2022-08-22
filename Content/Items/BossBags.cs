@@ -42,6 +42,8 @@ internal class BossBags : GlobalItem
                     ModContent.ItemType<Vaporize>(),
                     ModContent.ItemType<Acceltra>()
                 });
+            case ItemID.GolemBossBag:
+                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Supra>(), 2);
             default:
                 return null;
         }

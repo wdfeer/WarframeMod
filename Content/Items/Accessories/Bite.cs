@@ -1,5 +1,4 @@
-﻿using Terraria.ID;
-using WarframeMod.Common.Players;
+﻿using WarframeMod.Common.Players;
 
 namespace WarframeMod.Content.Items.Accessories;
 

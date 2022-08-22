@@ -1,11 +1,3 @@
-using Microsoft.Xna.Framework;
-using System;
-using System.Linq;
-using Terraria;
-using Terraria.Audio;
-using Terraria.ID;
-using Terraria.ModLoader;
-
 namespace WarframeMod.Content.Projectiles;
 
 internal class AcceltraProjectile : ExplosiveProjectile

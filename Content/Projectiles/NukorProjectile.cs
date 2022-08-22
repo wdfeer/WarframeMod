@@ -1,6 +1,3 @@
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.Enums;
-using Terraria.GameContent;
 using WarframeMod.Common.GlobalProjectiles;
 
 namespace WarframeMod.Content.Projectiles;

@@ -1,8 +1,6 @@
 using Terraria.Audio;
 using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
-using WarframeMod.Content.Items;
-using WarframeMod.Content.Projectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
 

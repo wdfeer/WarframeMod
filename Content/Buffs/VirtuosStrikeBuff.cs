@@ -1,5 +1,3 @@
-using Terraria;
-using Terraria.ModLoader;
 using WarframeMod.Common.Players;
 using WarframeMod.Content.Items.Accessories;
 

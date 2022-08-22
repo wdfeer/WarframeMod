@@ -1,5 +1,3 @@
-using Terraria;
-using Terraria.ModLoader;
 using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Buffs;

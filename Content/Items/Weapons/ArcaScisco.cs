@@ -1,10 +1,4 @@
-using Terraria;
 using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using System.Linq;
-using Microsoft.Xna.Framework;
-using WarframeMod.Content.Items;
 using WarframeMod.Content.Projectiles;
 using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Buffs;
