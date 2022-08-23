@@ -37,6 +37,7 @@ class ArachnePlayer : ModPlayer
     public override void ResetEffects() => enabled = false;
     public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
     {
-        Player.AddBuff(ModContent.BuffType<ArcaneArachneBuff>(), ArcaneArachne.COOLDOWN_DURATION);
+        if (enabled)
+            Player.AddBuff(ModContent.BuffType<ArcaneArachneBuff>(), ArcaneArachne.COOLDOWN_DURATION);
     }
 }
