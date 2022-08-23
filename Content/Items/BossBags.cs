@@ -7,7 +7,7 @@ internal class BossBags : GlobalItem
 {
     public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
     {
-        if (!ItemID.Sets.BossBag[item.type])
+        if (!ItemID.Sets.BossBag[item.type] && !ItemID.Sets.PreHardmodeLikeBossBag[item.type])
             return;
         IItemDropRule extraDrop = GetGeneralDropRule(item.type);
         if (extraDrop is not null)
@@ -56,13 +56,14 @@ internal class BossBags : GlobalItem
     }
     IItemDropRule GetArcanesDropRule()
         => ItemDropRule.OneFromOptionsNotScalingWithLuck(
-            6,
+            5,
             new int[]
             {
                 ModContent.ItemType<ArcaneAvenger>(),
                 ModContent.ItemType<ArcaneGuardian>(),
                 ModContent.ItemType<VirtuosStrike>(),
                 ModContent.ItemType<ArcaneStrike>(),
-                ModContent.ItemType<ArcanePrecision>()
+                ModContent.ItemType<ArcanePrecision>(),
+                ModContent.ItemType<ArcaneFury>()
             });
 }
