@@ -1,3 +1,5 @@
+using Terraria.DataStructures;
+
 namespace WarframeMod.Content.Items.Accessories;
 
 public class Aviator : ModItem
@@ -42,9 +44,9 @@ class AviatorPlayer : ModPlayer
         if (!touchingTiles)
             damage = (int)(damage * 0.8f);
     }
-
-    public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
-        => ModifyHit(ref damage);
-    public override void ModifyHitByProjectile(Projectile proj, ref int damage, ref bool crit)
-        => ModifyHit(ref damage);
+    public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
+    {
+        ModifyHit(ref damage);
+        return true;
+    }
 }

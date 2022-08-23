@@ -56,7 +56,7 @@ internal class BossBags : GlobalItem
     }
     IItemDropRule GetArcanesDropRule()
         => ItemDropRule.OneFromOptionsNotScalingWithLuck(
-            5,
+            4,
             new int[]
             {
                 ModContent.ItemType<ArcaneAvenger>(),
@@ -64,6 +64,7 @@ internal class BossBags : GlobalItem
                 ModContent.ItemType<VirtuosStrike>(),
                 ModContent.ItemType<ArcaneStrike>(),
                 ModContent.ItemType<ArcanePrecision>(),
-                ModContent.ItemType<ArcaneFury>()
+                ModContent.ItemType<ArcaneFury>(),
+                ModContent.ItemType<ArcaneBodyguard>()
             });
 }
