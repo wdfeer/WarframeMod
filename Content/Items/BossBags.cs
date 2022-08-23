@@ -18,6 +18,8 @@ internal class BossBags : GlobalItem
     {
         switch (bagType)
         {
+            case ItemID.KingSlimeBossBag:
+                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Tetra>(), 2);
             case ItemID.EyeOfCthulhuBossBag:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<HunterMunitions>(), 2);
             case ItemID.EaterOfWorldsBossBag or ItemID.BrainOfCthulhuBossBag:
