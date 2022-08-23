@@ -6,7 +6,7 @@ public class CriticalDelay : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("+90% Crit Chance relative to the weapon's base crit chance, but -15% Fire Rate");
+        Tooltip.SetDefault("+90% Crit Chance relative to the weapon's base crit chance, but -15% Use Speed");
     }
     public override void SetDefaults()
     {
@@ -19,6 +19,6 @@ public class CriticalDelay : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetModPlayer<CritsPlayer>().relativeCritChance += 0.9f;
-        player.GetModPlayer<FireRatePlayer>().FireRateMultiplier -= 0.15f;
+        player.GetModPlayer<FireRatePlayer>().TotalFireRateMultiplier -= 0.15f;
     }
 }

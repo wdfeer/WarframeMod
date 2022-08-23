@@ -65,6 +65,7 @@ internal class BossBags : GlobalItem
                 ModContent.ItemType<ArcaneStrike>(),
                 ModContent.ItemType<ArcanePrecision>(),
                 ModContent.ItemType<ArcaneFury>(),
-                ModContent.ItemType<ArcaneBodyguard>()
+                ModContent.ItemType<ArcaneBodyguard>(),
+                ModContent.ItemType<ArcaneArachne>()
             });
 }
