@@ -43,7 +43,11 @@ internal class BossBags : GlobalItem
                     ModContent.ItemType<Acceltra>()
                 });
             case ItemID.GolemBossBag:
-                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Supra>(), 2);
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
+                {
+                    ModContent.ItemType<Supra>(),
+                    ModContent.ItemType<BazaPrime>()
+                });
             default:
                 return null;
         }
