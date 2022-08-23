@@ -11,7 +11,7 @@ public class RedeemerPrime : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 44;
+        Item.damage = 48;
         Item.crit = 20;
         Item.DamageType = DamageClass.Melee;
         Item.noMelee = true;
@@ -27,7 +27,7 @@ public class RedeemerPrime : ModItem
         Item.autoReuse = true;
         Item.shoot = ProjectileID.GoldenBullet;
         Item.shootSpeed = 16f;
-        Item.UseSound = new SoundStyle("WarframeMod/Content/Sounds/RedeemerPrimeSound").ModifySoundStyle(0.45f, 0.1f);
+        Item.UseSound = new SoundStyle("WarframeMod/Content/Sounds/RedeemerPrimeSound").ModifySoundStyle(pitchVariance: 0.1f);
     }
 
     public override void AddRecipes()

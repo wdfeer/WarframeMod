@@ -28,7 +28,7 @@ public class Redeemer : ModItem
         Item.autoReuse = false;
         Item.shoot = ProjectileID.Bullet;
         Item.shootSpeed = 12f;
-        Item.UseSound = new SoundStyle("WarframeMod/Content/Sounds/RedeemerPrimeSound").ModifySoundStyle(0.8f, 0.06f);
+        Item.UseSound = new SoundStyle("WarframeMod/Content/Sounds/RedeemerPrimeSound").ModifySoundStyle(pitchVariance: 0.06f);
     }
 
     public override void AddRecipes()
