@@ -4,7 +4,7 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class ArcaneGuardian : ModItem
 {
-    public const int DAMAGE_TO_DEFENSE_RATIO = 5;
+    public const int DAMAGE_TO_DEFENSE_RATIO = 4;
     public const int BUFF_DURATION = 300;
     public override void SetStaticDefaults()
     {

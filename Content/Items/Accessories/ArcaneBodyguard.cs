@@ -5,9 +5,9 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class ArcaneBodyguard : ModItem
 {
-    public const int CHANCE = 10;
-    public const int DAMAGE_REDUCTION = 10;
-    public const int BUFF_DURATION = 720;
+    public const int CHANCE = 8;
+    public const int DAMAGE_REDUCTION = 15;
+    public const int BUFF_DURATION = 480;
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"On summon hit: {CHANCE}% chance for +{DAMAGE_REDUCTION}% Damage Reduction for {BUFF_DURATION / 60} seconds");
@@ -39,7 +39,8 @@ class BodyguardPlayer : ModPlayer
     {
         if (!enabled)
             return;
-        Player.AddBuff(ModContent.BuffType<ArcaneBodyguardBuff>(), ArcaneBodyguard.BUFF_DURATION);
+        if (Main.rand.Next(0,100) < ArcaneBodyguard.CHANCE)
+            Player.AddBuff(ModContent.BuffType<ArcaneBodyguardBuff>(), ArcaneBodyguard.BUFF_DURATION);
     }
     public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
     {
