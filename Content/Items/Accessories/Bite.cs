@@ -6,7 +6,7 @@ public class Bite : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("+12% minion Critical Chance and +8% minion Critical Damage");
+        Tooltip.SetDefault("+12% minion Critical Chance and +10% minion Critical Damage");
     }
     public override void SetDefaults()
     {
@@ -20,6 +20,6 @@ public class Bite : ModItem
     {
         var critPlayer = player.GetModPlayer<CritsPlayer>();
         critPlayer.summonCritChance += 12;
-        critPlayer.summonCritMult += 0.08f;
+        critPlayer.summonCritMult += 0.1f;
     }
 }

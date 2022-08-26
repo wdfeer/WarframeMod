@@ -38,7 +38,11 @@ public class Vaporize : ModItem
     }
     void Fire(Player player, IList<NPC> targets)
     {
-        IEnumerable<Projectile> minions = Main.projectile.Where(proj => proj.active && proj.friendly && proj.owner == player.whoAmI && proj.minionSlots > 0);
+        IEnumerable<Projectile> minions = Main.projectile.Where(proj => proj.active
+                                                                        && proj.friendly
+                                                                        && proj.damage > 0
+                                                                        && proj.DamageType == DamageClass.Summon
+                                                                        && Main.projPet[proj.type]);
         foreach (Projectile projectile in minions)
         {
             NPC target = targets[Main.rand.Next(0,targets.Count)];

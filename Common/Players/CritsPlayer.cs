@@ -48,7 +48,7 @@ internal class CritsPlayer : ModPlayer
     }
     public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
     {
-        if (proj.DamageType == DamageClass.Summon)
+        if (proj.DamageType == DamageClass.Summon || proj.DamageType == DamageClass.SummonMeleeSpeed)
         {
             ModifyHitNPCWithMinion(proj, target, ref damage, ref knockback, ref crit);
         }
