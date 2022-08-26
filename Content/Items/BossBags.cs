@@ -33,7 +33,11 @@ internal class BossBags : GlobalItem
             case ItemID.QueenBeeBossBag:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Kohm>(), 2);
             case ItemID.WallOfFleshBossBag:
-                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Bite>(), 4);
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
+                {
+                    ModContent.ItemType<Bite>(),
+                    ModContent.ItemType<SplitChamber>()
+                });
             case ItemID.SkeletronPrimeBossBag:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Magnetize>(), 3);
             case ItemID.DestroyerBossBag:
