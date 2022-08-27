@@ -3,7 +3,7 @@ using WarframeMod.Content.Items.Accessories;
 using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Items;
-internal class BossBags : GlobalItem
+public class BossBags : GlobalItem
 {
     public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
     {
@@ -14,7 +14,7 @@ internal class BossBags : GlobalItem
             itemLoot.Add(extraDrop);
         itemLoot.Add(GetArcanesDropRule());
     }
-    IItemDropRule GetGeneralDropRule(int bagType)
+    public static IItemDropRule GetGeneralDropRule(int bagType)
     {
         switch (bagType)
         {
@@ -39,16 +39,14 @@ internal class BossBags : GlobalItem
                     ModContent.ItemType<SplitChamber>(),
                     ModContent.ItemType<Opticor>()
                 });
-            case ItemID.SkeletronPrimeBossBag:
-                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Magnetize>(), 3);
+            case ItemID.QueenSlimeBossBag:
+                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Magnetize>(), 5);
             case ItemID.DestroyerBossBag:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<KuvaNukor>(), 2);
+            case ItemID.SkeletronPrimeBossBag:
+                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Acceltra>(), 2);
             case ItemID.TwinsBossBag:
-                return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
-                {
-                    ModContent.ItemType<Vaporize>(),
-                    ModContent.ItemType<Acceltra>()
-                });
+                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Vaporize>(), 2);
             case ItemID.GolemBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
                 {
@@ -59,7 +57,7 @@ internal class BossBags : GlobalItem
                 return null;
         }
     }
-    IItemDropRule GetArcanesDropRule()
+    public static IItemDropRule GetArcanesDropRule()
         => ItemDropRule.OneFromOptionsNotScalingWithLuck(
             4,
             new int[]
