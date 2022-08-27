@@ -28,7 +28,10 @@ internal class WeakGlobalNPC : GlobalNPC
     }
     public override void ModifyHitPlayer(NPC npc, Player target, ref int damage, ref bool crit)
     {
-        damage = (int)(damage * DamageMultiplier);
+        if (npc.boss)
+            damage = (int)(damage / 2 + damage * DamageMultiplier / 2);
+        else
+            damage = (int)(damage * DamageMultiplier);
     }
     public override void ModifyHitNPC(NPC npc, NPC target, ref int damage, ref float knockback, ref bool crit)
     {
