@@ -5,18 +5,14 @@ public class OpticorProjectile : ExplosiveProjectile
     public override bool ExplodeOnNPCHit => false;
     const float MOVE_DISTANCE = 80;
     public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.DiamondBolt;
-    public const int CHARGE_TIME = 110;
+    public const int CHARGE_TIME = 120;
     public override void SetDefaults()
     {
-        Projectile.width = 32;
-        Projectile.height = 32;
+        base.SetDefaults();
         Projectile.tileCollide = false;
         Projectile.scale = 0;
         Projectile.DamageType = DamageClass.Magic;
         Projectile.timeLeft = 60 + CHARGE_TIME;
-        Projectile.penetrate = -1;
-        Projectile.usesLocalNPCImmunity = true;
-        Projectile.localNPCHitCooldown = -1;
         Projectile.friendly = false;
     }
     public bool charged = false;
@@ -73,12 +69,15 @@ public class OpticorProjectile : ExplosiveProjectile
     }
     void Launch()
     {
+        Projectile.position.Y -= 8;
         Projectile.friendly = true;
         Projectile.extraUpdates = 60;
         Projectile.netUpdate = true;
         Projectile.velocity *= 16;
         Projectile.timeLeft = 180;
         Projectile.tileCollide = true;
+        Projectile.width = 20;
+        Projectile.height = 20;
     }
     public override void ExplosionDusts()
     {
