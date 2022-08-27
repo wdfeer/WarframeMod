@@ -1,3 +1,5 @@
+using Terraria.Audio;
+using WarframeMod.Content.Items;
 using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Projectiles;
@@ -25,4 +27,5 @@ public class FluxRifleProjectile : BeamProjectile
         }
     };
     public override DamageClass DamageClass => DamageClass.Ranged;
+    public override SoundStyle? ChargedSound => SoundID.DD2_BetsyWindAttack.ModifySoundStyle(volume: 0.08f, pitchVariance: 0.15f);
 }

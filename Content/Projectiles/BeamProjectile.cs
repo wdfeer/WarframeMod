@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.Audio;
 using Terraria.Enums;
 using Terraria.GameContent;
 
@@ -6,10 +7,8 @@ namespace WarframeMod.Content.Projectiles;
 
 public abstract class BeamProjectile : ModProjectile
 {
-    // The maximum charge value
     protected virtual float MaxCharge => 40f;
-    //The distance charge particle from the player center
-    protected virtual float MoveDistance => 60f;
+    protected virtual float MinDistance => 60f;
     public float Distance
     {
         get => Projectile.ai[0];
@@ -47,16 +46,18 @@ public abstract class BeamProjectile : ModProjectile
         if (IsAtMaxCharge)
         {
             DrawLaser(texture, Owner.Center,
-                Projectile.velocity, 10, -1.57f, 1f, 1000f, Color.White, (int)MoveDistance);
+                Projectile.velocity, 10, -1.57f, 1f, Distance, Color.White, (int)MinDistance);
         }
         return false;
     }
-    public void DrawLaser(Texture2D texture, Vector2 start, Vector2 unit, float step, float rotation = 0f, float scale = 1f, float maxDist = 2000f, Color color = default, int transDist = 50)
+    public void DrawLaser(Texture2D texture, Vector2 start, Vector2 unit, float step, float rotation = 0f, float scale = 1f, float maxDist = -1f, Color color = default, int transDist = 50)
     {
+        if (maxDist == -1f)
+            maxDist = Distance;
         float r = unit.ToRotation() + rotation;
 
         // Draws the laser 'body'
-        for (float i = transDist; i <= Distance; i += step)
+        for (float i = transDist; i <= maxDist; i += step)
         {
             Color c = Color.White;
             var origin = start + i * unit;
@@ -70,7 +71,7 @@ public abstract class BeamProjectile : ModProjectile
             new Rectangle(0, 0, 28, 26), Color.White, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
 
         // Draws the laser 'head'
-        Main.EntitySpriteDraw(texture, start + (Distance + step) * unit - Main.screenPosition,
+        Main.EntitySpriteDraw(texture, start + (maxDist + step) * unit - Main.screenPosition,
             new Rectangle(0, 52, 28, 26), Color.White, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
     }
 
@@ -90,7 +91,7 @@ public abstract class BeamProjectile : ModProjectile
     public override void AI()
     {
         Player player = Owner;
-        Projectile.position = player.Center + Projectile.velocity * MoveDistance;
+        Projectile.position = player.Center + Projectile.velocity * MinDistance;
         Projectile.timeLeft = 2;
 
         UpdatePlayer(player);
@@ -102,6 +103,7 @@ public abstract class BeamProjectile : ModProjectile
 
         SetLaserPosition(player);
         CastLights();
+        PlayChargedSound();
     }
     protected virtual int WeaponSmokeDustType => DustID.Smoke;
     protected abstract int WeaponEnergyDustType { get; }
@@ -134,7 +136,7 @@ public abstract class BeamProjectile : ModProjectile
         if (WeaponEnergyDustType < 0)
             return;
         Vector2 offset = Projectile.velocity;
-        offset *= MoveDistance - 20;
+        offset *= MinDistance - 20;
         Vector2 pos = Owner.Center + offset - new Vector2(10, 10);
         int chargeFact = (int)(Charge / 20f);
         Vector2 dustVelocity = Vector2.UnitX * 18f;
@@ -160,7 +162,11 @@ public abstract class BeamProjectile : ModProjectile
             dust.velocity.Y = -Math.Abs(dust.velocity.Y);
         }
     }
-    private void SpawnDusts()
+    /// <summary>
+    /// Calls SpawnContactDusts, SpawnChargingDusts and SpawnWeaponSmokeDusts
+    /// Not recommended to override this
+    /// </summary>
+    protected virtual void SpawnDusts()
     {
         SpawnChargingDusts();
         if (!IsAtMaxCharge)
@@ -185,7 +191,7 @@ public abstract class BeamProjectile : ModProjectile
     protected virtual void SetLaserPosition(Player player)
     {
         int hitNPCs = 0;
-        for (Distance = MoveDistance; Distance <= MaxDistance; Distance += 5f)
+        for (Distance = MinDistance; Distance <= MaxDistance; Distance += 5f)
         {
             var start = player.Center + Projectile.velocity * Distance;
             bool tileCollision = !Collision.CanHit(player.Center, 1, 1, start, 1, 1);
@@ -252,9 +258,23 @@ public abstract class BeamProjectile : ModProjectile
     {
         // Cast a light along the line of the laser
         DelegateMethods.v3_1 = new Vector3(1f, 1f, 0.8f);
-        Utils.PlotTileLine(Projectile.Center, Projectile.Center + Projectile.velocity * (Distance - MoveDistance), 26, DelegateMethods.CastLight);
+        Utils.PlotTileLine(Projectile.Center, Projectile.Center + Projectile.velocity * (Distance - MinDistance), 26, DelegateMethods.CastLight);
     }
 
+    public virtual SoundStyle? ChargedSound => null;
+    int soundTimer = 0;
+    protected void PlayChargedSound()
+    {
+        if (ChargedSound != null)
+        {
+            soundTimer++;
+            if (soundTimer > HitCooldown)
+            {
+                SoundEngine.PlaySound(ChargedSound, Projectile.position);
+                soundTimer = 0;
+            }
+        }
+    }
     public override bool ShouldUpdatePosition() => false;
 
     /*

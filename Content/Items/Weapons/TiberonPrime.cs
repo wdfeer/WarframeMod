@@ -104,6 +104,7 @@ internal class TiberonPrime : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         SoundStyle soundStyle = new SoundStyle("WarframeMod/Content/Sounds/TiberonPrimeSound").ModifySoundStyle(pitchVariance: 0.1f);
+        soundStyle.MaxInstances = 3;
         SoundEngine.PlaySound(soundStyle, position);
 
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);

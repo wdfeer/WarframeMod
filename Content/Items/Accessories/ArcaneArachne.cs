@@ -5,7 +5,7 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class ArcaneArachne : ModItem
 {
-    public const int DAMAGE_BUFF = 20;
+    public const int DAMAGE_BUFF = 25;
     public const int COOLDOWN_DURATION = 1800;
     public override void SetStaticDefaults()
     {
