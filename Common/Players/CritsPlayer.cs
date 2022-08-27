@@ -1,4 +1,5 @@
-﻿using WarframeMod.Common.GlobalNPCs;
+﻿using WarframeMod.Common.Configs;
+using WarframeMod.Common.GlobalNPCs;
 using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Items.Accessories;
 
@@ -82,19 +83,23 @@ internal class CritsPlayer : ModPlayer
             Player.GetModPlayer<HunterMunitionsPlayer>().TryBleed(target, damage * 2);
         }
     }
+    public static Color GetCritColor(int critLvl)
+    {
+        switch (critLvl)
+        {
+            case < 1:
+                return ModContent.GetInstance<WarframeClientConfig>().noCritHitColor;
+            case 1:
+                return ModContent.GetInstance<WarframeClientConfig>().tier1CritColor;
+            case 2:
+                return ModContent.GetInstance<WarframeClientConfig>().tier2CritColor;
+            default:
+                return ModContent.GetInstance<WarframeClientConfig>().maxCritColor;
+        }
+    }
     void OverCritVisuals(NPC target, float knockback, int critlvl)
     {
         if (critlvl < 2) return;
-        Color critColor = CombatText.DamagedHostile;
-        switch (critlvl)
-        {
-            case 2:
-                critColor = Color.Orange;
-                break;
-            default:
-                critColor = Color.Red;
-                break;
-        }
-        target.GetGlobalNPC<OvercritNPCVisuals>().thisCritColor = critColor;
+        target.GetGlobalNPC<OvercritNPCVisuals>().thisCritColor = GetCritColor(critlvl);
     }
 }

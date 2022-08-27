@@ -1,10 +1,12 @@
-﻿namespace WarframeMod.Common.GlobalNPCs;
+﻿using WarframeMod.Common.Players;
+
+namespace WarframeMod.Common.GlobalNPCs;
 
 internal class OvercritNPCVisuals : GlobalNPC
 {
     public override bool InstancePerEntity => true;
-    public Color defaultHitColor = Color.WhiteSmoke;
-    public Color defaultCritColor = Color.Yellow;
+    public Color NoCritHitColor => CritsPlayer.GetCritColor(0);
+    public Color DefaultCritColor => CritsPlayer.GetCritColor(1);
     public Color? thisCritColor;
     CombatText FindRecentCombatTextItem()
     {
@@ -51,8 +53,8 @@ internal class OvercritNPCVisuals : GlobalNPC
             recent.color = (Color)thisCritColor;
             thisCritColor = null;
         }
-        else if (crit) recent.color = defaultCritColor;
-        else recent.color = defaultHitColor;
+        else if (crit) recent.color = DefaultCritColor;
+        else recent.color = NoCritHitColor;
     }
     public override void OnHitByProjectile(NPC npc, Projectile projectile, int damage, float knockback, bool crit)
     {
@@ -63,7 +65,7 @@ internal class OvercritNPCVisuals : GlobalNPC
             recent.color = (Color)thisCritColor;
             thisCritColor = null;
         }
-        else if (crit) recent.color = defaultCritColor;
-        else recent.color = defaultHitColor;
+        else if (crit) recent.color = DefaultCritColor;
+        else recent.color = NoCritHitColor;
     }
 }
