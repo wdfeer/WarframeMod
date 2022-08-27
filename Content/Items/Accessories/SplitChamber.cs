@@ -55,7 +55,7 @@ class MultishotPlayer : ModPlayer
     }
     public override bool Shoot(Item item, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        if (!ValidItemDamageType(item) && !item.channel)
+        if (!ValidItemDamageType(item) || item.channel)
             return true;
         int projCount = GetExtraProjectileCount();
         for (int i = 0; i < projCount; i++)
@@ -65,6 +65,8 @@ class MultishotPlayer : ModPlayer
             proj.CritChance = (int)Player.GetTotalCritChance(proj.DamageType) + item.crit;
             proj.noDropItem = true;
             proj.DamageType = item.DamageType;
+            proj.usesLocalNPCImmunity = true;
+            proj.localNPCHitCooldown = -1;
         }
         return true;
     }

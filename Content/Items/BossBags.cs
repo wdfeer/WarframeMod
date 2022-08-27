@@ -36,7 +36,8 @@ internal class BossBags : GlobalItem
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
                 {
                     ModContent.ItemType<Bite>(),
-                    ModContent.ItemType<SplitChamber>()
+                    ModContent.ItemType<SplitChamber>(),
+                    ModContent.ItemType<Opticor>()
                 });
             case ItemID.SkeletronPrimeBossBag:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Magnetize>(), 3);

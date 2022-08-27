@@ -1,7 +1,7 @@
 ﻿using Terraria.Audio;
 
 namespace WarframeMod.Content.Projectiles;
-internal abstract class ExplosiveProjectile : ModProjectile
+public abstract class ExplosiveProjectile : ModProjectile
 {
     public abstract int ExplosionWidth { get; }
     public virtual int ExplosionHeight => ExplosionWidth;
