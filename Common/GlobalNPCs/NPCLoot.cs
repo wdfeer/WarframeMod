@@ -87,7 +87,8 @@ internal class NPCLoot : GlobalNPC
         dropRule = GetBossDropRule(npc);
         if (dropRule != null)
         {
-            DropBasedOnExpertMode normalModeRule = new DropBasedOnExpertMode(dropRule, null);
+            LeadingConditionRule normalModeRule = new LeadingConditionRule(new Conditions.NotExpert());
+            normalModeRule.OnSuccess(dropRule);
             npcLoot.Add(normalModeRule);
         }
     }
