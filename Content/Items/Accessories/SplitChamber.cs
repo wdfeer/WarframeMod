@@ -1,5 +1,4 @@
 ﻿using Terraria.DataStructures;
-using WarframeMod.Common.Players;
 
 namespace WarframeMod.Content.Items.Accessories;
 

@@ -85,15 +85,18 @@ internal class TiberonPrime : ModItem
     {
         return true;
     }
-    double lastModeChange = 0;
+    int modeChangeTimer = 0;
+    const int MODE_CHANGE_COOLDOWN = 30;
+    public override void UpdateInventory(Player player)
+        => modeChangeTimer++;
     public override bool CanUseItem(Player player)
     {
         if (player.altFunctionUse == 2)
         {
-            if (Main.time - 30 > lastModeChange)
+            if (modeChangeTimer > MODE_CHANGE_COOLDOWN)
             {
                 Mode++;
-                lastModeChange = Main.time;
+                modeChangeTimer = 0;
                 SoundEngine.PlaySound(SoundID.Unlock);
             }
             return false;

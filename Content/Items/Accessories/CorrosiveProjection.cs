@@ -1,8 +1,3 @@
-using System;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-
 namespace WarframeMod.Content.Items.Accessories;
 public class CorrosiveProjection : ModItem
 {

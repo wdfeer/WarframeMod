@@ -1,6 +1,5 @@
 using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
-using WarframeMod.Content.Items;
 
 namespace WarframeMod.Content.Items.Weapons;
 public class Supra : ModItem

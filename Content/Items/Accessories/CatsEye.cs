@@ -1,6 +1,4 @@
-﻿using WarframeMod.Common;
-using WarframeMod.Common.Players;
-using WarframeMod.Content.Buffs;
+﻿using WarframeMod.Content.Buffs;
 
 namespace WarframeMod.Content.Items.Accessories;
 

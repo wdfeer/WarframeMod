@@ -47,6 +47,8 @@ public class BossBags : GlobalItem
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Acceltra>(), 2);
             case ItemID.TwinsBossBag:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Vaporize>(), 2);
+            case ItemID.PlanteraBossBag:
+                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<StradavarPrime>(), 2);
             case ItemID.GolemBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
                 {
