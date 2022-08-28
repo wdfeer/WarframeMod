@@ -12,7 +12,7 @@ public class Velocitus : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 197;
+        Item.damage = 210;
         Item.crit = 56;
         Item.DamageType = DamageClass.Ranged;
         Item.channel = true;
