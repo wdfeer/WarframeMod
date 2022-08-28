@@ -11,6 +11,12 @@ public struct BuffChance
         this.time = time;
         this.chance = chance;
     }
+    public BuffChance(int type, int time, int chancePercent)
+    {
+        this.type = type;
+        this.time = time;
+        this.chance = chancePercent / 100f;
+    }
     public void Apply(NPC npc)
     {
         npc.AddBuff(type, time);
