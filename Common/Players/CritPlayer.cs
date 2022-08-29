@@ -5,7 +5,7 @@ using WarframeMod.Content.Items.Accessories;
 
 namespace WarframeMod.Common.Players;
 
-internal class CritsPlayer : ModPlayer
+internal class CritPlayer : ModPlayer
 {
     public float critMultiplierPlayer = 1f;
     public float relativeCritChance = 0f;
@@ -99,7 +99,9 @@ internal class CritsPlayer : ModPlayer
     }
     void OverCritVisuals(NPC target, float knockback, int critlvl)
     {
-        if (critlvl < 2) return;
-        target.GetGlobalNPC<OvercritNPCVisuals>().thisCritColor = GetCritColor(critlvl);
+        if (Main.myPlayer != Player.whoAmI)
+            return;
+        var overcritNPC = target.GetGlobalNPC<OvercritNPCVisuals>();
+        overcritNPC.thisCritLevel = critlvl;
     }
 }

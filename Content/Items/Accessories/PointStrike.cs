@@ -18,6 +18,6 @@ public class PointStrike : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetModPlayer<CritsPlayer>().relativeCritChance += 0.6f;
+        player.GetModPlayer<CritPlayer>().relativeCritChance += 0.6f;
     }
 }

@@ -13,6 +13,6 @@ public class VirtuosStrikeBuff : ModBuff
     }
     public override void Update(Player player, ref int buffIndex)
     {
-        player.GetModPlayer<CritsPlayer>().critMultiplierPlayer += VirtuosStrike.EXTRA_CRIT_MULT;
+        player.GetModPlayer<CritPlayer>().critMultiplierPlayer += VirtuosStrike.EXTRA_CRIT_MULT;
     }
 }

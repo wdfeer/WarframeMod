@@ -18,7 +18,7 @@ public class Bite : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        var critPlayer = player.GetModPlayer<CritsPlayer>();
+        var critPlayer = player.GetModPlayer<CritPlayer>();
         critPlayer.summonCritChance += 12;
         critPlayer.summonCritMult += 0.1f;
     }

@@ -2,11 +2,11 @@
 
 public class Desecrate : ModItem
 {
-    public const int lifeConsumption = 7;
-    public const float maxDistance = 800;
+    public const int LIFE_DRAIN = 7;
+    public const float MAX_DISTANCE = 800;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault($"Whenever an enemy dies nearby, consume {lifeConsumption} life and double the loot");
+        Tooltip.SetDefault($"Whenever an enemy dies nearby, consume {LIFE_DRAIN} life and double the loot");
     }
     public override void SetDefaults()
     {
@@ -24,10 +24,7 @@ public class Desecrate : ModItem
 internal class DesecratePlayer : ModPlayer
 {
     public bool desecrate = false;
-    public override void ResetEffects()
-    {
-        desecrate = false;
-    }
+    public override void ResetEffects() => desecrate = false;
 }
 internal class DesecrateNPC : GlobalNPC
 {
@@ -51,7 +48,7 @@ internal class DesecrateNPC : GlobalNPC
         return Array.Find(Main.player, player =>
                                     player.active
                                     && player.GetModPlayer<DesecratePlayer>().desecrate
-                                    && player.position.Distance(npc.position) < Desecrate.maxDistance
+                                    && player.position.Distance(npc.position) < Desecrate.MAX_DISTANCE
         );
     }
     private void LifeDrainEffect(Player player)
@@ -59,7 +56,8 @@ internal class DesecrateNPC : GlobalNPC
         Terraria.DataStructures.PlayerDeathReason reason = new Terraria.DataStructures.PlayerDeathReason() { SourceCustomReason = player.name + " was desecrated" };
         int oldDef = player.statDefense;
         player.statDefense = 0;
-        player.Hurt(reason, Desecrate.lifeConsumption, 0, cooldownCounter: -2);
+        player.Hurt(reason, Desecrate.LIFE_DRAIN, 0, cooldownCounter: -2);
         player.statDefense = oldDef;
+        player.netLife = true;
     }
 }

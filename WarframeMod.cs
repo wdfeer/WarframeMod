@@ -1,4 +1,8 @@
+using System.IO;
+using WarframeMod.Common.Players;
+
 namespace WarframeMod;
-public class WarframeMod : Mod
+public partial class WarframeMod : Mod
 {
+	
 }

@@ -1,16 +1,10 @@
-using Microsoft.Xna.Framework;
-using System;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using WarframeMod.Content.Items.Weapons;
-
 namespace WarframeMod.Content.Projectiles;
 internal class ArcaPlasmorProjectile : ModProjectile
 {
-    public bool tenet = false;
+    public virtual bool Tenet => false;
     public override void SetDefaults()
     {
+        Projectile.ai[0] = 0;
         Projectile.width = 80;
         Projectile.height = 80;
         Projectile.scale = 0.6f;
@@ -26,11 +20,11 @@ internal class ArcaPlasmorProjectile : ModProjectile
     public override void AI()
     {
         Projectile.rotation = Convert.ToSingle(-Math.Atan2(Projectile.velocity.X, Projectile.velocity.Y));
-        for (int i = 0; i < (tenet ? 2 : 1); i++)
+        for (int i = 0; i < (Tenet ? 2 : 1); i++)
         {
             var dust = Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 226)];
             dust.scale = 0.75f;
-            Projectile.alpha = 256 - Projectile.timeLeft * (tenet ? 3 : 4);
+            Projectile.alpha = 256 - Projectile.timeLeft * (Tenet ? 3 : 4);
             Projectile.light = Projectile.timeLeft * 0.01f;
         }
         if (!Projectile.tileCollide && TileColliding())
@@ -64,7 +58,7 @@ internal class ArcaPlasmorProjectile : ModProjectile
     {
         if (Projectile.timeLeft > 12)
         {
-            if (tenet) Projectile.timeLeft -= 8;
+            if (Tenet) Projectile.timeLeft -= 8;
             else
             {
                 Projectile.timeLeft = 12;

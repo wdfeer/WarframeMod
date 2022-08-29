@@ -1,10 +1,4 @@
-using Terraria;
 using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using System;
-using Microsoft.Xna.Framework.Audio;
 using WarframeMod.Content.Projectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
@@ -31,7 +25,7 @@ public class TenetArcaPlasmor : ModItem
         Item.value = 150000;
         Item.rare = ItemRarityID.Cyan;
         Item.autoReuse = true;
-        Item.shoot = ModContent.ProjectileType<ArcaPlasmorProjectile>();
+        Item.shoot = ModContent.ProjectileType<TenetArcaPlasmorProjectile>();
         Item.shootSpeed = 30f;
     }
     public override void AddRecipes()
@@ -44,10 +38,6 @@ public class TenetArcaPlasmor : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         var projectile = this.ShootWith(player, source, position, velocity, type, damage, knockback, spawnOffset: Item.width);
-        projectile.extraUpdates = 1;
-        projectile.timeLeft += 12;
-        var modProj = projectile.ModProjectile as ArcaPlasmorProjectile;
-        modProj.tenet = true;
 
         return false;
     }

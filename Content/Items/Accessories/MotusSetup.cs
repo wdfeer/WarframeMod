@@ -53,7 +53,7 @@ class MotusSetupPlayer : ModPlayer
         if (bufftime > 0)
         {
             bufftime--;
-            Player.GetModPlayer<CritsPlayer>().relativeCritChance += MotusSetup.CritChanceBonus / 100f;
+            Player.GetModPlayer<CritPlayer>().relativeCritChance += MotusSetup.CritChanceBonus / 100f;
         }
     }
     int bufftime = -1;
