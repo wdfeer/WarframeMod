@@ -4,11 +4,11 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class MotusSetup : ModItem
 {
-    public const int CritChanceBonus = 100;
-    public const int BonusTime = 4;
+    public const int CRIT_CHANCE = 100;
+    public const int DURATION = 4;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault($"+{CritChanceBonus}% Relative Critical Chance after landing from a Double Jump for {BonusTime} seconds");
+        Tooltip.SetDefault($"+{CRIT_CHANCE}% Relative Critical Chance after landing from a Double Jump for {DURATION} seconds");
     }
     public override void SetDefaults()
     {
@@ -36,7 +36,7 @@ class MotusSetupPlayer : ModPlayer
         bool touchingTiles = Player.TouchedTiles.Any();
         if (touchingTiles && doubleJumping)
         {
-            Buff(MotusSetup.BonusTime * 60);
+            Buff(MotusSetup.DURATION * 60);
             doubleJumping = false;
         }
         else if (!doubleJumping)
@@ -53,7 +53,7 @@ class MotusSetupPlayer : ModPlayer
         if (bufftime > 0)
         {
             bufftime--;
-            Player.GetModPlayer<CritPlayer>().relativeCritChance += MotusSetup.CritChanceBonus / 100f;
+            Player.GetModPlayer<CritPlayer>().relativeCritChance += MotusSetup.CRIT_CHANCE / 100f;
         }
     }
     int bufftime = -1;

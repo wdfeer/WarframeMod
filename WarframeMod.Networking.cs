@@ -20,8 +20,8 @@ public partial class WarframeMod : Mod
 				{
 					ModPacket packet = GetPacket();
 					packet.Write((byte)MessageType.CombatTextCritLevel);
-                    packet.Write((byte)combatText);
-                    packet.Write((byte)critLevel);
+                    packet.Write(combatText);
+                    packet.Write(critLevel);
 					packet.Send(ignoreClient: whoAmI);
 				}
 				else
