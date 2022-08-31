@@ -32,7 +32,7 @@ internal class DesecrateNPC : GlobalNPC
     bool desecrated = false;
     public override void OnKill(NPC npc)
     {
-        if (!desecrated && !npc.boss)
+        if (CanBeDesecrated(npc))
         {
             Player player = NearbyPlayerWithDesecrate(npc);
             if (player == null)
@@ -43,6 +43,8 @@ internal class DesecrateNPC : GlobalNPC
             LifeDrainEffect(player);
         }
     }
+    public bool CanBeDesecrated(NPC npc)
+        => !desecrated && !npc.boss && npc.CanBeChasedBy();
     private Player NearbyPlayerWithDesecrate(NPC npc)
     {
         return Array.Find(Main.player, player =>
@@ -53,7 +55,7 @@ internal class DesecrateNPC : GlobalNPC
     }
     private void LifeDrainEffect(Player player)
     {
-        Terraria.DataStructures.PlayerDeathReason reason = new Terraria.DataStructures.PlayerDeathReason() { SourceCustomReason = player.name + " was desecrated" };
+        Terraria.DataStructures.PlayerDeathReason reason = new() { SourceCustomReason = player.name + " was desecrated" };
         int oldDef = player.statDefense;
         player.statDefense = 0;
         player.Hurt(reason, Desecrate.LIFE_DRAIN, 0, cooldownCounter: -2);
