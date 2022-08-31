@@ -52,7 +52,7 @@ public class ArcaPlasmor : ModItem
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        var projectile = this.ShootWith(player, source, position, velocity, type, damage, knockback, spawnOffset: Item.width);
+        var projectile = this.ShootWith(player, source, position, velocity, type, damage, knockback, spawnOffset: 40);
         projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 0.8f;
         projectile.GetGlobalProjectile<BuffGlobalProjectile>().buffChances.Add(new Common.BuffChance(BuffID.Confused, 300, 28));
 

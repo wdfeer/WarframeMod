@@ -62,7 +62,7 @@ class MotusSignalPlayer : ModPlayer
                                    || Player.isPerformingJump_Sandstorm;
         if (performingDoubleJump)
         {
-            Player.position.Y += doubleJumpExtraVelocity;
+            Player.velocity.Y += doubleJumpExtraVelocity;
         }
     }
 }
