@@ -102,6 +102,6 @@ internal class CritPlayer : ModPlayer
         if (Main.myPlayer != Player.whoAmI)
             return;
         var overcritNPC = target.GetGlobalNPC<OvercritNPCVisuals>();
-        overcritNPC.thisCritLevel = critlvl;
+        overcritNPC.nextCritLevel = critlvl;
     }
 }

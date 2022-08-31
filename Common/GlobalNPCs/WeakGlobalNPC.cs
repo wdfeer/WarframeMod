@@ -23,12 +23,12 @@ internal class WeakGlobalNPC : GlobalNPC
     }
     public override void ModifyHitPlayer(NPC npc, Player target, ref int damage, ref bool crit)
     {
-        int oldDamage = damage;
+        //int oldDamage = damage;
         if (npc.boss)
             damage = (int)(damage / 2 + damage * DamageMultiplier / 2);
         else
             damage = (int)(damage * DamageMultiplier);
-        Main.NewText($"OldDamage: {oldDamage}, NewDamage: {damage}. {WeakPower} weak stacks");
+        //Main.NewText($"OldDamage: {oldDamage}, NewDamage: {damage}. {WeakPower} weak stacks");
     }
     public override void ModifyHitNPC(NPC npc, NPC target, ref int damage, ref float knockback, ref bool crit)
     {

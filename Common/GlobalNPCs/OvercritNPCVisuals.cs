@@ -7,7 +7,7 @@ internal class OvercritNPCVisuals : GlobalNPC
     public override bool InstancePerEntity => true;
     public Color NoCritHitColor => CritPlayer.GetCritColor(0);
     public Color DefaultCritColor => CritPlayer.GetCritColor(1);
-    public int? thisCritLevel = null;
+    public int? nextCritLevel = null;
     (CombatText, int)? FindRecentCombatTextItem()
     {
         for (int i = 99; i >= 0; i--)
@@ -50,11 +50,11 @@ internal class OvercritNPCVisuals : GlobalNPC
         if (recent == null || recent.Value.Item1 == null) return;
         CombatText combatText = recent.Value.Item1;
 
-        if (thisCritLevel != null)
+        if (nextCritLevel != null)
         {
-            combatText.color = CritPlayer.GetCritColor(thisCritLevel.Value);
+            combatText.color = CritPlayer.GetCritColor(nextCritLevel.Value);
             NetUpdateCombatTextColor(recent.Value.Item2);
-            thisCritLevel = null;
+            nextCritLevel = null;
         }
         else if (crit) combatText.color = DefaultCritColor;
         else combatText.color = NoCritHitColor;
@@ -67,16 +67,14 @@ internal class OvercritNPCVisuals : GlobalNPC
         CombatText combatText = recent.Value.Item1;
 
         if (combatText == null) return;
-        if (thisCritLevel != null)
+        if (nextCritLevel != null)
         {
-            combatText.color = CritPlayer.GetCritColor(thisCritLevel.Value);
+            combatText.color = CritPlayer.GetCritColor(nextCritLevel.Value);
             NetUpdateCombatTextColor(recent.Value.Item2);
-            thisCritLevel = null;
+            nextCritLevel = null;
         }
         else if (crit) combatText.color = DefaultCritColor;
         else combatText.color = NoCritHitColor;
-
-        
     }
     void NetUpdateCombatTextColor(int combatText)
     {
@@ -85,7 +83,7 @@ internal class OvercritNPCVisuals : GlobalNPC
         ModPacket packet = Mod.GetPacket();
         packet.Write((byte)WarframeMod.MessageType.CombatTextCritLevel);
         packet.Write((byte)combatText);
-        int crit = thisCritLevel == null ? 0 : (int)thisCritLevel;
+        int crit = nextCritLevel == null ? 0 : (int)nextCritLevel;
         packet.Write((byte)crit);
         packet.Send();
     }
