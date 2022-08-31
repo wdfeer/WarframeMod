@@ -25,7 +25,7 @@ internal class WeakGlobalNPC : GlobalNPC
     {
         //int oldDamage = damage;
         if (npc.boss)
-            damage = (int)(damage / 2 + damage * DamageMultiplier / 2);
+            damage = (int)(damage / 2f + damage * DamageMultiplier / 2f);
         else
             damage = (int)(damage * DamageMultiplier);
         //Main.NewText($"OldDamage: {oldDamage}, NewDamage: {damage}. {WeakPower} weak stacks");
