@@ -27,7 +27,6 @@ public class BossBags : GlobalItem
                 {
                     ModContent.ItemType<RaktaBallistica>(),
                     ModContent.ItemType<GorgonWraith>(),
-                    ModContent.ItemType<MotusSignal>(),
                 });
             case ItemID.SkeletronBossBag:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Desecrate>(), 3);

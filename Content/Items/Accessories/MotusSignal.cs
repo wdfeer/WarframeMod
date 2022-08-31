@@ -14,6 +14,13 @@ public class MotusSignal : ModItem
         Item.rare = 3;
         Item.value = Item.sellPrice(silver: 70);
     }
+    public override void AddRecipes()
+    {
+        Recipe recipe = CreateRecipe();
+        recipe.AddIngredient(ItemID.HarpyBanner);
+        recipe.AddTile(TileID.Solidifier);
+        recipe.Register();
+    }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetModPlayer<MotusSignalPlayer>().enabled = true;
