@@ -12,9 +12,9 @@ public class Quassus : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 18;
+        Item.damage = 22;
         Item.crit = 26;
-        Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+        Item.DamageType = DamageClass.Melee;
         Item.noMelee = true;
         Item.noUseGraphic = true;
         Item.width = 48;
@@ -23,7 +23,7 @@ public class Quassus : ModItem
         Item.useAnimation = 48;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.knockBack = 4;
-        Item.value = Item.buyPrice(gold: 10);
+        Item.value = Item.buyPrice(gold: 4);
         Item.rare = 4;
         Item.shoot = ModContent.ProjectileType<Projectiles.QuassusProjectile>();
         Item.UseSound = SoundID.Item39;
