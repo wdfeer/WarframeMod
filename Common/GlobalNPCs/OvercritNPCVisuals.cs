@@ -8,7 +8,7 @@ internal class OvercritNPCVisuals : GlobalNPC
     public Color NoCritHitColor => CritPlayer.GetCritColor(0);
     public Color DefaultCritColor => CritPlayer.GetCritColor(1);
     public int? nextCritLevel = null;
-    (CombatText, int)? FindRecentCombatTextItem()
+    int FindRecentCombatTextItem()
     {
         for (int i = 99; i >= 0; i--)
         {
@@ -19,14 +19,14 @@ internal class OvercritNPCVisuals : GlobalNPC
                 {
                     if (ctToCheck.color == CombatText.DamagedHostile || ctToCheck.color == CombatText.DamagedHostileCrit)
                     {
-                        return (Main.combatText[i], i);
+                        return i;
                     }
                 }
             }
         }
-        return null;
+        return -1;
     }
-    (CombatText, int)? FindRecentCombatTextProjectile()
+    int FindRecentCombatTextProjectile()
     {
         for (int i = 99; i >= 0; i--)
         {
@@ -37,54 +37,57 @@ internal class OvercritNPCVisuals : GlobalNPC
                 {
                     if (ctToCheck.color == CombatText.DamagedHostile || ctToCheck.color == CombatText.DamagedHostileCrit)
                     {
-                        return (Main.combatText[i], i);
+                        return i;
                     }
                 }
             }
         }
-        return null;
+        return -1;
     }
     public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
     {
-        var recent = FindRecentCombatTextItem();
-        if (recent == null || recent.Value.Item1 == null) return;
-        CombatText combatText = recent.Value.Item1;
-
-        if (nextCritLevel != null)
-        {
-            combatText.color = CritPlayer.GetCritColor(nextCritLevel.Value);
-            NetUpdateCombatTextColor(recent.Value.Item2);
-            nextCritLevel = null;
-        }
-        else if (crit) combatText.color = DefaultCritColor;
-        else combatText.color = NoCritHitColor;
-        NetUpdateCombatTextColor(recent.Value.Item2);
+        int recent = FindRecentCombatTextItem();
+        if (recent == -1) return;
+        SetCombatTextColor(recent, crit);
     }
     public override void OnHitByProjectile(NPC npc, Projectile projectile, int damage, float knockback, bool crit)
     {
         var recent = FindRecentCombatTextProjectile();
-        if (recent == null || recent.Value.Item1 == null) return;
-        CombatText combatText = recent.Value.Item1;
-
-        if (combatText == null) return;
+        if (recent == -1) return;
+        SetCombatTextColor(recent, crit);
+    }
+    void SetCombatTextColor(int combatText, bool crit)
+    {
+        CombatText text = Main.combatText[combatText];
+        if (text == null || !text.active)
+            return;
         if (nextCritLevel != null)
         {
-            combatText.color = CritPlayer.GetCritColor(nextCritLevel.Value);
-            NetUpdateCombatTextColor(recent.Value.Item2);
+            text.color = CritPlayer.GetCritColor(nextCritLevel.Value);
+            NetUpdateCombatTextColor(combatText);
             nextCritLevel = null;
         }
-        else if (crit) combatText.color = DefaultCritColor;
-        else combatText.color = NoCritHitColor;
+        else if (crit)
+        {
+            text.color = DefaultCritColor;
+            NetUpdateCombatTextColor(combatText, 1);
+        }
+        else
+        {
+            text.color = NoCritHitColor;
+            NetUpdateCombatTextColor(combatText, 0);
+        }
     }
-    void NetUpdateCombatTextColor(int combatText)
+    void NetUpdateCombatTextColor(int combatText, int critlvl = -1)
     {
         if (Main.netMode is NetmodeID.SinglePlayer or NetmodeID.Server)
             return;
         ModPacket packet = Mod.GetPacket();
         packet.Write((byte)WarframeMod.MessageType.CombatTextCritLevel);
         packet.Write((byte)combatText);
-        int crit = nextCritLevel == null ? 0 : (int)nextCritLevel;
-        packet.Write((byte)crit);
+        if (critlvl == -1)
+            critlvl = nextCritLevel == null ? 0 : (int)nextCritLevel;
+        packet.Write((byte)critlvl);
         packet.Send();
     }
 }

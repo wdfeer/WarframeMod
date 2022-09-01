@@ -34,7 +34,7 @@ class TrueMeleeRangeGlobalItem : GlobalItem
 {
     public override void UseItemHitbox(Item item, Player player, ref Rectangle hitbox, ref bool noHitbox)
     {
-        if (item.noMelee)
+        if (item.noMelee || (item.DamageType != DamageClass.Melee && item.DamageType != DamageClass.MeleeNoSpeed))
             return;
         var modPl = player.GetModPlayer<TrueMeleeRangePlayer>();
         if (modPl.rangeMult == 1f && modPl.absoluteExtraRange == 0)
