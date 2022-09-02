@@ -104,4 +104,17 @@ internal class CritPlayer : ModPlayer
         var overcritNPC = target.GetGlobalNPC<OvercritNPCVisuals>();
         overcritNPC.nextCritLevel = critlvl;
     }
+    public override void PostUpdate()
+    {
+        for (int i = 0; i < Main.maxCombatText; i++)
+        {
+            CombatText ct = Main.combatText[i];
+            if (ct == null || !ct.active)
+                continue;
+            if (ct.color == new Color(102, 64, 32, 102))
+                ct.color = GetCritColor(0);
+            else if (ct.color == new Color(102, 40, 12, 102))
+                ct.color = GetCritColor(1);
+        }
+    }
 }

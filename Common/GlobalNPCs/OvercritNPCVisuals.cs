@@ -64,30 +64,15 @@ internal class OvercritNPCVisuals : GlobalNPC
         if (nextCritLevel != null)
         {
             text.color = CritPlayer.GetCritColor(nextCritLevel.Value);
-            NetUpdateCombatTextColor(combatText);
             nextCritLevel = null;
         }
         else if (crit)
         {
             text.color = DefaultCritColor;
-            NetUpdateCombatTextColor(combatText, 1);
         }
         else
         {
             text.color = NoCritHitColor;
-            NetUpdateCombatTextColor(combatText, 0);
         }
-    }
-    void NetUpdateCombatTextColor(int combatText, int critlvl = -1)
-    {
-        if (Main.netMode is NetmodeID.SinglePlayer or NetmodeID.Server)
-            return;
-        ModPacket packet = Mod.GetPacket();
-        packet.Write((byte)WarframeMod.MessageType.CombatTextCritLevel);
-        packet.Write((byte)combatText);
-        if (critlvl == -1)
-            critlvl = nextCritLevel == null ? 0 : (int)nextCritLevel;
-        packet.Write((byte)critlvl);
-        packet.Send();
     }
 }
