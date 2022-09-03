@@ -20,6 +20,7 @@ public class PrimedReach : ModItem
         Recipe recipe = CreateRecipe();
         recipe.AddIngredient(ModContent.ItemType<Reach>());
         recipe.AddIngredient(ItemID.SoulofFright, 6);
+        recipe.AddTile(TileID.MythrilAnvil);
         recipe.Register();
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
