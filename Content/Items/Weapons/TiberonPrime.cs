@@ -54,7 +54,7 @@ internal class TiberonPrime : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 22;
+        Item.damage = 20;
         Item.DamageType = DamageClass.Ranged;
         Item.noMelee = true;
         Item.width = 39;

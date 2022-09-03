@@ -11,9 +11,9 @@ internal class Acceltra : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 14;
+        Item.damage = 13;
         Item.crit = 28;
-        Item.knockBack = 4.5f;
+        Item.knockBack = 3.6f;
         Item.DamageType = DamageClass.Ranged;
         Item.noMelee = true;
         Item.width = 58;

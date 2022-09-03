@@ -11,7 +11,7 @@ internal class BuffGlobalProjectile : GlobalProjectile
     /// </summary>
     public float bleedingChance = 0;
     public List<BuffChance> buffChances = new List<BuffChance>();
-    public void OnHitNPCAfterCritModifiersApplied(NPC target, int damageAfterCrit)
+    public void HitNPCAfterCritModifiersApplied(NPC target, int damageAfterCrit)
     {
         BuffChance.ApplyBuffs(target, buffChances);
         if (Main.rand.NextFloat() < bleedingChance)

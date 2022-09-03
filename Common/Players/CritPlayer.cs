@@ -68,7 +68,7 @@ internal class CritPlayer : ModPlayer
             }
         }
 
-        proj.GetGlobalProjectile<BuffGlobalProjectile>().OnHitNPCAfterCritModifiersApplied(target, damage * 2);
+        proj.GetGlobalProjectile<BuffGlobalProjectile>().HitNPCAfterCritModifiersApplied(target, damage * 2);
     }
     void ModifyHitNPCWithMinion(Projectile minion, NPC target, ref int damage, ref float knockback, ref bool crit)
     {
