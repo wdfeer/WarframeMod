@@ -14,6 +14,10 @@ internal class FalloffGlobalProjectile : GlobalProjectile
         maxFalloffDistance = maxDistance;
         maxFalloffDamageDecrease = maxDamageDecrease;
     }
+    public void SetFalloff(Vector2 initialPosition, int minTiles, int maxTiles, float maxDamageDecrease)
+    {
+        SetFalloff(initialPosition, minTiles * 16f, maxTiles * 16f, maxDamageDecrease);
+    }
     float GetDamageMult(Projectile proj)
     {
         float travelled = proj.position.Distance(initialPosition);

@@ -26,14 +26,14 @@ public class StradavarPrime : ModItem
         switch (Mode)
         {
             case 0:
-                Item.damage = 24;
+                Item.damage = 20;
                 Item.crit = 20;
                 Item.useTime = 6;
                 Item.useAnimation = 6;
                 Item.autoReuse = true;
                 break;
             default:
-                Item.damage = 64;
+                Item.damage = 60;
                 Item.crit = 26;
                 Item.useTime = 12;
                 Item.useAnimation = 12;
