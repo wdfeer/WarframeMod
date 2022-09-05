@@ -11,9 +11,9 @@ public class Opticor : ModItem
     }
     public override void SetDefaults()
     {
-        Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/OpticorSound");
+        Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/OpticorSound").ModifySoundStyle();
         Item.channel = true;
-        Item.damage = 690;
+        Item.damage = 715;
         Item.crit = 16;
         Item.DamageType = DamageClass.Magic;
         Item.mana = 77;

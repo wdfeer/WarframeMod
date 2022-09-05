@@ -13,11 +13,11 @@ public class MaraDetron : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 29;
+        Item.damage = 28;
         Item.crit = 4;
         Item.noMelee = true;
         Item.DamageType = DamageClass.Magic;
-        Item.mana = 24;
+        Item.mana = 19;
         Item.width = 32;
         Item.height = 16;
         Item.useTime = 20;
@@ -35,7 +35,7 @@ public class MaraDetron : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe.AddIngredient(ModContent.ItemType<Detron>());
-        recipe.AddIngredient(ItemID.ChlorophyteBar, 8);
+        recipe.AddIngredient(ItemID.ChlorophyteBar, 12);
         recipe.AddTile(TileID.MythrilAnvil);
         recipe.Register();
     }
