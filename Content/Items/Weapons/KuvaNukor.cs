@@ -1,4 +1,5 @@
 using Terraria.DataStructures;
+using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Projectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
@@ -35,6 +36,7 @@ public class KuvaNukor : ModItem
     {
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
         Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+        projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 2f;
         return false;
     }
 }
