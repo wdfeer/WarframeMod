@@ -42,13 +42,16 @@ public class BossBags : GlobalItem
                 {
                     ModContent.ItemType<Bite>(),
                     ModContent.ItemType<SplitChamber>(),
-                    ModContent.ItemType<Opticor>(),
                     ModContent.ItemType<VitalSense>()
                 });
             case ItemID.QueenSlimeBossBag:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Magnetize>(), 5);
             case ItemID.DestroyerBossBag:
-                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<KuvaNukor>(), 2);
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
+                {
+                    ModContent.ItemType<KuvaNukor>(),
+                    ModContent.ItemType<Opticor>()
+                });
             case ItemID.SkeletronPrimeBossBag:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Acceltra>(), 2);
             case ItemID.TwinsBossBag:

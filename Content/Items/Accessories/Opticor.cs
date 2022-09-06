@@ -1,4 +1,4 @@
-using Terraria.DataStructures;
+ using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Projectiles;
 
@@ -13,7 +13,7 @@ public class Opticor : ModItem
     {
         Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/OpticorSound").ModifySoundStyle();
         Item.channel = true;
-        Item.damage = 715;
+        Item.damage = 800;
         Item.crit = 16;
         Item.DamageType = DamageClass.Magic;
         Item.mana = 77;
