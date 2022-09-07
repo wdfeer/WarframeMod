@@ -25,13 +25,13 @@ public class Vectis : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.noMelee = true;
         Item.knockBack = 6;
-        Item.value = 15000;
+        Item.value = Item.sellPrice(silver: 75);
         Item.rare = 4;
         Item.UseSound = SoundID.Item40;
         Item.autoReuse = false;
         Item.shootSpeed = 16f;
         Item.shoot = 10;
-        Item.useAmmo = AmmoID.Bullet; // The "ammo Id" of the ammo item that this weapon uses. Note that this is not an item Id, but just a magic value.
+        Item.useAmmo = AmmoID.Bullet;
         Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/VectisPrimeSound2").ModifySoundStyle(1f, 0.1f, 2);
     }
 
