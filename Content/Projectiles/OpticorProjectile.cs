@@ -18,6 +18,12 @@ public class OpticorProjectile : ExplosiveProjectile
     public bool charged = false;
     public override bool PreAI()
     {
+        Player player = Main.player[Projectile.owner];
+        if (player.dead)
+        {
+            Projectile.Kill();
+            return false;
+        }
         return !Projectile.friendly;
     }
     public override void AI()
