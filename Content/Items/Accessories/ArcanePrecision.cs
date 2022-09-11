@@ -13,19 +13,14 @@ public class ArcanePrecision : ModItem
     {
         Tooltip.SetDefault($"On ranged Critical hit: {CHANCE}% chance for +{(int)(DAMAGE_BUFF_PREHARDMODE * 100)}% Damage (+{(int)(DAMAGE_BUFF_HARDMODE * 100)}% in Hardmode) for {BUFF_DURATION / 60} seconds");
     }
-
     public override void SetDefaults()
     {
-        base.SetDefaults();
         Item.accessory = true;
         Item.rare = -12;
+        Item.expert = true;
         Item.width = 32;
         Item.height = 32;
         Item.value = Item.buyPrice(gold: 3);
-    }
-    public override void UpdateInventory(Player player)
-    {
-        Item.rare = -12;
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

@@ -10,19 +10,15 @@ public class ArcaneGuardian : ModItem
     {
         Tooltip.SetDefault($"When damaged: for every {DAMAGE_TO_DEFENSE_RATIO} points of damage taken receive +1 Defense for {BUFF_DURATION / 60} seconds");
     }
-
     public override void SetDefaults()
     {
         base.SetDefaults();
         Item.accessory = true;
         Item.rare = -12;
+        Item.expert = true;
         Item.width = 32;
         Item.height = 32;
         Item.value = Item.buyPrice(gold: 4);
-    }
-    public override void UpdateInventory(Player player)
-    {
-        Item.rare = -12;
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

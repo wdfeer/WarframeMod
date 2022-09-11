@@ -11,19 +11,15 @@ public class ArcaneFury : ModItem
     {
         Tooltip.SetDefault($"On Critical hit: {CHANCE}% chance for +{DAMAGE_BUFF}% melee Damage for {BUFF_DURATION / 60} seconds");
     }
-
     public override void SetDefaults()
     {
         base.SetDefaults();
         Item.accessory = true;
         Item.rare = -12;
+        Item.expert = true;
         Item.width = 32;
         Item.height = 32;
         Item.value = Item.buyPrice(gold: 3);
-    }
-    public override void UpdateInventory(Player player)
-    {
-        Item.rare = -12;
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
