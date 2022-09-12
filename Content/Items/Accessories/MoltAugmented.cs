@@ -8,7 +8,7 @@ public class MoltAugmented : ModItem
     public const int MAX_STACKS = 150;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault($"On kill: +{PERCENT_DAMAGE_PER_KILL:0.0}% Damage\nStacks up to {MAX_STACKS} times");
+        Tooltip.SetDefault($"On kill: +{PERCENT_DAMAGE_PER_KILL:0.00}% Damage\nStacks up to {MAX_STACKS} times");
     }
 
     public override void SetDefaults()
@@ -50,6 +50,10 @@ class AugmentedPlayer : ModPlayer
         {
             Player.GetDamage(DamageClass.Generic) += currentBonus / 100f;
         }
+    }
+    public override void UpdateDead()
+    {
+        currentBonus = 0f;
     }
     public void OnKillNPCWhenEnabled()
     {
