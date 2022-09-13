@@ -2,11 +2,12 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using WarframeMod.Common.Players;
 
 namespace WarframeMod.Content.Items.Accessories;
 public class HyperionThrusters : ModItem
 {
-    public const float VERTICAL_WING_SPEED_BONUS = 0.3f;
+    public const float VERTICAL_WING_SPEED_BONUS = 0.33f;
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"+{(int)(VERTICAL_WING_SPEED_BONUS * 100f)}% Wing vertical speed");
@@ -35,19 +36,6 @@ public class HyperionThrusters : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetModPlayer<VerticalWingSpeedPlayer>().verticalWingSpeedMult += VERTICAL_WING_SPEED_BONUS;
-    }
-}
-class VerticalWingSpeedPlayer : ModPlayer
-{
-    public float verticalWingSpeedMult = 1f;
-    public override void ResetEffects()
-        => verticalWingSpeedMult = 1f;
-}
-class VerticalWingSpeedGlobalItem : GlobalItem
-{
-    public override void VerticalWingSpeeds(Item item, Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
-    {
-        maxAscentMultiplier *= player.GetModPlayer<VerticalWingSpeedPlayer>().verticalWingSpeedMult;
+        player.GetModPlayer<WingSpeedPlayer>().verticalWingSpeedMult += VERTICAL_WING_SPEED_BONUS;
     }
 }

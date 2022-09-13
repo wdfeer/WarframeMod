@@ -83,6 +83,7 @@ public class BossBags : GlobalItem
                 ModContent.ItemType<ArcaneArachne>(),
                 ModContent.ItemType<ArcaneVictory>(),
                 ModContent.ItemType<MoltAugmented>(),
-                ModContent.ItemType<EternalOnslaught>()
+                ModContent.ItemType<EternalOnslaught>(),
+                ModContent.ItemType<ArcaneConsequence>()
             });
 }
