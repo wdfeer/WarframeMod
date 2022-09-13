@@ -5,10 +5,10 @@ namespace WarframeMod.Content.Items.Accessories;
 public class MoltAugmented : ModItem
 {
     public const float PERCENT_DAMAGE_PER_KILL = 0.12f;
-    public const int MAX_STACKS = 150;
+    public const int MAX_STACKS = 200;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault($"On kill: +{PERCENT_DAMAGE_PER_KILL:0.00}% Damage\nStacks up to {MAX_STACKS} times");
+        Tooltip.SetDefault($"On kill: +{PERCENT_DAMAGE_PER_KILL:0.00}% Damage\nStacks up to {MAX_STACKS} times\n50% Reduced effectiveness when a boss is alive");
     }
 
     public override void SetDefaults()
@@ -18,7 +18,7 @@ public class MoltAugmented : ModItem
         Item.expert = true;
         Item.width = 32;
         Item.height = 32;
-        Item.value = Item.buyPrice(gold: 5);
+        Item.value = Item.buyPrice(gold: 6);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
@@ -31,7 +31,7 @@ public class MoltAugmented : ModItem
         if (augmentedPlayer.enabled)
         {
             int expertIndex = tooltips.FindIndex(tip => tip.Text == "Expert");
-            TooltipLine line = new(Mod, "ActiveBonus", $"Current bonus is {augmentedPlayer.currentBonus:0.00}%");
+            TooltipLine line = new(Mod, "ActiveBonus", $"Current bonus is {augmentedPlayer.CurrentBonusPercent:0.00}%");
             tooltips.Insert(expertIndex, line);
         }
     }
@@ -40,25 +40,26 @@ class AugmentedPlayer : ModPlayer
 {
     public bool enabled;
     public override void ResetEffects() => enabled = false;
-    public float currentBonus = 0f;
-    public int Stacks => (int)(currentBonus / MoltAugmented.PERCENT_DAMAGE_PER_KILL);
+    public float CurrentBonusPercent => PercentDamagePerStack * stacks;
+    public float PercentDamagePerStack => MoltAugmented.PERCENT_DAMAGE_PER_KILL / (Main.npc.Any(npc => npc.active && npc.boss) ? 2 : 1);
+    public int stacks = 0;
     public override void PostUpdateEquips()
     {
         if (!enabled)
-            currentBonus = 0f;
+            stacks = 0;
         else
         {
-            Player.GetDamage(DamageClass.Generic) += currentBonus / 100f;
+            Player.GetDamage(DamageClass.Generic) += CurrentBonusPercent / 100f;
         }
     }
     public override void UpdateDead()
     {
-        currentBonus = 0f;
+        stacks = 0;
     }
     public void OnKillNPCWhenEnabled()
     {
-        if (Stacks < MoltAugmented.MAX_STACKS)
-            currentBonus += MoltAugmented.PERCENT_DAMAGE_PER_KILL;
+        if (stacks < MoltAugmented.MAX_STACKS)
+            stacks++;
     }
 }
 class AugmentedGlobalNPC : GlobalNPC
