@@ -4,8 +4,8 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class ArcaneGuardian : ModItem
 {
-    public const int DAMAGE_TO_DEFENSE_RATIO = 4;
-    public const int BUFF_DURATION = 300;
+    public const int DAMAGE_TO_DEFENSE_RATIO = 5;
+    public const int BUFF_DURATION = 720;
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"When damaged: for every {DAMAGE_TO_DEFENSE_RATIO} points of damage taken receive +1 Defense for {BUFF_DURATION / 60} seconds");

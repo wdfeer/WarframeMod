@@ -56,7 +56,7 @@ class ArcaneVictoryPlayer : ModPlayer
             healTimer++;
             if (healTimer > healCooldown && Player.statLife < Player.statLifeMax2)
             {
-                Player.Heal((int)HealPerSecond);
+                Player.Heal((int)MathF.Round(HealPerSecond));
                 healTimer = 0;
             }
         }
