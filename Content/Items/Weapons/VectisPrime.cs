@@ -1,6 +1,5 @@
 using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.ID;
 
 namespace WarframeMod.Content.Items.Weapons;
 public class VectisPrime : ModItem

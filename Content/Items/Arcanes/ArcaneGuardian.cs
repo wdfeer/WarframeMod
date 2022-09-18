@@ -1,24 +1,14 @@
 using WarframeMod.Content.Buffs;
 
-namespace WarframeMod.Content.Items.Accessories;
+namespace WarframeMod.Content.Items.Arcanes;
 
-public class ArcaneGuardian : ModItem
+public class ArcaneGuardian : Arcane
 {
     public const int DAMAGE_TO_DEFENSE_RATIO = 5;
     public const int BUFF_DURATION = 720;
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"When damaged: for every {DAMAGE_TO_DEFENSE_RATIO} points of damage taken receive +1 Defense for {BUFF_DURATION / 60} seconds");
-    }
-    public override void SetDefaults()
-    {
-        base.SetDefaults();
-        Item.accessory = true;
-        Item.rare = -12;
-        Item.expert = true;
-        Item.width = 32;
-        Item.height = 32;
-        Item.value = Item.buyPrice(gold: 4);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

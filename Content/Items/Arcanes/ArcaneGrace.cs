@@ -1,8 +1,8 @@
 using WarframeMod.Content.Buffs;
 
-namespace WarframeMod.Content.Items.Accessories;
+namespace WarframeMod.Content.Items.Arcanes;
 
-public class ArcaneGrace : ModItem
+public class ArcaneGrace : Arcane
 {
     public const int CHANCE = 40;
     public const float LIFE_REGEN = 0.01f;
@@ -10,15 +10,6 @@ public class ArcaneGrace : ModItem
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"When damaged: {CHANCE}% chance for +{LIFE_REGEN * 100}% max life regen per second for {BUFF_DURATION / 60} seconds");
-    }
-    public override void SetDefaults()
-    {
-        Item.accessory = true;
-        Item.rare = -12;
-        Item.expert = true;
-        Item.width = 32;
-        Item.height = 32;
-        Item.value = Item.buyPrice(gold: 5);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

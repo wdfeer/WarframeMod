@@ -1,5 +1,4 @@
 using Terraria.DataStructures;
-using WarframeMod.Common.GlobalProjectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
 public class PrismaTetra : ModItem

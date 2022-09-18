@@ -1,5 +1,5 @@
 using WarframeMod.Common.Players;
-using WarframeMod.Content.Items.Accessories;
+using WarframeMod.Content.Items.Arcanes;
 
 namespace WarframeMod.Content.Buffs;
 public class VirtuosStrikeBuff : ModBuff

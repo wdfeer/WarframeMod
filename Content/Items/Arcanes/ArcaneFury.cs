@@ -1,8 +1,8 @@
 using WarframeMod.Content.Buffs;
 
-namespace WarframeMod.Content.Items.Accessories;
+namespace WarframeMod.Content.Items.Arcanes;
 
-public class ArcaneFury : ModItem
+public class ArcaneFury : Arcane
 {
     public const int CHANCE = 20;
     public const int DAMAGE_BUFF = 14;
@@ -10,16 +10,6 @@ public class ArcaneFury : ModItem
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"On Critical hit: {CHANCE}% chance for +{DAMAGE_BUFF}% melee Damage for {BUFF_DURATION / 60} seconds");
-    }
-    public override void SetDefaults()
-    {
-        base.SetDefaults();
-        Item.accessory = true;
-        Item.rare = -12;
-        Item.expert = true;
-        Item.width = 32;
-        Item.height = 32;
-        Item.value = Item.buyPrice(gold: 3);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

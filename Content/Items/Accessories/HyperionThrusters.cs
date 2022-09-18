@@ -1,7 +1,3 @@
-using System;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 using WarframeMod.Common.Players;
 
 namespace WarframeMod.Content.Items.Accessories;

@@ -1,8 +1,8 @@
 using WarframeMod.Content.Buffs;
 
-namespace WarframeMod.Content.Items.Accessories;
+namespace WarframeMod.Content.Items.Arcanes;
 
-public class ArcaneConsequence : ModItem
+public class ArcaneConsequence : Arcane
 {
     public const int PERCENT_MOVEMENT_SPEED_INCREASE = 20;
     public const int PERCENT_WING_SPEED_INCREASE = 12;
@@ -10,17 +10,6 @@ public class ArcaneConsequence : ModItem
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"On Critical hit: +{PERCENT_MOVEMENT_SPEED_INCREASE}% movement speed and +{PERCENT_WING_SPEED_INCREASE} wing flight speed for {DURATION / 60} seconds");
-    }
-
-    public override void SetDefaults()
-    {
-        base.SetDefaults();
-        Item.accessory = true;
-        Item.rare = -12;
-        Item.expert = true;
-        Item.width = 32;
-        Item.height = 32;
-        Item.value = Item.buyPrice(gold: 3);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

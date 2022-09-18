@@ -1,8 +1,8 @@
- using Terraria.DataStructures;
+using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Projectiles;
 
-namespace WarframeMod.Content.Items.Accessories;
+namespace WarframeMod.Content.Items.Weapons;
 public class Opticor : ModItem
 {
     public override void SetStaticDefaults()

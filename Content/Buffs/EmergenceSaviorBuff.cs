@@ -1,5 +1,3 @@
-using WarframeMod.Content.Items.Accessories;
-
 namespace WarframeMod.Content.Buffs;
 public class EmergenceSaviorBuff : ModBuff
 {

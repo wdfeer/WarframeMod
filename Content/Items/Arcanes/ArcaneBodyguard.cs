@@ -1,7 +1,7 @@
 using Terraria.DataStructures;
 using WarframeMod.Content.Buffs;
 
-namespace WarframeMod.Content.Items.Accessories;
+namespace WarframeMod.Content.Items.Arcanes;
 
 public class ArcaneBodyguard : ModItem
 {
@@ -35,7 +35,7 @@ class BodyguardPlayer : ModPlayer
     {
         if (!enabled)
             return;
-        if (Main.rand.Next(0,100) < ArcaneBodyguard.CHANCE)
+        if (Main.rand.Next(0, 100) < ArcaneBodyguard.CHANCE)
             Player.AddBuff(ModContent.BuffType<ArcaneBodyguardBuff>(), ArcaneBodyguard.BUFF_DURATION);
     }
     public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)

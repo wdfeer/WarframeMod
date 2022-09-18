@@ -1,24 +1,12 @@
-using WarframeMod.Content.Buffs;
+namespace WarframeMod.Content.Items.Arcanes;
 
-namespace WarframeMod.Content.Items.Accessories;
-
-public class MoltAugmented : ModItem
+public class MoltAugmented : Arcane
 {
     public const float PERCENT_DAMAGE_PER_KILL = 0.12f;
     public const int MAX_STACKS = 200;
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"On kill: +{PERCENT_DAMAGE_PER_KILL:0.00}% Damage\nStacks up to {MAX_STACKS} times\n50% Reduced effectiveness when a boss is alive");
-    }
-
-    public override void SetDefaults()
-    {
-        Item.accessory = true;
-        Item.rare = -12;
-        Item.expert = true;
-        Item.width = 32;
-        Item.height = 32;
-        Item.value = Item.buyPrice(gold: 6);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

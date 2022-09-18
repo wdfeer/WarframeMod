@@ -1,8 +1,8 @@
 using WarframeMod.Content.Buffs;
 
-namespace WarframeMod.Content.Items.Accessories;
+namespace WarframeMod.Content.Items.Arcanes;
 
-public class VirtuosStrike : ModItem
+public class VirtuosStrike : Arcane
 {
     public const int CHANCE = 15;
     public const float EXTRA_CRIT_MULT = 0.33f;
@@ -10,16 +10,6 @@ public class VirtuosStrike : ModItem
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"On magic Critical hit: {CHANCE}% chance for +{(int)(EXTRA_CRIT_MULT * 100)}% Critical Damage for {BUFF_DURATION / 60} seconds");
-    }
-
-    public override void SetDefaults()
-    {
-        Item.accessory = true;
-        Item.rare = -12;
-        Item.expert = true;
-        Item.width = 32;
-        Item.height = 32;
-        Item.value = Item.buyPrice(gold: 3);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
@@ -33,7 +23,7 @@ class VirtuosStrikePlayer : ModPlayer
         => enabled = false;
     public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
     {
-        if (enabled && proj.DamageType == DamageClass.Magic && Main.rand.Next(0,100) < VirtuosStrike.CHANCE)
+        if (enabled && proj.DamageType == DamageClass.Magic && Main.rand.Next(0, 100) < VirtuosStrike.CHANCE)
             Player.AddBuff(ModContent.BuffType<VirtuosStrikeBuff>(), VirtuosStrike.BUFF_DURATION);
     }
 }

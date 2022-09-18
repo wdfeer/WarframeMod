@@ -1,10 +1,4 @@
-using Terraria;
 using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using System;
-using Microsoft.Xna.Framework;
-using WarframeMod.Content.Items;
 
 namespace WarframeMod.Content.Items.Weapons;
 public class Vectis : ModItem

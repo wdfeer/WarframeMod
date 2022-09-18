@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WarframeMod.Content.Projectiles;
+﻿namespace WarframeMod.Content.Projectiles;
 internal class TenetArcaPlasmorProjectile : ArcaPlasmorProjectile
 {
     public override bool Tenet => true;

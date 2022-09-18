@@ -1,8 +1,8 @@
 using WarframeMod.Content.Buffs;
 
-namespace WarframeMod.Content.Items.Accessories;
+namespace WarframeMod.Content.Items.Arcanes;
 
-public class ArcanePrecision : ModItem
+public class ArcanePrecision : Arcane
 {
     public const int CHANCE = 20;
     public static float DamageBuff => Main.hardMode ? DAMAGE_BUFF_HARDMODE : DAMAGE_BUFF_PREHARDMODE;
@@ -12,15 +12,6 @@ public class ArcanePrecision : ModItem
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"On ranged Critical hit: {CHANCE}% chance for +{(int)(DAMAGE_BUFF_PREHARDMODE * 100)}% Damage (+{(int)(DAMAGE_BUFF_HARDMODE * 100)}% in Hardmode) for {BUFF_DURATION / 60} seconds");
-    }
-    public override void SetDefaults()
-    {
-        Item.accessory = true;
-        Item.rare = -12;
-        Item.expert = true;
-        Item.width = 32;
-        Item.height = 32;
-        Item.value = Item.buyPrice(gold: 3);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

@@ -1,11 +1,10 @@
-using rail;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using WarframeMod.Content.Buffs;
 
-namespace WarframeMod.Content.Items.Accessories;
+namespace WarframeMod.Content.Items.Arcanes;
 
-public class EmergenceSavior : ModItem
+public class EmergenceSavior : Arcane
 {
     public const float LIFE_RESTORATION = 0.2f;
     public const int EXTRA_IFRAMES = 120;
@@ -13,15 +12,6 @@ public class EmergenceSavior : ModItem
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"Upon taking lethal damage: become invulnerable for {EXTRA_IFRAMES / 60} seconds and restore {(int)(LIFE_RESTORATION * 100f)}% life\nCooldown: {COOLDOWN / 60} seconds");
-    }
-    public override void SetDefaults()
-    {
-        Item.accessory = true;
-        Item.rare = -12;
-        Item.expert = true;
-        Item.width = 32;
-        Item.height = 32;
-        Item.value = Item.buyPrice(gold: 7);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

@@ -1,5 +1,6 @@
 ﻿using Terraria.GameContent.ItemDropRules;
 using WarframeMod.Content.Items.Accessories;
+using WarframeMod.Content.Items.Arcanes;
 using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Items;

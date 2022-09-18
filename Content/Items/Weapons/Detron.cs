@@ -1,4 +1,3 @@
-using Terraria.Audio;
 using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
 
