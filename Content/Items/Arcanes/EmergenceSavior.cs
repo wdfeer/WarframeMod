@@ -13,7 +13,7 @@ public class EmergenceSavior : Arcane
     {
         Tooltip.SetDefault($"Upon taking lethal damage: become invulnerable for {EXTRA_IFRAMES / 60} seconds and restore {(int)(LIFE_RESTORATION * 100f)}% life\nCooldown: {COOLDOWN / 60} seconds");
     }
-    public override void UpdateAccessory(Player player, bool hideVisual)
+    public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<SaviourPlayer>().enabled = true;
     }

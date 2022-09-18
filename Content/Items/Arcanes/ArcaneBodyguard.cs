@@ -3,7 +3,7 @@ using WarframeMod.Content.Buffs;
 
 namespace WarframeMod.Content.Items.Arcanes;
 
-public class ArcaneBodyguard : ModItem
+public class ArcaneBodyguard : Arcane
 {
     public const int CHANCE = 8;
     public const int DAMAGE_REDUCTION = 15;
@@ -12,17 +12,7 @@ public class ArcaneBodyguard : ModItem
     {
         Tooltip.SetDefault($"On summon hit: {CHANCE}% chance for +{DAMAGE_REDUCTION}% Damage Reduction for {BUFF_DURATION / 60} seconds");
     }
-
-    public override void SetDefaults()
-    {
-        Item.accessory = true;
-        Item.rare = -12;
-        Item.expert = true;
-        Item.width = 32;
-        Item.height = 32;
-        Item.value = Item.buyPrice(gold: 4);
-    }
-    public override void UpdateAccessory(Player player, bool hideVisual)
+    public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<BodyguardPlayer>().enabled = true;
     }

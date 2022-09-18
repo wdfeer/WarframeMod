@@ -8,7 +8,7 @@ public class MoltAugmented : Arcane
     {
         Tooltip.SetDefault($"On kill: +{PERCENT_DAMAGE_PER_KILL:0.00}% Damage\nStacks up to {MAX_STACKS} times\n50% Reduced effectiveness when a boss is alive");
     }
-    public override void UpdateAccessory(Player player, bool hideVisual)
+    public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<AugmentedPlayer>().enabled = true;
     }

@@ -13,7 +13,7 @@ public class ArcanePrecision : Arcane
     {
         Tooltip.SetDefault($"On ranged Critical hit: {CHANCE}% chance for +{(int)(DAMAGE_BUFF_PREHARDMODE * 100)}% Damage (+{(int)(DAMAGE_BUFF_HARDMODE * 100)}% in Hardmode) for {BUFF_DURATION / 60} seconds");
     }
-    public override void UpdateAccessory(Player player, bool hideVisual)
+    public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<ArcanePrecisionPlayer>().enabled = true;
     }

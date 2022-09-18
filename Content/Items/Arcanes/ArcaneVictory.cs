@@ -11,7 +11,7 @@ public class ArcaneVictory : Arcane
     {
         Tooltip.SetDefault($"On Critical hit: {CHANCE}% chance for +{LIFE_REGEN * 100}% max life regen per second for {BUFF_DURATION / 60} seconds");
     }
-    public override void UpdateAccessory(Player player, bool hideVisual)
+    public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<ArcaneVictoryPlayer>().enabled = true;
     }

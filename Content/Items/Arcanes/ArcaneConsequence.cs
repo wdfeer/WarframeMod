@@ -11,7 +11,7 @@ public class ArcaneConsequence : Arcane
     {
         Tooltip.SetDefault($"On Critical hit: +{PERCENT_MOVEMENT_SPEED_INCREASE}% movement speed and +{PERCENT_WING_SPEED_INCREASE} wing flight speed for {DURATION / 60} seconds");
     }
-    public override void UpdateAccessory(Player player, bool hideVisual)
+    public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<ConsequencePlayer>().enabled = true;
     }

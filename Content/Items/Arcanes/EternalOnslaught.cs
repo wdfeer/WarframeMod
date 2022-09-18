@@ -10,7 +10,7 @@ public class EternalOnslaught : Arcane
     {
         Tooltip.SetDefault($"When a mana potion is used: +{CRIT_CHANCE_BONUS}% magic crit chance for {DURATION / 60} seconds");
     }
-    public override void UpdateAccessory(Player player, bool hideVisual)
+    public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<EternalOnslaughtPlayer>().enabled = true;
     }

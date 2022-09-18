@@ -10,7 +10,7 @@ public class ArcaneArachne : Arcane
     {
         Tooltip.SetDefault($"+{DAMAGE_BUFF}% Damage\nWhen damaged: disable the above effect for {COOLDOWN_DURATION / 60} seconds");
     }
-    public override void UpdateAccessory(Player player, bool hideVisual)
+    public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<ArachnePlayer>().enabled = true;
         player.GetDamage(DamageClass.Generic) += DAMAGE_BUFF / 100f;

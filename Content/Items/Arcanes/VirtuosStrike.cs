@@ -11,7 +11,7 @@ public class VirtuosStrike : Arcane
     {
         Tooltip.SetDefault($"On magic Critical hit: {CHANCE}% chance for +{(int)(EXTRA_CRIT_MULT * 100)}% Critical Damage for {BUFF_DURATION / 60} seconds");
     }
-    public override void UpdateAccessory(Player player, bool hideVisual)
+    public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<VirtuosStrikePlayer>().enabled = true;
     }
