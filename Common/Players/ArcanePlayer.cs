@@ -24,13 +24,13 @@ public class ArcanePlayer : ModPlayer
     {
         int? type = tag["equippedArcaneType"] as int?;
         equippedArcaneType = type == null ? -1 : (int)type;
+    }
+    public override void OnEnterWorld(Player player)
+    {
         if (equippedArcaneType != -1)
         {
-            Item arcane = new Item(0);
-            arcane.type = equippedArcaneType;
-            arcane.SetDefaults(equippedArcaneType);
-            equippedArcane = arcane.ModItem as Arcane;
-            Main.NewText($"{arcane.Name} is currently equipped", Color.Yellow);
+            equippedArcane = ModContent.GetModItem(equippedArcaneType) as Arcane;
+            Main.NewText($"{equippedArcane.Name} is currently equipped", Color.Yellow);
         }
     }
     public override void SaveData(TagCompound tag)

@@ -87,6 +87,7 @@ public class BossBags : GlobalItem
                 ModContent.ItemType<EternalOnslaught>(),
                 ModContent.ItemType<ArcaneConsequence>(),
                 ModContent.ItemType<ArcaneGrace>(),
-                ModContent.ItemType<EmergenceSavior>()
+                ModContent.ItemType<EmergenceSavior>(),
+                ModContent.ItemType<ArcanePistoleer>()
             });
 }
