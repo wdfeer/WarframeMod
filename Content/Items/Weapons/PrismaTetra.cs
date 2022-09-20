@@ -6,7 +6,7 @@ public class PrismaTetra : ModItem
     public override void SetDefaults()
     {
         Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/TenetTetraPrimarySound").ModifySoundStyle(pitchVariance: 0.12f);
-        Item.damage = 55;
+        Item.damage = 57;
         Item.crit = 6;
         Item.mana = 9;
         Item.DamageType = DamageClass.Magic;

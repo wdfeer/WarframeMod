@@ -11,7 +11,7 @@ public class ArumSpinosa : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 37;
+        Item.damage = 39;
         Item.crit = 5;
         Item.DamageType = DamageClass.Melee;
         Item.noMelee = true;

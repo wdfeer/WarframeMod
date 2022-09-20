@@ -10,7 +10,7 @@ public class VectisPrime : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 225;
+        Item.damage = 235;
         Item.crit = 26;
         Item.DamageType = DamageClass.Ranged;
         Item.width = 63;
@@ -62,7 +62,7 @@ public class VectisPrime : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe.AddIngredient(ModContent.ItemType<Vectis>());
-        recipe.AddIngredient(ItemID.SniperRifle);
+        recipe.AddIngredient(ItemID.Ectoplasm, 12);
         recipe.AddTile(TileID.MythrilAnvil);
         recipe.Register();
     }

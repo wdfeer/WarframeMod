@@ -32,8 +32,8 @@ public class Gorgon : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.Minishark);
-        recipe.AddIngredient(ItemID.JungleSpores, 5);
+        recipe.AddRecipeGroup(RecipeGroupID.IronBar, 8);
+        recipe.AddIngredient(ItemID.JungleSpores, 4);
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
     }

@@ -12,7 +12,7 @@ public class Synapse : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 19;
+        Item.damage = 21;
         Item.crit = 31;
         Item.mana = 3;
         Item.DamageType = DamageClass.Magic;

@@ -6,7 +6,7 @@ public class RaktaBallistica : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Shoots 4 arrows at once\nNot shooting charges the next shot, increasing damage and accuracy");
+        Tooltip.SetDefault("Shoots 4 arrows at once\nNot shooting charges the next shot, increasing damage and accuracy\nIncreased charging speed");
     }
     public override void SetDefaults()
     {
@@ -20,7 +20,7 @@ public class RaktaBallistica : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.noMelee = true;
         Item.knockBack = 1;
-        Item.value = Item.sellPrice(silver: 60);
+        Item.value = Item.sellPrice(gold: 1);
         Item.rare = 3;
         Item.UseSound = SoundID.Item5;
         Item.autoReuse = false;

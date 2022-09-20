@@ -12,7 +12,7 @@ public class Velocitus : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 210;
+        Item.damage = 250;
         Item.crit = 56;
         Item.DamageType = DamageClass.Ranged;
         Item.channel = true;
@@ -21,7 +21,7 @@ public class Velocitus : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.noMelee = true;
         Item.knockBack = 16;
-        Item.value = Item.buyPrice(gold: 9);
+        Item.value = Item.buyPrice(gold: 8);
         Item.rare = ItemRarityID.Cyan;
         Item.autoReuse = false;
         Item.useAmmo = AmmoID.Bullet;

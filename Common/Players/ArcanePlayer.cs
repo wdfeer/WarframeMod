@@ -26,7 +26,9 @@ public class ArcanePlayer : ModPlayer
         equippedArcaneType = type == null ? -1 : (int)type;
         if (equippedArcaneType != -1)
         {
-            Item arcane = new Item(equippedArcaneType);
+            Item arcane = new Item(0);
+            arcane.type = equippedArcaneType;
+            arcane.SetDefaults(equippedArcaneType);
             equippedArcane = arcane.ModItem as Arcane;
             Main.NewText($"{arcane.Name} is currently equipped", Color.Yellow);
         }

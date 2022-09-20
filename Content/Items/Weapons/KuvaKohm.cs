@@ -18,7 +18,7 @@ Linear damage falloff starting at 36 tiles
     const int maxMultishot = 5;
     public override void SetDefaults()
     {
-        Item.damage = 21;
+        Item.damage = 25;
         Item.crit = 15;
         Item.DamageType = DamageClass.Ranged;
         Item.width = 47;

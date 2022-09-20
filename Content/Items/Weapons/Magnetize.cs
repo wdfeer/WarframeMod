@@ -1,5 +1,7 @@
+using Mono.Cecil;
 using Terraria.DataStructures;
 using WarframeMod.Content.Projectiles;
+using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace WarframeMod.Content.Items.Weapons;
 
@@ -11,36 +13,33 @@ public class Magnetize : ModItem
     }
     public override void SetDefaults()
     {
-        Item.mana = 128;
-        Item.scale = 0f;
+        Item.mana = 32;
+        Item.noUseGraphic = true;
         Item.useTime = 45;
         Item.useAnimation = 45;
-        Item.useStyle = ItemUseStyleID.HoldUp;
+        Item.useStyle = ItemUseStyleID.Shoot;
         Item.noMelee = true;
-        Item.value = Item.buyPrice(gold: 20);
+        Item.value = Item.buyPrice(gold: 16);
         Item.rare = 5;
         Item.UseSound = SoundID.Item43;
         Item.autoReuse = false;
-        Item.shoot = ModContent.ProjectileType<MagnetizeProjectile>();
-        Item.shootSpeed = 1f;
     }
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    public override bool? UseItem(Player player)
     {
         NPC target = FindTarget(Main.MouseWorld);
         if (target == null)
             return false;
-        position = target.Center;
-        Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+        Projectile projectile = Projectile.NewProjectileDirect(Item.GetSource_ItemUse(Item), target.Center, Vector2.Zero, ModContent.ProjectileType<MagnetizeProjectile>(), 0, 0, player.whoAmI);
         MagnetizeProjectile modProj = projectile.ModProjectile as MagnetizeProjectile;
-        modProj.target = target;
-        return false;
+        modProj.Target = target;
+        return true;
     }
     private NPC FindTarget(Vector2 mousePosition)
     {
         NPC potentialTarget = Main.npc.MinBy(x => x.Center.Distance(mousePosition));
         if (!Main.projectile.Any(p => p.active
                                       && p.ModProjectile is MagnetizeProjectile
-                                      && (p.ModProjectile as MagnetizeProjectile).target == potentialTarget)
+                                      && (p.ModProjectile as MagnetizeProjectile).Target == potentialTarget)
                                       && potentialTarget.CanBeChasedBy()
                                       && potentialTarget.Center.Distance(mousePosition) < 80f)
             return potentialTarget;

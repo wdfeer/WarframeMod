@@ -11,7 +11,7 @@ public class Supra : ModItem
     public override void SetDefaults()
     {
         Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/SupraVandalSound").ModifySoundStyle(pitchVariance: 0.1f);
-        Item.damage = 45;
+        Item.damage = 61;
         Item.crit = 8;
         Item.DamageType = DamageClass.Magic;
         Item.mana = 2;

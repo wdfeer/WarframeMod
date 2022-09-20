@@ -32,13 +32,7 @@ public class Ballistica : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.LeadBow);
-        recipe.AddIngredient(ItemID.Cobweb, 7);
-        recipe.AddTile(TileID.WorkBenches);
-        recipe.Register();
-
-        recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.IronBow);
+        recipe.AddRecipeGroup(RecipeGroupID.IronBar, 5);
         recipe.AddIngredient(ItemID.Silk, 7);
         recipe.AddTile(TileID.WorkBenches);
         recipe.Register();

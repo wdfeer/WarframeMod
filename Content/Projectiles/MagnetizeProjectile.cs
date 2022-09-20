@@ -3,7 +3,15 @@
 internal class MagnetizeProjectile : ModProjectile
 {
     public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.DiamondBolt;
-    public NPC target;
+    public NPC Target
+    {
+        get => Main.npc[(int)Projectile.ai[0]];
+        set
+        {
+            Projectile.ai[0] = value.whoAmI;
+            Projectile.netUpdate = true;
+        }
+    }
     public override void SetDefaults()
     {
         Projectile.hide = true;
@@ -14,12 +22,12 @@ internal class MagnetizeProjectile : ModProjectile
     }
     public override void AI()
     {
-        if (target == null || !target.active)
+        if (Target == null || !Target.active)
         {
             Projectile.timeLeft = 0;
             return;
         }
-        Projectile.Center = target.Center;
+        Projectile.Center = Target.Center;
 
         Projectile[] projectiles = GetValidIntersectingProjectiles();
         foreach (var proj in projectiles)
