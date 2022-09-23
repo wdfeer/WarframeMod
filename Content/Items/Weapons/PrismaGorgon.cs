@@ -2,26 +2,26 @@ using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
-public class GorgonWraith : ModItem
+public class PrismaGorgon : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Shoots rapidly but inaccurately\n-5% Critical Damage\n60% Chance not to consume ammo");
+        Tooltip.SetDefault("Shoots rapidly but inaccurately\n+15% Critical Damage\n75% chance not to consume ammo");
     }
     public override void SetDefaults()
     {
-        Item.damage = 8;
-        Item.crit = 11;
+        Item.damage = 64;
+        Item.crit = 26;
         Item.DamageType = DamageClass.Ranged;
         Item.width = 17;
-        Item.height = 49;
-        Item.useTime = 19;
-        Item.useAnimation = 19;
+        Item.height = 51;
+        Item.useTime = 16;
+        Item.useAnimation = 16;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.noMelee = true;
-        Item.knockBack = 3;
-        Item.value = Item.buyPrice(gold: 6);
-        Item.rare = 3;
+        Item.knockBack = 2;
+        Item.value = Item.buyPrice(gold: 70);
+        Item.rare = ItemRarityID.Red;
         Item.UseSound = SoundID.Item11;
         Item.autoReuse = true;
         Item.shoot = 10;
@@ -30,7 +30,7 @@ public class GorgonWraith : ModItem
     }
     public override bool CanConsumeAmmo(Item ammo, Player player)
     {
-        if (Main.rand.Next(0, 100) <= 60) return false;
+        if (Main.rand.Next(0, 100) <= 75) return false;
         return true;
     }
     float lastShotTime = 0;
@@ -48,14 +48,14 @@ public class GorgonWraith : ModItem
                 Item.useAnimation = 5;
             }
         }
-        else if (timeSinceLastShot > 17)
+        else if (timeSinceLastShot > 21)
         {
             Item.useTime += (int)(timeSinceLastShot / 3);
             Item.useAnimation += (int)(timeSinceLastShot / 3);
-            if (Item.useTime > 19)
+            if (Item.useTime > 16)
             {
-                Item.useTime = 19;
-                Item.useAnimation = 19;
+                Item.useTime = 16;
+                Item.useAnimation = 16;
             }
         }
         lastShotTime = (float)Main.time;
@@ -65,10 +65,9 @@ public class GorgonWraith : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
-        velocity = velocity.RotatedByRandom(0.07f);
+        velocity = velocity.RotatedByRandom(timeSinceLastShot > 21 ? 0 : 0.06f);
         Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-        var critProj = proj.GetGlobalProjectile<CritGlobalProjectile>();
-        critProj.CritMultiplier = 0.95f;
+        proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 1.15f;
         return false;
     }
 }

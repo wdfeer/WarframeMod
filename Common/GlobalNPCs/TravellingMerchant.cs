@@ -7,13 +7,16 @@ internal class TravellingMerchant : GlobalNPC
 {
     public override void SetupTravelShop(int[] shop, ref int nextSlot)
     {
-        if (Main.hardMode)
+        if (!Main.hardMode)
+            return;
+        AddItemToShop(ModContent.ItemType<PrimedReach>(), ref shop, ref nextSlot);
+        if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
         {
-            AddItemToShop(ModContent.ItemType<PrimedReach>(), ref shop, ref nextSlot);
-            if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+            AddItemToShop(ModContent.ItemType<MaraDetron>(), ref shop, ref nextSlot);
+            AddItemToShop(ModContent.ItemType<PrismaTetra>(), ref shop, ref nextSlot);
+            if (NPC.downedMoonlord)
             {
-                AddItemToShop(ModContent.ItemType<MaraDetron>(), ref shop, ref nextSlot);
-                AddItemToShop(ModContent.ItemType<PrismaTetra>(), ref shop, ref nextSlot);
+                AddItemToShop(ModContent.ItemType<PrismaGorgon>(), ref shop, ref nextSlot);
             }
         }
     }

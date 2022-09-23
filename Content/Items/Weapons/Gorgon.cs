@@ -75,7 +75,7 @@ public class Gorgon : ModItem
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
         Projectile.NewProjectileDirect(source,
                                        position,
-                                       velocity.RotatedByRandom(1.2 / timeSinceLastShot),
+                                       velocity.RotatedByRandom(1f / timeSinceLastShot),
                                        type,
                                        damage,
                                        knockback,
