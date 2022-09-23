@@ -3,28 +3,30 @@ public class OpticorProjectile : ExplosiveProjectile
 {
     public override int ExplosionWidth => 160;
     public override bool ExplodeOnNPCHit => false;
-    const float MOVE_DISTANCE = 80;
+    public virtual float MoveDistance => 80;
+    public virtual int ChargeTime => 120;
     public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.DiamondBolt;
-    public const int CHARGE_TIME = 120;
     public override void SetDefaults()
     {
         base.SetDefaults();
         Projectile.tileCollide = false;
         Projectile.scale = 0;
         Projectile.DamageType = DamageClass.Magic;
-        Projectile.timeLeft = 60 + CHARGE_TIME;
+        Projectile.timeLeft = 60 + ChargeTime;
         Projectile.friendly = false;
     }
     public bool charged = false;
     public override bool PreAI()
     {
+        if (Projectile.friendly)
+            return false;
         Player player = Main.player[Projectile.owner];
         if (player.dead)
         {
             Projectile.Kill();
             return false;
         }
-        return !Projectile.friendly;
+        return true;
     }
     public override void AI()
     {
@@ -55,9 +57,9 @@ public class OpticorProjectile : ExplosiveProjectile
             player.itemAnimation = 8; // Set item animation time to 2 frames while we are used
             player.itemRotation = MathF.Atan2(Projectile.velocity.Y * dir, Projectile.velocity.X * dir); // Set the item rotation to where we are shooting
             Projectile.rotation = player.itemRotation + MathHelper.PiOver2 + MathHelper.Pi;
-            Projectile.position = player.Center + Vector2.Normalize(Projectile.velocity) * MOVE_DISTANCE;
+            Projectile.position = player.Center + Vector2.Normalize(Projectile.velocity) * MoveDistance;
             if (Projectile.velocity.X > 0)
-                Projectile.position -= Projectile.velocity * MOVE_DISTANCE;
+                Projectile.position -= Projectile.velocity * MoveDistance;
         }
     }
     public override void PostAI()
@@ -65,12 +67,12 @@ public class OpticorProjectile : ExplosiveProjectile
         Player player = Main.player[Projectile.owner];
         if (!Projectile.friendly)
             Dust.NewDustPerfect(
-                player.Center + Vector2.Normalize(Projectile.velocity) * MOVE_DISTANCE * 0.7f,
+                player.Center + Vector2.Normalize(Projectile.velocity) * MoveDistance * 0.7f,
                 DustID.Electric,
-                Scale: 0.5f);
-        else
+                Scale: 0.7f);
+        else if (Projectile.position.Distance(player.position) < 1200)
         {
-            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Electric);
+            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Electric, Scale: 1.2f);
         }
     }
     void Launch()
@@ -80,7 +82,7 @@ public class OpticorProjectile : ExplosiveProjectile
         Projectile.extraUpdates = 60;
         Projectile.netUpdate = true;
         Projectile.velocity *= 16;
-        Projectile.timeLeft = 180;
+        Projectile.timeLeft = 420;
         Projectile.tileCollide = true;
         Projectile.width = 20;
         Projectile.height = 20;

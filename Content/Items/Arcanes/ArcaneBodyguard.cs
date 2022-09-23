@@ -7,7 +7,7 @@ public class ArcaneBodyguard : Arcane
 {
     public const int CHANCE = 8;
     public const int DAMAGE_REDUCTION = 15;
-    public const int BUFF_DURATION = 480;
+    public const int BUFF_DURATION = 420;
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"On summon hit: {CHANCE}% chance for +{DAMAGE_REDUCTION}% Damage Reduction for {BUFF_DURATION / 60} seconds");
