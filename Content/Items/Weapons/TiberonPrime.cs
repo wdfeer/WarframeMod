@@ -78,15 +78,13 @@ internal class TiberonPrime : ModItem
     }
     public override bool CanConsumeAmmo(Item ammo, Player player)
     {
-        if (Mode == 0 && Main.rand.Next(0, 100) < 75) return false;
+        if (Mode == FireMode.Auto && Main.rand.Next(0, 100) < 75) return false;
         return base.CanConsumeAmmo(ammo, player);
     }
     public override bool AltFunctionUse(Player player)
-    {
-        return true;
-    }
+        => true;
     int modeChangeTimer = 0;
-    const int MODE_CHANGE_COOLDOWN = 30;
+    const int MODE_CHANGE_COOLDOWN = 20;
     public override void UpdateInventory(Player player)
         => modeChangeTimer++;
     public override bool CanUseItem(Player player)
