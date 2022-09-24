@@ -11,6 +11,8 @@ internal class NPCLoot : GlobalNPC
         int type = npc.type;
         switch (type)
         {
+            case NPCID.GreenSlime:
+                return ItemDropRule.Common(ModContent.ItemType<Vitality>(), 150);
             case NPCID.Skeleton or NPCID.SkeletonAlien or NPCID.SkeletonAstonaut:
                 return ItemDropRule.Common(ModContent.ItemType<PointStrike>(), 30);
             case NPCID.Harpy:
