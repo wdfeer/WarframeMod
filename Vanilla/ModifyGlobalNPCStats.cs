@@ -9,7 +9,7 @@ internal class VanillaNPCStats : GlobalNPC
 {
     public const float MAX_LIFE_MULT = 1.08f;
     public const float DEFENSE_MULT = 1.08f;
-    public const float DAMAGE_MULT = 1.1f;
+    public const float DAMAGE_MULT = 1.11f;
     public override void SetDefaults(NPC npc)
     {
         base.SetDefaults(npc);

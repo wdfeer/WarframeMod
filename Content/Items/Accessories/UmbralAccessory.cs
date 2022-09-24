@@ -73,7 +73,7 @@ class UmbralAccessoryPlayer : ModPlayer
         if (umbraCount <= 0)
             return true;
         float damageMult = 1;
-        damageMult -= UmbralAccessory.PERCENT_DAMAGE_REDUCTION_WHILE_NOBOSS[umbraCount--] * umbraCount / 100f;
+        damageMult -= UmbralAccessory.PERCENT_DAMAGE_REDUCTION_WHILE_NOBOSS[umbraCount - 1] * umbraCount / 100f;
         damage = (int)(damage * damageMult);
         return true;
     }
