@@ -30,7 +30,7 @@ public class ArcanePlayer : ModPlayer
         if (equippedArcaneType != -1)
         {
             equippedArcane = ModContent.GetModItem(equippedArcaneType) as Arcane;
-            Main.NewText($"{equippedArcane.Name} is currently equipped", Color.Yellow);
+            Main.NewText($"{equippedArcane.DisplayName.GetDefault()} is currently equipped", Color.Yellow);
         }
     }
     public override void SaveData(TagCompound tag)
