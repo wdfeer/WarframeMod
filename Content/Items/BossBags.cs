@@ -25,7 +25,8 @@ public class BossBags : GlobalItem
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
                 {
                     ModContent.ItemType<HunterMunitions>(),
-                    ModContent.ItemType<Reach>()
+                    ModContent.ItemType<Reach>(),
+                    ModContent.ItemType<SteelFiber>()
                 });
             case ItemID.EaterOfWorldsBossBag or ItemID.BrainOfCthulhuBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
