@@ -44,7 +44,7 @@ public class MaraDetron : ModItem
     {
         for (int i = 0; i < 7; i++)
         {
-            Projectile proj = this.ShootWith(player, source, position, velocity, type, damage, knockback, 0.1f, Item.width);
+            Projectile proj = this.ShootWith(player, source, position, velocity, type, damage, knockback, 0.12f, Item.width);
             proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 0.75f;
             proj.GetGlobalProjectile<BuffGlobalProjectile>().buffChances.Add(new Common.BuffChance(BuffID.Confused, 180, 0.14f));
             proj.GetGlobalProjectile<FalloffGlobalProjectile>().SetFalloff(position, FALLOFF_START, FALLOFF_MAX, MAX_FALLOFF_DAMAGE_DECREASE);

@@ -17,6 +17,7 @@ internal class TravellingMerchant : GlobalNPC
             if (NPC.downedMoonlord)
             {
                 AddItemToShop(ModContent.ItemType<PrismaGorgon>(), ref shop, ref nextSlot);
+                AddItemToShop(ModContent.ItemType<TenetDetron>(), ref shop, ref nextSlot);
             }
         }
     }

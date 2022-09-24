@@ -70,7 +70,11 @@ public class BossBags : GlobalItem
             default:
                 return null;
             case ItemID.MoonLordBossBag:
-                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<PrismaGorgon>(), 4);
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
+                {
+                    ModContent.ItemType<PrismaGorgon>(),
+                    ModContent.ItemType<TenetDetron>()
+                });
         }
     }
     public static IItemDropRule GetArcanesDropRule()
