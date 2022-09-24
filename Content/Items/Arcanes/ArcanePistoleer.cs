@@ -34,14 +34,25 @@ class ArcanePistoleerPlayer : ModPlayer
     {
         ApplyBuff(proj, crit);
     }
-    public bool Active => Player.HasBuff<ArcanePistoleerBuff>();
+    public static bool IsBuffed(Player player) => player.HasBuff<ArcanePistoleerBuff>();
+    public bool IsBuffed() => IsBuffed(Player);
     public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
     {
-        if (!Active)
+        if (!IsBuffed())
             return;
-        if (item.useAmmo > 0)
+        if (item.ammo > 0)
         {
-            damage.Base += Player.ChooseAmmo(item).damage * ArcanePistoleer.AMMO_DAMAGE_INCREASE;
+            damage *= 1 + ArcanePistoleer.AMMO_DAMAGE_INCREASE; //only visual increase
+        }
+    }
+}
+class ArcanePistoleerGlobalItem : GlobalItem
+{
+    public override void PickAmmo(Item weapon, Item ammo, Player player, ref int type, ref float speed, ref StatModifier damage, ref float knockback)
+    {
+        if (ArcanePistoleerPlayer.IsBuffed(player) && ammo != null)
+        {
+            damage.Base += ammo.damage * ArcanePistoleer.AMMO_DAMAGE_INCREASE;
         }
     }
 }
