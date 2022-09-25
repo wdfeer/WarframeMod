@@ -10,7 +10,7 @@ public class PrismaGorgon : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 62;
+        Item.damage = 61;
         Item.crit = 26;
         Item.DamageType = DamageClass.Ranged;
         Item.width = 17;

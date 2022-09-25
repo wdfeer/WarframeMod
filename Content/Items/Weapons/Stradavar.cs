@@ -16,10 +16,10 @@ public class Stradavar : ModItem
         {
             if (value > 1) value = 0;
             mode = value;
-            SetDefaults();
+            SetModeDefaults();
         }
     }
-    public override void SetDefaults()
+    void SetModeDefaults()
     {
         switch (Mode)
         {
@@ -38,6 +38,10 @@ public class Stradavar : ModItem
                 Item.autoReuse = false;
                 break;
         }
+    }
+    public override void SetDefaults()
+    {
+        SetModeDefaults();
         Item.UseSound = SoundID.Item11;
         Item.DamageType = DamageClass.Ranged;
         Item.noMelee = true;

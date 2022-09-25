@@ -1,6 +1,6 @@
-﻿namespace WarframeMod.Vanilla;
+﻿namespace WarframeMod.Common.GlobalItems;
 
-internal class VanillaWeapon : GlobalItem
+internal class VanillaWeaponStatChanges : GlobalItem
 {
     public override void SetDefaults(Item item)
     {
@@ -13,13 +13,13 @@ internal class VanillaWeapon : GlobalItem
     (int, int) GetExtraDamageAndCrit(Item item)
     {
         if (item.DamageType == DamageClass.MeleeNoSpeed)
-            return ((int)(item.damage * -0.06f), 7);
+            return ((int)(item.damage * -0.07f), 8);
         else if (item.DamageType == DamageClass.Melee)
-            return ((int)(item.damage * -0.07f), 9);
+            return ((int)(item.damage * -0.08f), 10);
         else if (item.DamageType == DamageClass.Ranged)
-            return ((int)(item.damage * -0.05f), 5);
-        else if (item.DamageType == DamageClass.Magic)
             return ((int)(item.damage * -0.06f), 6);
+        else if (item.DamageType == DamageClass.Magic)
+            return ((int)(item.damage * -0.07f), 7);
         return (0, 0);
     }
 }

@@ -33,7 +33,7 @@ public class StradavarPrime : ModItem
                 Item.autoReuse = true;
                 break;
             default:
-                Item.damage = 60;
+                Item.damage = 56;
                 Item.crit = 26;
                 Item.useTime = 12;
                 Item.useAnimation = 12;

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WarframeMod.Vanilla;
-internal class VanillaNPCStats : GlobalNPC
+namespace WarframeMod.Common.GlobalNPCs;
+internal class StatCHangeGlobalNPC : GlobalNPC
 {
     public const float MAX_LIFE_MULT = 1.08f;
     public const float DEFENSE_MULT = 1.08f;

@@ -7,7 +7,7 @@ public class Sarpa : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Fires 5 rounds in a burst\n28% chance to proc Slash\nDamage Falloff starts at 25 tiles, stops after 50");
+        Tooltip.SetDefault("Fires 5 rounds in a burst\n28% chance to proc Slash");
     }
     public override void SetDefaults()
     {

@@ -9,7 +9,7 @@ public class LexPrime : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 132;
+        Item.damage = 130;
         Item.crit = 21;
         Item.DamageType = DamageClass.Ranged;
         Item.width = 34;

@@ -7,11 +7,11 @@ public class RedeemerPrime : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Fires 6 golden pellets without consuming ammo\nLinear damage falloff starting at 25 tiles");
+        Tooltip.SetDefault("Fires 6 golden pellets without consuming ammo\nLinear damage falloff starting at 20 tiles");
     }
     public override void SetDefaults()
     {
-        Item.damage = 48;
+        Item.damage = 54;
         Item.crit = 20;
         Item.DamageType = DamageClass.Melee;
         Item.noMelee = true;
@@ -46,7 +46,7 @@ public class RedeemerPrime : ModItem
             var projectile = this.ShootWith(player, source, position, velocity, type, damage, knockback, 0.13f, Item.width);
             projectile.DamageType = DamageClass.Melee;
             projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 1.1f;
-            projectile.GetGlobalProjectile<FalloffGlobalProjectile>().SetFalloff(projectile.position, 25 * 16, 45 * 16, 0.5f);
+            projectile.GetGlobalProjectile<FalloffGlobalProjectile>().SetFalloff(projectile.position, 20 * 16, 40 * 16, 0.6f);
         }
         return false;
     }

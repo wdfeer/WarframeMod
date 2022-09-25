@@ -1,14 +1,14 @@
-using WarframeMod.Common.Players;
+using WarframeMod.Content.Buffs;
 
 namespace WarframeMod.Content.Items.Accessories;
 
 public class MotusSetup : ModItem
 {
-    public const int CRIT_CHANCE = 100;
-    public const int DURATION = 4;
+    public const int CRIT_RELATIVE_PERCENT = CriticalDelay.PERCENT_CRIT_RELATIVE;
+    public const int DURATION_SECONDS = 7;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault($"+{CRIT_CHANCE}% Relative Critical Chance after landing from a Double Jump for {DURATION} seconds");
+        Tooltip.SetDefault($"+{CRIT_RELATIVE_PERCENT}% Relative Critical Chance after landing from a Double Jump or from Wing flight for {DURATION_SECONDS} seconds");
     }
     public override void SetDefaults()
     {
@@ -35,37 +35,33 @@ class MotusSetupPlayer : ModPlayer
     {
         enabled = false;
     }
-    bool doubleJumping;
+    public bool doubleJumpingOrWinging;
     public override void PostUpdate()
     {
         if (!enabled)
             return;
         bool touchingTiles = Player.TouchedTiles.Any();
-        if (touchingTiles && doubleJumping)
+        if (touchingTiles && doubleJumpingOrWinging)
         {
-            Buff(MotusSetup.DURATION * 60);
-            doubleJumping = false;
+            Player.AddBuff(ModContent.BuffType<MotusSetupBuff>(), MotusSetup.DURATION_SECONDS * 60);
+            doubleJumpingOrWinging = false;
         }
-        else if (!doubleJumping)
+        else if (!doubleJumpingOrWinging)
         {
-            doubleJumping = Player.isPerformingJump_Blizzard
+            doubleJumpingOrWinging = Player.isPerformingJump_Blizzard
                 || Player.isPerformingJump_Cloud
                 || Player.isPerformingJump_Fart
                 || Player.isPerformingJump_Sail
                 || Player.isPerformingJump_Sandstorm;
         }
     }
-    public override void PreUpdateBuffs()
+}
+class MotusSetupGlobalItem : GlobalItem
+{
+    public override bool WingUpdate(int wings, Player player, bool inUse)
     {
-        if (bufftime > 0)
-        {
-            bufftime--;
-            Player.GetModPlayer<CritPlayer>().relativeCritChance += MotusSetup.CRIT_CHANCE / 100f;
-        }
-    }
-    int bufftime = -1;
-    void Buff(int frames)
-    {
-        bufftime = frames;
+        if (inUse)
+            player.GetModPlayer<MotusSetupPlayer>().doubleJumpingOrWinging = true;
+        return false;
     }
 }

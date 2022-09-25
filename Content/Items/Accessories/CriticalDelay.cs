@@ -4,9 +4,10 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class CriticalDelay : ModItem
 {
+    public const int PERCENT_CRIT_RELATIVE = 80;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("+90% Crit Chance relative to the weapon's base crit chance, but -15% Use Speed");
+        Tooltip.SetDefault($"+{PERCENT_CRIT_RELATIVE}% Crit Chance relative to the weapon's base crit chance, but -15% Use Speed");
     }
     public override void SetDefaults()
     {
@@ -18,7 +19,7 @@ public class CriticalDelay : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetModPlayer<CritPlayer>().relativeCritChance += 0.9f;
+        player.GetModPlayer<CritPlayer>().relativeCritChance += PERCENT_CRIT_RELATIVE / 100f;
         player.GetModPlayer<FireRatePlayer>().TotalFireRateMultiplier -= 0.15f;
     }
 }
