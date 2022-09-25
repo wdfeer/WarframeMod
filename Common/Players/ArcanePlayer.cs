@@ -6,6 +6,7 @@ public class ArcanePlayer : ModPlayer
 {
     public Arcane equippedArcane = null;
     public int equippedArcaneType = -1;
+    public int equippedArcaneIndex = -1;
     public void EquipArcane(Arcane arcane)
     {
         Main.NewText($"Equipped {arcane.Item.Name}", Color.Yellow);
@@ -22,13 +23,16 @@ public class ArcanePlayer : ModPlayer
     }
     public override void LoadData(TagCompound tag)
     {
-        int? type = tag["equippedArcaneType"] as int?;
-        equippedArcaneType = type == null ? -1 : (int)type;
+        if (!tag.ContainsKey("equippedArcaneIndex"))
+            return;
+        int? i = tag["equippedArcaneIndex"] as int?;
+        equippedArcaneIndex = i == null ? -1 : (int)i;
     }
     public override void OnEnterWorld(Player player)
     {
-        if (equippedArcaneType != -1)
+        if (equippedArcaneIndex != -1)
         {
+            equippedArcaneType = Arcane.arcaneTypeGetters[equippedArcaneIndex]();
             equippedArcane = ModContent.GetModItem(equippedArcaneType) as Arcane;
             Main.NewText($"{equippedArcane.DisplayName.GetDefault()} is currently equipped", Color.Yellow);
         }
@@ -37,7 +41,7 @@ public class ArcanePlayer : ModPlayer
     {
         if (equippedArcaneType != -1)
         {
-            tag.Add("equippedArcaneType", equippedArcaneType);
+            tag.Add("equippedArcaneIndex", Arcane.GetArcaneIndex(equippedArcaneType));
         }
     }
 }

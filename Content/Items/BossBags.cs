@@ -78,24 +78,5 @@ public class BossBags : GlobalItem
         }
     }
     public static IItemDropRule GetArcanesDropRule()
-        => ItemDropRule.OneFromOptionsNotScalingWithLuck(
-            4,
-            new int[]
-            {
-                ModContent.ItemType<ArcaneAvenger>(),
-                ModContent.ItemType<ArcaneGuardian>(),
-                ModContent.ItemType<VirtuosStrike>(),
-                ModContent.ItemType<ArcaneStrike>(),
-                ModContent.ItemType<ArcanePrecision>(),
-                ModContent.ItemType<ArcaneFury>(),
-                ModContent.ItemType<ArcaneBodyguard>(),
-                ModContent.ItemType<ArcaneArachne>(),
-                ModContent.ItemType<ArcaneVictory>(),
-                ModContent.ItemType<MoltAugmented>(),
-                ModContent.ItemType<EternalOnslaught>(),
-                ModContent.ItemType<ArcaneConsequence>(),
-                ModContent.ItemType<ArcaneGrace>(),
-                ModContent.ItemType<EmergenceSavior>(),
-                ModContent.ItemType<ArcanePistoleer>()
-            });
+        => ItemDropRule.OneFromOptionsNotScalingWithLuck(4, Arcane.GetArcaneTypes());
 }

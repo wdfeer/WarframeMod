@@ -62,8 +62,8 @@ public abstract class UmbralAccessory : ModItem
 }
 class UmbralAccessoryPlayer : ModPlayer
 {
-    public int oldUmbraCount = 0;
-    public int umbraCount = 0;
+    public ushort oldUmbraCount = 0;
+    public ushort umbraCount = 0;
     public override void ResetEffects()
     {
         oldUmbraCount = umbraCount;
