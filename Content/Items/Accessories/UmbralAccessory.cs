@@ -4,7 +4,8 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public abstract class UmbralAccessory : ModItem
 {
-    public static readonly int[] PERCENT_DAMAGE_REDUCTION_WHILE_NOBOSS = new int[] { 8, 10, 12 };
+    public static readonly int[] PERCENT_DAMAGE_REDUCTION_NOBOSS = new int[] { 8, 10, 12 };
+    public static readonly float[] TOTAL_DAMAGE_REDUCTION_NOBOSS = new float[] { 0.08f, 0.2f, 0.36f };
     int umbraPower = 0;
     public abstract string UniqueTooltipDefault { get; }
     public override void SetStaticDefaults()
@@ -15,7 +16,7 @@ public abstract class UmbralAccessory : ModItem
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
         tooltips.Find(t => t.Name == "Tooltip0").Text = GetCurrentUniqueTooltipValue(umbraPower);
-        tooltips.Find(t => t.Name == "Tooltip1").Text = $"+{PERCENT_DAMAGE_REDUCTION_WHILE_NOBOSS[umbraPower]}% damage reduction while no boss is alive";
+        tooltips.Find(t => t.Name == "Tooltip1").Text = $"+{PERCENT_DAMAGE_REDUCTION_NOBOSS[umbraPower]}% damage reduction while no boss is alive";
     }
     public override void SetDefaults()
     {
@@ -70,10 +71,9 @@ class UmbralAccessoryPlayer : ModPlayer
     }
     public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
     {
-        if (umbraCount <= 0)
+        if (umbraCount <= 0 || WarframeMod.IsBossAlive())
             return true;
-        float damageMult = 1;
-        damageMult -= UmbralAccessory.PERCENT_DAMAGE_REDUCTION_WHILE_NOBOSS[umbraCount - 1] * umbraCount / 100f;
+        float damageMult = 1f - UmbralAccessory.TOTAL_DAMAGE_REDUCTION_NOBOSS[umbraCount - 1];
         damage = (int)(damage * damageMult);
         return true;
     }
