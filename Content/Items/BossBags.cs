@@ -24,6 +24,7 @@ public class BossBags : GlobalItem
             case ItemID.EyeOfCthulhuBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
                 {
+                    ModContent.ItemType<HunterSynergy>(),
                     ModContent.ItemType<HunterMunitions>(),
                     ModContent.ItemType<Reach>(),
                     ModContent.ItemType<SteelFiber>()
@@ -48,7 +49,11 @@ public class BossBags : GlobalItem
                     ModContent.ItemType<VitalSense>()
                 });
             case ItemID.QueenSlimeBossBag:
-                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Magnetize>(), 5);
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
+                {
+                    ModContent.ItemType<HunterRecovery>(),
+                    ModContent.ItemType<Magnetize>()
+                });
             case ItemID.DestroyerBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
                 {

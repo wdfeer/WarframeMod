@@ -18,8 +18,8 @@ public class HunterSynergy : HunterAccessory
         Item.accessory = true;
         Item.width = 44;
         Item.height = 64;
-        Item.rare = 4;
-        Item.value = Item.sellPrice(gold: 2);
+        Item.rare = 2;
+        Item.value = Item.sellPrice(silver: 50);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
