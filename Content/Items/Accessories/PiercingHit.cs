@@ -21,6 +21,6 @@ public class PiercingHit : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetModPlayer<BuffPlayer>().OnNPCHit.Add(new BuffChance(BuffID.Weak, DURATION, CHANCE));
+        player.GetModPlayer<BuffPlayer>().onHitNPC.Add(new BuffChance(BuffID.Weak, DURATION, CHANCE));
     }
 }

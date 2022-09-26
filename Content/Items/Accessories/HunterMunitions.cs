@@ -3,13 +3,10 @@ using WarframeMod.Content.Buffs;
 
 namespace WarframeMod.Content.Items.Accessories;
 
-public class HunterMunitions : ModItem
+public class HunterMunitions : HunterAccessory
 {
     public const int bleedChance = 30;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"{bleedChance}% bleeding chance on critical hits");
-    }
+    public override string DefaultTooltip => $"{bleedChance}% bleeding chance on critical hits";
     public override void SetDefaults()
     {
         Item.accessory = true;
@@ -20,6 +17,7 @@ public class HunterMunitions : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
+        base.UpdateAccessory(player, hideVisual);
         player.GetModPlayer<HunterMunitionsPlayer>().enabled = true;
     }
 }
@@ -34,8 +32,7 @@ internal class HunterMunitionsPlayer : ModPlayer
     {
         if (enabled && Main.rand.NextFloat() < HunterMunitions.bleedChance / 100f)
         {
-            ref var bleeds = ref target.GetGlobalNPC<BleedingGlobalNPC>().bleeds;
-            bleeds.Add(new BleedingBuff(damageAfterCrit / 5, 300));
+            BleedingBuff.CreateBleed(damageAfterCrit, target);
         }
     }
 }

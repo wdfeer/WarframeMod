@@ -22,6 +22,6 @@ public class Blaze : ModItem
         player.GetDamage(DamageClass.Generic) += 0.08f;
 
         BuffPlayer buffman = player.GetModPlayer<BuffPlayer>();
-        buffman.OnNPCHit.Add(new BuffChance(BuffID.OnFire, 300, 0.24f));
+        buffman.onHitNPC.Add(new BuffChance(BuffID.OnFire, 300, 0.24f));
     }
 }
