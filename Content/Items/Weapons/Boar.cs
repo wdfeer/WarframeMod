@@ -7,12 +7,12 @@ public class Boar : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("An extremely inaccurate automatic shotgun, shoots 4 pellets at once");
+        Tooltip.SetDefault("An extremely inaccurate automatic shotgun, shoots 4 pellets at once\n-75% ammo damage");
     }
 
     public override void SetDefaults()
     {
-        Item.damage = 3;
+        Item.damage = 8;
         Item.crit = 6;
         Item.noMelee = true;
         Item.DamageType = DamageClass.Ranged;
@@ -46,6 +46,7 @@ public class Boar : ModItem
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
+        this.ModifyAmmoDamage(player, ref damage, 0.25f);
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
         for (int i = 0; i < 4; i++)
         {

@@ -1,5 +1,5 @@
 using Terraria.Audio;
-using WarframeMod.Content.Items;
+using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Projectiles;
 

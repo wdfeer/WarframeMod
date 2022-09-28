@@ -6,11 +6,11 @@ public class Ballistica : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Shoots 4 arrows at once with greatly decreased velocity\nNot shooting charges the next shot, increasing damage, accuraccy and velocity");
+        Tooltip.SetDefault("Shoots 4 arrows at once with greatly decreased velocity\nNot shooting charges the next shot, increasing damage, accuraccy and velocity\n-90% ammo damage");
     }
     public override void SetDefaults()
     {
-        Item.damage = 4;
+        Item.damage = 7;
         Item.crit = 11;
         Item.DamageType = DamageClass.Ranged;
         Item.width = 30;
@@ -41,6 +41,7 @@ public class Ballistica : ModItem
     double timeSinceLastShot = 60;
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
+        this.ModifyAmmoDamage(player, ref damage, 0.1f);
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
         timeSinceLastShot = Main.time - lastShotTime;
         lastShotTime = Main.time;

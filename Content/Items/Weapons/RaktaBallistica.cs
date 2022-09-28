@@ -6,11 +6,11 @@ public class RaktaBallistica : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Shoots 4 arrows at once\nNot shooting charges the next shot, increasing damage and accuracy\nIncreased charging speed");
+        Tooltip.SetDefault("Shoots 4 arrows at once\nNot shooting charges the next shot, increasing damage and accuracy\nIncreased charging speed\n-80% ammo damage");
     }
     public override void SetDefaults()
     {
-        Item.damage = 4;
+        Item.damage = 9;
         Item.crit = 16;
         Item.DamageType = DamageClass.Ranged;
         Item.width = 30;
@@ -32,6 +32,7 @@ public class RaktaBallistica : ModItem
     double timeSinceLastShot = 60;
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
+        this.ModifyAmmoDamage(player, ref damage, 0.2f);
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
         timeSinceLastShot = Main.time - lastShotTime;
         lastShotTime = Main.time;

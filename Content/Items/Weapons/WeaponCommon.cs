@@ -1,7 +1,7 @@
 ﻿using Terraria.Audio;
 using Terraria.DataStructures;
 
-namespace WarframeMod.Content.Items;
+namespace WarframeMod.Content.Items.Weapons;
 
 public static class WeaponCommon
 {
@@ -24,5 +24,10 @@ public static class WeaponCommon
         velocity = velocity.RotatedByRandom(spread);
         Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
         return proj;
+    }
+    public static void ModifyAmmoDamage(this ModItem item, Player player, ref int totalDamage, float ammoDamageMult)
+    {
+        int ammoDamage = totalDamage - player.GetWeaponDamage(item.Item);
+        totalDamage += (int)(ammoDamage * (ammoDamageMult - 1));
     }
 }

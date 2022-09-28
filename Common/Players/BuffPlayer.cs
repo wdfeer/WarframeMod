@@ -6,22 +6,32 @@ public class BuffPlayer : ModPlayer
 {
     public List<BuffChance> onHitNPC;
     Dictionary<int, float> bleedingChances = new Dictionary<int, float>();
+    int GetDamageClassID(DamageClass damageClass)
+    {
+        if (damageClass == DamageClass.SummonMeleeSpeed)
+            return DamageClass.Summon.Type;
+        if (damageClass == DamageClass.MeleeNoSpeed)
+            return DamageClass.Melee.Type;
+        return damageClass.Type;
+    }
     public void AddBleedChance(DamageClass damageType, float chance)
     {
-        if (bleedingChances.ContainsKey(damageType.Type))
+        int type = GetDamageClassID(damageType);
+        if (bleedingChances.ContainsKey(type))
         {
-            bleedingChances[damageType.Type] += chance;
+            bleedingChances[type] += chance;
         }
         else
         {
-            bleedingChances.Add(damageType.Type, chance);
+            bleedingChances.Add(type, chance);
         }
     }
     public void ApplyBleedChances(NPC target, int damage, DamageClass damageType)
     {
-        if (!bleedingChances.ContainsKey(damageType.Type))
+        int type = GetDamageClassID(damageType);
+        if (!bleedingChances.ContainsKey(type))
             return;
-        if (Main.rand.NextFloat() < bleedingChances[damageType.Type])
+        if (Main.rand.NextFloat() < bleedingChances[type])
             BleedingBuff.CreateBleed(damage, target);
     }
     public override void ResetEffects()

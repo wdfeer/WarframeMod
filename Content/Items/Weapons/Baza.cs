@@ -5,13 +5,14 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Baza : ModItem
 {
+    public const float AMMO_DAMAGE_MULT = 0.25f;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("75% Chance not to consume ammo\n+50% Critical Damage");
+        Tooltip.SetDefault($"75% Chance not to consume ammo\n+50% Critical Damage\n-{(int)((1 - AMMO_DAMAGE_MULT) * 100f)}% ammo damage");
     }
     public override void SetDefaults()
     {
-        Item.damage = 1;
+        Item.damage = 5;
         Item.crit = 22;
         Item.DamageType = DamageClass.Ranged;
         Item.width = 45;
@@ -40,6 +41,7 @@ public class Baza : ModItem
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
+        this.ModifyAmmoDamage(player, ref damage, AMMO_DAMAGE_MULT);
         Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
         var critProj = projectile.GetGlobalProjectile<CritGlobalProjectile>();
         critProj.CritMultiplier = 1.5f;
