@@ -11,14 +11,15 @@ public class KuvaKohm : ModItem
         Tooltip.SetDefault($@"Takes a while to spool up while increasing Multishot up to {maxMultishot} pellets
 33% chance to apply bleeding on hit
 Linear damage falloff starting at 36 tiles
-+15% Critical Damage");
++15% Critical Damage
+-40% ammo damage");
     }
     const int maxUseTime = 72;
     const int minUseTime = 14;
     const int maxMultishot = 5;
     public override void SetDefaults()
     {
-        Item.damage = 24;
+        Item.damage = 30;
         Item.crit = 15;
         Item.DamageType = DamageClass.Ranged;
         Item.width = 47;
@@ -81,6 +82,7 @@ Linear damage falloff starting at 36 tiles
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
+        this.ModifyAmmoDamage(player, ref damage, 0.6f);
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width + 5);
         for (int i = 0; i < multishot; i++)
         {

@@ -7,11 +7,11 @@ internal class Acceltra : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Rapidly launches rockets that explode on impact after traveling a safe distance\nConsumes bullets as ammo, converting them into rockets\n+40% Critical damage");
+        Tooltip.SetDefault("Rapidly launches rockets that explode on impact after traveling a safe distance\nConsumes bullets as ammo, converting them into rockets\n+40% Critical damage\n-50% ammo damage");
     }
     public override void SetDefaults()
     {
-        Item.damage = 11;
+        Item.damage = 17;
         Item.crit = 28;
         Item.knockBack = 3.6f;
         Item.DamageType = DamageClass.Ranged;
@@ -35,6 +35,7 @@ internal class Acceltra : ModItem
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
+        this.ModifyAmmoDamage(player, ref damage, 0.5f);
         var proj = this.ShootWith(player, source, position, velocity, ModContent.ProjectileType<AcceltraProjectile>(), damage, knockback, spread: 0.02f, spawnOffset: Item.width);
         proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 1.4f;
         AcceltraProjectile modProj = proj.ModProjectile as AcceltraProjectile;

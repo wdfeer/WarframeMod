@@ -8,14 +8,14 @@ public class Kohm : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Takes a while to spool up while increasing Multishot up to 5 pellets\n33% chance to apply bleeding on hit\nLinear damage falloff starting at 32 tiles\n+15% Critical Damage");
+        Tooltip.SetDefault("Takes a while to spool up while increasing Multishot up to 5 pellets\n33% chance to apply bleeding on hit\nLinear damage falloff starting at 32 tiles\n+15% Critical Damage\n-60% ammo damage");
     }
     const int maxUseTime = 82;
     const int minUseTime = 17;
     const int maxMultishot = 5;
     public override void SetDefaults()
     {
-        Item.damage = 5;
+        Item.damage = 10;
         Item.crit = 7;
         Item.DamageType = DamageClass.Ranged;
         Item.width = 47;
@@ -71,6 +71,7 @@ public class Kohm : ModItem
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
+        this.ModifyAmmoDamage(player, ref damage, 0.4f);
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width + 5);
         for (int i = 0; i < multishot; i++)
         {

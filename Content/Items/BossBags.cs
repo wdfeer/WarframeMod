@@ -49,9 +49,10 @@ public class BossBags : GlobalItem
                     ModContent.ItemType<VitalSense>()
                 });
             case ItemID.QueenSlimeBossBag:
-                return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
                 {
                     ModContent.ItemType<HunterRecovery>(),
+                    ModContent.ItemType<HunterCommand>(),
                     ModContent.ItemType<Magnetize>()
                 });
             case ItemID.DestroyerBossBag:
