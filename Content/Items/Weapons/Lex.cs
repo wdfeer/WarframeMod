@@ -42,6 +42,10 @@ public class Lex : ModItem
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
     }
+    public override Vector2? HoldoutOffset()
+    {
+        return new Vector2(-1.25f, 0);
+    }
     public bool DoubleStack => Item.stack == 2;
     public override float UseSpeedMultiplier(Player player)
     {

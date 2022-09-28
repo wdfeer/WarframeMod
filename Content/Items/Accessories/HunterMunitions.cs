@@ -1,4 +1,5 @@
 ﻿using WarframeMod.Common.GlobalNPCs;
+using WarframeMod.Common.Players;
 using WarframeMod.Content.Buffs;
 
 namespace WarframeMod.Content.Items.Accessories;
@@ -21,7 +22,7 @@ public class HunterMunitions : HunterAccessory
         player.GetModPlayer<HunterMunitionsPlayer>().enabled = true;
     }
 }
-internal class HunterMunitionsPlayer : ModPlayer
+internal class HunterMunitionsPlayer : CritPlayerHooks
 {
     public bool enabled = false;
     public override void ResetEffects()
@@ -30,9 +31,19 @@ internal class HunterMunitionsPlayer : ModPlayer
     }
     public void TryBleed(NPC target, int damageAfterCrit)
     {
-        if (enabled && Main.rand.NextFloat() < HunterMunitions.bleedChance / 100f)
+        if (Main.rand.NextFloat() < HunterMunitions.bleedChance / 100f)
         {
             BleedingBuff.CreateBleed(damageAfterCrit, target);
         }
+    }
+    public override void OnHitNPCPostCrit(Item item, NPC target, int damage, float knockback, bool crit, float critMult, int critLvl, int damagePostCrit)
+    {
+        if (enabled && crit)
+            TryBleed(target, damagePostCrit);
+    }
+    public override void OnHitNPCWithProjPostCrit(Projectile proj, NPC target, int damage, float knockback, bool crit, float critMult, int critLvl, int damagePostCrit)
+    {
+        if (enabled && crit)
+            TryBleed(target, damagePostCrit);
     }
 }

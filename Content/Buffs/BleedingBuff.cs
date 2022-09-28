@@ -3,24 +3,24 @@ using WarframeMod.Common.GlobalNPCs;
 namespace WarframeMod.Content.Buffs;
 public struct BleedingBuff
 {
-    public int dps;
+    public float dps;
     public int timeLeft;
-    public BleedingBuff(int dps, int time)
+    public BleedingBuff(float dps, int time)
     {
         this.dps = dps;
         timeLeft = time;
     }
-    public static void CreateBleed(int hitDamage, NPC target)
+    public static void CreateBleed(float hitDamage, NPC target)
     {
-        target.GetGlobalNPC<BleedingGlobalNPC>().bleeds.Add(new BleedingBuff(hitDamage / 5, 300));
+        target.GetGlobalNPC<BleedingGlobalNPC>().bleeds.Add(new BleedingBuff(hitDamage / 5f, 300));
     }
     public static List<BleedingBuff> UpdateBleeds(IEnumerable<BleedingBuff> bleeds, out int damage)
     {
         List<BleedingBuff> newBleeds = new List<BleedingBuff>();
-        damage = 0;
+        float totalDamage = 0;
         foreach (var item in bleeds)
         {
-            damage += item.dps;
+            totalDamage += item.dps;
             if (item.timeLeft > 0)
             {
                 BleedingBuff newBleed = item;
@@ -28,6 +28,7 @@ public struct BleedingBuff
                 newBleeds.Add(newBleed);
             }
         }
+        damage = (int)totalDamage;
         return newBleeds;
     }
 }

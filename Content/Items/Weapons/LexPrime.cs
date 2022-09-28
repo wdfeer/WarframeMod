@@ -28,6 +28,10 @@ public class LexPrime : ModItem
         Item.useAmmo = AmmoID.Bullet;
         Item.maxStack = 2;
     }
+    public override Vector2? HoldoutOffset()
+    {
+        return new Vector2(-1.25f, 0);
+    }
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
