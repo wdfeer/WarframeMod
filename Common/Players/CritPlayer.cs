@@ -3,13 +3,16 @@ using WarframeMod.Common.Configs;
 using WarframeMod.Common.GlobalNPCs;
 using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Items.Accessories;
+using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Common.Players;
 
 internal class CritPlayer : ModPlayer
 {
     public float critMultiplierPlayer = 1f;
+    public int[] GetItemTypesThatDoNotUseRelativeCrit() => new int[] { ModContent.ItemType<Nataruk>() };
     public float relativeCritChance = 0f;
+    public float BaseCritChanceMult => relativeCritChance + 1f;
     public int summonCritChance = 0;
     public float summonCritMult = 1f;
     public override void ResetEffects()
@@ -19,10 +22,10 @@ internal class CritPlayer : ModPlayer
         summonCritChance = 0;
         summonCritMult = 1f;
     }
-    public override void PostUpdateEquips()
+    public override void ModifyWeaponCrit(Item item, ref float crit)
     {
-        if (Player.HeldItem.damage > 0)
-            Player.GetCritChance(DamageClass.Generic) += (Player.HeldItem.crit + 4) * relativeCritChance;
+        if (item.damage > 0 && !GetItemTypesThatDoNotUseRelativeCrit().Contains(item.type))
+            crit += (item.crit + 4) * relativeCritChance;
     }
     public int GetCritLevel(int critChance)
     {
