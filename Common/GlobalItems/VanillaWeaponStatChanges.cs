@@ -12,6 +12,8 @@ internal class VanillaWeaponStatChanges : GlobalItem
     }
     (int, int) GetExtraDamageAndCrit(Item item)
     {
+        if (item.ammo > 0)
+            goto no;
         if (item.DamageType == DamageClass.MeleeNoSpeed)
             return ((int)(item.damage * -0.07f), 8);
         else if (item.DamageType == DamageClass.Melee)
@@ -20,6 +22,7 @@ internal class VanillaWeaponStatChanges : GlobalItem
             return ((int)(item.damage * -0.06f), 6);
         else if (item.DamageType == DamageClass.Magic)
             return ((int)(item.damage * -0.07f), 7);
+        no:
         return (0, 0);
     }
 }

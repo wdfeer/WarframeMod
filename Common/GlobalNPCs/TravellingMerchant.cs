@@ -21,7 +21,7 @@ internal class TravellingMerchant : GlobalNPC
             }
         }
     }
-    void AddItemToShop(int itemType, ref int[] shop, ref int nextSlot)
+    public static void AddItemToShop(int itemType, ref int[] shop, ref int nextSlot)
     {
         shop[nextSlot] = itemType;
         nextSlot++;
