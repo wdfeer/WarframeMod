@@ -10,7 +10,7 @@ internal class RaktaCernos : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 49;
+        Item.damage = 56;
         Item.crit = 31;
         Item.knockBack = 4;
         Item.DamageType = DamageClass.Ranged;
@@ -19,8 +19,8 @@ internal class RaktaCernos : ModItem
         Item.height = 64;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.UseSound = SoundID.Item5;
-        Item.useTime = 15;
-        Item.useAnimation = 15;
+        Item.useTime = 26;
+        Item.useAnimation = 26;
         Item.autoReuse = true;
         Item.rare = 4;
         Item.value = Item.sellPrice(gold: 2);

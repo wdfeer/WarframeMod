@@ -11,7 +11,7 @@ internal class MK1Paris : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 4;
+        Item.damage = 5;
         Item.crit = 26;
         Item.knockBack = 2;
         Item.DamageType = DamageClass.Ranged;
@@ -20,8 +20,8 @@ internal class MK1Paris : ModItem
         Item.height = 52;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.UseSound = SoundID.Item5;
-        Item.useTime = 30;
-        Item.useAnimation = 30;
+        Item.useTime = 38;
+        Item.useAnimation = 38;
         Item.rare = 1;
         Item.value = Item.buyPrice(silver: 15);
         Item.shoot = ProjectileID.WoodenArrowFriendly;

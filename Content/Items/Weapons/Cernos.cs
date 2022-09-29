@@ -10,7 +10,7 @@ internal class Cernos : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 26;
+        Item.damage = 33;
         Item.crit = 32;
         Item.knockBack = 7;
         Item.DamageType = DamageClass.Ranged;
@@ -19,8 +19,8 @@ internal class Cernos : ModItem
         Item.height = 54;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.UseSound = SoundID.Item5;
-        Item.useTime = 30;
-        Item.useAnimation = 30;
+        Item.useTime = 36;
+        Item.useAnimation = 36;
         Item.rare = 3;
         Item.value = 6000;
         Item.shoot = ProjectileID.WoodenArrowFriendly;
