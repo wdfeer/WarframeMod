@@ -10,7 +10,7 @@ internal class Cernos : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 16;
+        Item.damage = 26;
         Item.crit = 32;
         Item.knockBack = 7;
         Item.DamageType = DamageClass.Ranged;
@@ -21,7 +21,7 @@ internal class Cernos : ModItem
         Item.UseSound = SoundID.Item5;
         Item.useTime = 30;
         Item.useAnimation = 30;
-        Item.rare = 2;
+        Item.rare = 3;
         Item.value = 6000;
         Item.shoot = ProjectileID.WoodenArrowFriendly;
         Item.shootSpeed = 16f;
@@ -33,15 +33,11 @@ internal class Cernos : ModItem
     }
     public override void AddRecipes()
     {
-        int[] bowTypes = { ItemID.SilverBow, ItemID.TungstenBow };
-        for (int i = 0; i < bowTypes.Length; i++)
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(bowTypes[i]);
-            recipe.AddIngredient(ItemID.JungleSpores, 5);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
-        }
+        Recipe recipe = CreateRecipe();
+        recipe.AddIngredient(ModContent.ItemType<Paris>());
+        recipe.AddIngredient(ItemID.Hellstone, 7);
+        recipe.AddTile(TileID.Anvils);
+        recipe.Register();
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {

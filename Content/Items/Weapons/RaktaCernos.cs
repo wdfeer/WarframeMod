@@ -10,7 +10,7 @@ internal class RaktaCernos : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 48;
+        Item.damage = 49;
         Item.crit = 31;
         Item.knockBack = 4;
         Item.DamageType = DamageClass.Ranged;
@@ -35,8 +35,9 @@ internal class RaktaCernos : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.SoulofNight, 17);
-        recipe.AddTile(TileID.Anvils);
+        recipe.AddIngredient(ModContent.ItemType<Cernos>());
+        recipe.AddIngredient(ItemID.SoulofNight, 10);
+        recipe.AddTile(TileID.MythrilAnvil);
         recipe.Register();
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
