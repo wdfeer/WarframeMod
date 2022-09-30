@@ -10,11 +10,18 @@ internal class TownNPCWares : GlobalNPC
         switch (type)
         {
             case NPCID.Merchant:
-                shop.item[nextSlot] = new Item(ModContent.ItemType<MK1Paris>());
-                nextSlot++;
+                AddShopItem(ModContent.ItemType<MK1Paris>(), shop, ref nextSlot);
+                return;
+            case NPCID.GoblinTinkerer:
+                AddShopItem(ModContent.ItemType<Ballistica>(), shop, ref nextSlot);
                 return;
             default:
                 return;
         }
+    }
+    void AddShopItem(int itemType, Chest shop, ref int nextSlot)
+    {
+        shop.item[nextSlot] = new Item(itemType);
+        nextSlot++;
     }
 }

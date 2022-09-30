@@ -6,9 +6,9 @@ internal class Paris : ModItem
 {
     public override void SetDefaults()
     {
-        Item.damage = 17;
+        Item.damage = 27;
         Item.crit = 26;
-        Item.knockBack = 3f;
+        Item.knockBack = 3.2f;
         Item.DamageType = DamageClass.Ranged;
         Item.noMelee = true;
         Item.width = 14;
@@ -38,7 +38,13 @@ internal class Paris : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe.AddIngredient(ModContent.ItemType<MK1Paris>());
-        recipe.AddIngredient(ItemID.JungleSpores, 6);
+        recipe.AddIngredient(ItemID.DemoniteBar, 3);
+        recipe.AddTile(TileID.Anvils);
+        recipe.Register();
+
+        recipe = CreateRecipe();
+        recipe.AddIngredient(ModContent.ItemType<MK1Paris>());
+        recipe.AddIngredient(ItemID.CrimtaneBar, 3);
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
     }

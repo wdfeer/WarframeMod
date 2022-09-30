@@ -20,8 +20,8 @@ public class Ballistica : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.noMelee = true;
         Item.knockBack = 1;
-        Item.value = Item.sellPrice(silver: 60);
-        Item.rare = 1;
+        Item.value = Item.buyPrice(gold: 5);
+        Item.rare = 2;
         Item.UseSound = SoundID.Item5;
         Item.autoReuse = false;
         Item.shoot = ProjectileID.WoodenArrowFriendly;

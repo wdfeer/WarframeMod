@@ -12,7 +12,7 @@ public class Boar : ModItem
 
     public override void SetDefaults()
     {
-        Item.damage = 8;
+        Item.damage = 7;
         Item.crit = 6;
         Item.noMelee = true;
         Item.DamageType = DamageClass.Ranged;
@@ -24,7 +24,7 @@ public class Boar : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.knockBack = 1;
         Item.value = Item.buyPrice(silver: 60);
-        Item.rare = 2;
+        Item.rare = 1;
         Item.useAmmo = AmmoID.Bullet;
         Item.UseSound = new SoundStyle("WarframeMod/Content/Sounds/BoarPrimeSound").ModifySoundStyle(0.6f);
         Item.shoot = ProjectileID.Bullet;
@@ -34,12 +34,7 @@ public class Boar : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.LeadBar, 17);
-        recipe.AddTile(TileID.Anvils);
-        recipe.Register();
-
-        recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.IronBar, 17);
+        recipe.AddRecipeGroup(RecipeGroupID.IronBar, 17);
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
     }

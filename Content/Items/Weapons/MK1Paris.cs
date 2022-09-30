@@ -20,8 +20,8 @@ internal class MK1Paris : ModItem
         Item.height = 52;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.UseSound = SoundID.Item5;
-        Item.useTime = 38;
-        Item.useAnimation = 38;
+        Item.useTime = 33;
+        Item.useAnimation = 33;
         Item.rare = 1;
         Item.value = Item.buyPrice(silver: 15);
         Item.shoot = ProjectileID.WoodenArrowFriendly;

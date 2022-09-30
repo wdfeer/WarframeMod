@@ -6,11 +6,11 @@ public class Sobek : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("An automatic shotgun, shoots 4 pellets");
+        Tooltip.SetDefault("An automatic shotgun, shoots 4 pellets\n-40% ammo damage");
     }
     public override void SetDefaults()
     {
-        Item.damage = 6;
+        Item.damage = 9;
         Item.crit = 7;
         Item.DamageType = DamageClass.Ranged;
         Item.width = 42;
@@ -47,6 +47,7 @@ public class Sobek : ModItem
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
+        this.ModifyAmmoDamage(player, ref damage, 0.6f);
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width - 6);
         for (int i = 0; i < 4; i++)
         {
