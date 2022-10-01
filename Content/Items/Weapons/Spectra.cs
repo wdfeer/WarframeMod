@@ -25,7 +25,7 @@ public class Spectra : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.noMelee = true;
         Item.knockBack = 0.1f;
-        Item.value = Item.sellPrice(silver: 60);
+        Item.value = Item.sellPrice(silver: 50);
         Item.rare = 3;
         Item.autoReuse = true;
         Item.shoot = ModContent.ProjectileType<SpectraProjectile>();
@@ -38,8 +38,8 @@ public class Spectra : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.Wire, 5);
-        recipe.AddIngredient(ItemID.MeteoriteBar, 8);
+        recipe.AddIngredient(ItemID.Wire, 40);
+        recipe.AddIngredient(ItemID.MeteoriteBar, 12);
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
     }

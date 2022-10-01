@@ -17,6 +17,9 @@ internal class TownNPCWares : GlobalNPC
             case NPCID.GoblinTinkerer:
                 AddShopItem(ModContent.ItemType<Ballistica>(), shop, ref nextSlot);
                 return;
+            case NPCID.Mechanic:
+                AddShopItem(ModContent.ItemType<Spectra>(), shop, ref nextSlot).shopCustomPrice = Item.buyPrice(gold: 2);
+                return;
             default:
                 return;
         }
