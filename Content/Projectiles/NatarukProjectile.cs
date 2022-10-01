@@ -10,8 +10,6 @@ public class NatarukProjectile : ModProjectile
     public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.RubyBolt;
     public override void SetDefaults()
     {
-        Projectile.width = 40;
-        Projectile.height = 40;
         Projectile.tileCollide = false;
         Projectile.scale = 0f;
         Projectile.DamageType = DamageClass.Ranged;
@@ -39,14 +37,14 @@ public class NatarukProjectile : ModProjectile
                 {
                     for (int i = 0; i < 3; i++)
                     {
-                        Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Firework_Red, Scale: 1.33f);
+                        Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Firework_Red, Scale: 1.33f);
                     }
                 },
                 () =>
                 {
-                    for (int i = 0; i < 2; i++)
+                    for (int i = 0; i < 3; i++)
                     {
-                        Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RedTorch);
+                        Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RedTorch, Scale: 1.15f);
                     }
                 }
             }
@@ -128,6 +126,8 @@ public class NatarukProjectile : ModProjectile
     {
         launchedLevel = GetChargeLevel();
         int lvl = (int)launchedLevel;
+        int size = new int[] { 12, 16, 32, 28 }[lvl];
+        Projectile.Resize(size, size);
         Projectile.friendly = true;
         Projectile.extraUpdates = 9;
         Projectile.netUpdate = true;

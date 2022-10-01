@@ -53,7 +53,8 @@ public class BossBags : GlobalItem
                 {
                     ModContent.ItemType<HunterRecovery>(),
                     ModContent.ItemType<HunterCommand>(),
-                    ModContent.ItemType<Magnetize>()
+                    ModContent.ItemType<Magnetize>(),
+                    ModContent.ItemType<Gammacor>()
                 });
             case ItemID.DestroyerBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
