@@ -4,7 +4,7 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class FluxRifle : ModItem
 {
-    public const int DEFENSE_PENETRATION = 9;
+    public const int DEFENSE_PENETRATION = 12;
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"Doesn't consume ammo\n{DEFENSE_PENETRATION} Defense penetration");
@@ -34,23 +34,15 @@ public class FluxRifle : ModItem
     }
     public override void AddRecipes()
     {
+        var platinum = new RecipeGroup(() => "Any Platinum Bar", new int[] { ItemID.PlatinumBar, ItemID.GoldBar });
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.PlatinumBar, 9);
+        recipe.AddRecipeGroup(platinum, 9);
         recipe.AddIngredient(ItemID.TissueSample, 9);
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
+
         recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.GoldBar, 9);
-        recipe.AddIngredient(ItemID.TissueSample, 9);
-        recipe.AddTile(TileID.Anvils);
-        recipe.Register();
-        recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.PlatinumBar, 9);
-        recipe.AddIngredient(ItemID.ShadowScale, 9);
-        recipe.AddTile(TileID.Anvils);
-        recipe.Register();
-        recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.GoldBar, 9);
+        recipe.AddRecipeGroup(platinum, 9);
         recipe.AddIngredient(ItemID.ShadowScale, 9);
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
