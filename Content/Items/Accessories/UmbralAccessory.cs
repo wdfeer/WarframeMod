@@ -15,8 +15,13 @@ public abstract class UmbralAccessory : ModItem
     public abstract string GetCurrentUniqueTooltipValue(int umbraCount);
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
-        tooltips.Find(t => t.Name == "Tooltip0").Text = GetCurrentUniqueTooltipValue(umbraPower);
-        tooltips.Find(t => t.Name == "Tooltip1").Text = $"+{PERCENT_DAMAGE_REDUCTION_NOBOSS[umbraPower]}% damage reduction while no boss is alive";
+        var t0 = tooltips.Find(t => t.Name == "Tooltip0");
+        if (t0 == null)
+            return;
+        t0.Text = GetCurrentUniqueTooltipValue(umbraPower);
+        var t1 = tooltips.Find(t => t.Name == "Tooltip1");
+        if (t1 != null)
+            t1.Text = $"+{PERCENT_DAMAGE_REDUCTION_NOBOSS[umbraPower]}% damage reduction while no boss is alive";
     }
     public override void SetDefaults()
     {

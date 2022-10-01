@@ -11,7 +11,9 @@ public class HunterSynergy : HunterAccessory
     int critBonus = 0;
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
-        tooltips.Find(t => t.Name == "Tooltip1").Text = $"Current bonus: {critBonus}%";
+        var t1 = tooltips.Find(t => t.Name == "Tooltip1");
+        if (t1 != null)
+            t1.Text = $"Current bonus: {critBonus}%";
     }
     public override void SetDefaults()
     {

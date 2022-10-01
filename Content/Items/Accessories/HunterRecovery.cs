@@ -11,7 +11,9 @@ public class HunterRecovery : HunterAccessory
     int oldHealAmount = 1;
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
-        tooltips.Find(t => t.Name == "Tooltip0").Text = $"Summon hits heal {oldHealAmount} life, up to {HEAL_TIMES_PER_SECOND} times per second";
+        var t0 = tooltips.Find(t => t.Name == "Tooltip0");
+        if (t0 != null)
+            t0.Text = $"Summon hits heal {oldHealAmount} life, up to {HEAL_TIMES_PER_SECOND} times per second";
     }
     public override void SetDefaults()
     {
