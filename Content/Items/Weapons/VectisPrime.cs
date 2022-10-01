@@ -6,7 +6,7 @@ public class VectisPrime : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Shoots a high-velocity bullet that penetrates through 2 enemies\nHas to reload after every second shot");
+        Tooltip.SetDefault("Shoots a high-velocity bullet that penetrates enemies\nHas to reload after every second shot");
     }
     public override void SetDefaults()
     {
@@ -48,11 +48,9 @@ public class VectisPrime : ModItem
     {
         SoundEngine.PlaySound(new SoundStyle(SoundPath).ModifySoundStyle(), position);
 
-        var proj = this.ShootWith(player, source, position, velocity, type, damage, knockback, spawnOffset: Item.width - 3);
-        (Mod as WarframeMod).SetProjectileExtraUpdatesNetSafe(proj, proj.extraUpdates + 3);
-        proj.penetrate = 2;
-        proj.usesLocalNPCImmunity = true;
-        proj.localNPCHitCooldown = -1;
+        var proj = this.ShootWith(player, source, position, velocity, ProjectileID.SniperBullet, damage, knockback, spawnOffset: Item.width - 3);
+        proj.friendly = true;
+        (Mod as WarframeMod).SetProjectileExtraUpdatesNetSafe(proj, proj.extraUpdates + 1);
 
         reloading = !reloading;
 

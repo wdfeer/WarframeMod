@@ -5,7 +5,7 @@ public class Vectis : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Shots penetrate an enemy");
+        Tooltip.SetDefault("Shots penetrate enemies");
     }
     public override void SetDefaults()
     {
@@ -20,7 +20,7 @@ public class Vectis : ModItem
         Item.noMelee = true;
         Item.knockBack = 6;
         Item.value = Item.sellPrice(silver: 75);
-        Item.rare = 4;
+        Item.rare = 3;
         Item.UseSound = SoundID.Item40;
         Item.autoReuse = false;
         Item.shootSpeed = 16f;
@@ -39,11 +39,8 @@ public class Vectis : ModItem
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        var proj = this.ShootWith(player, source, position, velocity, type, damage, knockback, spawnOffset: Item.width - 3);
-        (Mod as WarframeMod).SetProjectileExtraUpdatesNetSafe(proj, proj.extraUpdates + 1);
-        proj.penetrate = 2;
-        proj.usesLocalNPCImmunity = true;
-        proj.localNPCHitCooldown = -1;
+        var proj = this.ShootWith(player, source, position, velocity, ProjectileID.SniperBullet, damage, knockback, spawnOffset: 16);
+        proj.friendly = true;
         return false;
     }
 }

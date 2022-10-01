@@ -80,10 +80,8 @@ internal class CritPlayer : ModPlayer
         }
         else
             critLevel = GetCritLevel(proj.CritChance);
-        if (!crit)
-            return;
         CritPlayerHooks[] hookers = GetHookers();
-        if (critLevel < 1)
+        if (critLevel < 1 && crit)
             critLevel = 1;
         float mult = GetProjectileCritMult(proj);
         int oldDamage = damage;
@@ -91,14 +89,15 @@ internal class CritPlayer : ModPlayer
         {
             h.ModifyHitNPCWithProjPreCrit(proj, target, ref damage, ref knockback, ref crit, ref mult, ref critLevel, ref hitDirection);
         }
-        damage = (int)(damage * mult * critLevel);
+        if (crit)
+            damage = (int)(damage * mult * critLevel);
         foreach (var h in hookers)
         {
             h.OnHitNPCWithProjPostCrit(proj, target, oldDamage, knockback, crit, mult, critLevel, damage * (crit ? 2 : 1));
         }
         OverCritVisuals(target, knockback, critLevel);
 
-        proj.GetGlobalProjectile<BuffGlobalProjectile>().HitNPCAfterCritModifiersApplied(target, damage * 2);
+        proj.GetGlobalProjectile<BuffGlobalProjectile>().HitNPCAfterCritModifiersApplied(target, damage * (crit ? 2 : 1));
     }
     public static Color GetCritColor(int critLvl)
     {

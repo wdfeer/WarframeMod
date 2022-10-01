@@ -18,7 +18,7 @@ internal class Paris : ModItem
         Item.useTime = 39;
         Item.useAnimation = 39;
         Item.rare = 2;
-        Item.value = Item.sellPrice(silver: 40);
+        Item.value = Item.sellPrice(silver: 33);
         Item.shoot = ProjectileID.WoodenArrowFriendly;
         Item.shootSpeed = 16f;
         Item.useAmmo = AmmoID.Arrow;

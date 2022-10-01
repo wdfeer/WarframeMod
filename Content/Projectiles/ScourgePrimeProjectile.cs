@@ -1,10 +1,13 @@
+using WarframeMod.Common.GlobalProjectiles;
+
 namespace WarframeMod.Content.Projectiles;
-public class ScourgeProjectile : ModProjectile
+
+public class ScourgePrimeProjectile : ModProjectile
 {
     public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.EmeraldBolt;
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Scourge");
+        DisplayName.SetDefault("Scourge Prime");
     }
     public override void SetDefaults()
     {
@@ -15,7 +18,7 @@ public class ScourgeProjectile : ModProjectile
     const int numOfProjectilesSpawnedOnKill = 5;
     public override void Kill(int timeLeft)
     {
-        Vector2 launchVelocity = new Vector2(-4, 0);
+        Vector2 launchVelocity = new Vector2(-6, 0);
         launchVelocity = launchVelocity.RotatedByRandom(MathHelper.Pi);
         for (int i = 0; i < numOfProjectilesSpawnedOnKill; i++)
         {
@@ -23,9 +26,12 @@ public class ScourgeProjectile : ModProjectile
 
             int projectileID = Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), Projectile.Center, launchVelocity, ProjectileID.EmeraldBolt, Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
             Projectile projectile = Main.projectile[projectileID];
-            projectile.timeLeft = 45;
+            projectile.timeLeft = 33;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 12;
+            projectile.localNPCHitCooldown = 7;
+            projectile.GetGlobalProjectile<BuffGlobalProjectile>().Add(new Common.BuffChance(BuffID.Ichor, 300, 0.2f));
+            projectile.GetGlobalProjectile<BuffGlobalProjectile>().Add(new Common.BuffChance(BuffID.CursedInferno, 300, 0.2f));
+
         }
     }
 }
