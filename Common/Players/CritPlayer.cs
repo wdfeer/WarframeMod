@@ -1,7 +1,9 @@
 ﻿using Steamworks;
 using WarframeMod.Common.Configs;
+using WarframeMod.Common.GlobalItems;
 using WarframeMod.Common.GlobalNPCs;
 using WarframeMod.Common.GlobalProjectiles;
+using WarframeMod.Content.Buffs;
 using WarframeMod.Content.Items.Accessories;
 using WarframeMod.Content.Items.Weapons;
 
@@ -51,24 +53,26 @@ internal class CritPlayer : ModPlayer
     }
     public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
     {
-        if (!crit)
-            return;
         CritPlayerHooks[] hookers = GetHookers();
         var critLevel = GetCritLevel(Player.GetWeaponCrit(item));
-        if (critLevel < 1)
+        if (critLevel < 1 && crit)
             critLevel = 1;
-        float mult = critMultiplierPlayer;
+        float mult = critMultiplierPlayer * item.GetGlobalItem<CritGlobalItem>().critMultiplier;
         int oldDamage = damage;
         foreach (var h in hookers)
         {
             h.ModifyHitNPCPreCrit(item, target, ref damage, ref knockback, ref crit, ref mult, ref critLevel);
         } 
-        damage = (int)(damage * mult * critLevel);
+        if (crit)
+            damage = (int)(damage * mult * critLevel);
         OverCritVisuals(target, knockback, critLevel);
+        int postCritDmg = damage * (crit ? 2 : 1);
         foreach (var h in hookers)
         {
-            h.OnHitNPCPostCrit(item, target, oldDamage, knockback, crit, mult, critLevel, damage * (crit ? 2 : 1));
-        } 
+            h.OnHitNPCPostCrit(item, target, oldDamage, knockback, crit, mult, critLevel, postCritDmg);
+        }
+        if (Main.rand.NextFloat() < item.GetGlobalItem<BleedingGlobalItem>().bleedingChance)
+            BleedingBuff.CreateBleed(postCritDmg, target);
     }
     public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
     {

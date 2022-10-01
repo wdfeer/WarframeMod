@@ -2,7 +2,7 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class Reach : ModItem
 {
-    public const int ABSOLUTE_RANGE_BONUS = 64;
+    public const int ABSOLUTE_RANGE_BONUS = 76;
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"+{ABSOLUTE_RANGE_BONUS / 15} tiles of True Melee range");
@@ -13,7 +13,7 @@ public class Reach : ModItem
         Item.width = 32;
         Item.height = 32;
         Item.rare = 2;
-        Item.value = Item.buyPrice(silver: 66);
+        Item.value = Item.sellPrice(silver: 80);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
