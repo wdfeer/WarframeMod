@@ -38,7 +38,11 @@ public class BossBags : GlobalItem
                     ModContent.ItemType<Intensify>()
                 });
             case ItemID.SkeletronBossBag:
-                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Desecrate>(), 3);
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
+                {
+                    ModContent.ItemType<Desecrate>(),
+                    ModContent.ItemType<Hate>(),
+                });
             case ItemID.QueenBeeBossBag:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Kohm>(), 2);
             case ItemID.WallOfFleshBossBag:
