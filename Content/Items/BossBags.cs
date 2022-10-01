@@ -20,7 +20,11 @@ public class BossBags : GlobalItem
         switch (bagType)
         {
             case ItemID.KingSlimeBossBag:
-                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Tetra>(), 2);
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
+                {
+                    ModContent.ItemType<Tetra>(),
+                    ModContent.ItemType<Vitality>(),
+                });
             case ItemID.EyeOfCthulhuBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
                 {
