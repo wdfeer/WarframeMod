@@ -8,7 +8,8 @@ internal class DebuffDamageGlobalNPC : GlobalNPC
     public override bool InstancePerEntity => true;
     public enum SourceId
     {
-        InfectedClip = 0,
+        InfectedClip,
+        MalignantForce,
         Other
     }
     public void AddBuffDamage(SourceId id, int buffType, int dps)
