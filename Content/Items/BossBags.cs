@@ -24,6 +24,7 @@ public class BossBags : GlobalItem
                 {
                     ModContent.ItemType<Tetra>(),
                     ModContent.ItemType<Vitality>(),
+                    ModContent.ItemType<InfectedClip>(),
                 });
             case ItemID.EyeOfCthulhuBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
