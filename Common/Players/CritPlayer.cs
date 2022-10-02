@@ -79,7 +79,7 @@ internal class CritPlayer : ModPlayer
         int critLevel;
         if (proj.DamageType == DamageClass.Summon || proj.DamageType == DamageClass.SummonMeleeSpeed)
         {
-            critLevel = GetCritLevel(summonCritChance);
+            critLevel = GetCritLevel(proj.CritChance + summonCritChance);
             crit = critLevel > 0;
         }
         else
