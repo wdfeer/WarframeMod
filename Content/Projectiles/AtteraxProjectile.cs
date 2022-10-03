@@ -33,7 +33,6 @@ public class AtteraxProjectile : ModProjectile
 	{
 		if (Projectile.owner != Main.myPlayer)
 			return;
-		Projectile.CritChance = Atterax.GetRealCrit(Main.LocalPlayer);
     }
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
 		Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;

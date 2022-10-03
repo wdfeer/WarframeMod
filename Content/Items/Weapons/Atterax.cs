@@ -10,7 +10,7 @@ using WarframeMod.Content.Projectiles;
 namespace WarframeMod.Content.Items.Weapons;
 public class Atterax : ModItem
 {
-	public const float BASE_CRIT_CHANCE_PERCENT = 25f;
+	public const int BASE_CRIT_CHANCE = 21;
 	public const float EXTRA_CRIT_MULT = 0.5f;
 	public const float BLEED_CHANCE = 0.5f;
 	public const float DMG_MULT_PER_MINION_SLOT = 0.25f;
@@ -23,25 +23,9 @@ Damage is increased by {DMG_MULT_PER_MINION_SLOT * 100}% for each empty minion s
 Affected by Reach and Primed Reach
 Damage is not decreased by the number of enemies hit");
 	}
-	public static int GetVisualCrit(Player player)
-	{
-        var critter = player.GetModPlayer<CritPlayer>();
-        return (int)(GetRealCrit(player) + critter.summonCritChance);
-    }
-	public static int GetRealCrit(Player player)
-	{
-        var critter = player.GetModPlayer<CritPlayer>();
-        return (int)(BASE_CRIT_CHANCE_PERCENT * critter.BaseCritChanceMult + player.GetCritChance(DamageClass.Generic));
-    }
-	public override void ModifyTooltips(List<TooltipLine> tooltips)
-	{
-		if (tooltips.Any(t => t.Name == "CritChance"))
-			return;
-		int crit = GetVisualCrit(Main.LocalPlayer);
-		tooltips.Insert(tooltips.FindIndex(t => t.Name == "Damage") + 1, new TooltipLine(Mod, "CritChance", $"{crit}% critical strike chance"));
-	}
 	public override void SetDefaults() {
-		Item.DefaultToWhip(ModContent.ProjectileType<AtteraxProjectile>(), 16, 3, 4, 40); 
+		Item.DefaultToWhip(ModContent.ProjectileType<AtteraxProjectile>(), 16, 3, 4, 40);
+		Item.crit = BASE_CRIT_CHANCE;
 		Item.shootSpeed = 3.5f;
 		Item.rare = 3;
 	}

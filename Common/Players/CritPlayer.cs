@@ -1,10 +1,8 @@
-﻿using Steamworks;
-using WarframeMod.Common.Configs;
+﻿using WarframeMod.Common.Configs;
 using WarframeMod.Common.GlobalItems;
 using WarframeMod.Common.GlobalNPCs;
 using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Buffs;
-using WarframeMod.Content.Items.Accessories;
 using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Common.Players;
@@ -28,6 +26,8 @@ internal class CritPlayer : ModPlayer
     {
         if (item.damage > 0 && !GetItemTypesThatDoNotUseRelativeCrit().Contains(item.type))
             crit += (item.crit + 4) * relativeCritChance;
+        if (IsItemSummon(item))
+            crit += summonCritChance;
     }
     public int GetCritLevel(int critChance)
     {
@@ -62,7 +62,7 @@ internal class CritPlayer : ModPlayer
         foreach (var h in hookers)
         {
             h.ModifyHitNPCPreCrit(item, target, ref damage, ref knockback, ref crit, ref mult, ref critLevel);
-        } 
+        }
         if (crit)
             damage = (int)(damage * mult * critLevel);
         OverCritVisuals(target, knockback, critLevel);
@@ -79,7 +79,7 @@ internal class CritPlayer : ModPlayer
         int critLevel;
         if (proj.DamageType == DamageClass.Summon || proj.DamageType == DamageClass.SummonMeleeSpeed)
         {
-            critLevel = GetCritLevel(proj.CritChance + summonCritChance);
+            critLevel = GetCritLevel(proj.CritChance);
             crit = critLevel > 0;
         }
         else
@@ -150,6 +150,7 @@ internal class CritPlayer : ModPlayer
             return preCrit;
         return (int)(preCrit * 2 * critMult * critLvl);
     }
+    public static bool IsItemSummon(Item item) => item.DamageType == DamageClass.Summon || item.DamageType == DamageClass.SummonMeleeSpeed;
 }
 public abstract class CritPlayerHooks : ModPlayer
 {

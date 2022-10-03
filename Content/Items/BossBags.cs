@@ -55,7 +55,8 @@ public class BossBags : GlobalItem
                 {
                     ModContent.ItemType<Bite>(),
                     ModContent.ItemType<SplitChamber>(),
-                    ModContent.ItemType<VitalSense>()
+                    ModContent.ItemType<VitalSense>(),
+                    ModContent.ItemType<MaimingStrike>()
                 });
             case ItemID.QueenSlimeBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
