@@ -49,14 +49,17 @@ public class BossBags : GlobalItem
                     ModContent.ItemType<Hate>(),
                 });
             case ItemID.QueenBeeBossBag:
-                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Kohm>(), 2);
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
+                {
+                    ModContent.ItemType<Kohm>(),
+                    ModContent.ItemType<MaimingStrike>()
+                });
             case ItemID.WallOfFleshBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
                 {
                     ModContent.ItemType<Bite>(),
                     ModContent.ItemType<SplitChamber>(),
                     ModContent.ItemType<VitalSense>(),
-                    ModContent.ItemType<MaimingStrike>()
                 });
             case ItemID.QueenSlimeBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]

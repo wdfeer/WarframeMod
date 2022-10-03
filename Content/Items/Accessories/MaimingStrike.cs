@@ -14,11 +14,11 @@ public class MaimingStrike : ModItem
         Item.accessory = true;
         Item.width = 44;
         Item.height = 64;
-        Item.rare = 4;
+        Item.rare = 3;
         Item.value = Item.sellPrice(gold: 1);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetCritChance(DamageClass.SummonMeleeSpeed) += 150; //DEBUG
+        player.GetCritChance(DamageClass.SummonMeleeSpeed) += WHIP_CRIT;
     }
 }
