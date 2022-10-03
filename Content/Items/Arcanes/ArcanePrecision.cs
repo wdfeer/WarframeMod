@@ -5,13 +5,11 @@ namespace WarframeMod.Content.Items.Arcanes;
 public class ArcanePrecision : Arcane
 {
     public const int CHANCE = 20;
-    public static float DamageBuff => Main.hardMode ? DAMAGE_BUFF_HARDMODE : DAMAGE_BUFF_PREHARDMODE;
-    public const float DAMAGE_BUFF_PREHARDMODE = 0.1f;
-    public const float DAMAGE_BUFF_HARDMODE = 0.16f;
+    public const float DAMAGE_BUFF = 0.15f;
     public const int BUFF_DURATION = 960;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault($"On ranged Critical hit: {CHANCE}% chance for +{(int)(DAMAGE_BUFF_PREHARDMODE * 100)}% Damage (+{(int)(DAMAGE_BUFF_HARDMODE * 100)}% in Hardmode) for {BUFF_DURATION / 60} seconds");
+        Tooltip.SetDefault($"On ranged critical strike: {CHANCE}% chance for +{DAMAGE_BUFF * 100}% for {BUFF_DURATION / 60} seconds");
     }
     public override void UpdateArcane(Player player)
     {

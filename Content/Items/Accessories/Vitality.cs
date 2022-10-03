@@ -4,7 +4,7 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class Vitality : ModItem
 {
-    public const int EXTRA_MAX_LIFE = 50;
+    public const int EXTRA_MAX_LIFE = 60;
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"+{EXTRA_MAX_LIFE} max life");

@@ -4,12 +4,12 @@ namespace WarframeMod.Content.Items.Arcanes;
 
 public class ArcaneFury : Arcane
 {
-    public const int CHANCE = 20;
-    public const int DAMAGE_BUFF = 14;
+    public const int CHANCE = 25;
+    public const int DAMAGE_BUFF = 15;
     public const int BUFF_DURATION = 960;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault($"On Critical hit: {CHANCE}% chance for +{DAMAGE_BUFF}% melee Damage for {BUFF_DURATION / 60} seconds");
+        Tooltip.SetDefault($"On critical strike: {CHANCE}% chance for +{DAMAGE_BUFF}% melee damage for {BUFF_DURATION / 60} seconds");
     }
     public override void UpdateArcane(Player player)
     {
