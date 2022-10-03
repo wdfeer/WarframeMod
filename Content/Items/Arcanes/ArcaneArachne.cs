@@ -8,7 +8,7 @@ public class ArcaneArachne : Arcane
     public const int COOLDOWN_DURATION = 1800;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault($"+{DAMAGE_BUFF}% Damage\nWhen damaged: disable the above effect for {COOLDOWN_DURATION / 60} seconds");
+        Tooltip.SetDefault($"+{DAMAGE_BUFF}% damage\nWhen damaged: disable the above effect for {COOLDOWN_DURATION / 60} seconds");
     }
     public override void UpdateArcane(Player player)
     {

@@ -1,11 +1,13 @@
+using WarframeMod.Common.GlobalItems;
+
 namespace WarframeMod.Content.Items.Accessories;
 
 public class PrimedReach : ModItem
 {
-    public const int ABSOLUTE_RANGE_BONUS = 144;
+    public const int ABSOLUTE_RANGE_BONUS = 150;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault($"+{ABSOLUTE_RANGE_BONUS / 15} tiles of True Melee range");
+        Tooltip.SetDefault($"+{ABSOLUTE_RANGE_BONUS / 15} tiles of True Melee range\n+{WhipRange.GetWhipExtraRange(ABSOLUTE_RANGE_BONUS) * 100}% whip range");
     }
     public override void SetDefaults()
     {
