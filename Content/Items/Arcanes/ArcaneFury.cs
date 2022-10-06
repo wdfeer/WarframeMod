@@ -6,7 +6,7 @@ public class ArcaneFury : Arcane
 {
     public const int CHANCE = 25;
     public const int DAMAGE_BUFF = 15;
-    public const int BUFF_DURATION = 960;
+    public const int BUFF_DURATION = 60 * 12;
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"On critical strike: {CHANCE}% chance for +{DAMAGE_BUFF}% melee damage for {BUFF_DURATION / 60} seconds");
@@ -21,7 +21,6 @@ class ArcaneFuryPlayer : ModPlayer
     public bool enabled;
     public override void ResetEffects()
         => enabled = false;
-    public int currentDefense = 0;
     void ApplyBuff()
     {
         if (!enabled)

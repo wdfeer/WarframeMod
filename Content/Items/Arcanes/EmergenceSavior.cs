@@ -6,7 +6,7 @@ namespace WarframeMod.Content.Items.Arcanes;
 
 public class EmergenceSavior : Arcane
 {
-    public const float LIFE_RESTORATION = 0.2f;
+    public const float LIFE_RESTORATION = 0.25f;
     public const int EXTRA_IFRAMES = 120;
     public const int COOLDOWN = 60 * 60;
     public override void SetStaticDefaults()

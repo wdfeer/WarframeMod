@@ -35,7 +35,7 @@ internal class Cernos : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe.AddIngredient(ModContent.ItemType<Paris>());
-        recipe.AddIngredient(ItemID.Hellstone, 7);
+        recipe.AddIngredient(ItemID.HellstoneBar, 7);
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
     }

@@ -9,7 +9,7 @@ public class ArcaneStrike : Arcane
     public const int BUFF_DURATION = 600;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault($"On hit: {CHANCE}% chance for +{SPEED_BUFF}% Melee Speed for {BUFF_DURATION / 60} seconds");
+        Tooltip.SetDefault($"On hit: {CHANCE}% chance for +{SPEED_BUFF}% melee speed for {BUFF_DURATION / 60} seconds");
     }
     public override void UpdateArcane(Player player)
     {

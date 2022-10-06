@@ -5,7 +5,7 @@ namespace WarframeMod.Content.Items.Arcanes;
 public class ArcaneVictory : Arcane
 {
     public const int CHANCE = 20;
-    public const float LIFE_REGEN = 0.005f;
+    public const float LIFE_REGEN = 0.0045f;
     public const int BUFF_DURATION = 600;
     public override void SetStaticDefaults()
     {
@@ -47,7 +47,9 @@ class ArcaneVictoryPlayer : ModPlayer
             healTimer++;
             if (healTimer > healCooldown && Player.statLife < Player.statLifeMax2)
             {
-                Player.Heal((int)MathF.Round(HealPerSecond));
+                int floored = (int)HealPerSecond;
+                int extraRandom = (Main.rand.NextFloat() < HealPerSecond % 1 ? 1 : 0);
+                Player.Heal(floored + extraRandom);
                 healTimer = 0;
             }
         }
