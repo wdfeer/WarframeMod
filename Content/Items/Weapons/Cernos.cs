@@ -10,7 +10,7 @@ internal class Cernos : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 33;
+        Item.damage = 31;
         Item.crit = 32;
         Item.knockBack = 7;
         Item.DamageType = DamageClass.Ranged;
@@ -22,7 +22,7 @@ internal class Cernos : ModItem
         Item.useTime = 36;
         Item.useAnimation = 36;
         Item.rare = 3;
-        Item.value = 6000;
+        Item.value = Item.sellPrice(gold: 1);
         Item.shoot = ProjectileID.WoodenArrowFriendly;
         Item.shootSpeed = 16f;
         Item.useAmmo = AmmoID.Arrow;

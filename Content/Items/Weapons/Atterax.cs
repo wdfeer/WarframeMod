@@ -25,7 +25,7 @@ Increased benefit from Reach and Primed Reach
 Damage is not decreased by the number of enemies hit");
 	}
 	public override void SetDefaults() {
-		Item.DefaultToWhip(ModContent.ProjectileType<AtteraxProjectile>(), 22, 3, 4, 40);
+		Item.DefaultToWhip(ModContent.ProjectileType<AtteraxProjectile>(), 18, 3, 4, 40);
 		Item.crit = BASE_CRIT_CHANCE;
 		Item.shootSpeed = 4.5f;
 		Item.rare = 3;

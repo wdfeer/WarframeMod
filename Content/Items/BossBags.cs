@@ -47,6 +47,7 @@ public class BossBags : GlobalItem
                 {
                     ModContent.ItemType<Desecrate>(),
                     ModContent.ItemType<Hate>(),
+                    ModContent.ItemType<Baza>()
                 });
             case ItemID.QueenBeeBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]

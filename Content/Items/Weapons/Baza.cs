@@ -12,7 +12,7 @@ public class Baza : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 5;
+        Item.damage = 6;
         Item.crit = 22;
         Item.DamageType = DamageClass.Ranged;
         Item.width = 45;
@@ -22,7 +22,7 @@ public class Baza : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.noMelee = true;
         Item.knockBack = 0;
-        Item.value = 15000;
+        Item.value = Item.sellPrice(gold: 2);
         Item.rare = 3;
         Item.UseSound = SoundID.Item11.ModifySoundStyle(0.1f);
         Item.autoReuse = true;
