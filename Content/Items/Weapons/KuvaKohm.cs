@@ -91,7 +91,7 @@ Linear damage falloff starting at 36 tiles
             proj.timeLeft = 120;
             proj.GetGlobalProjectile<FalloffGlobalProjectile>().SetFalloff(position, 16 * 36, 16 * 48, 0.6f);
             var buffProj = proj.GetGlobalProjectile<BuffGlobalProjectile>();
-            buffProj.bleedingChance = 0.35f;
+            buffProj.AddBleed(0.35f);
         }
         return false;
     }

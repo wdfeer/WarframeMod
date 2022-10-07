@@ -47,8 +47,8 @@ public class ScourgePrime : ModItem
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width * 0.6f);
         var projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
         var buffer = projectile.GetGlobalProjectile<BuffGlobalProjectile>();
-        buffer.Add(new Common.BuffChance(BuffID.Ichor, 460, 0.25f));
-        buffer.Add(new Common.BuffChance(BuffID.CursedInferno, 460, 0.25f));
+        buffer.AddBuff(new Common.BuffChance(BuffID.Ichor, 460, 0.25f));
+        buffer.AddBuff(new Common.BuffChance(BuffID.CursedInferno, 460, 0.25f));
         return false;
     }
 }

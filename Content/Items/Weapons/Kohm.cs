@@ -80,7 +80,7 @@ public class Kohm : ModItem
             proj.timeLeft = 120;
             proj.GetGlobalProjectile<FalloffGlobalProjectile>().SetFalloff(position, 16 * 32, 16 * 48, 0.4f);
             var buffProj = proj.GetGlobalProjectile<BuffGlobalProjectile>();
-            buffProj.bleedingChance = 0.33f;
+            buffProj.AddBleed(0.4f);
         }
         return false;
     }

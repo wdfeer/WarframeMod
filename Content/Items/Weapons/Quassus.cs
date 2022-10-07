@@ -51,7 +51,8 @@ public class Quassus : ModItem
         {
             var proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
             velocity = velocity.RotatedBy(MathHelper.ToRadians(-spreadInDegrees / 6));
-            proj.GetGlobalProjectile<BuffGlobalProjectile>().bleedingChance = 1;
+            var buffProj = proj.GetGlobalProjectile<BuffGlobalProjectile>();
+            buffProj.stackableBuffChances.Add(new Common.StackableBuffChance(Common.StackableBuff.Bleed, 1f));
         }
         SoundEngine.PlaySound(SoundID.Item1, position);
 

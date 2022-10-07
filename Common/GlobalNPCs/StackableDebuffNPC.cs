@@ -62,7 +62,7 @@ internal class StackableDebuffNPC : GlobalNPC
             electroTimer = 0;
         }
         electroTimer++;
-
-        Dust.NewDust(npc.position, npc.width, npc.height, DustID.Electric);
+        if (Main.rand.NextBool(3))
+            Dust.NewDust(npc.position, npc.width, npc.height, DustID.Electric);
     }
 }

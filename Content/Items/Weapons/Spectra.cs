@@ -47,7 +47,7 @@ public class Spectra : ModItem
     {
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width - 4);
         Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-        projectile.GetGlobalProjectile<BuffGlobalProjectile>().bleedingChance = 0.4f;
+        projectile.GetGlobalProjectile<BuffGlobalProjectile>().AddBleed(0.4f);
         return false;
     }
 }

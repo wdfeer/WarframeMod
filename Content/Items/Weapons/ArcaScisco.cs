@@ -57,7 +57,7 @@ public class ArcaScisco : ModItem
             player.AddBuff(Mod.Find<ModBuff>("ArcaSciscoBuff").Type, 180);
             player.GetModPlayer<ArcaSciscoPlayer>().stacks++;
         };
-        proj.GetGlobalProjectile<BuffGlobalProjectile>().bleedingChance += 5 * stacks + 13;
+        proj.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances.Add(new Common.StackableBuffChance(Common.StackableBuff.Bleed, stacks * 5 + 13));
 
         return false;
     }

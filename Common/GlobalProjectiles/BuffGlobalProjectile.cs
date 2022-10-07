@@ -6,24 +6,17 @@ namespace WarframeMod.Common.GlobalProjectiles;
 internal class BuffGlobalProjectile : GlobalProjectile
 {
     public override bool InstancePerEntity => true;
-    public float bleedingChance = 0;
-    public float electricityChance = 0;
+    public List<StackableBuffChance> stackableBuffChances = new List<StackableBuffChance>();
+    public void AddBleed(float chance) => stackableBuffChances.Add(new StackableBuffChance(StackableBuff.Bleed, chance));
+    public void AddElectro(float chance) => stackableBuffChances.Add(new StackableBuffChance(StackableBuff.Electro, chance));
     public List<BuffChance> buffChances = new List<BuffChance>();
-    public void Add(BuffChance bc)
+    public void AddBuff(BuffChance bc)
     {
         buffChances.Add(bc);
     }
     public void HitNPCAfterCritModifiersApplied(NPC target, int damageAfterCrit)
     {
         BuffChance.ApplyBuffs(target, buffChances);
-        var debuffer = target.GetGlobalNPC<StackableDebuffNPC>();
-        if (Main.rand.NextFloat() < bleedingChance)
-        {
-            BleedingBuff.Create(damageAfterCrit, target);
-        }
-        if (Main.rand.NextFloat() < electricityChance)
-        {
-            ElectricityBuff.Create(damageAfterCrit, target);
-        }
+        StackableBuffChance.ApplyBuffs(target, stackableBuffChances, damageAfterCrit);
     }
 }

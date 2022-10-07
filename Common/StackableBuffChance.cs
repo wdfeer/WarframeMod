@@ -1,14 +1,14 @@
 ﻿using WarframeMod.Common.GlobalNPCs;
 
 namespace WarframeMod.Common;
-
+public enum StackableBuff
+{
+    Bleed,
+    Electro
+}
 public struct StackableBuffChance
 {
-    public enum StackableBuff
-    {
-        Bleed,
-        Electro
-    }
+
     StackableBuff type;
     float chance;
     public StackableBuffChance(StackableBuff type, float chance)

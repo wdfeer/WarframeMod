@@ -29,8 +29,8 @@ public class ScourgePrimeProjectile : ModProjectile
             projectile.timeLeft = 33;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 7;
-            projectile.GetGlobalProjectile<BuffGlobalProjectile>().Add(new Common.BuffChance(BuffID.Ichor, 300, 0.2f));
-            projectile.GetGlobalProjectile<BuffGlobalProjectile>().Add(new Common.BuffChance(BuffID.CursedInferno, 300, 0.2f));
+            projectile.GetGlobalProjectile<BuffGlobalProjectile>().AddBuff(new Common.BuffChance(BuffID.Ichor, 300, 0.2f));
+            projectile.GetGlobalProjectile<BuffGlobalProjectile>().AddBuff(new Common.BuffChance(BuffID.CursedInferno, 300, 0.2f));
 
         }
     }

@@ -20,8 +20,8 @@ public class AtteraxProjectile : ModProjectile
 
 	public override void SetDefaults() {
 		Projectile.DefaultToWhip();
-		Projectile.GetGlobalProjectile<BuffGlobalProjectile>().bleedingChance = Atterax.BLEED_CHANCE;
-		Projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier += Atterax.EXTRA_CRIT_MULT;
+        Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances = new() { new Common.StackableBuffChance(Common.StackableBuff.Bleed, Atterax.BLEED_CHANCE) };
+        Projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier += Atterax.EXTRA_CRIT_MULT;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = -1;
     }

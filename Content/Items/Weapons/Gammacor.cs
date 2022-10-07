@@ -39,7 +39,7 @@ public class Gammacor : ModItem
     {
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width - 4);
         Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-        projectile.GetGlobalProjectile<BuffGlobalProjectile>().Add(new Common.BuffChance(BuffID.Confused, 180, 0.2f));
+        projectile.GetGlobalProjectile<BuffGlobalProjectile>().AddBuff(new Common.BuffChance(BuffID.Confused, 180, 0.2f));
         return false;
     }
 }

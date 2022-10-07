@@ -21,6 +21,6 @@ public class HighVoltage : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         BuffPlayer buffman = player.GetModPlayer<BuffPlayer>();
-        buffman.stackableBuffsOnHitNPC.Add(new StackableBuffChance(StackableBuffChance.StackableBuff.Electro, ELECTRO_CHANCE_PERCENT));
+        buffman.stackableBuffsOnHitNPC.Add(new StackableBuffChance(StackableBuff.Electro, ELECTRO_CHANCE_PERCENT));
     }
 }

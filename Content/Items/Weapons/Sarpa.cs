@@ -48,7 +48,8 @@ public class Sarpa : ModItem
         projectile.DamageType = DamageClass.Melee;
         projectile.usesLocalNPCImmunity = true;
         projectile.localNPCHitCooldown = 2;
-        projectile.GetGlobalProjectile<BuffGlobalProjectile>().bleedingChance = 0.28f;
+        var buffProj = projectile.GetGlobalProjectile<BuffGlobalProjectile>();
+        buffProj.stackableBuffChances.Add(new Common.StackableBuffChance(Common.StackableBuff.Bleed, 0.28f));
 
         return false;
     }
