@@ -74,11 +74,15 @@ public class BossBags : GlobalItem
             case ItemID.DestroyerBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
                 {
-                    ModContent.ItemType<KuvaNukor>(),
-                    ModContent.ItemType<Opticor>()
+                    ModContent.ItemType<Opticor>(),
+                    ModContent.ItemType<Lecta>()
                 });
             case ItemID.SkeletronPrimeBossBag:
-                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Acceltra>(), 2);
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
+                {
+                    ModContent.ItemType<KuvaNukor>(),
+                    ModContent.ItemType<Acceltra>()
+                });
             case ItemID.TwinsBossBag:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Vaporize>(), 2);
             case ItemID.PlanteraBossBag:

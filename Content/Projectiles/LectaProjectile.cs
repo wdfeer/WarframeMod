@@ -11,17 +11,16 @@ using WarframeMod.Content.Items.Accessories;
 using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Projectiles;
-public class AtteraxProjectile : ModProjectile
+public class LectaProjectile : ModProjectile
 {
 	public override void SetStaticDefaults() {
-		// This makes the projectile use whip collision detection and allows flasks to be applied to it.
 		ProjectileID.Sets.IsAWhip[Type] = true;
 	}
 
 	public override void SetDefaults() {
 		Projectile.DefaultToWhip();
-        Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances = new() { new Common.StackableBuffChance(Common.StackableBuff.Bleed, Atterax.BLEED_CHANCE) };
-        Projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier += Atterax.EXTRA_CRIT_MULT;
+        Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances = new() { new Common.StackableBuffChance(Common.StackableBuff.Electro, Lecta.ELECTRO_CHANCE) };
+		Projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 0.75f;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = -1;
     }
@@ -45,7 +44,7 @@ public class AtteraxProjectile : ModProjectile
 			Vector2 diff = list[i + 1] - element;
 
 			float rotation = diff.ToRotation() - MathHelper.PiOver2;
-			Color color = Lighting.GetColor(element.ToTileCoordinates(), Color.Gray);
+			Color color = Lighting.GetColor(element.ToTileCoordinates(), Color.DarkCyan);
 			Vector2 scale = new Vector2(1, (diff.Length() + 2) / frame.Height);
 
 			Main.EntitySpriteDraw(texture, pos - Main.screenPosition, frame, color, rotation, origin, scale, SpriteEffects.None, 0);
