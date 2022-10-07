@@ -1,6 +1,6 @@
 using WarframeMod.Common.GlobalNPCs;
 
-namespace WarframeMod.Content.Buffs;
+namespace WarframeMod.Common;
 public struct BleedingBuff
 {
     public float dps;
@@ -10,11 +10,11 @@ public struct BleedingBuff
         this.dps = dps;
         timeLeft = time;
     }
-    public static void CreateBleed(float hitDamage, NPC target)
+    public static void Create(float hitDamage, NPC target)
     {
-        target.GetGlobalNPC<BleedingGlobalNPC>().bleeds.Add(new BleedingBuff(hitDamage / 5f, 300));
+        target.GetGlobalNPC<StackableDebuffNPC>().bleeds.Add(new BleedingBuff(hitDamage / 5f, 300));
     }
-    public static List<BleedingBuff> UpdateBleeds(IEnumerable<BleedingBuff> bleeds, out int damage)
+    public static List<BleedingBuff> UpdateAll(IEnumerable<BleedingBuff> bleeds, out int damage)
     {
         List<BleedingBuff> newBleeds = new List<BleedingBuff>();
         float totalDamage = 0;
@@ -30,5 +30,12 @@ public struct BleedingBuff
         }
         damage = (int)totalDamage;
         return newBleeds;
+    }
+    public static void Damage(NPC npc, int bleed)
+    {
+        int oldDefense = npc.defense;
+        npc.defense = 0;
+        npc.StrikeNPC(bleed, 0, -2);
+        npc.defense = oldDefense;
     }
 }

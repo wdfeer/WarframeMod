@@ -6,10 +6,8 @@ namespace WarframeMod.Common.GlobalProjectiles;
 internal class BuffGlobalProjectile : GlobalProjectile
 {
     public override bool InstancePerEntity => true;
-    /// <summary>
-    /// Bleed chance from 0 to 1
-    /// </summary>
     public float bleedingChance = 0;
+    public float electricityChance = 0;
     public List<BuffChance> buffChances = new List<BuffChance>();
     public void Add(BuffChance bc)
     {
@@ -18,10 +16,14 @@ internal class BuffGlobalProjectile : GlobalProjectile
     public void HitNPCAfterCritModifiersApplied(NPC target, int damageAfterCrit)
     {
         BuffChance.ApplyBuffs(target, buffChances);
+        var debuffer = target.GetGlobalNPC<StackableDebuffNPC>();
         if (Main.rand.NextFloat() < bleedingChance)
         {
-            var bleedNPC = target.GetGlobalNPC<BleedingGlobalNPC>();
-            bleedNPC.bleeds.Add(new BleedingBuff(damageAfterCrit / 5, 300));
+            BleedingBuff.Create(damageAfterCrit, target);
+        }
+        if (Main.rand.NextFloat() < electricityChance)
+        {
+            ElectricityBuff.Create(damageAfterCrit, target);
         }
     }
 }

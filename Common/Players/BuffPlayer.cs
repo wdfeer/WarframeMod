@@ -1,10 +1,10 @@
 ﻿using WarframeMod.Common.GlobalNPCs;
-using WarframeMod.Content.Buffs;
 
 namespace WarframeMod.Common.Players;
-public class BuffPlayer : ModPlayer
+public class BuffPlayer : CritPlayerHooks
 {
-    public List<BuffChance> onHitNPC;
+    public List<BuffChance> buffsOnHitNPC;
+    public List<StackableBuffChance> stackableBuffsOnHitNPC;
     Dictionary<int, float> bleedingChances = new Dictionary<int, float>();
     int GetDamageClassID(DamageClass damageClass)
     {
@@ -32,21 +32,30 @@ public class BuffPlayer : ModPlayer
         if (!bleedingChances.ContainsKey(type))
             return;
         if (Main.rand.NextFloat() < bleedingChances[type])
-            BleedingBuff.CreateBleed(damage, target);
+            BleedingBuff.Create(damage, target);
     }
     public override void ResetEffects()
     {
-        onHitNPC = new List<BuffChance>();
+        buffsOnHitNPC = new List<BuffChance>();
+        stackableBuffsOnHitNPC = new List<StackableBuffChance>();
         bleedingChances = new();
     }
     public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
     {
-        BuffChance.ApplyBuffs(target, onHitNPC);
-        ApplyBleedChances(target, damage, item.DamageType);
+        BuffChance.ApplyBuffs(target, buffsOnHitNPC);
     }
     public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
     {
-        BuffChance.ApplyBuffs(target, onHitNPC);
-        ApplyBleedChances(target, damage, proj.DamageType);
+        BuffChance.ApplyBuffs(target, buffsOnHitNPC);
+    }
+    public override void OnHitNPCPostCrit(Item item, NPC target, int damage, float knockback, bool crit, float critMult, int critLvl, int damagePostCrit)
+    {
+        ApplyBleedChances(target, damagePostCrit, item.DamageType);
+        StackableBuffChance.ApplyBuffs(target, stackableBuffsOnHitNPC, damagePostCrit);
+    }
+    public override void OnHitNPCWithProjPostCrit(Projectile proj, NPC target, int damage, float knockback, bool crit, float critMult, int critLvl, int damagePostCrit)
+    {
+        ApplyBleedChances(target, damagePostCrit, proj.DamageType);
+        StackableBuffChance.ApplyBuffs(target, stackableBuffsOnHitNPC, damagePostCrit);
     }
 }

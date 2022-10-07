@@ -1,7 +1,7 @@
 using Terraria.DataStructures;
+using WarframeMod.Common;
 using WarframeMod.Common.GlobalNPCs;
 using WarframeMod.Common.Players;
-using WarframeMod.Content.Buffs;
 
 namespace WarframeMod.Content.Items.Accessories;
 
@@ -35,7 +35,7 @@ class SerratedPlayer : CritPlayerHooks
         int damagePostCrit = CritPlayer.GetPostCritDamage(damagePreCrit, critLvl, critMult);
         float bleedDmg = damagePostCrit * SerratedRounds.BLEED_CONVERSION;
         damagePreCrit -= (int)(damagePreCrit * SerratedRounds.BLEED_CONVERSION);
-        BleedingBuff.CreateBleed(bleedDmg, target);
+        BleedingBuff.Create(bleedDmg, target);
     }
     public override void ModifyHitNPCPreCrit(Item item, NPC target, ref int damage, ref float knockback, ref bool crit, ref float critMult, ref int critLvl)
     {

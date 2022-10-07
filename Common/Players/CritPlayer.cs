@@ -2,7 +2,6 @@
 using WarframeMod.Common.GlobalItems;
 using WarframeMod.Common.GlobalNPCs;
 using WarframeMod.Common.GlobalProjectiles;
-using WarframeMod.Content.Buffs;
 using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Common.Players;
@@ -72,7 +71,7 @@ internal class CritPlayer : ModPlayer
             h.OnHitNPCPostCrit(item, target, oldDamage, knockback, crit, mult, critLevel, postCritDmg);
         }
         if (Main.rand.NextFloat() < item.GetGlobalItem<BleedingGlobalItem>().bleedingChance)
-            BleedingBuff.CreateBleed(postCritDmg, target);
+            BleedingBuff.Create(postCritDmg, target);
     }
     public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
     {

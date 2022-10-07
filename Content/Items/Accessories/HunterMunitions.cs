@@ -1,6 +1,6 @@
-﻿using WarframeMod.Common.GlobalNPCs;
+﻿using WarframeMod.Common;
+using WarframeMod.Common.GlobalNPCs;
 using WarframeMod.Common.Players;
-using WarframeMod.Content.Buffs;
 
 namespace WarframeMod.Content.Items.Accessories;
 
@@ -33,7 +33,7 @@ internal class HunterMunitionsPlayer : CritPlayerHooks
     {
         if (Main.rand.NextFloat() < HunterMunitions.bleedChance / 100f)
         {
-            BleedingBuff.CreateBleed(damageAfterCrit, target);
+            BleedingBuff.Create(damageAfterCrit, target);
         }
     }
     public override void OnHitNPCPostCrit(Item item, NPC target, int damage, float knockback, bool crit, float critMult, int critLvl, int damagePostCrit)

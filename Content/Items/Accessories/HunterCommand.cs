@@ -29,7 +29,7 @@ class HunterCommandPlayer : ModPlayer
         => enabled = false;
     public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
     {
-        if (enabled && (proj.DamageType == DamageClass.Summon || proj.DamageType == DamageClass.SummonMeleeSpeed) && target.GetGlobalNPC<BleedingGlobalNPC>().bleeds.Any())
+        if (enabled && (proj.DamageType == DamageClass.Summon || proj.DamageType == DamageClass.SummonMeleeSpeed) && target.GetGlobalNPC<StackableDebuffNPC>().bleeds.Any())
             damage += (int)(damage * HunterCommand.DAMAGE_ON_BLEEDING_PERCENT / 100f);
     }
 }
