@@ -7,11 +7,12 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Common.Players;
+using WarframeMod.Content.Buffs;
 using WarframeMod.Content.Items.Accessories;
 using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Projectiles;
-public class LectaProjectile : ModProjectile
+public class ScoliacProjectile : ModProjectile
 {
 	public override void SetStaticDefaults() {
 		ProjectileID.Sets.IsAWhip[Type] = true;
@@ -19,7 +20,7 @@ public class LectaProjectile : ModProjectile
 
 	public override void SetDefaults() {
 		Projectile.DefaultToWhip();
-        Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances = new() { new Common.StackableBuffChance(Common.StackableBuff.Electro, Lecta.ELECTRO_CHANCE) };
+        Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances = new() { new Common.StackableBuffChance(Common.StackableBuff.Bleed, Scoliac.BLEED_CHANCE) };
 		Projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 0.75f;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = -1;
@@ -30,7 +31,8 @@ public class LectaProjectile : ModProjectile
 	}
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
 		Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
-		Projectile.damage = (int)(Projectile.damage * 0.75f);
+		Projectile.damage = (int)(Projectile.damage * 0.8f);
+		target.AddBuff(ModContent.BuffType<ScoliacDebuff>(), 360);
 	}
 
 	// This method draws a line between all points of the whip, in case there's empty space between the sprites.
@@ -45,7 +47,7 @@ public class LectaProjectile : ModProjectile
 			Vector2 diff = list[i + 1] - element;
 
 			float rotation = diff.ToRotation() - MathHelper.PiOver2;
-			Color color = Lighting.GetColor(element.ToTileCoordinates(), Color.DarkCyan);
+			Color color = Lighting.GetColor(element.ToTileCoordinates(), Color.Crimson);
 			Vector2 scale = new Vector2(1, (diff.Length() + 2) / frame.Height);
 
 			Main.EntitySpriteDraw(texture, pos - Main.screenPosition, frame, color, rotation, origin, scale, SpriteEffects.None, 0);
