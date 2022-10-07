@@ -13,6 +13,7 @@ class TrueMeleeRangeGlobalItem : GlobalItem
             return;
 
         ModifyHitboxSize(player, ref hitbox, modPl.rangeMult, modPl.absoluteExtraRange, out float oldLength, out float newLength);
+
         Vector2 direction = Vector2.UnitX.RotatedBy(player.itemRotation) * player.direction;
         float mult = 0.8f;
         Vector2 dustStart = player.Center + direction * oldLength * mult;
