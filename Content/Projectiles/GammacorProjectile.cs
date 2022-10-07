@@ -6,7 +6,7 @@ namespace WarframeMod.Content.Projectiles;
 public class GammacorProjectile : BeamProjectile
 {
     public override string Texture => "WarframeMod/Content/Projectiles/FluxRifleProjectile";
-    protected override float MinDistance => 45f;
+    protected override float MinDistance => 44f;
     public override int HitCooldown => 5;
     protected override int WeaponEnergyDustType => DustID.AncientLight;
     protected override Color WeaponEnergyDustColor => new Color(1f, 0.9f, 1f);

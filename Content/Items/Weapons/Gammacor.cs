@@ -19,7 +19,7 @@ public class Gammacor : ModItem
         Item.channel = true;
         Item.width = 32;
         Item.height = 20;
-        Item.scale = 0.6f;
+        Item.scale = 0.9f;
         Item.useTime = 5;
         Item.useAnimation = 5;
         Item.useStyle = ItemUseStyleID.Shoot;

@@ -194,7 +194,7 @@ public abstract class BeamProjectile : ModProjectile
         for (Distance = MinDistance; Distance <= MaxDistance; Distance += 5f)
         {
             var start = player.Center + Projectile.velocity * Distance;
-            bool tileCollision = !Collision.CanHit(player.Center, 1, 1, start, 1, 1);
+            bool tileCollision = !Collision.CanHitLine(player.Center, 1, 1, start, 1, 1);
             bool npcCollision = Main.npc.Any(npc => npc.active && !npc.friendly && npc.getRect().Contains(start.ToPoint()));
             if (tileCollision)
             {
