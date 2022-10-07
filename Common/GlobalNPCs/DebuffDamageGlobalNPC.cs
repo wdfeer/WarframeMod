@@ -10,6 +10,7 @@ internal class DebuffDamageGlobalNPC : GlobalNPC
     {
         InfectedClip,
         MalignantForce,
+        Hellfire,
         Other
     }
     public void AddBuffDamage(SourceId id, int buffType, int dps)
