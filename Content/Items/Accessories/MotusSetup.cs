@@ -13,8 +13,8 @@ public class MotusSetup : ModItem
     public override void SetDefaults()
     {
         Item.accessory = true;
-        Item.rare = 3;
-        Item.value = Item.sellPrice(gold: 2);
+        Item.rare = 2;
+        Item.value = Item.sellPrice(gold: 1);
     }
     public override void AddRecipes()
     {

@@ -15,7 +15,7 @@ public class NaturalTalent : ModItem
         Item.width = 44;
         Item.height = 64;
         Item.rare = 3;
-        Item.value = Item.sellPrice(silver: 75);
+        Item.value = Item.sellPrice(gold: 4);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

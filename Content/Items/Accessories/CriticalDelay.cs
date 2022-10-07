@@ -20,6 +20,6 @@ public class CriticalDelay : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetModPlayer<CritPlayer>().relativeCritChance += PERCENT_CRIT_RELATIVE / 100f;
-        player.GetModPlayer<FireRatePlayer>().TotalFireRateMultiplier -= 0.15f;
+        player.GetAttackSpeed(DamageClass.Generic) -= 0.15f;
     }
 }

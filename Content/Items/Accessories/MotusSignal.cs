@@ -11,8 +11,8 @@ public class MotusSignal : ModItem
     public override void SetDefaults()
     {
         Item.accessory = true;
-        Item.rare = 3;
-        Item.value = Item.sellPrice(silver: 70);
+        Item.rare = 2;
+        Item.value = Item.sellPrice(silver: 50);
     }
     public override void AddRecipes()
     {
