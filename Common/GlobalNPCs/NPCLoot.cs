@@ -26,7 +26,9 @@ internal class NPCLoot : GlobalNPC
             case NPCID.BloodZombie or NPCID.Drippler:
                 return ItemDropRule.Common(ModContent.ItemType<PiercingHit>(), 100);
             case NPCID.FireImp:
-                return ItemDropRule.Common(ModContent.ItemType<Blaze>(), 16);
+                return ItemDropRule.Common(ModContent.ItemType<Blaze>(), 15);
+            case NPCID.DarkCaster:
+                return ItemDropRule.Common(ModContent.ItemType<NaturalTalent>(), 11);
             default:
                 return null;
         }
