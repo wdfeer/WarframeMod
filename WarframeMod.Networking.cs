@@ -1,11 +1,13 @@
 using System.IO;
+using WarframeMod.Content.Items.Accessories;
 
 namespace WarframeMod;
 public partial class WarframeMod : Mod
 {
 	public enum MessageType
 	{
-		SetProjectileExtraUpdates
+		SetProjectileExtraUpdates,
+		CorrosiveProjection
 	}
 	public override void HandlePacket(BinaryReader reader, int whoAmI)
 	{
@@ -26,7 +28,21 @@ public partial class WarframeMod : Mod
 					default:
 						return;
 				}
-			default:
+			case MessageType.CorrosiveProjection:
+				byte team = reader.ReadByte();
+                switch (Main.netMode)
+                {
+                    case NetmodeID.Server:
+						SendCorrosiveProjectionPacket(team, whoAmI);
+                        return;
+                    case NetmodeID.MultiplayerClient:
+						if (Main.LocalPlayer.team == team)
+							Main.LocalPlayer.GetModPlayer<CorrosiveProjectionPlayer>().enabled = true;
+                        return;
+                    default:
+                        return;
+                }
+            default:
 				throw new Exception("Invalid MessageType!");
 		}
 	}
@@ -46,5 +62,12 @@ public partial class WarframeMod : Mod
         packet.Write((short)proj);
         packet.Write((short)extraUpdates);
         packet.Send(ignoreClient: ignoreClient);
+    }
+    public void SendCorrosiveProjectionPacket(byte team, int ignoreClient = -1)
+    {
+        ModPacket packet = GetPacket();
+        packet.Write((byte)MessageType.CorrosiveProjection);
+		packet.Write(team);
+        packet.Send(ignoreClient);
     }
 }
