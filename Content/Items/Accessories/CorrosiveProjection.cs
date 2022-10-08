@@ -1,7 +1,9 @@
+using WarframeMod.Common.Players;
+
 namespace WarframeMod.Content.Items.Accessories;
 public class CorrosiveProjection : ModItem
 {
-    public const float IGNORE_DEFENSE = 0.18f;
+    public const float IGNORE_DEFENSE = 1f;//0.18f; DEBUG
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"Weapons of players on your team ignore {(int)(IGNORE_DEFENSE * 100)}% of enemy's Defense");
@@ -23,27 +25,16 @@ public class CorrosiveProjection : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        if (!CanUpdate())
-            return;
-        player.GetModPlayer<CorrosiveProjectionPlayer>().enabled = true;
-        if (Main.netMode != NetmodeID.SinglePlayer)
-            (Mod as WarframeMod).SendCorrosiveProjectionPacket((byte)player.team);
+        player.GetModPlayer<AuraPlayer>().myAuras.corrosiveProjection = true;
     }
-    public static bool CanUpdate() => (int)Main.time % 100 == 0;
 }
 class CorrosiveProjectionPlayer : ModPlayer
 {
-    public bool enabled;
-    public override void ResetEffects()
-    {
-        if (CorrosiveProjection.CanUpdate())
-            enabled = false;
-    }
+    public bool Enabled => Player.GetModPlayer<AuraPlayer>().AnyPlayerInMyTeam(x => x.corrosiveProjection);
     void ModifyDamage(NPC target, ref int damage)
     {
-        if (!enabled)
-            return;
-        damage += target.checkArmorPenetration((int)(target.defense * CorrosiveProjection.IGNORE_DEFENSE));
+        if (Enabled)
+            damage += target.checkArmorPenetration((int)(target.defense * CorrosiveProjection.IGNORE_DEFENSE));
     }
     public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
         => ModifyDamage(target, ref damage);
