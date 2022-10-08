@@ -3,7 +3,7 @@ using WarframeMod.Common.Players;
 namespace WarframeMod.Content.Items.Accessories;
 public class CorrosiveProjection : ModItem
 {
-    public const float IGNORE_DEFENSE = 1f;//0.18f; DEBUG
+    public const float IGNORE_DEFENSE = 0.18f;
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"Weapons of players on your team ignore {(int)(IGNORE_DEFENSE * 100)}% of enemy's Defense");

@@ -1,6 +1,7 @@
 using System.IO;
+using WarframeMod.Common;
+using WarframeMod.Common.GlobalNPCs;
 using WarframeMod.Common.Players;
-using WarframeMod.Content.Items.Accessories;
 
 namespace WarframeMod;
 public partial class WarframeMod : Mod
@@ -8,7 +9,8 @@ public partial class WarframeMod : Mod
     public enum MessageType
     {
         SetProjectileExtraUpdates,
-        AuraSync
+        AuraSync,
+        StackableDebuff
     }
     public override void HandlePacket(BinaryReader reader, int whoAmI)
     {
@@ -43,6 +45,22 @@ public partial class WarframeMod : Mod
                     default:
                         return;
                 }
+            case MessageType.StackableDebuff:
+                short npc = reader.ReadInt16();
+                StackableBuff buff = (StackableBuff)reader.ReadByte();
+                int damage = reader.ReadInt32();
+                switch (Main.netMode)
+                {
+                    case NetmodeID.Server:
+                        StackableBuffChance.AddDebuffNoSync(npc, buff, damage);
+                        SendStackableDebuffPacket(npc, buff, damage, whoAmI);
+                        return;
+                    case NetmodeID.MultiplayerClient:
+                        StackableBuffChance.AddDebuffNoSync(npc, buff, damage);
+                        return;
+                    default:
+                        return;
+                }
             default:
                 throw new Exception("Invalid MessageType!");
         }
@@ -62,6 +80,17 @@ public partial class WarframeMod : Mod
         packet.Write((byte)MessageType.SetProjectileExtraUpdates);
         packet.Write((short)proj);
         packet.Write((short)extraUpdates);
+        packet.Send(ignoreClient: ignoreClient);
+    }
+    public void SendStackableDebuffPacket(int npc, StackableBuff buff, int damage, int ignoreClient = -1)
+        => SendStackableDebuffPacket(npc, (byte)buff, damage, ignoreClient);
+    public void SendStackableDebuffPacket(int npc, byte type, int damage, int ignoreClient = -1)
+    {
+        ModPacket packet = GetPacket();
+        packet.Write((byte)MessageType.StackableDebuff);
+        packet.Write((short)npc);
+        packet.Write(type);
+        packet.Write(damage);
         packet.Send(ignoreClient: ignoreClient);
     }
 }

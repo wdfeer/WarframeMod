@@ -3,7 +3,7 @@ using WarframeMod.Common.Players;
 namespace WarframeMod.Content.Items.Accessories;
 public class Physique : ModItem
 {
-    public const float EXTRA_LIFE = 1f;//0.1f; DEBUG
+    public const float EXTRA_LIFE = 0.1f;
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"+{(int)(EXTRA_LIFE * 100)}% max life to players on your team");

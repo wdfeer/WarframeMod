@@ -10,9 +10,11 @@ public struct ElectricityBuff
         this.dps = dps;
         timeLeft = time;
     }
-    public static void Create(float hitDamage, NPC target)
+    public static void Create(float hitDamage, NPC target, bool netSync = true)
     {
         target.GetGlobalNPC<StackableDebuffNPC>().electricity.Add(new ElectricityBuff(hitDamage / 5f, 300));
+        if (Main.netMode != NetmodeID.SinglePlayer && netSync)
+            WarframeMod.instance.SendStackableDebuffPacket(target.whoAmI, StackableBuff.Electro, (int)hitDamage);
     }
     public static List<ElectricityBuff> UpdateAll(IEnumerable<ElectricityBuff> debuffs, out int damage)
     {

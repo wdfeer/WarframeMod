@@ -1,5 +1,5 @@
 ﻿namespace WarframeMod.Common.GlobalNPCs;
-internal class StackableDebuffNPC : GlobalNPC
+public class StackableDebuffNPC : GlobalNPC
 {
     public override bool InstancePerEntity => true;
 

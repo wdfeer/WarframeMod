@@ -48,4 +48,19 @@ public struct StackableBuffChance
             chance.RollAndApply(target, damagePostCrit);
         }
     }
+    public static void AddDebuffNoSync(int targetId, StackableBuff type, float damage)
+    {
+        NPC target = Main.npc[targetId];
+        switch (type)
+        {
+            case StackableBuff.Bleed:
+                BleedingBuff.Create(damage, target, false);
+                break;
+            case StackableBuff.Electro:
+                ElectricityBuff.Create(damage, target, false);
+                break;
+            default:
+                break;
+        }
+    }
 }

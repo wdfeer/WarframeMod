@@ -10,9 +10,11 @@ public struct BleedingBuff
         this.dps = dps;
         timeLeft = time;
     }
-    public static void Create(float hitDamage, NPC target)
+    public static void Create(float hitDamage, NPC target, bool netSync = true)
     {
         target.GetGlobalNPC<StackableDebuffNPC>().bleeds.Add(new BleedingBuff(hitDamage / 5f, 300));
+        if (Main.netMode != NetmodeID.SinglePlayer && netSync)
+            WarframeMod.instance.SendStackableDebuffPacket(target.whoAmI, StackableBuff.Bleed, (int)hitDamage);
     }
     public static List<BleedingBuff> UpdateAll(IEnumerable<BleedingBuff> bleeds, out int damage)
     {
