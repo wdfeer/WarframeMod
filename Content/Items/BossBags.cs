@@ -23,7 +23,7 @@ public class BossBags : GlobalItem
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
                 {
                     ModContent.ItemType<Tetra>(),
-                    ModContent.ItemType<Vitality>(),
+                    ModContent.ItemType<Physique>(),
                     ModContent.ItemType<InfectedClip>(),
                 });
             case ItemID.EyeOfCthulhuBossBag:

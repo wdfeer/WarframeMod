@@ -12,9 +12,9 @@ internal class NPCLoot : GlobalNPC
         switch (type)
         {
             case NPCID.GreenSlime or NPCID.BlueSlime:
-                return ItemDropRule.Common(ModContent.ItemType<Vitality>(), 250);
+                return ItemDropRule.Common(ModContent.ItemType<Vitality>(), 150);
             case NPCID.Skeleton or NPCID.SkeletonAlien or NPCID.SkeletonAstonaut or NPCID.SkeletonTopHat or NPCID.BoneThrowingSkeleton or NPCID.BoneThrowingSkeleton2:
-                return ItemDropRule.Common(ModContent.ItemType<PointStrike>(), 15);
+                return ItemDropRule.Common(ModContent.ItemType<PointStrike>(), 12);
             case NPCID.Harpy:
                 return ItemDropRule.OneFromOptions(25, new int[]
                 {
@@ -24,7 +24,7 @@ internal class NPCLoot : GlobalNPC
             case NPCID.UndeadMiner:
                 return ItemDropRule.Common(ModContent.ItemType<CriticalDelay>(), 2);
             case NPCID.BloodZombie or NPCID.Drippler:
-                return ItemDropRule.Common(ModContent.ItemType<PiercingHit>(), 90);
+                return ItemDropRule.Common(ModContent.ItemType<PiercingHit>(), 60);
             case NPCID.FireImp:
                 return ItemDropRule.Common(ModContent.ItemType<Blaze>(), 15);
             case NPCID.DarkCaster:
