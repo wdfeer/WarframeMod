@@ -43,7 +43,7 @@ internal class RaktaCernos : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
-        int projectileID = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+        int projectileID = Projectile.NewProjectile(source, position, velocity, ProjectileID.BoneArrow, damage, knockback, player.whoAmI);
         Projectile projectile = Main.projectile[projectileID];
         projectile.usesLocalNPCImmunity = true;
         projectile.localNPCHitCooldown = -1;

@@ -8,21 +8,22 @@ internal class Orthos : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("15% bleeding chance\n-25% Critical damage\nBenefits more from attack speed bonuses");
+        Tooltip.SetDefault("Every third swing has doubled damage and guaranteed bleeding\n15% bleeding chance\n-25% Critical damage\nBenefits more from attack speed bonuses");
     }
     public override void SetDefaults()
     {
-        Item.damage = 19;
+        Item.damage = 12;
         Item.crit = 2;
-        Item.knockBack = 4f;
+        Item.knockBack = 3.5f;
         Item.DamageType = DamageClass.Melee;
         Item.width = 47;
         Item.height = 48;
         Item.scale = 2.5f;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item1;
-        Item.useTime = 48;
-        Item.useAnimation = 48;
+        Item.useTime = 40;
+        Item.useAnimation = 40;
+        Item.autoReuse = true;
         Item.rare = 1;
         Item.value = Item.sellPrice(silver: 50);
         Item.GetGlobalItem<CritGlobalItem>().critMultiplier = 0.75f;
@@ -30,7 +31,7 @@ internal class Orthos : ModItem
     }
     public override float UseSpeedMultiplier(Player player)
     {
-        return player.GetAttackSpeed(DamageClass.Melee);
+        return MathF.Sqrt(player.GetAttackSpeed(DamageClass.Melee));
     }
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
@@ -46,6 +47,30 @@ internal class Orthos : ModItem
         Point pos = (player.Center - new Vector2(radius, radius)).ToPoint();
         hitbox = new Rectangle(pos.X, pos.Y, radius * 2, radius * 2);
         hitbox.X += player.direction;
+    }
+    uint swings = 0;
+    bool SuperSwing => swings % 3 == 0;
+    public override bool CanUseItem(Player player)
+    {
+        swings++;
+        if (SuperSwing)
+            Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 1f;
+        else
+            Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 0.15f;
+        return base.CanUseItem(player);
+    }
+    public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
+    {
+        if (SuperSwing)
+        {
+            damage *= 2;
+            knockBack *= 2;
+        }
+    }
+    public override void ModifyHitPvp(Player player, Player target, ref int damage, ref bool crit)
+    {
+        if (SuperSwing)
+            damage *= 2;
     }
     public override void AddRecipes()
         => CreateRecipe().AddRecipeGroup(RecipeGroupID.IronBar, 20)
