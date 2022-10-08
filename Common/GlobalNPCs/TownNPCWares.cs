@@ -11,6 +11,7 @@ internal class TownNPCWares : GlobalNPC
         {
             case NPCID.Merchant:
                 AddShopItem(ModContent.ItemType<MK1Paris>(), shop, ref nextSlot);
+                AddShopItem(ModContent.ItemType<MK1Bo>(), shop, ref nextSlot);
                 if (NPC.downedBoss1)
                     AddShopItem(ModContent.ItemType<Paris>(), shop, ref nextSlot).shopCustomPrice = Item.buyPrice(gold: 1);
                 return;

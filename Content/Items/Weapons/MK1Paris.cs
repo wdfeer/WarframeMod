@@ -23,7 +23,7 @@ internal class MK1Paris : ModItem
         Item.useTime = 33;
         Item.useAnimation = 33;
         Item.rare = 1;
-        Item.value = Item.buyPrice(silver: 15);
+        Item.value = Item.buyPrice(silver: 25);
         Item.shoot = ProjectileID.WoodenArrowFriendly;
         Item.shootSpeed = 16f;
         Item.useAmmo = AmmoID.Arrow;
