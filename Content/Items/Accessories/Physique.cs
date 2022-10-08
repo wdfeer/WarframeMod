@@ -23,10 +23,9 @@ public class Physique : ModItem
 }
 class PhysiquePlayer : ModPlayer
 {
-    public bool Enabled => Player.GetModPlayer<AuraPlayer>().AnyPlayerInMyTeam(x => x.physique);
+    public int Count => Player.GetModPlayer<AuraPlayer>().CountAurasInMyTeam(x => x.physique);
     public override void PostUpdateEquips()
     {
-        if (Enabled)
-            Player.statLifeMax2 += (int)(Player.statLifeMax * Physique.EXTRA_LIFE);
+        Player.statLifeMax2 += (int)(Player.statLifeMax * Physique.EXTRA_LIFE * Count);
     }
 }

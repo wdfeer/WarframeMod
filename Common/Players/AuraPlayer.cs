@@ -24,10 +24,12 @@ public class AuraPlayer : ModPlayer
     public AuraData myAuras = new AuraData();
     public static AuraData[] playerAuras = new AuraData[Main.maxPlayers];
     public static AuraData[] RealPlayerAuras => playerAuras.Select(
-        (x,i) => Main.player[i] == null || !Main.player[i].active ? new AuraData() : x
+        (x,i) => (Main.player[i] == null || !Main.player[i].active) ? new AuraData() : x
     ).ToArray();
     public bool AnyPlayerInMyTeam(Func<AuraData, bool> predicate)
         => predicate(myAuras) || RealPlayerAuras.Select((d, i) => (d, i)).Any(x => predicate(x.d) && Main.player[x.i].team == Player.team);
+    public int CountAurasInMyTeam(Func<AuraData, bool> predicate)
+        => (predicate(myAuras) ? 1 : 0) + RealPlayerAuras.Select((d, i) => (d, i)).Count(x => predicate(x.d) && Main.player[x.i].team == Player.team && x.i != Player.whoAmI);
     public override void ResetEffects()
     {
         myAuras = new AuraData();

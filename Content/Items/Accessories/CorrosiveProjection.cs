@@ -6,7 +6,7 @@ public class CorrosiveProjection : ModItem
     public const float IGNORE_DEFENSE = 0.18f;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault($"Weapons of players on your team ignore {(int)(IGNORE_DEFENSE * 100)}% of enemy's Defense");
+        Tooltip.SetDefault($"Weapons of players on your team ignore {(int)(IGNORE_DEFENSE * 100)}% of enemy's Defense\nCannot stack");
     }
     public override void SetDefaults()
     {
