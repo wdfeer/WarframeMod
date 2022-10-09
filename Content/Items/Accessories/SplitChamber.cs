@@ -7,7 +7,7 @@ public class SplitChamber : ModItem
     public const float MULTISHOT = 0.166f;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault($"+{(int)(MULTISHOT * 100)}% Chance to shoot an extra projectile when using a Magic, Ranged or Throwing weapon\nChanelled weapons have increased damage instead");
+        Tooltip.SetDefault($"+{(MULTISHOT * 100f):0}% Chance to shoot an extra projectile when using a Magic, Ranged or Throwing weapon\nChanelled weapons have increased damage instead");
     }
     public override void SetDefaults()
     {
@@ -72,6 +72,6 @@ class MultishotPlayer : ModPlayer
     public override void ModifyShootStats(Item item, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
     {
         if (item.channel)
-            damage = (int)(damage * (1 + extraMultishot));
+            damage += (int)(damage * extraMultishot);
     }
 }

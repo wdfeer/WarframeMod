@@ -66,10 +66,10 @@ Linear damage falloff starting at 36 tiles
                 Item.useAnimation = minUseTime;
             }
         }
-        else if (timeSinceLastShot > 16)
+        else if (timeSinceLastShot > minUseTime + 1)
         {
-            Item.useTime += timeSinceLastShot / 3;
-            Item.useAnimation += timeSinceLastShot / 3;
+            Item.useTime += timeSinceLastShot / 4;
+            Item.useAnimation += timeSinceLastShot / 4;
             if (Item.useTime > maxUseTime)
             {
                 Item.useTime = maxUseTime;

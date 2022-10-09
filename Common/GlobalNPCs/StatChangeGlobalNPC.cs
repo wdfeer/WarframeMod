@@ -13,9 +13,12 @@ internal class StatCHangeGlobalNPC : GlobalNPC
     public override void SetDefaults(NPC npc)
     {
         base.SetDefaults(npc);
-        npc.lifeMax = (int)(npc.lifeMax * MAX_LIFE_MULT);
-        npc.life = (int)(npc.life * MAX_LIFE_MULT);
-        npc.defense = (int)(npc.defense * DEFENSE_MULT);
-        npc.damage = (int)(npc.damage * DAMAGE_MULT);
+        if (!Main.expertMode)
+            return;
+        float netMult = Main.netMode == NetmodeID.SinglePlayer ? 1f : 1.05f;
+        npc.lifeMax = (int)(npc.lifeMax * MAX_LIFE_MULT * netMult);
+        npc.life = (int)(npc.life * MAX_LIFE_MULT * netMult);
+        npc.defense = (int)(npc.defense * DEFENSE_MULT * netMult);
+        npc.damage = (int)(npc.damage * DAMAGE_MULT * netMult);
     }
 }

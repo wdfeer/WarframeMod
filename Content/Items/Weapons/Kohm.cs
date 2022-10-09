@@ -40,7 +40,7 @@ public class Kohm : ModItem
     {
         timeSinceLastShot = (int)(Main.time - lastShotTime);
 
-        if (timeSinceLastShot < 24)
+        if (timeSinceLastShot < 25)
             multishot = maxMultishot > multishot ? multishot + 1 : maxMultishot;
         else multishot = 1;
 
@@ -55,7 +55,7 @@ public class Kohm : ModItem
                 Item.useAnimation = minUseTime;
             }
         }
-        else if (timeSinceLastShot > 16)
+        else if (timeSinceLastShot > minUseTime + 1)
         {
             Item.useTime += timeSinceLastShot / 3;
             Item.useAnimation += timeSinceLastShot / 3;
