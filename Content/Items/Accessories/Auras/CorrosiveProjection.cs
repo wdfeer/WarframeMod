@@ -1,6 +1,6 @@
 using WarframeMod.Common.Players;
 
-namespace WarframeMod.Content.Items.Accessories;
+namespace WarframeMod.Content.Items.Accessories.Auras;
 public class CorrosiveProjection : ModItem
 {
     public const float IGNORE_DEFENSE = 0.18f;

@@ -4,19 +4,19 @@ using Terraria.DataStructures;
 namespace WarframeMod.Common.Players;
 public struct AuraData
 {
-    public Dictionary<byte, bool> auras;
     public bool corrosiveProjection;
     public bool physique;
-    public const int byteCount = 2;
+    public bool standUnited;
+    public const int byteCount = 3;
     public byte[] toBytes()
     {
         byte Btb(bool boolean) => boolean ? (byte)1 : (byte)0;
-        return new byte[byteCount] { Btb(corrosiveProjection), Btb(physique) };
+        return new byte[byteCount] { Btb(corrosiveProjection), Btb(physique), Btb(standUnited) };
     }
     public static AuraData fromBytes(byte[] buffer)
     {
         bool Btb(byte b) => b == 1;
-        return new AuraData() { corrosiveProjection = Btb(buffer[0]), physique = Btb(buffer[1]) };
+        return new AuraData() { corrosiveProjection = Btb(buffer[0]), physique = Btb(buffer[1]), standUnited = Btb(buffer[2]) };
     }
 }
 public class AuraPlayer : ModPlayer

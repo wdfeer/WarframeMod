@@ -1,6 +1,6 @@
 using WarframeMod.Common.Players;
 
-namespace WarframeMod.Content.Items.Accessories;
+namespace WarframeMod.Content.Items.Accessories.Auras;
 public class Physique : ModItem
 {
     public const float EXTRA_LIFE = 0.1f;
