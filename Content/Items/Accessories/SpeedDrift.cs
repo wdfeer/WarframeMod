@@ -7,7 +7,7 @@ public class SpeedDrift : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("+20% movement speed\n+8% weapon use speed");
+        Tooltip.SetDefault("+15% movement speed\n+7.5% weapon use speed");
     }
     public override void SetDefaults()
     {
@@ -19,12 +19,12 @@ public class SpeedDrift : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.moveSpeed += 0.2f;
-        player.GetAttackSpeed(DamageClass.Generic) += 0.08f;
+        player.moveSpeed += 0.15f;
+        player.GetAttackSpeed(DamageClass.Generic) += 0.075f;
     }
     public override void AddRecipes()
         => CreateRecipe().AddIngredient(ItemID.AnkletoftheWind)
-                         .AddIngredient(ItemID.Feather, 5)
+                         .AddIngredient(ItemID.Feather, 3)
                          .AddTile(TileID.Anvils)
                          .Register();
 }

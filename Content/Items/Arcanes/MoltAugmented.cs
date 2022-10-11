@@ -12,17 +12,6 @@ public class MoltAugmented : Arcane
     {
         player.GetModPlayer<AugmentedPlayer>().enabled = true;
     }
-    public override void ModifyTooltips(List<TooltipLine> tooltips)
-    {
-        Player player = Main.LocalPlayer;
-        AugmentedPlayer augmentedPlayer = player.GetModPlayer<AugmentedPlayer>();
-        if (augmentedPlayer.enabled)
-        {
-            int expertIndex = tooltips.FindIndex(tip => tip.Text == "Expert");
-            TooltipLine line = new(Mod, "ActiveBonus", $"Current bonus is {augmentedPlayer.CurrentBonusPercent:0.00}%");
-            tooltips.Insert(expertIndex, line);
-        }
-    }
 }
 class AugmentedPlayer : ModPlayer
 {

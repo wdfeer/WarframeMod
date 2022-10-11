@@ -9,7 +9,7 @@ public class ArcanePrecision : Arcane
     public const int BUFF_DURATION = 960;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault($"On ranged critical strike: {CHANCE}% chance for +{DAMAGE_BUFF * 100}% for {BUFF_DURATION / 60} seconds");
+        Tooltip.SetDefault($"On ranged critical strike: {CHANCE}% chance for +{(DAMAGE_BUFF * 100):0.00}% for {BUFF_DURATION / 60} seconds");
     }
     public override void UpdateArcane(Player player)
     {
