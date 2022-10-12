@@ -8,11 +8,13 @@ public class Redeemer : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Fires 6 pellets without consuming ammo\nHas linear damage falloff starting at 30 tiles");
+        Tooltip.SetDefault(@"Fires 6 pellets without consuming ammo
+Has linear damage falloff starting at 30 tiles
+Tripled benefit from Attack Speed");
     }
     public override void SetDefaults()
     {
-        Item.damage = 22;
+        Item.damage = 13;
         Item.crit = 10;
         Item.DamageType = DamageClass.Melee;
         Item.noMelee = true;
@@ -30,20 +32,9 @@ public class Redeemer : ModItem
         Item.shootSpeed = 12f;
         Item.UseSound = new SoundStyle("WarframeMod/Content/Sounds/RedeemerPrimeSound").ModifySoundStyle(pitchVariance: 0.06f);
     }
-
-    public override void AddRecipes()
+    public override float UseSpeedMultiplier(Player player)
     {
-        Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.LeadBar, 11);
-        recipe.AddIngredient(ItemID.IllegalGunParts, 1);
-        recipe.AddTile(TileID.Anvils);
-        recipe.Register();
-
-        recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.IronBar, 11);
-        recipe.AddIngredient(ItemID.IllegalGunParts, 1);
-        recipe.AddTile(TileID.Anvils);
-        recipe.Register();
+        return MathF.Pow(player.GetAttackSpeed(Item.DamageType), 2);
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
@@ -56,5 +47,13 @@ public class Redeemer : ModItem
         }
 
         return false;
+    }
+    public override void AddRecipes()
+    {
+        Recipe recipe = CreateRecipe();
+        recipe.AddRecipeGroup(RecipeGroupID.IronBar, 9);
+        recipe.AddIngredient(ItemID.IllegalGunParts, 1);
+        recipe.AddTile(TileID.Anvils);
+        recipe.Register();
     }
 }

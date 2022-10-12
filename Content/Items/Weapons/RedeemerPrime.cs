@@ -7,11 +7,13 @@ public class RedeemerPrime : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Fires 6 golden pellets without consuming ammo\nLinear damage falloff starting at 20 tiles");
+        Tooltip.SetDefault(@"Fires 6 golden pellets without consuming ammo
+Linear damage falloff starting at 20 tiles
+Doubled benefit from Attack Speed");
     }
     public override void SetDefaults()
     {
-        Item.damage = 54;
+        Item.damage = 42;
         Item.crit = 20;
         Item.DamageType = DamageClass.Melee;
         Item.noMelee = true;
@@ -29,7 +31,10 @@ public class RedeemerPrime : ModItem
         Item.shootSpeed = 16f;
         Item.UseSound = new SoundStyle("WarframeMod/Content/Sounds/RedeemerPrimeSound").ModifySoundStyle(pitchVariance: 0.1f);
     }
-
+    public override float UseSpeedMultiplier(Player player)
+    {
+        return player.GetAttackSpeed(Item.DamageType);
+    }
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();

@@ -7,13 +7,15 @@ public class Sarpa : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Fires 5 rounds in a burst\n28% chance to proc Slash");
+        Tooltip.SetDefault(@"Fires 5 rounds in a burst
+28% chance to proc Slash
+Doubled benefit from Attack Speed");
     }
     public override void SetDefaults()
     {
-        Item.damage = 21;
+        Item.damage = 17;
         Item.crit = 10;
-        Item.DamageType = DamageClass.MeleeNoSpeed;
+        Item.DamageType = DamageClass.Melee;
         Item.noMelee = true;
         Item.width = 48;
         Item.height = 24;
@@ -28,6 +30,10 @@ public class Sarpa : ModItem
         Item.autoReuse = true;
         Item.shoot = ProjectileID.Bullet;
         Item.shootSpeed = 16f;
+    }
+    public override float UseSpeedMultiplier(Player player)
+    {
+        return player.GetAttackSpeed(Item.DamageType);
     }
     public override Vector2? HoldoutOffset()
     {
