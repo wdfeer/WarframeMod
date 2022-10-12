@@ -6,7 +6,7 @@ internal class Paris : ModItem
 {
     public override void SetDefaults()
     {
-        Item.damage = 27;
+        Item.damage = 32;
         Item.crit = 26;
         Item.knockBack = 3.2f;
         Item.DamageType = DamageClass.Ranged;

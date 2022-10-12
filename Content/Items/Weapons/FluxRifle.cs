@@ -11,7 +11,7 @@ public class FluxRifle : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 9;
+        Item.damage = 10;
         Item.crit = 6;
         Item.channel = true;
         Item.DamageType = DamageClass.Ranged;

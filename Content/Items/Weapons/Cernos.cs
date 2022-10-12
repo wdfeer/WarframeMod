@@ -10,7 +10,7 @@ internal class Cernos : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 31;
+        Item.damage = 36;
         Item.crit = 32;
         Item.knockBack = 7;
         Item.DamageType = DamageClass.Ranged;

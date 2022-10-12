@@ -24,14 +24,14 @@ public class Stradavar : ModItem
         switch (Mode)
         {
             case 0:
-                Item.damage = 5;
+                Item.damage = 6;
                 Item.crit = 20;
                 Item.useTime = 6;
                 Item.useAnimation = 6;
                 Item.autoReuse = true;
                 break;
             default:
-                Item.damage = 14;
+                Item.damage = 16;
                 Item.crit = 24;
                 Item.useTime = 12;
                 Item.useAnimation = 12;
@@ -49,8 +49,8 @@ public class Stradavar : ModItem
         Item.height = 12;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.knockBack = 2;
-        Item.value = Item.buyPrice(gold: 6);
-        Item.rare = 2;
+        Item.value = Item.sellPrice(gold: 6);
+        Item.rare = 3;
         Item.shoot = 10;
         Item.shootSpeed = 16f;
         Item.useAmmo = AmmoID.Bullet;

@@ -6,11 +6,11 @@ internal class RaktaCernos : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Shoots high velocity arrows");
+        Tooltip.SetDefault("Shoots high velocity bone arrows");
     }
     public override void SetDefaults()
     {
-        Item.damage = 56;
+        Item.damage = 60;
         Item.crit = 31;
         Item.knockBack = 4;
         Item.DamageType = DamageClass.Ranged;

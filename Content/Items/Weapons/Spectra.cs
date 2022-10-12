@@ -13,7 +13,7 @@ public class Spectra : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 7;
+        Item.damage = 8;
         Item.crit = 10;
         Item.mana = 2;
         Item.DamageType = DamageClass.Magic;

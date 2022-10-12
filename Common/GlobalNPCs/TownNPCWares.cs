@@ -15,6 +15,9 @@ internal class TownNPCWares : GlobalNPC
                 if (NPC.downedBoss1)
                     AddShopItem(ModContent.ItemType<Paris>(), shop, ref nextSlot).shopCustomPrice = Item.buyPrice(gold: 1);
                 return;
+            case NPCID.ArmsDealer:
+                AddShopItem(ModContent.ItemType<Burston>(), shop, ref nextSlot);
+                return;
             case NPCID.GoblinTinkerer:
                 AddShopItem(ModContent.ItemType<Ballistica>(), shop, ref nextSlot);
                 return;

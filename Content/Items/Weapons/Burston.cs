@@ -1,44 +1,38 @@
 using Terraria.Audio;
 using Terraria.DataStructures;
+using WarframeMod.Common.GlobalItems;
+using WarframeMod.Common.GlobalProjectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
 
-internal class Sybaris : ModItem
+internal class Burston : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Shoots a 2-round burst");
+        Tooltip.SetDefault("Shoots a 3-round burst\n-20% Critical damage");
     }
     public override void SetDefaults()
     {
-        Item.damage = 16;
-        Item.crit = 21;
-        Item.knockBack = 3;
+        Item.damage = 10;
+        Item.crit = 2;
+        Item.knockBack = 1.5f;
         Item.DamageType = DamageClass.Ranged;
         Item.noMelee = true;
-        Item.width = 46;
-        Item.height = 14;
+        Item.width = 40;
+        Item.height = 20;
         Item.useStyle = ItemUseStyleID.Shoot;
-        Item.useTime = 5;
-        Item.useAnimation = 30;
-        Item.useLimitPerAnimation = 2;
+        Item.useTime = 4;
+        Item.useAnimation = 23;
+        Item.useLimitPerAnimation = 3;
         Item.rare = 2;
-        Item.value = Item.sellPrice(gold: 2);
+        Item.value = Item.buyPrice(gold: 35);
         Item.shoot = ProjectileID.Bullet;
-        Item.shootSpeed = 16f;
+        Item.shootSpeed = 15f;
         Item.useAmmo = AmmoID.Bullet;
     }
     public override Vector2? HoldoutOffset()
     {
         return new Vector2(0, -0.5f);
-    }
-    public override void AddRecipes()
-    {
-        Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.Musket);
-        recipe.AddIngredient(ItemID.FlintlockPistol);
-        recipe.AddTile(TileID.Anvils);
-        recipe.Register();
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
@@ -49,6 +43,7 @@ internal class Sybaris : ModItem
         Projectile projectile = Main.projectile[projectileID];
         projectile.usesLocalNPCImmunity = true;
         projectile.localNPCHitCooldown = -1;
+        projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 0.8f;
         return false;
     }
 }

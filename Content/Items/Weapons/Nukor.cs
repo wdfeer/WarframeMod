@@ -11,7 +11,7 @@ public class Nukor : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 10;
+        Item.damage = 11;
         Item.crit = -2;
         Item.DamageType = DamageClass.Magic;
         Item.channel = true;
