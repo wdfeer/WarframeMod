@@ -22,10 +22,11 @@ class TrueMeleeRangeGlobalItem : GlobalItem
     }
     void ModifyHitboxSize(Player player, ref Rectangle hitbox, float sizeMult, int sizeIncrease, out float oldLength, out float newLength)
     {
-        Vector2 oldFurthest = new Vector2[]
+        Vector2[] oldCorners = new Vector2[]
         {
             hitbox.TopLeft(), hitbox.TopRight(),hitbox.BottomLeft(), hitbox.BottomRight()
-        }.MaxBy(v2 => v2.Distance(player.Center));
+        };
+        Vector2 oldFurthest = oldCorners.MaxBy(v2 => v2.Distance(player.Center));
         Vector2 relativeFurthest = oldFurthest - player.Center;
         oldLength = relativeFurthest.Length();
         relativeFurthest *= sizeMult;

@@ -4,35 +4,35 @@ using WarframeMod.Common.GlobalItems;
 
 namespace WarframeMod.Content.Items.Weapons;
 
-internal class Bo : ModItem
+internal class Cassowar : ModItem
 {
-    public const int DEFENSE_PENETRATION = 25;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault($"Every third swing has tripled damage and {DEFENSE_PENETRATION} Defense Penetration\nDoubled benefit from Attack Speed");
+        Tooltip.SetDefault($"Every third swing has doubled damage and guaranteed Bleeding\n20% Bleeding chance\n-30% Critical Damage\nDoubled benefit from Attack Speed");
     }
     public override void SetDefaults()
     {
         Item.damage = 20;
-        Item.crit = 8;
-        Item.knockBack = 4.75f;
+        Item.crit = 2;
+        Item.knockBack = 4.5f;
         Item.DamageType = DamageClass.Melee;
-        Item.width = 57;
+        Item.width = 60;
         Item.height = 60;
-        Item.scale = 2.25f;
+        Item.scale = 2.15f;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item1;
-        Item.useTime = 60;
-        Item.useAnimation = 60;
+        Item.useTime = 45;
+        Item.useAnimation = 45;
         Item.autoReuse = true;
         Item.rare = 2;
-        Item.value = Item.sellPrice(silver: 33);
+        Item.value = Item.sellPrice(gold: 1);
+        Item.GetGlobalItem<CritGlobalItem>().critMultiplier = 0.7f;
     }
     public override float UseSpeedMultiplier(Player player)
     {
-        return player.GetAttackSpeed(Item.DamageType) * (SuperSwing ? 0.7f : 1f);
+        return player.GetAttackSpeed(Item.DamageType) * (SuperSwing ? 0.75f : 1f);
     }
-    static float HoldingPointMult => 1.8f;
+    static float HoldingPointMult => 1.6f;
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
         float rot = player.itemRotation + MathHelper.PiOver4;
@@ -54,35 +54,35 @@ internal class Bo : ModItem
     {
         swings++;
         if (SuperSwing)
-            Item.ArmorPenetration = DEFENSE_PENETRATION;
+            Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 1f;
         else
-            Item.ArmorPenetration = 0;
+            Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 0.2f;
         return base.CanUseItem(player);
     }
     public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
     {
         if (SuperSwing)
         {
-            damage *= 3;
-            knockBack *= 2;
+            damage *= 2;
+            knockBack *= 1.75f;
         }
     }
     public override void ModifyHitPvp(Player player, Player target, ref int damage, ref bool crit)
     {
         if (SuperSwing)
-            damage *= 3;
+            damage *= 2;
     }
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ModContent.ItemType<MK1Bo>());
-        recipe.AddIngredient(ItemID.DemoniteBar, 3);
+        recipe.AddIngredient(ItemID.DemoniteBar, 10);
+        recipe.AddIngredient(ItemID.ShadowScale, 5);
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
 
         recipe = CreateRecipe();
-        recipe.AddIngredient(ModContent.ItemType<MK1Bo>());
-        recipe.AddIngredient(ItemID.CrimtaneBar, 3);
+        recipe.AddIngredient(ItemID.CrimtaneBar, 10);
+        recipe.AddIngredient(ItemID.TissueSample, 5);
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
     }
