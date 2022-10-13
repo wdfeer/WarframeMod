@@ -56,6 +56,8 @@ internal class CritPlayer : ModPlayer
         var critLevel = GetCritLevel(Player.GetWeaponCrit(item));
         if (critLevel < 1 && crit)
             critLevel = 1;
+        else if (!crit)
+            critLevel = 0;
         float mult = critMultiplierPlayer * item.GetGlobalItem<CritGlobalItem>().critMultiplier;
         int oldDamage = damage;
         foreach (var h in hookers)
@@ -75,17 +77,20 @@ internal class CritPlayer : ModPlayer
     }
     public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
     {
-        int critLevel;
+        int critLevel = GetCritLevel(proj.CritChance);
         if (proj.DamageType == DamageClass.Summon || proj.DamageType == DamageClass.SummonMeleeSpeed)
         {
-            critLevel = GetCritLevel(proj.CritChance);
             crit = critLevel > 0;
         }
         else
-            critLevel = GetCritLevel(proj.CritChance);
+        {
+            if (!crit)
+                critLevel = 0;
+            else if (critLevel < 1 && crit)
+                critLevel = 1;
+        }
         CritPlayerHooks[] hookers = GetHookers();
-        if (critLevel < 1 && crit)
-            critLevel = 1;
+
         float mult = GetProjectileCritMult(proj);
         int oldDamage = damage;
         foreach (var h in hookers)

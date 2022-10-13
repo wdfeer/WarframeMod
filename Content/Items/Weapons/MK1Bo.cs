@@ -15,7 +15,7 @@ internal class MK1Bo : ModItem
     public override void SetDefaults()
     {
         Item.ArmorPenetration = 6;
-        Item.damage = 10;
+        Item.damage = 11;
         Item.crit = 6;
         Item.knockBack = 5f;
         Item.DamageType = DamageClass.Melee;
@@ -24,8 +24,8 @@ internal class MK1Bo : ModItem
         Item.scale = 1.75f;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item1;
-        Item.useTime = 36;
-        Item.useAnimation = 36;
+        Item.useTime = 42;
+        Item.useAnimation = 42;
         Item.autoReuse = true;
         Item.rare = 1;
         Item.value = Item.buyPrice(silver: 25);
