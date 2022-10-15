@@ -1,4 +1,5 @@
-﻿using WarframeMod.Common.Players;
+﻿using WarframeMod.Common;
+using WarframeMod.Common.Players;
 
 namespace WarframeMod.Content.Items.Arcanes;
 public abstract class Arcane : ModItem
@@ -27,6 +28,7 @@ public abstract class Arcane : ModItem
         => Array.IndexOf(GetArcaneTypes(), type);
     public override void SetDefaults()
     {
+        Item.accessory = true;
         Item.rare = -12;
         Item.expert = true;
         Item.value = Item.sellPrice(gold: 4);
@@ -36,10 +38,11 @@ public abstract class Arcane : ModItem
         Item.noUseGraphic = true;
         Item.UseSound = SoundID.Unlock;
     }
-    public override bool? UseItem(Player player)
-    {
-        player.GetModPlayer<ArcanePlayer>().EquipArcane(this);
-        return true;
-    }
     public abstract void UpdateArcane(Player player);
+    public override void UpdateAccessory(Player player, bool hideVisual)
+        => UpdateArcane(player);
+    public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
+    {
+        return equippedItem.ModItem is not Arcane || incomingItem.ModItem is not Arcane;
+    }
 }
