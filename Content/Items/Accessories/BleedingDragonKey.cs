@@ -30,6 +30,10 @@ public class BleedingDragonKey : ModItem
     {
         player.GetModPlayer<BleedingDragonKeyPlayer>().enabled = true;
     }
+    public override bool CanEquipAccessory(Player player, int slot, bool modded)
+    {
+        return !WarframeMod.IsBossAlive();
+    }
 }
 class BleedingDragonKeyPlayer : ModPlayer
 {
