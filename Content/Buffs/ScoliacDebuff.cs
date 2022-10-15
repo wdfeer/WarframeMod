@@ -22,6 +22,8 @@ internal class ScoliacDebuffGlobalNPC : GlobalNPC
         if (npc.HasBuff<ScoliacDebuff>() && projectile.DamageType == DamageClass.Summon)
         {
             damage += Scoliac.TAG_DAMAGE;
+            if (Main.rand.Next(0, 100) < Scoliac.TAG_POISON_CHANCE)
+                npc.AddBuff(BuffID.Poisoned, 600);
             if (Main.rand.Next(0, 100) < Scoliac.TAG_VENOM_CHANCE)
                 npc.AddBuff(BuffID.Venom, 420);
         }
