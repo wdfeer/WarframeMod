@@ -2,6 +2,7 @@ using System.IO;
 using WarframeMod.Common;
 using WarframeMod.Common.GlobalNPCs;
 using WarframeMod.Common.Players;
+using WarframeMod.Content.Items.Accessories;
 
 namespace WarframeMod;
 public partial class WarframeMod : Mod
@@ -10,7 +11,8 @@ public partial class WarframeMod : Mod
     {
         SetProjectileExtraUpdates,
         AuraSync,
-        StackableDebuff
+        StackableDebuff,
+        DetectVulnerability
     }
     public override void HandlePacket(BinaryReader reader, int whoAmI)
     {
@@ -46,7 +48,7 @@ public partial class WarframeMod : Mod
                         return;
                 }
             case MessageType.StackableDebuff:
-                short npc = reader.ReadInt16();
+                byte npc = reader.ReadByte();
                 StackableBuff buff = (StackableBuff)reader.ReadByte();
                 int damage = reader.ReadInt32();
                 switch (Main.netMode)
@@ -57,6 +59,26 @@ public partial class WarframeMod : Mod
                         return;
                     case NetmodeID.MultiplayerClient:
                         StackableBuffChance.AddDebuffNoSync(npc, buff, damage);
+                        return;
+                    default:
+                        return;
+                }
+            case MessageType.DetectVulnerability:
+                npc = reader.ReadByte();
+                Vector2 point = reader.ReadVector2();
+                short timeLeft = reader.ReadInt16();
+                switch (Main.netMode)
+                {
+                    case NetmodeID.Server:
+                        var modnpc = Main.npc[npc].GetGlobalNPC<DetectVulnerabilityGlobalNPC>();
+                        modnpc.vulnerability = point.ToPoint();
+                        modnpc.timeLeft = timeLeft;
+                        DetectVulnerabilityGlobalNPC.SendPacket(npc, point, timeLeft);
+                        return;
+                    case NetmodeID.MultiplayerClient:
+                        modnpc = Main.npc[npc].GetGlobalNPC<DetectVulnerabilityGlobalNPC>();
+                        modnpc.vulnerability = point.ToPoint();
+                        modnpc.timeLeft = timeLeft;
                         return;
                     default:
                         return;
@@ -88,7 +110,7 @@ public partial class WarframeMod : Mod
     {
         ModPacket packet = GetPacket();
         packet.Write((byte)MessageType.StackableDebuff);
-        packet.Write((short)npc);
+        packet.Write((byte)npc);
         packet.Write(type);
         packet.Write(damage);
         packet.Send(ignoreClient: ignoreClient);
