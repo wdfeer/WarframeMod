@@ -92,7 +92,8 @@ internal class NPCLoot : GlobalNPC
             LeadingConditionRule dragonKeyRule = new LeadingConditionRule(new DragonKeyCondition());
             dragonKeyRule.OnSuccess(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
             {
-                ModContent.ItemType<CriticalDelay>()
+                ModContent.ItemType<CriticalDelay>(),
+                ModContent.ItemType<VileAcceleration>()
             }));
             return dragonKeyRule;
         }
