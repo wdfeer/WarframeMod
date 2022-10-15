@@ -8,6 +8,19 @@ public class MoltAugmented : Arcane
     {
         Tooltip.SetDefault($"On kill: +{PERCENT_DAMAGE_PER_KILL:0.00}% Damage\nStacks up to {MAX_STACKS} times\n50% Reduced effectiveness when a boss is alive");
     }
+    public override void ModifyTooltips(List<TooltipLine> tooltips)
+    {
+        Player player = Main.LocalPlayer;
+        AugmentedPlayer augmentedPlayer = player.GetModPlayer<AugmentedPlayer>();
+        if (augmentedPlayer.enabled)
+        {
+            int expertIndex = tooltips.FindIndex(tip => tip.Text == "Expert");
+            if (expertIndex == -1)
+                return;
+            TooltipLine line = new(Mod, "ActiveBonus", $"Current bonus is {augmentedPlayer.CurrentBonusPercent:0.00}%");
+            tooltips.Insert(expertIndex, line);
+        }
+    }
     public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<AugmentedPlayer>().enabled = true;
@@ -45,9 +58,9 @@ class AugmentedGlobalNPC : GlobalNPC
     {
         if (npc.life > 0)
             return;
-        Player killer = Main.LocalPlayer;
-        if (!killer.GetModPlayer<AugmentedPlayer>().enabled)
+        var augmentator = Main.LocalPlayer.GetModPlayer<AugmentedPlayer>();
+        if (!augmentator.enabled)
             return;
-        killer.GetModPlayer<AugmentedPlayer>().OnKillNPCWhenEnabled();
+        augmentator.OnKillNPCWhenEnabled();
     }
 }
