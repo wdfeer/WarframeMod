@@ -54,7 +54,8 @@ public class BossBags : GlobalItem
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
                 {
                     ModContent.ItemType<Kohm>(),
-                    ModContent.ItemType<MaimingStrike>()
+                    ModContent.ItemType<MaimingStrike>(),
+                    ModContent.ItemType<DetectVulnerability>()
                 });
             case ItemID.WallOfFleshBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]

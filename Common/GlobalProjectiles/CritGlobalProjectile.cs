@@ -9,7 +9,7 @@ internal class CritGlobalProjectile : GlobalProjectile
         if (Main.projPet[projectile.type] && projectile.damage > 0)
         {
             Player owner = Main.player[projectile.owner];
-            Item spawnedFrom = owner.inventory.First(i => i.shoot == projectile.type);
+            Item spawnedFrom = owner.inventory.FirstOrDefault(i => i.shoot == projectile.type, null);
             int crit = 4;
             if (spawnedFrom != null)
                 crit = owner.GetWeaponCrit(spawnedFrom);
