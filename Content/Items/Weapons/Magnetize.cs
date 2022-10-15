@@ -1,7 +1,4 @@
-using Mono.Cecil;
-using Terraria.DataStructures;
 using WarframeMod.Content.Projectiles;
-using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace WarframeMod.Content.Items.Weapons;
 

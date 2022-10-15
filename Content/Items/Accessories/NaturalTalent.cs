@@ -1,6 +1,4 @@
-﻿using WarframeMod.Common.Players;
-
-namespace WarframeMod.Content.Items.Accessories;
+﻿namespace WarframeMod.Content.Items.Accessories;
 
 public class NaturalTalent : ModItem
 {

@@ -1,5 +1,4 @@
-﻿using Terraria.DataStructures;
-using WarframeMod.Content.Items.Weapons;
+﻿using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Common.Players;
 

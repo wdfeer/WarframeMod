@@ -1,5 +1,3 @@
-using WarframeMod.Common.Players;
-
 namespace WarframeMod.Content.Items.Accessories;
 
 public class UmbralFiber : UmbralAccessory

@@ -1,6 +1,4 @@
-﻿using WarframeMod.Common.GlobalNPCs;
-
-namespace WarframeMod.Common.Players;
+﻿namespace WarframeMod.Common.Players;
 public class BuffPlayer : CritPlayerHooks
 {
     public List<BuffChance> buffsOnHitNPC;

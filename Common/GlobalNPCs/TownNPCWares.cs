@@ -1,5 +1,4 @@
-﻿using WarframeMod.Content.Items.Accessories;
-using WarframeMod.Content.Items.Weapons;
+﻿using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Common.GlobalNPCs;
 

@@ -1,6 +1,5 @@
 using System.IO;
 using WarframeMod.Common;
-using WarframeMod.Common.GlobalNPCs;
 using WarframeMod.Common.Players;
 using WarframeMod.Content.Items.Accessories;
 

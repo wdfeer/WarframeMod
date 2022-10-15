@@ -1,7 +1,4 @@
-﻿using WarframeMod.Common;
-using WarframeMod.Common.Players;
-
-namespace WarframeMod.Content.Items.Arcanes;
+﻿namespace WarframeMod.Content.Items.Arcanes;
 public abstract class Arcane : ModItem
 {
     public static readonly Func<int>[] arcaneTypeGetters = new Func<int>[]

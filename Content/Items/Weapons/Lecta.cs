@@ -1,11 +1,4 @@
-﻿using Terraria;
-using Terraria.DataStructures;
-using Terraria.GameContent.Creative;
-using Terraria.ID;
-using Terraria.ModLoader;
-using WarframeMod.Common.GlobalItems;
-using WarframeMod.Common.Players;
-using WarframeMod.Content.Items.Accessories;
+﻿using Terraria.GameContent.Creative;
 using WarframeMod.Content.Projectiles;
 
 namespace WarframeMod.Content.Items.Weapons;

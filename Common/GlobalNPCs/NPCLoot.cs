@@ -21,8 +21,6 @@ internal class NPCLoot : GlobalNPC
                     ModContent.ItemType<MotusSetup>(),
                     ModContent.ItemType<MotusSignal>(),
                 });
-            case NPCID.UndeadMiner:
-                return ItemDropRule.Common(ModContent.ItemType<CriticalDelay>(), 2);
             case NPCID.BloodZombie or NPCID.Drippler:
                 return ItemDropRule.Common(ModContent.ItemType<PiercingHit>(), 60);
             case NPCID.FireImp:
@@ -87,6 +85,19 @@ internal class NPCLoot : GlobalNPC
                 return null;
         }
     }
+    IItemDropRule GetDragonKeyDropRule(NPC npc)
+    {
+        if (npc.boss)
+        {
+            LeadingConditionRule dragonKeyRule = new LeadingConditionRule(new DragonKeyCondition());
+            dragonKeyRule.OnSuccess(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
+            {
+                ModContent.ItemType<CriticalDelay>()
+            }));
+            return dragonKeyRule;
+        }
+        return null;
+    }
     public override void ModifyNPCLoot(NPC npc, Terraria.ModLoader.NPCLoot npcLoot)
     {
         var dropRule = GetItemDropRule(npc);
@@ -99,5 +110,8 @@ internal class NPCLoot : GlobalNPC
             normalModeRule.OnSuccess(dropRule);
             npcLoot.Add(normalModeRule);
         }
+        dropRule = GetDragonKeyDropRule(npc);
+        if (dropRule != null)
+            npcLoot.Add(dropRule);
     }
 }

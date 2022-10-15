@@ -1,10 +1,11 @@
 using WarframeMod.Common.GlobalItems;
+using WarframeMod.Common.Players;
 
 namespace WarframeMod.Content.Items.Accessories;
 
 public class Reach : ModItem
 {
-    public const int ABSOLUTE_RANGE_BONUS = 75;
+    public const int ABSOLUTE_RANGE_BONUS = 81;
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"+{ABSOLUTE_RANGE_BONUS / 15} tiles of True Melee and Whip range\n+{WhipRange.GetWhipExtraRange(ABSOLUTE_RANGE_BONUS) * 100}% whip range");
@@ -20,15 +21,5 @@ public class Reach : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetModPlayer<TrueMeleeRangePlayer>().absoluteExtraRange += ABSOLUTE_RANGE_BONUS;
-    }
-}
-class TrueMeleeRangePlayer : ModPlayer
-{
-    public int absoluteExtraRange;
-    public float rangeMult;
-    public override void ResetEffects()
-    {
-        absoluteExtraRange = 0;
-        rangeMult = 1f;
     }
 }

@@ -1,11 +1,11 @@
-﻿using WarframeMod.Content.Items.Accessories;
+﻿using WarframeMod.Common.Players;
 
 namespace WarframeMod.Common.GlobalItems;
 
 public class WhipRange : GlobalItem
 {
     public override bool InstancePerEntity => true;
-    public static float GetWhipExtraRange(float additiveRange) => additiveRange / 300f;
+    public static float GetWhipExtraRange(float additiveRange) => additiveRange / 360f;
     public float extraRangeMult = 1f;
     public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
     {

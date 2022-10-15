@@ -1,8 +1,4 @@
-﻿using WarframeMod.Common.GlobalNPCs;
-using WarframeMod.Common.Players;
-using WarframeMod.Content.Buffs;
-
-namespace WarframeMod.Content.Items.Accessories;
+﻿namespace WarframeMod.Content.Items.Accessories;
 
 public class HunterRecovery : HunterAccessory
 {

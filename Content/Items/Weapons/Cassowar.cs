@@ -1,5 +1,3 @@
-using System;
-using Terraria.DataStructures;
 using WarframeMod.Common.GlobalItems;
 
 namespace WarframeMod.Content.Items.Weapons;

@@ -1,7 +1,4 @@
-﻿using WarframeMod.Content.Items.Accessories;
-using WarframeMod.Content.Items.Weapons;
-
-namespace WarframeMod.Common.GlobalNPCs;
+﻿namespace WarframeMod.Common.GlobalNPCs;
 
 internal class DebuffDamageGlobalNPC : GlobalNPC
 {

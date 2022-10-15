@@ -1,6 +1,4 @@
-﻿using WarframeMod.Common.GlobalNPCs;
-
-namespace WarframeMod.Common;
+﻿namespace WarframeMod.Common;
 public enum StackableBuff
 {
     Bleed,

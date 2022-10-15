@@ -1,6 +1,4 @@
-﻿using WarframeMod.Common.GlobalNPCs;
-using WarframeMod.Common.Players;
-using WarframeMod.Content.Buffs;
+﻿using WarframeMod.Common.Players;
 
 namespace WarframeMod.Content.Items.Accessories;
 

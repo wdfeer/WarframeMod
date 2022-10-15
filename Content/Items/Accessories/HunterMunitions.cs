@@ -1,5 +1,4 @@
 ﻿using WarframeMod.Common;
-using WarframeMod.Common.GlobalNPCs;
 using WarframeMod.Common.Players;
 
 namespace WarframeMod.Content.Items.Accessories;

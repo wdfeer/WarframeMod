@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WarframeMod.Common.GlobalNPCs;
+﻿namespace WarframeMod.Common.GlobalNPCs;
 internal class EnemyBuff : GlobalNPC
 {
     public const float MAX_LIFE_MULT = 1.05f;

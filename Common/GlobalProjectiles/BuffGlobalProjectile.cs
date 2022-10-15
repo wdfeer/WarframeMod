@@ -1,7 +1,4 @@
-﻿using WarframeMod.Common.GlobalNPCs;
-using WarframeMod.Content.Buffs;
-
-namespace WarframeMod.Common.GlobalProjectiles;
+﻿namespace WarframeMod.Common.GlobalProjectiles;
 
 internal class BuffGlobalProjectile : GlobalProjectile
 {
