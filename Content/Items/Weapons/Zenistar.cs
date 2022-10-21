@@ -1,6 +1,7 @@
 using Terraria.DataStructures;
 using WarframeMod.Common;
 using WarframeMod.Common.GlobalItems;
+using WarframeMod.Common.Players;
 using WarframeMod.Content.Projectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
@@ -13,7 +14,9 @@ internal class Zenistar : ModItem
         Tooltip.SetDefault($@"Right click to throw a disk that throws shadowflames for {DISK_DURATION / 60} seconds
 Inflicts Shadowflame and has 4x damage when the disk is not deployed
 Guaranteed bleeding when the disk is deployed
-Doubled benefit from Attack Speed");
+Disk damage is boosted by your melee speed
+Disk range is affected by Reach and Primed Reach
+Doubled benefit from melee speed for the melee attack");
     }
     public override void SetDefaults()
     {
@@ -23,7 +26,7 @@ Doubled benefit from Attack Speed");
         Item.DamageType = DamageClass.Melee;
         Item.width = 48;
         Item.height = 46;
-        Item.scale = 1.25f;
+        Item.scale = 1.75f;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item1;
         Item.useTime = 72;
@@ -47,6 +50,7 @@ Doubled benefit from Attack Speed");
     {
         knockback /= 4;
         velocity /= player.GetAttackSpeed(DamageClass.Melee);
+        damage = (int)(damage * player.GetAttackSpeed(DamageClass.Melee));
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
@@ -55,7 +59,8 @@ Doubled benefit from Attack Speed");
         Projectile disk = FindDisk();
         if (disk != null)
             disk.Kill();
-        return true;
+        disk = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI, player.GetModPlayer<TrueMeleeRangePlayer>().absoluteExtraRange);
+        return false;
     }
     public override bool? UseItem(Player player)
     {

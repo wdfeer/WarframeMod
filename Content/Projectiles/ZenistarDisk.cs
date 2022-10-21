@@ -25,25 +25,20 @@ internal class ZenistarDisk : ModProjectile
         Projectile.velocity *= 0.95f;
         return Projectile.velocity.Length() < 1.5f;
     }
-    public float ShootRotation
-    {
-        get => Projectile.ai[0];
-        set
-        {
-            Projectile.ai[0] = value;
-        }
-    }
-    float ShootInterval => 15;
+    float ExtraProjLife => Projectile.ai[0] / 16f;
+    const int SHOOT_INTERVAL = 15;
     float shootTimer = 0;
     public override void AI()
     {
+        if (Main.myPlayer != Projectile.owner)
+            return;
         shootTimer++;
-        if (shootTimer <= ShootInterval)
+        if (shootTimer <= SHOOT_INTERVAL)
         {
             for (int i = 0; i < 3; i++)
             {
-                Vector2 velocity = (ShootRotation + MathF.PI / 1.5f * i).ToRotationVector2() * 16; 
-                Projectile.NewProjectile(
+                Vector2 velocity = (Projectile.rotation + MathF.PI / 1.5f * i).ToRotationVector2() * 16; 
+                Projectile p = Projectile.NewProjectileDirect(
                     Projectile.GetSource_FromThis(),
                     Projectile.position,
                     velocity,
@@ -51,9 +46,10 @@ internal class ZenistarDisk : ModProjectile
                     Projectile.damage,
                     Projectile.knockBack,
                     Projectile.owner);
+                p.timeLeft += (int)ExtraProjLife;
             }
 
-            ShootRotation += MathF.PI / 45;
+            Projectile.rotation += MathF.PI / 60;
             shootTimer = 0;
         }
     }
@@ -73,12 +69,13 @@ class ZenistarFlame : ModProjectile
         Projectile.usesIDStaticNPCImmunity = true;
         Projectile.idStaticNPCHitCooldown = 15;
         Projectile.timeLeft = 15;
-        Projectile.extraUpdates = 2;
+        Projectile.extraUpdates = 1;
         Projectile.netUpdate = true;
     }
     public override void AI()
     {
-        Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Shadowflame, Scale: 0.75f);
+        if (Main.rand.NextBool(3))
+            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Shadowflame, Scale: 1.2f);
     }
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
     {
