@@ -2,11 +2,11 @@
 
 namespace WarframeMod.Content.Items.Accessories;
 
-public class VileAcceleration : ModItem
+public class HollowPoint : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("+25% Use Speed, but -15% damage");
+        Tooltip.SetDefault("+25% Critical Damage, but -15% damage");
     }
     public override void SetDefaults()
     {
@@ -18,7 +18,7 @@ public class VileAcceleration : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetAttackSpeed(DamageClass.Generic) += 0.25f;
+        player.GetModPlayer<CritPlayer>().critMultiplierPlayer += 0.25f;
         player.GetDamage(DamageClass.Generic) -= 0.15f;
     }
 }

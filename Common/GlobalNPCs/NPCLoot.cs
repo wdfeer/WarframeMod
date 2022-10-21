@@ -96,7 +96,8 @@ internal class NPCLoot : GlobalNPC
             dragonKeyRule.OnSuccess(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
             {
                 ModContent.ItemType<CriticalDelay>(),
-                ModContent.ItemType<VileAcceleration>()
+                ModContent.ItemType<VileAcceleration>(),
+                ModContent.ItemType<HollowPoint>()
             }));
             return dragonKeyRule;
         }
