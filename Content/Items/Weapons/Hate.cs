@@ -1,3 +1,4 @@
+using System.Security.Policy;
 using WarframeMod.Common.GlobalItems;
 
 namespace WarframeMod.Content.Items.Weapons;
@@ -18,6 +19,7 @@ Benefits twice as much from attack speed bonuses");
         Item.DamageType = DamageClass.Melee;
         Item.width = 46;
         Item.height = 48;
+        Item.scale = 1.2f;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item1;
         Item.useTime = 40;

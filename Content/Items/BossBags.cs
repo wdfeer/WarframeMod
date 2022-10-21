@@ -64,6 +64,7 @@ public class BossBags : GlobalItem
                     ModContent.ItemType<SplitChamber>(),
                     ModContent.ItemType<VitalSense>(),
                     ModContent.ItemType<HighVoltage>(),
+                    ModContent.ItemType<Zenistar>()
                 });
             case ItemID.QueenSlimeBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
