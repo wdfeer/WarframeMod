@@ -15,7 +15,7 @@ Right click to fire 21 times in a single burst with {ALT_FIRE_DOWNTIME / 60} sec
     }
     public override void SetDefaults()
     {
-        Item.damage = 27;
+        Item.damage = 24;
         Item.crit = 17;
         Item.knockBack = 1.75f;
         Item.DamageType = DamageClass.Ranged;

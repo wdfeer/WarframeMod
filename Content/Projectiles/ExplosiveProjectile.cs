@@ -62,6 +62,7 @@ public abstract class ExplosiveProjectile : ModProjectile
             dust.velocity *= 3f;
         }
     }
+    public virtual float ExplosionSoundVolume => 0.5f;
     public virtual void ExplosionSound()
-        => SoundEngine.PlaySound(SoundID.Item14.WithVolumeScale(0.5f), Projectile.Center);
+        => SoundEngine.PlaySound(SoundID.Item14.WithVolumeScale(ExplosionSoundVolume), Projectile.Center);
 }
