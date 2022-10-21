@@ -22,7 +22,7 @@ internal class Kraken : ModItem
         Item.useAnimation = 27;
         Item.useLimitPerAnimation = 2;
         Item.rare = 2;
-        Item.value = Item.sellPrice(gold: 1);
+        Item.value = Item.sellPrice(silver: 90);
         Item.shoot = ProjectileID.Bullet;
         Item.shootSpeed = 12f;
         Item.useAmmo = AmmoID.Bullet;
@@ -43,8 +43,7 @@ internal class Kraken : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         SoundEngine.PlaySound(SoundID.Item11, position);
-        WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
-        int projectileID = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+        this.ShootWith(player, source, position, velocity * 0.9f, type, damage, knockback, 0.01f, Item.width);
         return false;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Terraria.GameContent.ItemDropRules;
 using WarframeMod.Content.Items;
 using WarframeMod.Content.Items.Accessories;
+using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Common.GlobalNPCs;
 
@@ -26,7 +27,9 @@ internal class NPCLoot : GlobalNPC
             case NPCID.FireImp:
                 return ItemDropRule.Common(ModContent.ItemType<Blaze>(), 15);
             case NPCID.DarkCaster:
-                return ItemDropRule.Common(ModContent.ItemType<NaturalTalent>(), 11);
+                return ItemDropRule.Common(ModContent.ItemType<NaturalTalent>(), 10);
+            case NPCID.Crimslime or NPCID.CorruptSlime or NPCID.Slimer:
+                return ItemDropRule.Common(ModContent.ItemType<KuvaKraken>(), 12);
             default:
                 return null;
         }
