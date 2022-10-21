@@ -97,7 +97,8 @@ internal class NPCLoot : GlobalNPC
             {
                 ModContent.ItemType<CriticalDelay>(),
                 ModContent.ItemType<VileAcceleration>(),
-                ModContent.ItemType<HollowPoint>()
+                ModContent.ItemType<HollowPoint>(),
+                ModContent.ItemType<SpoiledStrike>(),
             }));
             return dragonKeyRule;
         }
