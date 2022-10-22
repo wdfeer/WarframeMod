@@ -15,7 +15,7 @@ public class ArcaScisco : ModItem
     public override void SetDefaults()
     {
         Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/ArcaSciscoSound").ModifySoundStyle(pitchVariance: 0.08f);
-        Item.damage = 29;
+        Item.damage = 30;
         Item.crit = 14;
         Item.DamageType = DamageClass.Magic;
         Item.mana = 5;

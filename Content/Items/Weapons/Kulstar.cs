@@ -12,7 +12,7 @@ internal class Kulstar : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 55;
+        Item.damage = 60;
         Item.crit = 13;
         Item.knockBack = 10f;
         Item.DamageType = DamageClass.Ranged;

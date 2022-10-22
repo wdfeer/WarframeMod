@@ -12,7 +12,7 @@ public class ArcaPlasmor : ModItem
     public override void SetDefaults()
     {
         Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/TenetArcaPlasmorSound").ModifySoundStyle(pitchVariance: 0.1f);
-        Item.damage = 279;
+        Item.damage = 249;
         Item.crit = 18;
         Item.DamageType = DamageClass.Magic;
         Item.mana = 13;

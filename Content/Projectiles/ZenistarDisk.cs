@@ -1,5 +1,4 @@
-﻿using WarframeMod.Common.Players;
-using WarframeMod.Content.Items.Weapons;
+﻿using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Projectiles;
 
@@ -37,7 +36,7 @@ internal class ZenistarDisk : ModProjectile
         {
             for (int i = 0; i < 3; i++)
             {
-                Vector2 velocity = (Projectile.rotation + MathF.PI / 1.5f * i).ToRotationVector2() * 16; 
+                Vector2 velocity = (Projectile.rotation + MathF.PI / 1.5f * i).ToRotationVector2() * 16;
                 Projectile p = Projectile.NewProjectileDirect(
                     Projectile.GetSource_FromThis(),
                     Projectile.position,
@@ -75,7 +74,15 @@ class ZenistarFlame : ModProjectile
     public override void AI()
     {
         if (Main.rand.NextBool(3))
-            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Shadowflame, Scale: 1.2f);
+        { 
+            Dust d = Dust.NewDustDirect(Projectile.position,
+                                        Projectile.width,
+                                        Projectile.height,
+                                        DustID.Shadowflame,
+                                        Scale: 1.5f);
+            d.velocity *= 0;
+            d.noGravity = true;
+        }
     }
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
     {

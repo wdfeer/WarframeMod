@@ -8,7 +8,7 @@ namespace WarframeMod.Content.Items.Weapons;
 
 internal class Zenistar : ModItem
 {
-    public const int DISK_DURATION = 900;
+    public const int DISK_DURATION = 720;
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($@"Right click to throw a disk that throws shadowflames for {DISK_DURATION / 60} seconds

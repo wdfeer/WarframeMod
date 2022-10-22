@@ -29,11 +29,6 @@ public abstract class Arcane : ModItem
         Item.rare = -12;
         Item.expert = true;
         Item.value = Item.sellPrice(gold: 4);
-        Item.useAnimation = 20;
-        Item.useTime = 20;
-        Item.useStyle = ItemUseStyleID.HoldUp;
-        Item.noUseGraphic = true;
-        Item.UseSound = SoundID.Unlock;
     }
     public abstract void UpdateArcane(Player player);
     public override void UpdateAccessory(Player player, bool hideVisual)
