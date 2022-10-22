@@ -42,10 +42,9 @@ public class ArcaScisco : ModItem
         recipe.Register();
     }
     int GetStacks(Player player) => player.GetModPlayer<ArcaSciscoPlayer>().stacks;
-    public override bool CanUseItem(Player player)
+    public override void ModifyWeaponCrit(Player player, ref float crit)
     {
-        Item.crit = 14 + 5 * GetStacks(player);
-        return base.CanUseItem(player);
+        crit += 5 * GetStacks(player);
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {

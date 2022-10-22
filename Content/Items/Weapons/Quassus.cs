@@ -12,7 +12,7 @@ public class Quassus : ModItem
     }
     public override void SetDefaults()
     {
-        Item.damage = 22;
+        Item.damage = 23;
         Item.crit = 26;
         Item.DamageType = DamageClass.Melee;
         Item.noMelee = true;

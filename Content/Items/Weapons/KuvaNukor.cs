@@ -8,11 +8,11 @@ public class KuvaNukor : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("+100% Critical Damage");
+        Tooltip.SetDefault("+150% Critical Damage");
     }
     public override void SetDefaults()
     {
-        Item.damage = 22;
+        Item.damage = 20;
         Item.crit = 3;
         Item.DamageType = DamageClass.Magic;
         Item.channel = true;
@@ -36,7 +36,7 @@ public class KuvaNukor : ModItem
     {
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
         Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-        projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 2f;
+        projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 2.5f;
         return false;
     }
 }
