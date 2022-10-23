@@ -7,16 +7,19 @@ public struct AuraData
     public bool physique;
     public bool standUnited;
     public bool sprintBoost;
-    public const int byteCount = 4;
+    public bool powerDonation;
+    public const int byteCount = 5;
     public byte[] toBytes()
     {
         byte Btb(bool boolean) => boolean ? (byte)1 : (byte)0;
-        return new byte[byteCount] { Btb(corrosiveProjection), Btb(physique), Btb(standUnited), Btb(sprintBoost) };
+        return new bool[byteCount] { corrosiveProjection, physique, standUnited, sprintBoost, powerDonation }
+            .Select(x => Btb(x))
+            .ToArray();
     }
     public static AuraData fromBytes(byte[] buffer)
     {
         bool Btb(byte b) => b == 1;
-        return new AuraData() { corrosiveProjection = Btb(buffer[0]), physique = Btb(buffer[1]), standUnited = Btb(buffer[2]), sprintBoost = Btb(buffer[3]) };
+        return new AuraData() { corrosiveProjection = Btb(buffer[0]), physique = Btb(buffer[1]), standUnited = Btb(buffer[2]), sprintBoost = Btb(buffer[3]), powerDonation = Btb(buffer[4]) };
     }
 }
 public class AuraPlayer : ModPlayer
@@ -30,9 +33,12 @@ public class AuraPlayer : ModPlayer
         => predicate(myAuras) || (Player.team != (int)Team.None && RealPlayerAuras.Select((d, i) => (d, i)).Any(x => predicate(x.d) && Main.player[x.i].team == Player.team));
     public int CountAurasInMyTeam(Func<AuraData, bool> predicate)
         => (predicate(myAuras) ? 1 : 0) +
-           (Player.team != (int)Team.None ?
+           CountAurasInMyTeamExceptMe(predicate);
+    public int CountAurasInMyTeamExceptMe(Func<AuraData, bool> predicate)
+        => (Player.team != (int)Team.None ?
            RealPlayerAuras.Select((d, i) => (d, i)).Count(x => predicate(x.d) && Main.player[x.i].team == Player.team && x.i != Player.whoAmI)
            : 0);
+
     public override void ResetEffects()
     {
         myAuras = new AuraData();

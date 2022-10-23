@@ -3,7 +3,7 @@ using WarframeMod.Common.GlobalNPCs;
 namespace WarframeMod.Content.Items.Accessories;
 public class Hellfire : ModItem
 {
-    public const int EXTRA_FIRE_DPS = 12;
+    public const int EXTRA_FIRE_DPS = 15;
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($"+{EXTRA_FIRE_DPS} damage per second on burning enemies");
@@ -12,15 +12,15 @@ public class Hellfire : ModItem
     {
         Item.accessory = true;
         Item.rare = 1;
-        Item.value = Item.sellPrice(silver: 12);
+        Item.value = Item.sellPrice(silver: 15);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetModPlayer<HellfirePlayer>().enabled = true;
     }
     public override void AddRecipes()
-        => CreateRecipe().AddIngredient(ItemID.Gel, 50)
-                         .AddRecipeGroup(RecipeGroupID.IronBar, 4)
+        => CreateRecipe().AddRecipeGroup(RecipeGroupID.IronBar, 3)
+                         .AddIngredient(ItemID.Gel, 50)
                          .AddTile(TileID.Anvils)
                          .Register();
 }
