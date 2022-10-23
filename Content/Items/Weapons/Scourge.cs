@@ -4,13 +4,15 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Scourge : ModItem
 {
+    public const int DEFENSE_PENETRATION = 10;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Fires a projectile that splits into multiple projectiles on impact");
+        Tooltip.SetDefault($@"Fires a projectile that splits into multiple projectiles on impact and inflicts poison
+{DEFENSE_PENETRATION} Defense Penetration");
     }
     public override void SetDefaults()
     {
-        Item.damage = 16;
+        Item.damage = 15;
         Item.crit = 0;
         Item.DamageType = DamageClass.Magic;
         Item.mana = 8;

@@ -1,3 +1,6 @@
+using WarframeMod.Common.GlobalProjectiles;
+using WarframeMod.Content.Items.Weapons;
+
 namespace WarframeMod.Content.Projectiles;
 public class ScourgeProjectile : ModProjectile
 {
@@ -11,6 +14,8 @@ public class ScourgeProjectile : ModProjectile
         Projectile.CloneDefaults(ProjectileID.EmeraldBolt);
         AIType = ProjectileID.EmeraldBolt;
         Projectile.penetrate = 1;
+        Projectile.GetGlobalProjectile<BuffGlobalProjectile>().AddBuff(new Common.BuffChance(BuffID.Poisoned, 240, 1f));
+        Projectile.ArmorPenetration = Scourge.DEFENSE_PENETRATION;
     }
     const int numOfProjectilesSpawnedOnKill = 5;
     public override void Kill(int timeLeft)
@@ -26,6 +31,7 @@ public class ScourgeProjectile : ModProjectile
             projectile.timeLeft = 45;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 12;
+            projectile.ArmorPenetration = Scourge.DEFENSE_PENETRATION;
         }
     }
 }

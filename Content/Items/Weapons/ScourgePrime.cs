@@ -7,7 +7,8 @@ public class ScourgePrime : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Fires a projectile that splits into multiple projectiles on impact\n20% chance to inflict ichor and cursed flames");
+        Tooltip.SetDefault(@"Fires a projectile that splits into multiple projectiles on impact
+20% chance to inflict ichor and cursed flames");
     }
     public override void SetDefaults()
     {
