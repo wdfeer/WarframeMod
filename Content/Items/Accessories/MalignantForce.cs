@@ -7,7 +7,9 @@ public class MalignantForce : ModItem
     public const int EXTRA_POISON_DPS = 25;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault($"+100% chance to poison your foes for {POISON_DURATION / 60} seconds on hit\n+{EXTRA_POISON_DPS} damage per second on poisoned enemies");
+        Tooltip.SetDefault($@"+100% chance to poison your foes for {POISON_DURATION / 60} seconds on hit
++{EXTRA_POISON_DPS} damage per second on poisoned enemies
+Poisoned enemies under the effect of cold or frostburn take {ViralGlobalNPC.EXTRA_DAMAGE_PERCENT}% more damage");
     }
     public override void SetDefaults()
     {
