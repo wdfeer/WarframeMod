@@ -35,9 +35,12 @@ public class NatarukProjectile : ModProjectile
                 () => Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.OrangeTorch, Scale: 1.25f),
                 () => 
                 {
-                    for (int i = 0; i < 3; i++)
+                    Dust d = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Firework_Red, Scale: 2f);
+                    d.velocity *= 0.16f;
+                    d.noGravity = true;
+                    for (int i = 0; i < 2; i++)
                     {
-                        Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Firework_Red, Scale: 1.33f);
+                        Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Firework_Red).noGravity = true;
                     }
                 },
                 () =>
