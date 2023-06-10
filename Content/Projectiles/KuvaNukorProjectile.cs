@@ -70,7 +70,7 @@ public class KuvaNukorProjectile : BeamProjectile
         for (Distance = MinDistance; Distance <= 1200f; Distance += 5f)
         {
             Vector2 start = BeamEnd;
-            bool tileCollision = !Collision.CanHit(player.Center, 1, 1, start, 1, 1);
+            bool tileCollision = !Collision.CanHitLine(player.Center, 1, 1, start, 1, 1);
             NPC hitNPC = Array.Find(Main.npc,
                         npc => Hostile(npc) && npc.getRect().Contains(start.ToPoint()));
             if (tileCollision)
