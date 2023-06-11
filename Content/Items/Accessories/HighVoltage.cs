@@ -8,7 +8,7 @@ public class HighVoltage : ModItem
     public const int ELECTRO_CHANCE_PERCENT = 12;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault($"+{ELECTRO_CHANCE_PERCENT}% chance to apply electrified on hit");
+        Tooltip.SetDefault($"+{ELECTRO_CHANCE_PERCENT}% on-hit electrified chance");
     }
     public override void SetDefaults()
     {

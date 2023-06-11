@@ -10,7 +10,7 @@ public class ArcaScisco : ModItem
     public const int MAX_STACKS = 4;
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault($"+5% Critical and Bleed chance on hit, stacks up to {MAX_STACKS} times");
+        Tooltip.SetDefault($"On Hit: +5% Critical and Bleed chance, stacks up to {MAX_STACKS} times");
     }
     public override void SetDefaults()
     {

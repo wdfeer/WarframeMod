@@ -38,7 +38,7 @@ class HunterRecoveryPlayer : ModPlayer
     public int GetHealAmount()
     {
         int calculated = (int)(Player.statLifeMax2 / 200f * (Player.maxMinions > 6.5f ? 1f : Player.maxMinions / 6.5f));
-        if (calculated > 0)
+        if (calculated >= 1)
             return calculated;
         return 1;
     }
@@ -52,7 +52,7 @@ class HunterRecoveryPlayer : ModPlayer
     }
     public override void PostUpdate()
     {
-        if (enabled) 
+        if (enabled)
         {
             healTimer++;
             oldHealAmount = GetHealAmount();

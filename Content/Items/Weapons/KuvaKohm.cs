@@ -9,7 +9,7 @@ public class KuvaKohm : ModItem
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault($@"Takes a while to spool up while increasing Multishot up to {maxMultishot} pellets
-33% chance to apply bleeding on hit
+33% bleeding chance
 Linear damage falloff starting at 36 tiles
 +15% Critical Damage
 -40% ammo damage");
