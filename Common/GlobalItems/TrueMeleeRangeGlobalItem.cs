@@ -14,45 +14,50 @@ class TrueMeleeRangeGlobalItem : GlobalItem
 
         ModifyHitboxSize(player, ref hitbox, modPl.rangeMult, modPl.absoluteExtraRange, out float oldLength, out float newLength);
 
-        Vector2 direction = Vector2.UnitX.RotatedBy(player.itemRotation) * player.direction;
-        float mult = 0.8f;
-        Vector2 dustStart = player.Center + direction * oldLength * mult;
-        Vector2 dustEnd = player.Center + direction * newLength * mult;
-        SpawnDusts(dustStart, dustEnd);
+        SpawnDusts(player, oldLength, newLength);
     }
     void ModifyHitboxSize(Player player, ref Rectangle hitbox, float sizeMult, int sizeIncrease, out float oldLength, out float newLength)
     {
-        Vector2[] oldCorners = new Vector2[]
+        Vector2 GetFurthestCorner(Rectangle rect, Vector2 origin)
         {
-            hitbox.TopLeft(), hitbox.TopRight(),hitbox.BottomLeft(), hitbox.BottomRight()
-        };
-        Vector2 oldFurthest = oldCorners.MaxBy(v2 => v2.Distance(player.Center));
+            Vector2[] corners = new Vector2[]
+            {
+                rect.TopLeft(), rect.TopRight(),rect.BottomLeft(), rect.BottomRight()
+            };
+            return corners.MaxBy(v2 => v2.Distance(origin));
+        }
+
+        Vector2 oldFurthest = GetFurthestCorner(hitbox, player.Center);
         Vector2 relativeFurthest = oldFurthest - player.Center;
         oldLength = relativeFurthest.Length();
         relativeFurthest *= sizeMult;
         relativeFurthest += Vector2.Normalize(relativeFurthest) * sizeIncrease;
         newLength = relativeFurthest.Length();
         hitbox = new Rectangle((int)player.Center.X, (int)player.Center.Y, (int)relativeFurthest.X, (int)relativeFurthest.Y);
-        FixRectangle(ref hitbox);
+        FixNegativeRectangleDimensions(ref hitbox);
     }
-    void FixRectangle(ref Rectangle rect)
+    void FixNegativeRectangleDimensions(ref Rectangle rect)
     {
         Point newPos = rect.Location;
         Point newSize = rect.Size().ToPoint();
         if (rect.Width < 0)
         {
             newPos.X += rect.Width;
-            newSize.X *= -1;
+            newSize.X = -newSize.X;
         }
         if (rect.Height < 0)
         {
             newPos.Y += rect.Height;
-            newSize.Y *= -1;
+            newSize.Y = -newSize.Y;
         }
         rect = new Rectangle(newPos.X, newPos.Y, newSize.X, newSize.Y);
     }
-    void SpawnDusts(Vector2 start, Vector2 end)
+    void SpawnDusts(Player player, float innerRadius, float outerRadius)
     {
+        Vector2 direction = Vector2.UnitX.RotatedBy(player.itemRotation) * player.direction;
+        float mult = 0.8f;
+        Vector2 start = player.Center + direction * innerRadius * mult;
+        Vector2 end = player.Center + direction * outerRadius * mult;
         float length = end.Distance(start);
         float step = 15;
         Vector2 normal = Vector2.Normalize(end - start);
