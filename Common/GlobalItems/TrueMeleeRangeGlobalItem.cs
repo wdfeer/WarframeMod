@@ -12,30 +12,56 @@ class TrueMeleeRangeGlobalItem : GlobalItem
         if (modPl.rangeMult == 1f && modPl.absoluteExtraRange == 0)
             return;
 
-        ModifyHitboxSize(player, ref hitbox, modPl.rangeMult, modPl.absoluteExtraRange, out float oldLength, out float newLength);
+        // DustHelper.RectangleCorners(hitbox, DustID.GemRuby, 0, false);
+        ModifyHitboxSize(player, ref hitbox, modPl.rangeMult, modPl.absoluteExtraRange, out float oldLength, out float newLength, out bool radialAttack);
+        // DustHelper.RectangleCorners(hitbox, DustID.GemSapphire, 0, false);
 
         SpawnDusts(player, oldLength, newLength);
+        if (radialAttack)
+            SpawnDusts(player, oldLength, newLength, MathF.PI);
     }
-    void ModifyHitboxSize(Player player, ref Rectangle hitbox, float sizeMult, int sizeIncrease, out float oldLength, out float newLength)
+    void ModifyHitboxSize(Player player, ref Rectangle hitbox, float sizeMult, int sizeIncrease, out float oldLength, out float newLength, out bool radialAttack)
     {
+        bool IsRadialAttack(Player player, Rectangle hitbox)
+        {
+            IEnumerable<float> distances = GetRectCorners(hitbox).Select(x => player.Center.Distance(x));
+            return distances.Max() / distances.Min() < 1.05f;
+        }
         Vector2 GetFurthestCorner(Rectangle rect, Vector2 origin)
         {
-            Vector2[] corners = new Vector2[]
-            {
-                rect.TopLeft(), rect.TopRight(),rect.BottomLeft(), rect.BottomRight()
-            };
+            Vector2[] corners = GetRectCorners(rect);
             return corners.MaxBy(v2 => v2.Distance(origin));
         }
 
-        Vector2 oldFurthest = GetFurthestCorner(hitbox, player.Center);
-        Vector2 relativeFurthest = oldFurthest - player.Center;
-        oldLength = relativeFurthest.Length();
-        relativeFurthest *= sizeMult;
-        relativeFurthest += Vector2.Normalize(relativeFurthest) * sizeIncrease;
-        newLength = relativeFurthest.Length();
-        hitbox = new Rectangle((int)player.Center.X, (int)player.Center.Y, (int)relativeFurthest.X, (int)relativeFurthest.Y);
+        oldLength = GetFurthestCorner(hitbox, player.Center).Distance(player.Center);
+        radialAttack = IsRadialAttack(player, hitbox);
+
+        if (radialAttack)
+        {
+            sizeMult = 1 + (sizeMult - 1) * 2;
+            sizeIncrease *= 2;
+
+            Point size = new Point((int)(hitbox.Width * sizeMult + sizeIncrease),
+                (int)(hitbox.Height * sizeMult + sizeIncrease));
+            hitbox = new Rectangle(
+                (int)(player.Center.X - size.X / 2f),
+                (int)(player.Center.Y - size.Y / 2f),
+                size.X,
+                size.Y
+            );
+        }
+        else
+        {
+            var relativeFurthest = GetFurthestCorner(hitbox, player.Center) - player.Center;
+            relativeFurthest *= sizeMult;
+            relativeFurthest += Vector2.Normalize(relativeFurthest) * sizeIncrease;
+            hitbox = new Rectangle((int)player.Center.X, (int)player.Center.Y, (int)relativeFurthest.X, (int)relativeFurthest.Y);
+        }
+        newLength = GetFurthestCorner(hitbox, player.Center).Distance(player.Center);
+
         FixNegativeRectangleDimensions(ref hitbox);
     }
+
     void FixNegativeRectangleDimensions(ref Rectangle rect)
     {
         Point newPos = rect.Location;
@@ -52,12 +78,15 @@ class TrueMeleeRangeGlobalItem : GlobalItem
         }
         rect = new Rectangle(newPos.X, newPos.Y, newSize.X, newSize.Y);
     }
-    void SpawnDusts(Player player, float innerRadius, float outerRadius)
+    void SpawnDusts(Player player, float innerRadius, float outerRadius, float rotationOffset = 0f)
     {
         Vector2 direction = Vector2.UnitX.RotatedBy(player.itemRotation) * player.direction;
+        direction = direction.RotatedBy(rotationOffset);
+
         float mult = 0.8f;
         Vector2 start = player.Center + direction * innerRadius * mult;
         Vector2 end = player.Center + direction * outerRadius * mult;
+
         float length = end.Distance(start);
         float step = 15;
         Vector2 normal = Vector2.Normalize(end - start);
@@ -67,4 +96,10 @@ class TrueMeleeRangeGlobalItem : GlobalItem
             dust.noGravity = true;
         }
     }
+
+    Vector2[] GetRectCorners(Rectangle rect) =>
+            new Vector2[]
+            {
+                rect.TopLeft(), rect.TopRight(),rect.BottomLeft(), rect.BottomRight()
+            };
 }
