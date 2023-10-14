@@ -6,10 +6,6 @@ public class MotusSetup : ModItem
 {
     public const int CRIT_RELATIVE_PERCENT = CriticalDelay.PERCENT_CRIT_RELATIVE;
     public const int DURATION_SECONDS = 6;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{CRIT_RELATIVE_PERCENT}% Relative Critical Chance after landing from a Double Jump or from Wing flight for {DURATION_SECONDS} seconds");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

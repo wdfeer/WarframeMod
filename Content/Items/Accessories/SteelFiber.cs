@@ -3,10 +3,6 @@ namespace WarframeMod.Content.Items.Accessories;
 public class SteelFiber : ModItem
 {
     public const int DEFENSE = 7;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{DEFENSE} defense");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

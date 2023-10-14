@@ -6,12 +6,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Redeemer : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault(@"Fires 6 pellets without consuming ammo
-Has linear damage falloff starting at 30 tiles
-Tripled benefit from Attack Speed");
-    }
     public override void SetDefaults()
     {
         Item.damage = 13;

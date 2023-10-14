@@ -5,10 +5,6 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class Blaze : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("+8% damage, +24% chance to set enemies on fire");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

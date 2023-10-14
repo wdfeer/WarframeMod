@@ -4,10 +4,6 @@ public class MoltAugmented : Arcane
 {
     public const float PERCENT_DAMAGE_PER_KILL = 0.12f;
     public const int MAX_STACKS = 200;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"On kill: +{PERCENT_DAMAGE_PER_KILL:0.00}% Damage\nStacks up to {MAX_STACKS} times\n50% Reduced effectiveness when a boss is alive");
-    }
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
         Player player = Main.LocalPlayer;

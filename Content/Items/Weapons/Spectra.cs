@@ -7,10 +7,6 @@ namespace WarframeMod.Content.Items.Weapons;
 public class Spectra : ModItem
 {
     public const int DEFENSE_PENETRATION = 8;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"40% bleeding chance\n{DEFENSE_PENETRATION} defense penetration");
-    }
     public override void SetDefaults()
     {
         Item.damage = 8;

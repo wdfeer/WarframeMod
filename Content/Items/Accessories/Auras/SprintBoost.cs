@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Accessories.Auras;
 public class SprintBoost : ModItem
 {
     public const float MOVE_SPEED = 0.15f;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{(int)(MOVE_SPEED * 100)}% movement speed to players on your team");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

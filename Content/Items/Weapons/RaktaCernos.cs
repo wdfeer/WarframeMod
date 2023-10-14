@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 internal class RaktaCernos : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Shoots high velocity bone arrows");
-    }
     public override void SetDefaults()
     {
         Item.damage = 60;

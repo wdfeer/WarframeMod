@@ -5,10 +5,6 @@ namespace WarframeMod.Content.Items.Accessories;
 public class SplitChamber : ModItem
 {
     public const float MULTISHOT = 0.166f;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{(MULTISHOT * 100f):0}% Chance to shoot an extra projectile when using a Magic, Ranged or Throwing weapon\nChanelled weapons have increased damage instead");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

@@ -4,10 +4,6 @@ using WarframeMod.Common.GlobalProjectiles;
 namespace WarframeMod.Content.Items.Weapons;
 public class Supra : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Rapidly shoots lasers\n-10% Critical Damage");
-    }
     public override void SetDefaults()
     {
         Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/SupraVandalSound").ModifySoundStyle(pitchVariance: 0.1f);

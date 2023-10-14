@@ -5,10 +5,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Nukor : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("+100% Critical Damage");
-    }
     public override void SetDefaults()
     {
         Item.damage = 11;

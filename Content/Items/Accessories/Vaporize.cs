@@ -6,10 +6,6 @@ public class Vaporize : ModItem
     public const float KNOCKBACK = 4.5f;
     public const int COOLDOWN = 480;
     public const int MAX_ATTACK_DISTANCE = 750;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"All minions will deal {DAMAGE} damage to nearby enemies every {COOLDOWN / 60} seconds");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;
@@ -45,7 +41,7 @@ public class Vaporize : ModItem
                                                                         && Main.projPet[proj.type]);
         foreach (Projectile projectile in minions)
         {
-            NPC target = targets[Main.rand.Next(0,targets.Count)];
+            NPC target = targets[Main.rand.Next(0, targets.Count)];
             Vector2 from = projectile.Center;
             Vector2 to = target.Center;
             Vector2 velocity = Vector2.Normalize(to - from) * 16f;

@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class ArmoredAgility : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("+15% movement speed\n+7.5% damage resistance");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

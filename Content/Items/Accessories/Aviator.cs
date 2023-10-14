@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class Aviator : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("+20% Damage Resistance while airborne");
-    }
 
     public override void SetDefaults()
     {

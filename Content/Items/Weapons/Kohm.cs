@@ -6,10 +6,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Kohm : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Takes a while to spool up while increasing Multishot up to 5 pellets\n33% bleeding chance\nLinear damage falloff starting at 32 tiles\n+15% Critical Damage\n-60% ammo damage");
-    }
     const int maxUseTime = 82;
     const int minUseTime = 17;
     const int maxMultishot = 5;

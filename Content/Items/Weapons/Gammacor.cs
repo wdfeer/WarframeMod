@@ -6,10 +6,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Gammacor : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"20% chance to shortly confuse enemies");
-    }
     public override void SetDefaults()
     {
         Item.damage = 33;

@@ -4,10 +4,6 @@ public class Desecrate : ModItem
 {
     public const int LIFE_DRAIN = 7;
     public const float MAX_DISTANCE = 800;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"Whenever an enemy dies nearby, consume {LIFE_DRAIN} life and double the loot");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

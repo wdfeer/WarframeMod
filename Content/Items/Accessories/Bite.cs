@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class Bite : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("+12% minion Critical Chance and +10% minion Critical Damage");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

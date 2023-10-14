@@ -3,10 +3,6 @@
 public class MaimingStrike : ModItem
 {
     public const int WHIP_CRIT = 20;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{WHIP_CRIT}% whip critical chance");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

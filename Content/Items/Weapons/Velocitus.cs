@@ -6,10 +6,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Velocitus : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("+80% Critical Damage");
-    }
     public override void SetDefaults()
     {
         Item.damage = 245;

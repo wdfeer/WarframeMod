@@ -7,10 +7,6 @@ public class ArcaneVictory : Arcane
     public const int CHANCE = 20;
     public const float LIFE_REGEN = 0.0045f;
     public const int BUFF_DURATION = 600;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"On Critical hit: {CHANCE}% chance for +{LIFE_REGEN * 100}% max life regen per second for {BUFF_DURATION / 60} seconds");
-    }
     public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<ArcaneVictoryPlayer>().enabled = true;

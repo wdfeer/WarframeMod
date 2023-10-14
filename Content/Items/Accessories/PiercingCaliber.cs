@@ -7,10 +7,6 @@ public class PiercingCaliber : ModItem
 {
     public const float CHANCE = 0.2f;
     public const int DURATION = 720;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{(int)(CHANCE * 100)}% Chance to inflict the Weakened debuff for {DURATION / 60} seconds, decreasing enemy contact damage with each proc");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

@@ -6,10 +6,6 @@ using WarframeMod.Common.Players;
 namespace WarframeMod.Content.Items.Weapons;
 public class Plinx : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("+50% Critical Damage\nTripled effect from relative critical chance bonuses");
-    }
     public override void SetDefaults()
     {
         Item.damage = 20;

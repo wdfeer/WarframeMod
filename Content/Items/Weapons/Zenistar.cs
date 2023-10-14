@@ -9,15 +9,6 @@ namespace WarframeMod.Content.Items.Weapons;
 internal class Zenistar : ModItem
 {
     public const int DISK_DURATION = 720;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($@"Right click to throw a disk that throws shadowflames for {DISK_DURATION / 60} seconds
-Inflicts Shadowflame and has 4x damage when the disk is not deployed
-Guaranteed bleeding when the disk is deployed
-Disk damage is boosted by your melee speed
-Disk range is affected by Reach and Primed Reach
-Doubled benefit from melee speed for the melee attack");
-    }
     public override void SetDefaults()
     {
         Item.damage = 45;

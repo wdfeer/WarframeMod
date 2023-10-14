@@ -7,10 +7,6 @@ public class ArcaneStrike : Arcane
     public const int CHANCE = 20;
     public const int SPEED_BUFF = 16;
     public const int BUFF_DURATION = 600;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"On hit: {CHANCE}% chance for +{SPEED_BUFF}% melee speed for {BUFF_DURATION / 60} seconds");
-    }
     public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<ArcaneStrikePlayer>().enabled = true;

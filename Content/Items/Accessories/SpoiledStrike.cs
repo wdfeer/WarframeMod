@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class SpoiledStrike : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("+18% damage, but -9% Use Speed");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

@@ -6,10 +6,6 @@ namespace WarframeMod.Content.Items.Weapons;
 public class Baza : ModItem
 {
     public const float AMMO_DAMAGE_MULT = 0.25f;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"75% Chance not to consume ammo\n+50% Critical Damage\n-{(int)((1 - AMMO_DAMAGE_MULT) * 100f)}% ammo damage");
-    }
     public override void SetDefaults()
     {
         Item.damage = 6;

@@ -3,10 +3,6 @@ namespace WarframeMod.Content.Items.Weapons;
 internal class Bo : ModItem
 {
     public const int DEFENSE_PENETRATION = 25;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"Every third swing has tripled damage and {DEFENSE_PENETRATION} Defense Penetration\nDoubled benefit from Attack Speed");
-    }
     public override void SetDefaults()
     {
         Item.damage = 20;

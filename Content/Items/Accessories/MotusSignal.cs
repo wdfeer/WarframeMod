@@ -4,10 +4,6 @@ public class MotusSignal : ModItem
 {
     const int DOUBLE_JUMP_EXTRA_VELOCITY_PERCENT = 80;
     public const float DOUBLE_JUMP_VELOCITY_MULT = 1f + DOUBLE_JUMP_EXTRA_VELOCITY_PERCENT / 100f;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{DOUBLE_JUMP_EXTRA_VELOCITY_PERCENT}% Double Jump velocity");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

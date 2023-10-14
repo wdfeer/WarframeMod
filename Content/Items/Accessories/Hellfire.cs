@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Accessories;
 public class Hellfire : ModItem
 {
     public const int EXTRA_FIRE_DPS = 15;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{EXTRA_FIRE_DPS} damage per second on burning enemies");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

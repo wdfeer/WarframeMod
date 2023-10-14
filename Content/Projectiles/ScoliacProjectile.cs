@@ -7,35 +7,37 @@ using WarframeMod.Content.Items.Weapons;
 namespace WarframeMod.Content.Projectiles;
 public class ScoliacProjectile : ModProjectile
 {
-	public override void SetStaticDefaults() {
-		ProjectileID.Sets.IsAWhip[Type] = true;
-	}
 
-	public override void SetDefaults() {
+	public override void SetDefaults()
+	{
 		Projectile.DefaultToWhip();
-        Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances = new() { new Common.StackableBuffChance(Common.StackableBuff.Bleed, Scoliac.BLEED_CHANCE) };
+		Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances = new() { new Common.StackableBuffChance(Common.StackableBuff.Bleed, Scoliac.BLEED_CHANCE) };
 		Projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 0.75f;
 		Projectile.usesLocalNPCImmunity = true;
 		Projectile.localNPCHitCooldown = -1;
-    }
-    private float Timer {
+	}
+	private float Timer
+	{
 		get => Projectile.ai[0];
 		set => Projectile.ai[0] = value;
 	}
-    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {
+	public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+	{
 		Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
 		Projectile.damage = (int)(Projectile.damage * 0.8f);
 		target.AddBuff(ModContent.BuffType<ScoliacDebuff>(), 360);
 	}
 
 	// This method draws a line between all points of the whip, in case there's empty space between the sprites.
-	private void DrawLine(List<Vector2> list) {
+	private void DrawLine(List<Vector2> list)
+	{
 		Texture2D texture = TextureAssets.FishingLine.Value;
 		Rectangle frame = texture.Frame();
 		Vector2 origin = new Vector2(frame.Width / 2, 2);
 
 		Vector2 pos = list[0];
-		for (int i = 0; i < list.Count - 1; i++) {
+		for (int i = 0; i < list.Count - 1; i++)
+		{
 			Vector2 element = list[i];
 			Vector2 diff = list[i + 1] - element;
 
@@ -49,7 +51,8 @@ public class ScoliacProjectile : ModProjectile
 		}
 	}
 
-	public override bool PreDraw(ref Color lightColor) {
+	public override bool PreDraw(ref Color lightColor)
+	{
 		List<Vector2> list = new List<Vector2>();
 		Projectile.FillWhipControlPoints(Projectile, list);
 
@@ -67,7 +70,8 @@ public class ScoliacProjectile : ModProjectile
 
 		Vector2 pos = list[0];
 
-		for (int i = 0; i < list.Count - 1; i++) {
+		for (int i = 0; i < list.Count - 1; i++)
+		{
 			// These two values are set to suit this projectile's sprite, but won't necessarily work for your own.
 			// You can change them if they don't!
 			Rectangle frame = new Rectangle(0, 0, 10, 26);
@@ -76,7 +80,8 @@ public class ScoliacProjectile : ModProjectile
 
 			// These statements determine what part of the spritesheet to draw for the current segment.
 			// They can also be changed to suit your sprite.
-			if (i == list.Count - 2) {
+			if (i == list.Count - 2)
+			{
 				frame.Y = 74;
 				frame.Height = 18;
 
@@ -85,15 +90,18 @@ public class ScoliacProjectile : ModProjectile
 				float t = Timer / timeToFlyOut;
 				scale = MathHelper.Lerp(0.5f, 1.5f, Utils.GetLerpValue(0.1f, 0.7f, t, true) * Utils.GetLerpValue(0.9f, 0.7f, t, true));
 			}
-			else if (i > 10) {
+			else if (i > 10)
+			{
 				frame.Y = 58;
 				frame.Height = 16;
 			}
-			else if (i > 5) {
+			else if (i > 5)
+			{
 				frame.Y = 42;
 				frame.Height = 16;
 			}
-			else if (i > 0) {
+			else if (i > 0)
+			{
 				frame.Y = 26;
 				frame.Height = 16;
 			}

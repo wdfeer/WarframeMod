@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 internal class Cassowar : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"Every third swing has doubled damage and guaranteed Bleeding\n20% Bleeding chance\n-30% Critical Damage\nDoubled benefit from Attack Speed");
-    }
     public override void SetDefaults()
     {
         Item.damage = 20;

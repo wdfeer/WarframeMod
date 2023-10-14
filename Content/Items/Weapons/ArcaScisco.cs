@@ -8,10 +8,6 @@ namespace WarframeMod.Content.Items.Weapons;
 public class ArcaScisco : ModItem
 {
     public const int MAX_STACKS = 4;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"On Hit: +5% Critical and Bleed chance, stacks up to {MAX_STACKS} times");
-    }
     public override void SetDefaults()
     {
         Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/ArcaSciscoSound").ModifySoundStyle(pitchVariance: 0.08f);

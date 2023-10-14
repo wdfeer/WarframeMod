@@ -5,10 +5,6 @@ using WarframeMod.Content.Projectiles;
 namespace WarframeMod.Content.Items.Weapons;
 public class OpticorVandal : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Charges to shoot a devastating beam\n+30% Critical Damage");
-    }
     public override void SetDefaults()
     {
         Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/OpticorVandalSound").ModifySoundStyle();

@@ -5,10 +5,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class ArumSpinosa : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Throws 6 projectiles that inflict Venom and have a 40% Bleed chance");
-    }
     public override void SetDefaults()
     {
         Item.damage = 39;

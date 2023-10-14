@@ -6,10 +6,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 internal class TiberonPrime : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Right Click to switch between Auto, Burst and Semi-auto fire modes\n+40%, 50% or 70% Critical damage in Auto, Burst and Semi\n75% Chance not to consume ammo in Auto");
-    }
     FireMode mode = FireMode.Burst;
     public enum FireMode
     {

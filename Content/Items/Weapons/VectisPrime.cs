@@ -4,10 +4,6 @@ using Terraria.DataStructures;
 namespace WarframeMod.Content.Items.Weapons;
 public class VectisPrime : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Shoots a high-velocity bullet that penetrates enemies\nHas to reload after every second shot");
-    }
     public override void SetDefaults()
     {
         Item.damage = 235;

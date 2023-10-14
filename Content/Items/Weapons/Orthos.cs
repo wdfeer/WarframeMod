@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 internal class Orthos : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Every third swing has doubled damage and guaranteed bleeding\n15% bleeding chance\n-25% Critical damage\nBenefits more from attack speed bonuses");
-    }
     public override void SetDefaults()
     {
         Item.damage = 13;

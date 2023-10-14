@@ -6,10 +6,6 @@ namespace WarframeMod.Content.Items.Accessories;
 public class SerratedRounds : ModItem
 {
     public const float BLEED_CONVERSION = 0.4f;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"{(int)(BLEED_CONVERSION * 100f)}% of dealt damage is converted into bleeding");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

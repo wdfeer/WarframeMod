@@ -3,10 +3,6 @@ using Terraria.DataStructures;
 namespace WarframeMod.Content.Items.Weapons;
 public class Lex : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Double stack to increase fire rate at the cost of accuracy");
-    }
     public override void SetDefaults()
     {
         Item.damage = 72;

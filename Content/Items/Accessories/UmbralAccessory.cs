@@ -8,10 +8,6 @@ public abstract class UmbralAccessory : ModItem
     public static readonly float[] TOTAL_DAMAGE_REDUCTION_NOBOSS = new float[] { 0.08f, 0.2f, 0.36f };
     int umbraPower = 0;
     public abstract string UniqueTooltipDefault { get; }
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault(UniqueTooltipDefault + "\n+PERCENT_DAMAGE_REDUCTION_WHILE_NOBOSS% damage reduction while no boss is alive\nEnhance accessories in this set");
-    }
     public abstract string GetCurrentUniqueTooltipValue(int umbraCount);
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {

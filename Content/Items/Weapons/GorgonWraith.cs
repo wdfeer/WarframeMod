@@ -4,10 +4,6 @@ using WarframeMod.Common.GlobalProjectiles;
 namespace WarframeMod.Content.Items.Weapons;
 public class GorgonWraith : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Shoots rapidly but inaccurately\n-5% Critical Damage\n60% Chance not to consume ammo");
-    }
     public override void SetDefaults()
     {
         Item.damage = 8;

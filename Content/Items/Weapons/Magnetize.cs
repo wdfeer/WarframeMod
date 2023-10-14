@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Magnetize : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Creates a magnetizing sphere around the enemy\nAll friendly projectiles are accelerated towards the center of the sphere");
-    }
     public override void SetDefaults()
     {
         Item.mana = 32;

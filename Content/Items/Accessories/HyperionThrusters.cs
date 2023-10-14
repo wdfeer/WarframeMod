@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Accessories;
 public class HyperionThrusters : ModItem
 {
     public const float VERTICAL_WING_SPEED_BONUS = 0.33f;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{(int)(VERTICAL_WING_SPEED_BONUS * 100f)}% Wing vertical speed");
-    }
 
     public override void SetDefaults()
     {

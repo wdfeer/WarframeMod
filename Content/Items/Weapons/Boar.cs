@@ -5,10 +5,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Boar : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("An extremely inaccurate automatic shotgun, shoots 4 pellets at once\n-75% ammo damage");
-    }
 
     public override void SetDefaults()
     {

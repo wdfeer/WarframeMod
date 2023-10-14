@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Accessories.Auras;
 public class StandUnited : ModItem
 {
     public const float EXTRA_DEFENSE = 0.15f;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{(int)(EXTRA_DEFENSE * 100)}% defense to players on your team");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

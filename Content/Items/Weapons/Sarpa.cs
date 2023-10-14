@@ -5,12 +5,6 @@ using WarframeMod.Common.GlobalProjectiles;
 namespace WarframeMod.Content.Items.Weapons;
 public class Sarpa : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault(@"Fires 5 rounds in a burst
-28% chance to proc Slash
-Doubled benefit from Attack Speed");
-    }
     public override void SetDefaults()
     {
         Item.damage = 17;

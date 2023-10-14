@@ -5,10 +5,6 @@ namespace WarframeMod.Content.Items.Weapons;
 internal class MK1Paris : ModItem
 {
     public override string Texture => "WarframeMod/Content/Items/Weapons/Paris";
-    public override void SetStaticDefaults()
-    {
-        DisplayName.SetDefault("MK1-Paris");
-    }
     public override void SetDefaults()
     {
         Item.damage = 5;

@@ -5,12 +5,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 internal class Hate : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault(@"+25% Critical damage
-20% bleeding chance
-Benefits twice as much from attack speed bonuses");
-    }
     public override void SetDefaults()
     {
         Item.damage = 29;

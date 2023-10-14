@@ -4,10 +4,6 @@ using WarframeMod.Content.Projectiles;
 namespace WarframeMod.Content.Items.Weapons;
 public class TenetArcaPlasmor : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Shoots a piercing projectile\nMight confuse enemies");
-    }
     public override void SetDefaults()
     {
         Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/TenetArcaPlasmorSound").ModifySoundStyle(pitchVariance: 0.13f);

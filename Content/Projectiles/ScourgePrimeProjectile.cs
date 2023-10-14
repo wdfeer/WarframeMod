@@ -5,10 +5,6 @@ namespace WarframeMod.Content.Projectiles;
 public class ScourgePrimeProjectile : ModProjectile
 {
     public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.EmeraldBolt;
-    public override void SetStaticDefaults()
-    {
-        DisplayName.SetDefault("Scourge Prime");
-    }
     public override void SetDefaults()
     {
         Projectile.CloneDefaults(ProjectileID.EmeraldBolt);

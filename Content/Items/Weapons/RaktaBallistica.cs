@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class RaktaBallistica : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Shoots 4 arrows at once\nNot shooting charges the next shot, increasing damage and accuracy\nIncreased charging speed\n-80% ammo damage");
-    }
     public override void SetDefaults()
     {
         Item.damage = 9;

@@ -3,11 +3,6 @@ namespace WarframeMod.Content.Items.Weapons;
 internal class MK1Bo : ModItem
 {
     public override string Texture => "WarframeMod/Content/Items/Weapons/Bo";
-    public override void SetStaticDefaults()
-    {
-        DisplayName.SetDefault("MK1-Bo");
-        Tooltip.SetDefault("6 Defense Penetration");
-    }
     public override void SetDefaults()
     {
         Item.ArmorPenetration = 6;

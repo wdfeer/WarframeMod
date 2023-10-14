@@ -7,12 +7,6 @@ namespace WarframeMod.Content.Items.Weapons;
 internal class KuvaKraken : ModItem
 {
     public const int ALT_FIRE_DOWNTIME = 180;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($@"Shoots a 3-round burst
-+15% Critical Damage
-Right click to fire 21 times in a single burst with {ALT_FIRE_DOWNTIME / 60} seconds of downtime");
-    }
     public override void SetDefaults()
     {
         Item.damage = 25;

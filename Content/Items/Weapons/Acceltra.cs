@@ -5,10 +5,6 @@ using WarframeMod.Common.GlobalProjectiles;
 namespace WarframeMod.Content.Items.Weapons;
 internal class Acceltra : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Rapidly launches rockets that explode on impact after traveling a safe distance\nConsumes bullets as ammo, converting them into rockets\n+40% Critical damage\n-50% ammo damage");
-    }
     public override void SetDefaults()
     {
         Item.damage = 17;

@@ -6,10 +6,6 @@ public class ArcaneAvenger : Arcane
 {
     public const int DAMAGE_TO_CRIT_RATIO = 2;
     public const int BUFF_DURATION = 720;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"When damaged: for every {DAMAGE_TO_CRIT_RATIO} points of damage taken receive +1% Critical Chance for {BUFF_DURATION / 60} seconds");
-    }
     public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<AvengerPlayer>().enabled = true;

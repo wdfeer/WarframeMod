@@ -9,11 +9,6 @@ public class CryoRounds : ModItem
 {
     public const int CHANCE_PERCENT = 15;
     public const int DEBUFF_DURATION_FRAMES = 360;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($@"+{CHANCE_PERCENT}% chance to slow enemies down for {DEBUFF_DURATION_FRAMES / 60} seconds
-Slowed enemies under the effects of poison or venom take {ViralGlobalNPC.EXTRA_DAMAGE_PERCENT}% more damage");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

@@ -8,10 +8,6 @@ public class MaraDetron : ModItem
     public const int FALLOFF_START = 30;
     public const int FALLOFF_MAX = 60;
     public const float MAX_FALLOFF_DAMAGE_DECREASE = 0.5f;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"Shoots 7 lasers at once\nLinear damage falloff starts at {FALLOFF_START} tiles, caps at {(MAX_FALLOFF_DAMAGE_DECREASE * 100f):n0}% damage decrease at {FALLOFF_MAX} tiles\n-25% Critical Damage\n14% chance to confuse enemies");
-    }
     public override void SetDefaults()
     {
         Item.damage = 30;
