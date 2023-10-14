@@ -74,7 +74,7 @@ class ZenistarFlame : ModProjectile
     public override void AI()
     {
         if (Main.rand.NextBool(3))
-        { 
+        {
             Dust d = Dust.NewDustDirect(Projectile.position,
                                         Projectile.width,
                                         Projectile.height,
