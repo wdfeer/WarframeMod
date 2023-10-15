@@ -9,7 +9,7 @@ public class ArcaSciscoBuff : ModBuff
     {
         stacks = player.GetModPlayer<ArcaSciscoPlayer>().stacks;
     }
-    public override void ModifyBuffTip(ref string tip, ref int rare)
+    public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
     {
         tip = $"+{5 * stacks}% Crit and Slash chance on the Arca Scisco";
     }

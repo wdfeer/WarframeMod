@@ -24,8 +24,8 @@ class GuardianPlayer : ModPlayer
         currentDefense = (int)MathF.Ceiling((float)damage / ArcaneGuardian.DAMAGE_TO_DEFENSE_RATIO);
         Player.AddBuff(ModContent.BuffType<ArcaneGuardianBuff>(), ArcaneGuardian.BUFF_DURATION);
     }
-    public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
+    public override void OnHurt(Player.HurtInfo info)
     {
-        ApplyBuff((int)damage);
+        ApplyBuff(info.Damage);
     }
 }

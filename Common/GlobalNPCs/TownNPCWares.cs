@@ -4,32 +4,25 @@ namespace WarframeMod.Common.GlobalNPCs;
 
 internal class TownNPCWares : GlobalNPC
 {
-    public override void SetupShop(int type, Chest shop, ref int nextSlot)
+    public override void ModifyShop(NPCShop shop)
     {
-        switch (type)
+        switch (shop.NpcType)
         {
             case NPCID.Merchant:
-                AddShopItem(ModContent.ItemType<MK1Paris>(), shop, ref nextSlot);
-                AddShopItem(ModContent.ItemType<MK1Bo>(), shop, ref nextSlot);
+                shop.Add(ModContent.ItemType<MK1Paris>());
+                shop.Add(ModContent.ItemType<MK1Bo>());
                 return;
             case NPCID.ArmsDealer:
-                AddShopItem(ModContent.ItemType<Burston>(), shop, ref nextSlot);
+                shop.Add(ModContent.ItemType<Burston>());
                 return;
             case NPCID.GoblinTinkerer:
-                AddShopItem(ModContent.ItemType<Ballistica>(), shop, ref nextSlot);
+                shop.Add(ModContent.ItemType<Ballistica>());
                 return;
             case NPCID.Mechanic:
-                AddShopItem(ModContent.ItemType<Spectra>(), shop, ref nextSlot).shopCustomPrice = Item.buyPrice(gold: 2);
+                shop.Add(ModContent.ItemType<Spectra>());
                 return;
             default:
                 return;
         }
-    }
-    Item AddShopItem(int itemType, Chest shop, ref int nextSlot)
-    {
-        Item item = new Item(itemType);
-        shop.item[nextSlot] = item;
-        nextSlot++;
-        return item;
     }
 }

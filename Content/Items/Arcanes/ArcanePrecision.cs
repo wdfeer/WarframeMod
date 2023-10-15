@@ -24,10 +24,6 @@ class ArcanePrecisionPlayer : ModPlayer
     }
     public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
     {
-        ApplyBuff(proj, crit);
-    }
-    public override void OnHitPvpWithProj(Projectile proj, Player target, int damage, bool crit)
-    {
-        ApplyBuff(proj, crit);
-    }
+        ApplyBuff(proj, hit.Crit);
+    } // No PVP support yet
 }

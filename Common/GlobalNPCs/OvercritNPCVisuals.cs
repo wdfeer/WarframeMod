@@ -44,17 +44,17 @@ internal class OvercritNPCVisuals : GlobalNPC
         }
         return -1;
     }
-    public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
+    public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damageDone)
     {
         int recent = FindRecentCombatTextItem();
         if (recent == -1) return;
-        SetCombatTextColor(recent, crit);
+        SetCombatTextColor(recent, hit.Crit);
     }
-    public override void OnHitByProjectile(NPC npc, Projectile projectile, int damage, float knockback, bool crit)
+    public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
     {
         var recent = FindRecentCombatTextProjectile();
         if (recent == -1) return;
-        SetCombatTextColor(recent, crit);
+        SetCombatTextColor(recent, hit.Crit);
     }
     void SetCombatTextColor(int combatText, bool crit)
     {

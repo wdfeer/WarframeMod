@@ -30,9 +30,9 @@ internal class FalloffGlobalProjectile : GlobalProjectile
         float decrease = travelledToMaxRatio * maxFalloffDamageDecrease;
         return 1f - decrease;
     }
-    public override void ModifyHitNPC(Projectile projectile, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+    public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
     {
         if (maxFalloffDamageDecrease > 0f)
-            damage = (int)(damage * GetDamageMult(projectile));
+            modifiers.SourceDamage *= GetDamageMult(projectile);
     }
 }

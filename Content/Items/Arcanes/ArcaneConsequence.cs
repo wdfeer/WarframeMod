@@ -24,9 +24,5 @@ class ConsequencePlayer : ModPlayer
     public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         => OnHit(hit.Crit);
     public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
-        => OnHit(crit);
-    public override void OnHitPvp(Item item, Player target, int damage, bool crit)
-        => OnHit(crit);
-    public override void OnHitPvpWithProj(Projectile proj, Player target, int damage, bool crit)
-        => OnHit(crit);
+        => OnHit(hit.Crit); // No PVP support yet
 }

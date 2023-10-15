@@ -50,7 +50,7 @@ class AugmentedPlayer : ModPlayer
 }
 class AugmentedGlobalNPC : GlobalNPC
 {
-    public override void HitEffect(NPC npc, int hitDirection, double damage)
+    public override void HitEffect(NPC npc, NPC.HitInfo hit)
     {
         if (npc.life > 0)
             return;

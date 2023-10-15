@@ -4,7 +4,7 @@ namespace WarframeMod.Content.Buffs;
 public class ArcaneGuardianBuff : ModBuff
 {
     int defense = 1;
-    public override void ModifyBuffTip(ref string tip, ref int rare)
+    public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
     {
         tip = $"+{defense} Defense";
     }

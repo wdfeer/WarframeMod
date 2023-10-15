@@ -19,10 +19,8 @@ public class ArcaSciscoProjectile : ModProjectile
         Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.MagnetSphere);
     }
     public Action onHit;
-    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+    public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         => onHit();
-    public override void OnHitPlayer(Player target, int damage, bool crit)
-        => onHit();
-    public override void OnHitPvp(Player target, int damage, bool crit)
-        => onHit();
+    public override void OnHitPlayer(Player target, Player.HurtInfo info)
+        => onHit(); // No PVP support yet
 }

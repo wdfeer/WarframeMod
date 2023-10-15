@@ -24,8 +24,10 @@ class ArcaneGracePlayer : ModPlayer
         if (Main.rand.Next(0, 100) < ArcaneGrace.CHANCE)
             Player.AddBuff(ModContent.BuffType<ArcaneGraceBuff>(), ArcaneGrace.BUFF_DURATION);
     }
-    public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
-        => ApplyBuff();
+    public override void OnHurt(Player.HurtInfo info)
+    {
+        ApplyBuff();
+    }
     public bool Active => Player.HasBuff<ArcaneGraceBuff>();
     public float HealPerSecond => Player.statLifeMax2 * ArcaneGrace.LIFE_REGEN;
     const int HEAL_COOLDOWN = 60;
