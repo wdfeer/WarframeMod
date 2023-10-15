@@ -31,11 +31,11 @@ class HellfirePlayer : ModPlayer
             return;
         target.GetGlobalNPC<DebuffDamageGlobalNPC>().AddBuffDamage(DebuffDamageGlobalNPC.SourceId.Hellfire, BuffID.OnFire, Hellfire.EXTRA_FIRE_DPS);
     }
-    public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+    public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
     {
         OnHitNPCWithSomething(target);
     }
-    public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+    public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
     {
         OnHitNPCWithSomething(target);
     }

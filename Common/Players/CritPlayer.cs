@@ -50,7 +50,7 @@ internal class CritPlayer : ModPlayer
         }
         return hookers.ToArray();
     }
-    public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+    public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
     {
         CritPlayerHooks[] hookers = GetHookers();
         var critLevel = GetCritLevel(Player.GetWeaponCrit(item));
@@ -75,7 +75,7 @@ internal class CritPlayer : ModPlayer
         if (Main.rand.NextFloat() < item.GetGlobalItem<BleedingGlobalItem>().bleedingChance)
             BleedingBuff.Create(postCritDmg, target);
     }
-    public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+    public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
     {
         int critLevel = GetCritLevel(proj.CritChance);
         if (proj.DamageType == DamageClass.Summon || proj.DamageType == DamageClass.SummonMeleeSpeed)

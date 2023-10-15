@@ -32,8 +32,8 @@ class CorrosiveProjectionPlayer : ModPlayer
         if (Enabled)
             damage += target.checkArmorPenetration((int)(target.defense * CorrosiveProjection.IGNORE_DEFENSE));
     }
-    public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+    public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         => ModifyDamage(target, ref damage);
-    public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+    public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
         => ModifyDamage(target, ref damage);
 }

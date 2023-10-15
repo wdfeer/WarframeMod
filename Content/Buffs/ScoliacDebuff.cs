@@ -8,7 +8,7 @@ public class ScoliacDebuff : ModBuff
 }
 internal class ScoliacDebuffGlobalNPC : GlobalNPC
 {
-    public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+    public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
     {
         if (npc.HasBuff<ScoliacDebuff>() && projectile.DamageType == DamageClass.Summon)
         {

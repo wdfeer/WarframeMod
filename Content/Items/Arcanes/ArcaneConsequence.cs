@@ -21,9 +21,9 @@ class ConsequencePlayer : ModPlayer
         if (enabled && crit)
             Player.AddBuff(ModContent.BuffType<ArcaneConsequenceBuff>(), ArcaneConsequence.DURATION);
     }
-    public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
-        => OnHit(crit);
-    public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+    public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        => OnHit(hit.Crit);
+    public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         => OnHit(crit);
     public override void OnHitPvp(Item item, Player target, int damage, bool crit)
         => OnHit(crit);

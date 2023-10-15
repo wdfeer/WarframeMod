@@ -30,12 +30,11 @@ class SaviourPlayer : ModPlayer
         }
         return base.PreKill(damage, hitDirection, pvp, ref playSound, ref genGore, ref damageSource);
     }
-    public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
+    public override void ModifyHurt(ref Player.HurtModifiers modifiers)
     {
         if (!enabled && Player.HasBuff<EmergenceSaviorBuff>())
         {
-            damage *= 10;
+            modifiers.SourceDamage *= 10;
         }
-        return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit, ref customDamage, ref playSound, ref genGore, ref damageSource, ref cooldownCounter);
     }
 }

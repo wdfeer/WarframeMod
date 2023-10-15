@@ -61,11 +61,11 @@ internal class Zenistar : ModItem
             Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 0f;
         return true;
     }
-    public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
+    public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
     {
         if (FindDisk() == null)
         {
-            damage *= 4;
+            modifiers.SourceDamage *= 4;
             target.AddBuff(BuffID.ShadowFlame, 600);
         }
     }

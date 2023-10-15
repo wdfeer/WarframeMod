@@ -53,7 +53,7 @@ internal class Cassowar : ModItem
             Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 0.2f;
         return base.CanUseItem(player);
     }
-    public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
+    public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
     {
         if (SuperSwing)
         {
@@ -61,7 +61,7 @@ internal class Cassowar : ModItem
             knockBack *= 1.75f;
         }
     }
-    public override void ModifyHitPvp(Player player, Player target, ref int damage, ref bool crit)
+    public override void ModifyHitPvp(Player player, Player target, ref Player.HurtModifiers modifiers)
     {
         if (SuperSwing)
             damage *= 2;

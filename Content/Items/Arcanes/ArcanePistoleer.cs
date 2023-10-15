@@ -22,7 +22,7 @@ class ArcanePistoleerPlayer : ModPlayer
         if (enabled && crit && Main.rand.Next(0, 100) < ArcanePistoleer.CHANCE)
             Player.AddBuff(ModContent.BuffType<ArcanePistoleerBuff>(), ArcanePistoleer.BUFF_DURATION);
     }
-    public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+    public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
     {
         ApplyBuff(proj, crit);
     }

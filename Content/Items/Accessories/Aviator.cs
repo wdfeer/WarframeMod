@@ -4,7 +4,7 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class Aviator : ModItem
 {
-
+    public const float INCOMING_DAMAGE_MULT = 0.8f;
     public override void SetDefaults()
     {
         Item.accessory = true;
@@ -31,18 +31,13 @@ class AviatorPlayer : ModPlayer
     public bool enabled;
     public override void ResetEffects()
         => enabled = false;
-    void ModifyHit(ref int damage)
+    public override void ModifyHurt(ref Player.HurtModifiers modifiers)
     {
         if (!enabled)
             return;
         Player.UpdateTouchingTiles();
         bool touchingTiles = Player.TouchedTiles.Any();
         if (!touchingTiles)
-            damage = (int)(damage * 0.8f);
-    }
-    public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
-    {
-        ModifyHit(ref damage);
-        return true;
+            modifiers.SourceDamage *= Aviator.INCOMING_DAMAGE_MULT;
     }
 }

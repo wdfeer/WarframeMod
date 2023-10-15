@@ -22,7 +22,7 @@ class ArcanePrecisionPlayer : ModPlayer
         if (enabled && proj.DamageType == DamageClass.Ranged && crit && Main.rand.Next(0, 100) < ArcanePrecision.CHANCE)
             Player.AddBuff(ModContent.BuffType<ArcanePrecisionBuff>(), ArcanePrecision.BUFF_DURATION);
     }
-    public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+    public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
     {
         ApplyBuff(proj, crit);
     }

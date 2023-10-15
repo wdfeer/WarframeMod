@@ -70,12 +70,11 @@ class UmbralAccessoryPlayer : ModPlayer
         oldUmbraCount = umbraCount;
         umbraCount = 0;
     }
-    public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
+    public override void ModifyHurt(ref Player.HurtModifiers modifiers)
     {
         if (umbraCount <= 0 || WarframeMod.IsBossAlive())
-            return true;
+            return;
         float damageMult = 1f - UmbralAccessory.TOTAL_DAMAGE_REDUCTION_NOBOSS[umbraCount - 1];
-        damage = (int)(damage * damageMult);
-        return true;
+        modifiers.SourceDamage *= damageMult;
     }
 }

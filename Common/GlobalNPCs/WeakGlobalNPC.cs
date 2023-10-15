@@ -21,17 +21,15 @@ internal class WeakGlobalNPC : GlobalNPC
         }
         weakTimes = weakTimes.Where(x => x > 0).ToList();
     }
-    public override void ModifyHitPlayer(NPC npc, Player target, ref int damage, ref bool crit)
+    public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
     {
-        //int oldDamage = damage;
         if (npc.boss)
-            damage = (int)(damage / 2f + damage * DamageMultiplier / 2f);
+            modifiers.SourceDamage *= 0.5f + (DamageMultiplier * 0.5f);
         else
-            damage = (int)(damage * DamageMultiplier);
-        //Main.NewText($"OldDamage: {oldDamage}, NewDamage: {damage}. {WeakPower} weak stacks");
+            modifiers.SourceDamage *= DamageMultiplier;
     }
-    public override void ModifyHitNPC(NPC npc, NPC target, ref int damage, ref float knockback, ref bool crit)
+    public override void ModifyHitNPC(NPC npc, NPC target, ref NPC.HitModifiers modifiers)
     {
-        damage = (int)(damage * DamageMultiplier);
+        modifiers.SourceDamage *= DamageMultiplier;
     }
 }

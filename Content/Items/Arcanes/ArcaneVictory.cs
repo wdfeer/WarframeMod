@@ -24,13 +24,13 @@ class ArcaneVictoryPlayer : ModPlayer
         if (Main.rand.Next(0, 100) < ArcaneVictory.CHANCE)
             Player.AddBuff(ModContent.BuffType<ArcaneVictoryBuff>(), ArcaneVictory.BUFF_DURATION);
     }
-    public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+    public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
     {
-        if (crit) ApplyBuff();
+        if (hit.Crit) ApplyBuff();
     }
-    public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+    public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
     {
-        if (crit) ApplyBuff();
+        if (hit.Crit) ApplyBuff();
     }
     public bool Active => Player.HasBuff<ArcaneVictoryBuff>();
     public float HealPerSecond => Player.statLifeMax2 * ArcaneVictory.LIFE_REGEN;

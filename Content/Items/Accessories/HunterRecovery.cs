@@ -42,7 +42,7 @@ class HunterRecoveryPlayer : ModPlayer
             return calculated;
         return 1;
     }
-    public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+    public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
     {
         if (enabled && proj.DamageType == DamageClass.Summon && healTimer > HEAL_COOLDOWN)
         {
