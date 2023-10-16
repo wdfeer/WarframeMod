@@ -27,13 +27,13 @@ public class CorrosiveProjection : ModItem
 class CorrosiveProjectionPlayer : ModPlayer
 {
     public bool Enabled => Player.GetModPlayer<AuraPlayer>().AnyPlayerInMyTeam(x => x.corrosiveProjection);
-    void ModifyDamage(NPC target, ref int damage)
+    void ModifyHit(ref NPC.HitModifiers modifiers)
     {
         if (Enabled)
-            damage += target.checkArmorPenetration((int)(target.defense * CorrosiveProjection.IGNORE_DEFENSE));
+            modifiers.ScalingArmorPenetration += CorrosiveProjection.IGNORE_DEFENSE;
     }
     public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-        => ModifyDamage(target, ref damage);
+        => ModifyHit(ref modifiers);
     public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
-        => ModifyDamage(target, ref damage);
+        => ModifyHit(ref modifiers);
 }
