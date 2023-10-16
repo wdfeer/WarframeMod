@@ -44,11 +44,7 @@ class MotusSetupPlayer : ModPlayer
         }
         else if (!doubleJumpingOrWinging)
         {
-            doubleJumpingOrWinging = Player.isPerformingJump_Blizzard
-                || Player.isPerformingJump_Cloud
-                || Player.isPerformingJump_Fart
-                || Player.isPerformingJump_Sail
-                || Player.isPerformingJump_Sandstorm;
+            doubleJumpingOrWinging = Player.ExtraJumps.ToArray().Any(x => x.Enabled && !x.Available);
         }
     }
 }

@@ -35,14 +35,7 @@ class MotusSignalPlayer : ModPlayer
             return;
         bool touchingTiles = Player.TouchedTiles.Any();
         couldDoubleJump = canDoubleJump;
-        canDoubleJump = new bool[]
-        {
-            Player.canJumpAgain_Blizzard,
-            Player.canJumpAgain_Cloud,
-            Player.canJumpAgain_Fart,
-            Player.canJumpAgain_Sail,
-            Player.canJumpAgain_Sandstorm
-        };
+        canDoubleJump = Player.ExtraJumps.ToArray().Select(x => x.Available).ToArray();
         if (touchingTiles)
             return;
 
@@ -58,11 +51,7 @@ class MotusSignalPlayer : ModPlayer
             }
         }
 
-        bool performingDoubleJump = Player.isPerformingJump_Blizzard
-                                   || Player.isPerformingJump_Cloud
-                                   || Player.isPerformingJump_Fart
-                                   || Player.isPerformingJump_Sail
-                                   || Player.isPerformingJump_Sandstorm;
+        bool performingDoubleJump = Player.ExtraJumps.ToArray().Any(x => x.Active);
         if (performingDoubleJump)
         {
             Player.velocity.Y += doubleJumpExtraVelocity;
