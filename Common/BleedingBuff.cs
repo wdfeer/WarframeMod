@@ -37,7 +37,7 @@ public struct BleedingBuff
     {
         int oldDefense = npc.defense;
         npc.defense = 0;
-        npc.StrikeNPC(bleed, 0, -2);
+        npc.SimpleStrikeNPC(bleed, 0);
         npc.defense = oldDefense;
     }
 }
