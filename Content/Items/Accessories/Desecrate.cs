@@ -52,10 +52,7 @@ internal class DesecrateNPC : GlobalNPC
     private void LifeDrainEffect(Player player)
     {
         Terraria.DataStructures.PlayerDeathReason reason = new() { SourceCustomReason = player.name + " was desecrated" };
-        int oldDef = player.statDefense;
-        player.statDefense = 0;
-        player.Hurt(reason, Desecrate.LIFE_DRAIN, 0, cooldownCounter: -2);
-        player.statDefense = oldDef;
+        player.Hurt(reason, Desecrate.LIFE_DRAIN, 0, scalingArmorPenetration: 1f, cooldownCounter: -2);
         player.netLife = true;
     }
 }
