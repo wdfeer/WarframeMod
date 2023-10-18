@@ -26,10 +26,10 @@ class ArcaneFuryPlayer : ModPlayer
     }
     public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
     {
-        if (crit) ApplyBuff();
+        if (hit.Crit) ApplyBuff();
     }
     public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
     {
-        if (crit) ApplyBuff();
+        if (hit.Crit) ApplyBuff();
     }
 }

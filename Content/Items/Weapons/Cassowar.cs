@@ -57,14 +57,14 @@ internal class Cassowar : ModItem
     {
         if (SuperSwing)
         {
-            damage *= 2;
-            knockBack *= 1.75f;
+            modifiers.SourceDamage *= 2;
+            modifiers.Knockback *= 1.75f;
         }
     }
     public override void ModifyHitPvp(Player player, Player target, ref Player.HurtModifiers modifiers)
     {
         if (SuperSwing)
-            damage *= 2;
+            modifiers.SourceDamage *= 2;
     }
     public override void AddRecipes()
     {

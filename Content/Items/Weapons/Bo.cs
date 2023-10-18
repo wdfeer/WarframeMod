@@ -55,14 +55,14 @@ internal class Bo : ModItem
     {
         if (SuperSwing)
         {
-            damage *= 3;
-            knockBack *= 2;
+            modifiers.SourceDamage *= 3;
+            modifiers.Knockback *= 2;
         }
     }
     public override void ModifyHitPvp(Player player, Player target, ref Player.HurtModifiers modifiers)
     {
         if (SuperSwing)
-            damage *= 3;
+            modifiers.SourceDamage *= 3;
     }
     public override void AddRecipes()
     {
