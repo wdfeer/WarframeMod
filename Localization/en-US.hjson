@@ -1,4 +1,3 @@
-
 Mods: {
 	WarframeMod: {
 		Buffs: {
@@ -779,7 +778,10 @@ Mods: {
 				Tooltip: 6 Defense Penetration
 			}
 
-			MK1Paris.DisplayName: MK1-Paris
+			MK1Paris: {
+				DisplayName: MK1-Paris
+				Tooltip: ""
+			}
 
 			Nataruk: {
 				DisplayName: Nataruk
@@ -829,7 +831,10 @@ Mods: {
 					'''
 			}
 
-			Paris.DisplayName: Paris
+			Paris: {
+				DisplayName: Paris
+				Tooltip: ""
+			}
 
 			ParisPrime: {
 				DisplayName: Paris Prime
@@ -855,7 +860,10 @@ Mods: {
 					'''
 			}
 
-			PrismaTetra.DisplayName: Prisma Tetra
+			PrismaTetra: {
+				DisplayName: Prisma Tetra
+				Tooltip: ""
+			}
 
 			Quassus: {
 				DisplayName: Quassus
@@ -1100,6 +1108,48 @@ Mods: {
 			VelocitusProjectile.DisplayName: Velocitus Projectile
 			ZenistarDisk.DisplayName: Zenistar Disk
 			ZenistarFlame.DisplayName: Zenistar Flame
+		}
+
+		Config: {
+			noCritHitColor: Non-critical hit color
+			tier1CritColor: Tier 1 critical hit color
+			tier2CritColor: Tier 2 critical hit color
+			maxCritColor: Tier 3+ critical hit color
+		}
+
+		Configs: {
+			WarframeClientConfig: {
+				DisplayName: Warframe Client Config
+
+				Headers: {
+					Config: {
+						noCritHitColor: Config.no Crit Hit Color Header
+						tier1CritColor: Config.tier1 Crit Color Header
+						tier2CritColor: Config.tier2 Crit Color Header
+						maxCritColor: Config.max Crit Color Header
+					}
+				}
+
+				noCritHitColor: {
+					Label: no Crit Hit Color
+					Tooltip: ""
+				}
+
+				tier1CritColor: {
+					Label: tier1 Crit Color
+					Tooltip: ""
+				}
+
+				tier2CritColor: {
+					Label: tier2 Crit Color
+					Tooltip: ""
+				}
+
+				maxCritColor: {
+					Label: max Crit Color
+					Tooltip: ""
+				}
+			}
 		}
 	}
 }
