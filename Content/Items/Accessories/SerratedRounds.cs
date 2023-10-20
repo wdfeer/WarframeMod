@@ -22,21 +22,21 @@ class SerratedPlayer : CritPlayerHooks
     public bool enabled;
     public override void ResetEffects()
         => enabled = false;
-    void ConvertDamage(NPC target, ref int damagePreCrit, int critLvl, float critMult)
+    void ConvertDamage(NPC target, int baseDamage, ref NPC.HitModifiers modifiersPreCrit, int critLvl, float critMult)
     {
         if (!enabled)
             return;
-        int damagePostCrit = CritPlayer.GetPostCritDamage(damagePreCrit, critLvl, critMult);
+        int damagePostCrit = (int)(CritPlayer.GetTotalCritMult(critLvl, critMult) * baseDamage);
         float bleedDmg = damagePostCrit * SerratedRounds.BLEED_CONVERSION;
-        damagePreCrit -= (int)(damagePreCrit * SerratedRounds.BLEED_CONVERSION);
+        modifiersPreCrit.SourceDamage *= 1 - SerratedRounds.BLEED_CONVERSION;
         BleedingBuff.Create(bleedDmg, target);
     }
-    public override void ModifyHitNPCPreCrit(Item item, NPC target, ref int damage, ref float knockback, ref bool crit, ref float critMult, ref int critLvl)
+    public override void ModifyHitNPCPreCrit(Item item, NPC target, ref NPC.HitModifiers modifiers, ref bool crit, ref float critMult, ref int critLvl)
     {
-        ConvertDamage(target, ref damage, critLvl, critMult);
+        ConvertDamage(target, item.damage, ref modifiers, critLvl, critMult);
     }
-    public override void ModifyHitNPCWithProjPreCrit(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref float critMult, ref int critLvl, ref int hitDirection)
+    public override void ModifyHitNPCWithProjPreCrit(Projectile proj, NPC target, ref NPC.HitModifiers modifiers, ref bool crit, ref float critMult, ref int critLvl)
     {
-        ConvertDamage(target, ref damage, critLvl, critMult);
+        ConvertDamage(target, proj.damage, ref modifiers, critLvl, critMult);
     }
 }
