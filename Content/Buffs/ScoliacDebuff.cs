@@ -4,6 +4,11 @@ namespace WarframeMod.Content.Buffs;
 
 public class ScoliacDebuff : ModBuff
 {
+    public override void SetStaticDefaults()
+    {
+        Main.buffNoSave[Type] = true;
+        Main.debuff[Type] = true;
+    }
     public override string Texture => "Terraria/Images/Buff_" + BuffID.ThornWhipNPCDebuff;
 }
 internal class ScoliacDebuffGlobalNPC : GlobalNPC
