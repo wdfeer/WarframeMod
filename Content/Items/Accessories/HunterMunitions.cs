@@ -5,8 +5,8 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class HunterMunitions : HunterAccessory
 {
-    public const int bleedChance = 30;
-    public override string DefaultTooltip => $"{bleedChance}% bleeding chance on critical hits";
+    public const int BLEED_CHANCE_PERCENT = 30;
+    public override string DefaultTooltip => $"{BLEED_CHANCE_PERCENT}% bleeding chance on critical hits";
     public override void SetDefaults()
     {
         Item.accessory = true;
@@ -30,7 +30,7 @@ internal class HunterMunitionsPlayer : CritPlayerHooks
     }
     public void TryBleed(NPC target, int damageAfterCrit)
     {
-        if (Main.rand.NextFloat() < HunterMunitions.bleedChance / 100f)
+        if (Main.rand.NextFloat() < HunterMunitions.BLEED_CHANCE_PERCENT / 100f)
         {
             BleedingBuff.Create(damageAfterCrit, target);
         }

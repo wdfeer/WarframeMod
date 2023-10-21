@@ -88,7 +88,7 @@ internal class CritPlayer : ModPlayer
         CritPlayerHooks[] hookers = GetHookers();
 
         float mult = GetProjectileCritMult(proj);
-        int oldDamage = modifiers.GetDamage(proj.damage, crit);
+        int oldDamage = modifiers.GetDamageWithoutDefense(proj.damage, crit);
         foreach (var h in hookers)
         {
             h.ModifyHitNPCWithProjPreCrit(proj, target, ref modifiers, ref crit, ref mult, ref critLevel);
@@ -100,7 +100,7 @@ internal class CritPlayer : ModPlayer
         }
         else modifiers.DisableCrit();
 
-        int newDamage = modifiers.GetDamage(proj.damage, crit);
+        int newDamage = modifiers.GetDamageWithoutDefense(proj.damage, crit);
         foreach (var h in hookers)
         {
             h.OnHitNPCWithProjPostCrit(proj, target, oldDamage, modifiers.GetKnockback(proj.knockBack), crit, mult, critLevel, newDamage);
