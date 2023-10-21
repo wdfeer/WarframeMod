@@ -3,12 +3,6 @@ namespace WarframeMod.Content.Buffs;
 public class ColdDebuff : ModBuff
 {
     public override string Texture => "Terraria/Images/Buff_" + BuffID.Slow;
-    public override void SetStaticDefaults()
-    {
-        DisplayName.SetDefault("Slowed");
-        Main.buffNoSave[Type] = true;
-        Main.debuff[Type] = true;
-    }
 }
 internal class ColdDebuffGlobalNPC : GlobalNPC
 {

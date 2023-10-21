@@ -5,12 +5,6 @@ using WarframeMod.Common.GlobalProjectiles;
 namespace WarframeMod.Content.Items.Weapons;
 public class RedeemerPrime : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault(@"Fires 6 golden pellets without consuming ammo
-Linear damage falloff starting at 20 tiles
-Doubled benefit from Attack Speed");
-    }
     public override void SetDefaults()
     {
         Item.damage = 42;

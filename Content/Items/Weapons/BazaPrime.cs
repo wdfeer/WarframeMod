@@ -4,10 +4,6 @@ using WarframeMod.Common.GlobalProjectiles;
 namespace WarframeMod.Content.Items.Weapons;
 public class BazaPrime : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("80% Chance not to consume ammo\n+50% Critical Damage\n-50% ammo damage");
-    }
     public override void SetDefaults()
     {
         Item.damage = 23;

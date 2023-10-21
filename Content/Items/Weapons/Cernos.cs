@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 internal class Cernos : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Shoots high velocity arrows with extra penetration");
-    }
     public override void SetDefaults()
     {
         Item.damage = 36;

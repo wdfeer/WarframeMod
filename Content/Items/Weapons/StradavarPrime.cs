@@ -6,10 +6,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class StradavarPrime : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Right Click to switch between Auto and Semi-auto fire modes\n+30% Critical Damage in Auto, +40% in Semi-auto\n70% Chance not to consume ammo in Auto");
-    }
     int mode = 1;
     public int Mode // 0 is Auto, 1 is Semi
     {

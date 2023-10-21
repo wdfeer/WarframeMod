@@ -6,16 +6,17 @@ namespace WarframeMod.Common.Configs;
 public class WarframeClientConfig : ModConfig
 {
     public override ConfigScope Mode => ConfigScope.ClientSide;
-    [Header("Non-critical hit color")]
+
+    [Header("Config.noCritHitColor")]
     [DefaultValue(typeof(Color), "245, 245, 245, 255")]
     public Color noCritHitColor;
-    [Header("Tier 1 critical hit color")]
+    [Header("Config.tier1CritColor")]
     [DefaultValue(typeof(Color), "255, 255, 0, 255")]
     public Color tier1CritColor;
-    [Header("Tier 2 critical hit color")]
+    [Header("Config.tier2CritColor")]
     [DefaultValue(typeof(Color), "255, 166, 0, 255")]
     public Color tier2CritColor;
-    [Header("Tier 3+ critical hit color")]
+    [Header("Config.maxCritColor")]
     [DefaultValue(typeof(Color), "255, 0, 0, 255")]
     public Color maxCritColor;
 }

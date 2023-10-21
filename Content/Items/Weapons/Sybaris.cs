@@ -5,10 +5,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 internal class Sybaris : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Shoots a 2-round burst");
-    }
     public override void SetDefaults()
     {
         Item.damage = 16;

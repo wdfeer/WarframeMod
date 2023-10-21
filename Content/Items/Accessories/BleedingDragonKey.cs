@@ -6,10 +6,6 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class BleedingDragonKey : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("-75% max life\nBosses drop corrupted mods");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;
@@ -50,7 +46,7 @@ class BleedingDragonKeyPlayer : ModPlayer
 }
 class DragonKeyCondition : IItemDropRuleCondition
 {
-    public bool CanDrop(DropAttemptInfo info) 
+    public bool CanDrop(DropAttemptInfo info)
         => info.player.GetModPlayer<BleedingDragonKeyPlayer>().enabled;
     public bool CanShowItemDropInUI()
         => false;

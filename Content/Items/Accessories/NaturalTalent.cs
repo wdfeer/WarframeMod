@@ -3,10 +3,6 @@
 public class NaturalTalent : ModItem
 {
     public const int MAGIC_USE_SPEED_PERCENT = 15;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{MAGIC_USE_SPEED_PERCENT}% magic weapon use speed");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

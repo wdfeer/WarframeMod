@@ -3,10 +3,6 @@ namespace WarframeMod.Content.Items.Accessories;
 public class Intensify : ModItem
 {
     public const float PERCENT_DAMAGE = 10f;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{(int)PERCENT_DAMAGE}% damage");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

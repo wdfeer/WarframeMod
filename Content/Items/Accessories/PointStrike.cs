@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class PointStrike : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("+60% Crit Chance relative to the weapon's base crit chance");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

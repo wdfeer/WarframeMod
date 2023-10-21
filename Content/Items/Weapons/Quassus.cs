@@ -6,10 +6,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Quassus : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Throws 6 projectiles that inflict Bleeding");
-    }
     public override void SetDefaults()
     {
         Item.damage = 23;

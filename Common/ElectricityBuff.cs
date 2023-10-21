@@ -35,6 +35,6 @@ public struct ElectricityBuff
     }
     public static void Damage(NPC npc, int totalDmg)
     {
-        npc.StrikeNPC(totalDmg, 0, -2);
+        npc.StrikeNPC(new NPC.HitInfo() { SourceDamage = totalDmg, Knockback = 0, HitDirection = -2 });
     }
 }

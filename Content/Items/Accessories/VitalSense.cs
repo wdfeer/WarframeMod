@@ -5,10 +5,6 @@ namespace WarframeMod.Content.Items.Accessories;
 public class VitalSense : ModItem
 {
     public const float EXTRA_CRIT_MULT = 0.2f;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{(int)(EXTRA_CRIT_MULT * 100f)}% Critical Damage");
-    }
 
     public override void SetDefaults()
     {

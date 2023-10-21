@@ -9,10 +9,6 @@ public class EmergenceSavior : Arcane
     public const float LIFE_RESTORATION = 0.25f;
     public const int EXTRA_IFRAMES = 120;
     public const int COOLDOWN = 60 * 60;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"Upon taking lethal damage: become invulnerable for {EXTRA_IFRAMES / 60} seconds and restore {(int)(LIFE_RESTORATION * 100f)}% life\nCooldown: {COOLDOWN / 60} seconds");
-    }
     public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<SaviourPlayer>().enabled = true;
@@ -34,12 +30,11 @@ class SaviourPlayer : ModPlayer
         }
         return base.PreKill(damage, hitDirection, pvp, ref playSound, ref genGore, ref damageSource);
     }
-    public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
+    public override void ModifyHurt(ref Player.HurtModifiers modifiers)
     {
         if (!enabled && Player.HasBuff<EmergenceSaviorBuff>())
         {
-            damage *= 10;
+            modifiers.SourceDamage *= 10;
         }
-        return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit, ref customDamage, ref playSound, ref genGore, ref damageSource, ref cooldownCounter);
     }
 }

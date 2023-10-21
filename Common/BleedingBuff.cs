@@ -35,9 +35,6 @@ public struct BleedingBuff
     }
     public static void Damage(NPC npc, int bleed)
     {
-        int oldDefense = npc.defense;
-        npc.defense = 0;
-        npc.StrikeNPC(bleed, 0, -2);
-        npc.defense = oldDefense;
+        npc.StrikeNPC(new NPC.HitInfo() { SourceDamage = bleed, Damage = bleed, HitDirection = -2 });
     }
 }

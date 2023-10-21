@@ -6,10 +6,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 internal class Burston : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Shoots a 3-round burst\n-20% Critical damage");
-    }
     public override void SetDefaults()
     {
         Item.damage = 10;

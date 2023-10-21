@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Ballistica : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Shoots 4 arrows at once with greatly decreased velocity\nNot shooting charges the next shot, increasing damage, accuraccy and velocity\n-90% ammo damage");
-    }
     public override void SetDefaults()
     {
         Item.damage = 7;

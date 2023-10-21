@@ -6,10 +6,6 @@ public class MotusSetup : ModItem
 {
     public const int CRIT_RELATIVE_PERCENT = CriticalDelay.PERCENT_CRIT_RELATIVE;
     public const int DURATION_SECONDS = 6;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{CRIT_RELATIVE_PERCENT}% Relative Critical Chance after landing from a Double Jump or from Wing flight for {DURATION_SECONDS} seconds");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;
@@ -48,11 +44,7 @@ class MotusSetupPlayer : ModPlayer
         }
         else if (!doubleJumpingOrWinging)
         {
-            doubleJumpingOrWinging = Player.isPerformingJump_Blizzard
-                || Player.isPerformingJump_Cloud
-                || Player.isPerformingJump_Fart
-                || Player.isPerformingJump_Sail
-                || Player.isPerformingJump_Sandstorm;
+            doubleJumpingOrWinging = Player.ExtraJumps.ToArray().Any(x => x.Enabled && !x.Available);
         }
     }
 }

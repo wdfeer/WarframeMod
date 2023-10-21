@@ -6,10 +6,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 internal class Kulstar : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Converts bullets into cluster rockets\n+15% Critical Damage");
-    }
     public override void SetDefaults()
     {
         Item.damage = 60;

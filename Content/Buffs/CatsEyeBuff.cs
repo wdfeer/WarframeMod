@@ -5,13 +5,6 @@ namespace WarframeMod.Content.Buffs;
 
 public class CatsEyeBuff : ModBuff
 {
-    public override void SetStaticDefaults()
-    {
-        DisplayName.SetDefault("Cat's Eye");
-        Description.SetDefault($"+{CatsEye.CRIT} summon Critical Chance");
-        Main.pvpBuff[Type] = true;
-        Main.buffNoSave[Type] = true;
-    }
     public override void Update(Player player, ref int buffIndex)
     {
         player.GetModPlayer<CritPlayer>().summonCritChance += 50;

@@ -74,7 +74,7 @@ class ZenistarFlame : ModProjectile
     public override void AI()
     {
         if (Main.rand.NextBool(3))
-        { 
+        {
             Dust d = Dust.NewDustDirect(Projectile.position,
                                         Projectile.width,
                                         Projectile.height,
@@ -84,15 +84,11 @@ class ZenistarFlame : ModProjectile
             d.noGravity = true;
         }
     }
-    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+    public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
     {
         target.AddBuff(BuffID.ShadowFlame, 120);
     }
-    public override void OnHitPlayer(Player target, int damage, bool crit)
-    {
-        target.AddBuff(BuffID.ShadowFlame, 120);
-    }
-    public override void OnHitPvp(Player target, int damage, bool crit)
+    public override void OnHitPlayer(Player target, Player.HurtInfo info)
     {
         target.AddBuff(BuffID.ShadowFlame, 120);
     }

@@ -5,11 +5,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class ScourgePrime : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault(@"Fires a projectile that splits into multiple projectiles on impact
-20% chance to inflict ichor and cursed flames");
-    }
     public override void SetDefaults()
     {
         Item.damage = 47;

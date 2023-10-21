@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 internal class Orthos : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Every third swing has doubled damage and guaranteed bleeding\n15% bleeding chance\n-25% Critical damage\nBenefits more from attack speed bonuses");
-    }
     public override void SetDefaults()
     {
         Item.damage = 13;
@@ -57,18 +53,18 @@ internal class Orthos : ModItem
             Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 0.15f;
         return base.CanUseItem(player);
     }
-    public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
+    public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
     {
         if (SuperSwing)
         {
-            damage *= 2;
-            knockBack *= 2;
+            modifiers.SourceDamage *= 2;
+            modifiers.Knockback *= 2;
         }
     }
-    public override void ModifyHitPvp(Player player, Player target, ref int damage, ref bool crit)
+    public override void ModifyHitPvp(Player player, Player target, ref Player.HurtModifiers modifiers)
     {
         if (SuperSwing)
-            damage *= 2;
+            modifiers.SourceDamage *= 2;
     }
     public override void AddRecipes()
         => CreateRecipe().AddRecipeGroup(RecipeGroupID.IronBar, 20)

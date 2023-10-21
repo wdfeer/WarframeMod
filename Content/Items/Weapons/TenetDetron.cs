@@ -10,10 +10,6 @@ public class TenetDetron : ModItem
     public const int FALLOFF_MAX = 70;
     public const float MAX_FALLOFF_DAMAGE_DECREASE = 0.55f;
     public const int MULTISHOT = 10;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"Shoots {MULTISHOT} lasers at once\nLinear damage falloff starts at {FALLOFF_START} tiles, caps at {(MAX_FALLOFF_DAMAGE_DECREASE * 100f):n0}% damage decrease at {FALLOFF_MAX} tiles\n10% chance to confuse enemies\nRight click to fire a burst of 6 shots at the cost of 6 times the mana");
-    }
     public override void SetDefaults()
     {
         Item.damage = 60;

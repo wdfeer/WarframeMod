@@ -31,7 +31,7 @@ internal class Paris : ModItem
     {
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
         Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-        
+
         return false;
     }
     public override void AddRecipes()

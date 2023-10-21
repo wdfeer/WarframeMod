@@ -4,10 +4,6 @@ using Terraria.DataStructures;
 namespace WarframeMod.Content.Items.Weapons;
 public class Stradavar : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Right Click to switch between Auto and Semi-auto fire modes\n50% Chance not to consume ammo in Auto");
-    }
     int mode = 1;
     public int Mode // 0 is Auto, 1 is Semi
     {

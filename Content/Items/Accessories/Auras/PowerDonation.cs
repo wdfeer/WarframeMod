@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Accessories.Auras;
 public class PowerDonation : ModItem
 {
     public const float DAMAGE = 0.3f;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"-{(DAMAGE * 100):0}% damage\n+{(DAMAGE * 100):0}% teammate damage");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

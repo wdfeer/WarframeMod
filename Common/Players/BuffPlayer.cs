@@ -38,11 +38,11 @@ public class BuffPlayer : CritPlayerHooks
         stackableBuffsOnHitNPC = new List<StackableBuffChance>();
         bleedingChances = new();
     }
-    public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+    public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
     {
         BuffChance.ApplyBuffs(target, buffsOnHitNPC);
     }
-    public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+    public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
     {
         BuffChance.ApplyBuffs(target, buffsOnHitNPC);
     }

@@ -6,10 +6,6 @@ public class ArcaneArachne : Arcane
 {
     public const int DAMAGE_BUFF = 25;
     public const int COOLDOWN_DURATION = 60 * 30;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{DAMAGE_BUFF}% damage\nWhen damaged: disable the above effect for {COOLDOWN_DURATION / 60} seconds");
-    }
     public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<ArachnePlayer>().enabled = true;
@@ -20,7 +16,7 @@ class ArachnePlayer : ModPlayer
 {
     public bool enabled;
     public override void ResetEffects() => enabled = false;
-    public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
+    public override void OnHurt(Player.HurtInfo info)
     {
         if (enabled)
             Player.AddBuff(ModContent.BuffType<ArcaneArachneBuff>(), ArcaneArachne.COOLDOWN_DURATION);

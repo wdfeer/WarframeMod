@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class HollowPoint : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("+25% Critical Damage, but -15% damage");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

@@ -2,10 +2,6 @@
 
 public class SpeedDrift : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("+15% movement speed\n+7.5% weapon use speed");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

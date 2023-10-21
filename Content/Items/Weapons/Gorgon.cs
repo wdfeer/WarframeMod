@@ -5,10 +5,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Gorgon : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Takes a while to spool up, shoots rapidly but inaccurately\n-25% Critical Damage");
-    }
     public override void SetDefaults()
     {
         Item.damage = 6;

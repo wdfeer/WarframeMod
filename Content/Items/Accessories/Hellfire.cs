@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Accessories;
 public class Hellfire : ModItem
 {
     public const int EXTRA_FIRE_DPS = 15;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{EXTRA_FIRE_DPS} damage per second on burning enemies");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;
@@ -35,11 +31,11 @@ class HellfirePlayer : ModPlayer
             return;
         target.GetGlobalNPC<DebuffDamageGlobalNPC>().AddBuffDamage(DebuffDamageGlobalNPC.SourceId.Hellfire, BuffID.OnFire, Hellfire.EXTRA_FIRE_DPS);
     }
-    public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+    public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
     {
         OnHitNPCWithSomething(target);
     }
-    public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+    public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
     {
         OnHitNPCWithSomething(target);
     }

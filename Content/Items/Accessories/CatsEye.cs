@@ -7,11 +7,6 @@ public class CatsEye : ModItem
     public const int COOLDOWN = 25 * 60;
     public const int CRIT = 50;
     public const int DURATION = 10 * 60;
-    public override void SetStaticDefaults()
-    {
-        DisplayName.SetDefault("Cat's Eye");
-        Tooltip.SetDefault($"Every {COOLDOWN / 60} seconds provides +{CRIT}% summon Critical Chance for {DURATION / 60} seconds");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

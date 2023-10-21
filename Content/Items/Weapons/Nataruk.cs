@@ -10,16 +10,6 @@ internal class Nataruk : ModItem
     public const float CRIT_MULT_UNCHARGED = 0.9f;
     public const float CRIT_MULT_CHARGED = 1.1f;
     public const float CRIT_MULT_PERFECT = 1.2f;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($@"Charge your shots
-Release the arrow right before full charge to perform a Perfect Shot
-Quick shots have {BASE_CRIT_UNCHARGED} base critical chance and -10% critical damage
-Semicharged shots have +50% damage, {BASE_CRIT_CHARGED - 15} base critical chance
-Perfect shots have +100% damage, {BASE_CRIT_PERFECT} base critical chance and +20% critical damage
-Fully charged shots have +100% damage, {BASE_CRIT_CHARGED} base critical chance and +10% critical damage
-Doesn't consume ammo");
-    }
     public override void SetDefaults()
     {
         Item.damage = 200;

@@ -8,10 +8,6 @@ public class ArcaneBodyguard : Arcane
     public const int CHANCE = 25;
     public const int DAMAGE_REDUCTION = 15;
     public const int BUFF_DURATION = 480;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"On summon hit while holding a summon weapon: {CHANCE}% chance for +{DAMAGE_REDUCTION}% Damage Reduction for {BUFF_DURATION / 60} seconds");
-    }
     public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<BodyguardPlayer>().enabled = true;
@@ -26,7 +22,7 @@ class BodyguardPlayer : ModPlayer
         if (Main.rand.Next(0, 100) < ArcaneBodyguard.CHANCE)
             Player.AddBuff(ModContent.BuffType<ArcaneBodyguardBuff>(), ArcaneBodyguard.BUFF_DURATION);
     }
-    public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+    public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
     {
         bool IsSummon(DamageClass type)
             => type == DamageClass.Summon || type == DamageClass.SummonMeleeSpeed;
@@ -34,15 +30,13 @@ class BodyguardPlayer : ModPlayer
             ApplyBuff();
     }
     bool Active => Player.HasBuff(ModContent.BuffType<ArcaneBodyguardBuff>());
-    void ModifyIncomingDamage(ref int damage)
+    float GetDamageMult()
     {
-        float damageMult = (100 - ArcaneBodyguard.DAMAGE_REDUCTION) / 100f;
-        damage = (int)(damage * damageMult);
+        return (100 - ArcaneBodyguard.DAMAGE_REDUCTION) / 100f;
     }
-    public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
+    public override void ModifyHurt(ref Player.HurtModifiers modifiers)
     {
         if (Active)
-            ModifyIncomingDamage(ref damage);
-        return true;
+            modifiers.SourceDamage *= GetDamageMult();
     }
 }

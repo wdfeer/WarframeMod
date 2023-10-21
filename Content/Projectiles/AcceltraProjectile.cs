@@ -31,12 +31,12 @@ internal class AcceltraProjectile : ExplosiveProjectile
             dust.noGravity = true;
         }
     }
-    public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+    public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
     {
         if (!CanExplode())
         {
-            knockback *= 2;
-            damage /= 2;
+            modifiers.Knockback *= 2;
+            modifiers.SourceDamage /= 2;
             Projectile.penetrate = 0;
         }
     }

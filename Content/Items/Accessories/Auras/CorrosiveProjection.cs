@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Accessories.Auras;
 public class CorrosiveProjection : ModItem
 {
     public const float IGNORE_DEFENSE = 0.18f;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"Weapons of players on your team ignore {(int)(IGNORE_DEFENSE * 100)}% of enemy's Defense\nCannot stack");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;
@@ -31,13 +27,13 @@ public class CorrosiveProjection : ModItem
 class CorrosiveProjectionPlayer : ModPlayer
 {
     public bool Enabled => Player.GetModPlayer<AuraPlayer>().AnyPlayerInMyTeam(x => x.corrosiveProjection);
-    void ModifyDamage(NPC target, ref int damage)
+    void ModifyHit(ref NPC.HitModifiers modifiers)
     {
         if (Enabled)
-            damage += target.checkArmorPenetration((int)(target.defense * CorrosiveProjection.IGNORE_DEFENSE));
+            modifiers.ScalingArmorPenetration += CorrosiveProjection.IGNORE_DEFENSE;
     }
-    public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
-        => ModifyDamage(target, ref damage);
-    public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-        => ModifyDamage(target, ref damage);
+    public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        => ModifyHit(ref modifiers);
+    public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
+        => ModifyHit(ref modifiers);
 }

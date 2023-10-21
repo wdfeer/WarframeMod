@@ -6,9 +6,9 @@ namespace WarframeMod.Common.Players;
 internal class DamageResistancePlayer : ModPlayer
 {
     public List<float> resists = new List<float>();
-    public float ResistsMult => resists.Any() ? resists.Select(x => 1 - x).Aggregate((x,y) => x * y) : 1f;
+    public float ResistsMult => resists.Any() ? resists.Select(x => 1 - x).Aggregate((x, y) => x * y) : 1f;
     public List<float> multipliers = new List<float>();
-    public float MultsMult => multipliers.Any() ? multipliers.Aggregate((x,y) => x * y) : 1f;
+    public float MultsMult => multipliers.Any() ? multipliers.Aggregate((x, y) => x * y) : 1f;
     public float TotalDamageMultiplier => ResistsMult * MultsMult * EnemyBuff.DAMAGE_MULT;
     public override void ResetEffects()
     {
@@ -19,9 +19,8 @@ internal class DamageResistancePlayer : ModPlayer
     {
         resists.Add(resist);
     }
-    public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldownCounter)
+    public override void ModifyHurt(ref Player.HurtModifiers modifiers)
     {
-        damage = (int)(damage * TotalDamageMultiplier);
-        return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit, ref customDamage, ref playSound, ref genGore, ref damageSource, ref cooldownCounter);
+        modifiers.SourceDamage *= TotalDamageMultiplier;
     }
 }

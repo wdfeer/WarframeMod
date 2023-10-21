@@ -5,10 +5,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Detron : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Shoots 7 lasers at once\n-25% Critical Damage\n12% chance to shortly confuse enemies");
-    }
     public override void SetDefaults()
     {
         Item.damage = 11;

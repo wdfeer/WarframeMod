@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Sobek : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("An automatic shotgun, shoots 4 pellets\n-40% ammo damage");
-    }
     public override void SetDefaults()
     {
         Item.damage = 9;

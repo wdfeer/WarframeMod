@@ -4,10 +4,6 @@ using WarframeMod.Common.GlobalProjectiles;
 namespace WarframeMod.Content.Items.Weapons;
 public class PrismaGorgon : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Shoots rapidly but inaccurately\n+15% Critical Damage\n75% chance not to consume ammo");
-    }
     public override void SetDefaults()
     {
         Item.damage = 61;

@@ -7,10 +7,6 @@ public class ArcanePrecision : Arcane
     public const int CHANCE = 20;
     public const float DAMAGE_BUFF = 0.15f;
     public const int BUFF_DURATION = 960;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"On ranged critical strike: {CHANCE}% chance for +{(DAMAGE_BUFF * 100):0}% damage for {BUFF_DURATION / 60} seconds");
-    }
     public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<ArcanePrecisionPlayer>().enabled = true;
@@ -26,12 +22,8 @@ class ArcanePrecisionPlayer : ModPlayer
         if (enabled && proj.DamageType == DamageClass.Ranged && crit && Main.rand.Next(0, 100) < ArcanePrecision.CHANCE)
             Player.AddBuff(ModContent.BuffType<ArcanePrecisionBuff>(), ArcanePrecision.BUFF_DURATION);
     }
-    public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+    public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
     {
-        ApplyBuff(proj, crit);
-    }
-    public override void OnHitPvpWithProj(Projectile proj, Player target, int damage, bool crit)
-    {
-        ApplyBuff(proj, crit);
-    }
+        ApplyBuff(proj, hit.Crit);
+    } // No PVP support yet
 }

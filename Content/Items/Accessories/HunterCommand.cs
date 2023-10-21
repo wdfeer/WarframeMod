@@ -25,9 +25,9 @@ class HunterCommandPlayer : ModPlayer
     public bool enabled = false;
     public override void ResetEffects()
         => enabled = false;
-    public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+    public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
     {
         if (enabled && (proj.DamageType == DamageClass.Summon || proj.DamageType == DamageClass.SummonMeleeSpeed) && target.GetGlobalNPC<StackableDebuffNPC>().bleeds.Any())
-            damage += (int)(damage * HunterCommand.DAMAGE_ON_BLEEDING_PERCENT / 100f);
+            modifiers.SourceDamage *= 1f + (HunterCommand.DAMAGE_ON_BLEEDING_PERCENT / 100f);
     }
 }

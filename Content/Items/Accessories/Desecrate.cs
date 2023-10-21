@@ -4,10 +4,6 @@ public class Desecrate : ModItem
 {
     public const int LIFE_DRAIN = 7;
     public const float MAX_DISTANCE = 800;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"Whenever an enemy dies nearby, consume {LIFE_DRAIN} life and double the loot");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;
@@ -56,10 +52,7 @@ internal class DesecrateNPC : GlobalNPC
     private void LifeDrainEffect(Player player)
     {
         Terraria.DataStructures.PlayerDeathReason reason = new() { SourceCustomReason = player.name + " was desecrated" };
-        int oldDef = player.statDefense;
-        player.statDefense = 0;
-        player.Hurt(reason, Desecrate.LIFE_DRAIN, 0, cooldownCounter: -2);
-        player.statDefense = oldDef;
+        player.Hurt(reason, Desecrate.LIFE_DRAIN, 0, scalingArmorPenetration: 1f, cooldownCounter: -2);
         player.netLife = true;
     }
 }

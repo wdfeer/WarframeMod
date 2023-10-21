@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Accessories.Auras;
 public class Physique : ModItem
 {
     public const float EXTRA_LIFE = 0.1f;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{(int)(EXTRA_LIFE * 100)}% max life to players on your team");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

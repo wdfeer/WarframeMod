@@ -5,10 +5,6 @@ namespace WarframeMod.Content.Items.Accessories;
 public class CriticalDelay : ModItem
 {
     public const int PERCENT_CRIT_RELATIVE = 80;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"+{PERCENT_CRIT_RELATIVE}% Crit Chance relative to the weapon's base crit chance, but -10% Use Speed");
-    }
     public override void SetDefaults()
     {
         Item.accessory = true;

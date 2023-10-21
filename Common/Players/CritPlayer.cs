@@ -50,62 +50,64 @@ internal class CritPlayer : ModPlayer
         }
         return hookers.ToArray();
     }
-    public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+    public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)
     {
         CritPlayerHooks[] hookers = GetHookers();
         var critLevel = GetCritLevel(Player.GetWeaponCrit(item));
-        if (critLevel < 1 && crit)
-            critLevel = 1;
-        else if (!crit)
-            critLevel = 0;
+        bool crit = critLevel > 0;
+
+
         float mult = critMultiplierPlayer * item.GetGlobalItem<CritGlobalItem>().critMultiplier;
-        int oldDamage = damage;
+        int oldDamage = modifiers.GetDamage(item.damage, crit);
         foreach (var h in hookers)
         {
-            h.ModifyHitNPCPreCrit(item, target, ref damage, ref knockback, ref crit, ref mult, ref critLevel);
+            h.ModifyHitNPCPreCrit(item, target, ref modifiers, ref crit, ref mult, ref critLevel);
         }
         if (crit)
-            damage = (int)(damage * mult * critLevel);
-        OverCritVisuals(target, knockback, critLevel);
-        int postCritDmg = damage * (crit ? 2 : 1);
+        {
+            modifiers.SetCrit();
+            modifiers.SourceDamage *= mult * critLevel;
+        }
+        else
+            modifiers.DisableCrit();
+        OverCritVisuals(target, modifiers.GetKnockback(item.knockBack), critLevel);
+        int postCritDmg = modifiers.GetDamage(item.damage, crit);
         foreach (var h in hookers)
         {
-            h.OnHitNPCPostCrit(item, target, oldDamage, knockback, crit, mult, critLevel, postCritDmg);
+            h.OnHitNPCPostCrit(item, target, oldDamage, modifiers.GetKnockback(item.knockBack), crit, mult, critLevel, postCritDmg);
         }
         if (Main.rand.NextFloat() < item.GetGlobalItem<BleedingGlobalItem>().bleedingChance)
             BleedingBuff.Create(postCritDmg, target);
     }
-    public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+    public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
     {
+        bool crit;
         int critLevel = GetCritLevel(proj.CritChance);
-        if (proj.DamageType == DamageClass.Summon || proj.DamageType == DamageClass.SummonMeleeSpeed)
-        {
-            crit = critLevel > 0;
-        }
-        else
-        {
-            if (!crit)
-                critLevel = 0;
-            else if (critLevel < 1 && crit)
-                critLevel = 1;
-        }
+        crit = critLevel > 0;
+
         CritPlayerHooks[] hookers = GetHookers();
 
         float mult = GetProjectileCritMult(proj);
-        int oldDamage = damage;
+        int oldDamage = modifiers.GetDamageWithoutDefense(proj.damage, crit);
         foreach (var h in hookers)
         {
-            h.ModifyHitNPCWithProjPreCrit(proj, target, ref damage, ref knockback, ref crit, ref mult, ref critLevel, ref hitDirection);
+            h.ModifyHitNPCWithProjPreCrit(proj, target, ref modifiers, ref crit, ref mult, ref critLevel);
         }
         if (crit)
-            damage = (int)(damage * mult * critLevel);
+        {
+            modifiers.SetCrit();
+            modifiers.SourceDamage *= critLevel * mult;
+        }
+        else modifiers.DisableCrit();
+
+        int newDamage = modifiers.GetDamageWithoutDefense(proj.damage, crit);
         foreach (var h in hookers)
         {
-            h.OnHitNPCWithProjPostCrit(proj, target, oldDamage, knockback, crit, mult, critLevel, damage * (crit ? 2 : 1));
+            h.OnHitNPCWithProjPostCrit(proj, target, oldDamage, modifiers.GetKnockback(proj.knockBack), crit, mult, critLevel, newDamage);
         }
-        OverCritVisuals(target, knockback, critLevel);
+        OverCritVisuals(target, modifiers.GetKnockback(proj.knockBack), critLevel);
 
-        proj.GetGlobalProjectile<BuffGlobalProjectile>().HitNPCAfterCritModifiersApplied(target, damage * (crit ? 2 : 1));
+        proj.GetGlobalProjectile<BuffGlobalProjectile>().HitNPCAfterCritModifiersApplied(target, newDamage);
     }
     public static Color GetCritColor(int critLvl)
     {
@@ -148,18 +150,18 @@ internal class CritPlayer : ModPlayer
             mult *= summonCritMult;
         return mult;
     }
-    public static int GetPostCritDamage(int preCrit, int critLvl, float critMult)
+    public static float GetTotalCritMult(int critLvl, float critMult)
     {
         if (critLvl <= 0)
-            return preCrit;
-        return (int)(preCrit * 2 * critMult * critLvl);
+            return 1;
+        return 2 * critMult * critLvl;
     }
     public static bool IsItemSummon(Item item) => item.DamageType == DamageClass.Summon || item.DamageType == DamageClass.SummonMeleeSpeed;
 }
 public abstract class CritPlayerHooks : ModPlayer
 {
-    public virtual void OnHitNPCPostCrit(Item item, NPC target, int damage, float knockback, bool crit, float critMult, int critLvl, int damagePostCrit) { }
-    public virtual void OnHitNPCWithProjPostCrit(Projectile proj, NPC target, int damage, float knockback, bool crit, float critMult, int critLvl, int damagePostCrit) { }
-    public virtual void ModifyHitNPCPreCrit(Item item, NPC target, ref int damage, ref float knockback, ref bool crit, ref float critMult, ref int critLvl) { }
-    public virtual void ModifyHitNPCWithProjPreCrit(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref float critMult, ref int critLvl, ref int hitDirection) { }
+    public virtual void OnHitNPCPostCrit(Item item, NPC target, int damage, float knockBack, bool crit, float critMult, int critLvl, int damagePostCrit) { }
+    public virtual void OnHitNPCWithProjPostCrit(Projectile proj, NPC target, int damage, float knockBack, bool crit, float critMult, int critLvl, int damagePostCrit) { }
+    public virtual void ModifyHitNPCPreCrit(Item item, NPC target, ref NPC.HitModifiers modifiers, ref bool crit, ref float critMult, ref int critLvl) { }
+    public virtual void ModifyHitNPCWithProjPreCrit(Projectile proj, NPC target, ref NPC.HitModifiers modifiers, ref bool crit, ref float critMult, ref int critLvl) { }
 }

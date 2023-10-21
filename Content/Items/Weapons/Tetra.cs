@@ -4,10 +4,6 @@ using WarframeMod.Common.GlobalProjectiles;
 namespace WarframeMod.Content.Items.Weapons;
 public class Tetra : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("-25% Critical Damage");
-    }
     public override void SetDefaults()
     {
         Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/TenetTetraPrimarySound").ModifySoundStyle(pitchVariance: 0.08f);

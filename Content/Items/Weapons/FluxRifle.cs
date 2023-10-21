@@ -5,10 +5,6 @@ namespace WarframeMod.Content.Items.Weapons;
 public class FluxRifle : ModItem
 {
     public const int DEFENSE_PENETRATION = 12;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"Doesn't consume ammo\n{DEFENSE_PENETRATION} Defense penetration");
-    }
     public override void SetDefaults()
     {
         Item.damage = 10;

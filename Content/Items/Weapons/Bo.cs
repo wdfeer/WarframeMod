@@ -3,10 +3,6 @@ namespace WarframeMod.Content.Items.Weapons;
 internal class Bo : ModItem
 {
     public const int DEFENSE_PENETRATION = 25;
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"Every third swing has tripled damage and {DEFENSE_PENETRATION} Defense Penetration\nDoubled benefit from Attack Speed");
-    }
     public override void SetDefaults()
     {
         Item.damage = 20;
@@ -55,18 +51,18 @@ internal class Bo : ModItem
             Item.ArmorPenetration = 0;
         return base.CanUseItem(player);
     }
-    public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
+    public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
     {
         if (SuperSwing)
         {
-            damage *= 3;
-            knockBack *= 2;
+            modifiers.SourceDamage *= 3;
+            modifiers.Knockback *= 2;
         }
     }
-    public override void ModifyHitPvp(Player player, Player target, ref int damage, ref bool crit)
+    public override void ModifyHitPvp(Player player, Player target, ref Player.HurtModifiers modifiers)
     {
         if (SuperSwing)
-            damage *= 3;
+            modifiers.SourceDamage *= 3;
     }
     public override void AddRecipes()
     {

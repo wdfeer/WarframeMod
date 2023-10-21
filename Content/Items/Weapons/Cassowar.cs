@@ -4,10 +4,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 internal class Cassowar : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault($"Every third swing has doubled damage and guaranteed Bleeding\n20% Bleeding chance\n-30% Critical Damage\nDoubled benefit from Attack Speed");
-    }
     public override void SetDefaults()
     {
         Item.damage = 20;
@@ -57,18 +53,18 @@ internal class Cassowar : ModItem
             Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 0.2f;
         return base.CanUseItem(player);
     }
-    public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
+    public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
     {
         if (SuperSwing)
         {
-            damage *= 2;
-            knockBack *= 1.75f;
+            modifiers.SourceDamage *= 2;
+            modifiers.Knockback *= 1.75f;
         }
     }
-    public override void ModifyHitPvp(Player player, Player target, ref int damage, ref bool crit)
+    public override void ModifyHitPvp(Player player, Player target, ref Player.HurtModifiers modifiers)
     {
         if (SuperSwing)
-            damage *= 2;
+            modifiers.SourceDamage *= 2;
     }
     public override void AddRecipes()
     {

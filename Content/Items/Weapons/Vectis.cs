@@ -3,10 +3,6 @@ using Terraria.DataStructures;
 namespace WarframeMod.Content.Items.Weapons;
 public class Vectis : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Shots penetrate enemies");
-    }
     public override void SetDefaults()
     {
         Item.damage = 100;

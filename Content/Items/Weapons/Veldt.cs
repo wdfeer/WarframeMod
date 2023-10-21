@@ -4,10 +4,6 @@ using WarframeMod.Common.GlobalProjectiles;
 namespace WarframeMod.Content.Items.Weapons;
 public class Veldt : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("+10% Critical damage\n22% Bleeding chance");
-    }
     public override void SetDefaults()
     {
         Item.damage = 20;
