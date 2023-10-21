@@ -12,6 +12,6 @@ public class CritGlobalItem : GlobalItem
         if (index == 0)
             return;
         int crit = Main.LocalPlayer.GetWeaponCrit(item);
-        tooltips.Insert(index, new TooltipLine(Mod, "CritChance", $"{crit}% approximate critical chance"));
+        tooltips.Insert(index, new TooltipLine(Mod, "CritChance", $"{crit}% critical chance"));
     }
 }
