@@ -27,14 +27,17 @@ class MotusSignalPlayer : ModPlayer
     public bool enabled;
     public override void ResetEffects() => enabled = false;
     float doubleJumpExtraVelocity = 0;
-    bool[] couldDoubleJump = new bool[5] { false, false, false, false, false };
-    bool[] canDoubleJump = new bool[5] { false, false, false, false, false };
+    bool[] couldDoubleJump;
+    bool[] canDoubleJump;
     public override void PreUpdateMovement()
     {
         if (!enabled)
             return;
         bool touchingTiles = Player.TouchedTiles.Any();
-        couldDoubleJump = canDoubleJump;
+        if (canDoubleJump != null)
+            couldDoubleJump = canDoubleJump;
+        else
+            couldDoubleJump = new bool[Player.ExtraJumps.Length];
         canDoubleJump = Player.ExtraJumps.ToArray().Select(x => x.Available).ToArray();
         if (touchingTiles)
             return;
