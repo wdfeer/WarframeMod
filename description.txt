@@ -1,1 +1,1 @@
-Warframe Mod is a 1.4 mod that aims to adapt weapons, mods, mechanics and more from Warframe to tModLoader.
+Adds Weapons, Mods and Arcanes (in form of accessories) from Warframe, as well as some gameplay mechanics (most notably crits)
