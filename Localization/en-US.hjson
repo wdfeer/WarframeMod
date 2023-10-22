@@ -115,6 +115,7 @@ Mods: {
 		Items: {
 			Furis: {
 				DisplayName: Furis
+				Tooltip: ""
 			}
 
 			ArmoredAgility: {
@@ -1094,11 +1095,6 @@ Mods: {
 					Doubled benefit from melee speed for the melee attack
 					'''
 			}
-
-			Furis: {
-				DisplayName: Furis
-				Tooltip: ""
-			}
 		}
 
 		Projectiles: {
@@ -1130,43 +1126,36 @@ Mods: {
 			ZenistarFlame.DisplayName: Zenistar Flame
 		}
 
-		Config: {
-			noCritHitColor: Non-critical hit color
-			tier1CritColor: Tier 1 critical hit color
-			tier2CritColor: Tier 2 critical hit color
-			maxCritColor: Tier 3+ critical hit color
-		}
-
 		Configs: {
 			WarframeClientConfig: {
 				DisplayName: Warframe Client Config
 
 				Headers: {
 					Config: {
-						noCritHitColor: Config.no Crit Hit Color Header
-						tier1CritColor: Config.tier1 Crit Color Header
-						tier2CritColor: Config.tier2 Crit Color Header
-						maxCritColor: Config.max Crit Color Header
+						noCritHitColor: Non-Crit Hit Color
+						tier1CritColor: Tier 1 Crit Color
+						tier2CritColor: Tier 2 Crit Color
+						maxCritColor: Tier 3+ Crit Color
 					}
 				}
 
 				noCritHitColor: {
-					Label: no Crit Hit Color
+					Label: Non-Crit Hit Color
 					Tooltip: ""
 				}
 
 				tier1CritColor: {
-					Label: tier1 Crit Color
+					Label: Tier 1 Crit Color
 					Tooltip: ""
 				}
 
 				tier2CritColor: {
-					Label: tier2 Crit Color
+					Label: Tier 2 Crit Color
 					Tooltip: ""
 				}
 
 				maxCritColor: {
-					Label: max Crit Color
+					Label: Tier 3+ Crit Color
 					Tooltip: ""
 				}
 			}
