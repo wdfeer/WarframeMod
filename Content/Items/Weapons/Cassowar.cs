@@ -6,7 +6,7 @@ internal class Cassowar : ModItem
 {
     public override void SetDefaults()
     {
-        Item.damage = 20;
+        Item.damage = 22;
         Item.crit = 2;
         Item.knockBack = 4.5f;
         Item.DamageType = DamageClass.Melee;

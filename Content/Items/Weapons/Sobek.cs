@@ -6,7 +6,7 @@ public class Sobek : ModItem
 {
     public override void SetDefaults()
     {
-        Item.damage = 9;
+        Item.damage = 10;
         Item.crit = 7;
         Item.DamageType = DamageClass.Ranged;
         Item.width = 42;
@@ -43,7 +43,7 @@ public class Sobek : ModItem
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        this.ModifyAmmoDamage(player, ref damage, 0.6f);
+        this.ModifyAmmoDamage(player, ref damage, 0.5f);
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width - 6);
         for (int i = 0; i < 4; i++)
         {

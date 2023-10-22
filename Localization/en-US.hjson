@@ -969,7 +969,7 @@ Mods: {
 				Tooltip:
 					'''
 					An automatic shotgun, shoots 4 pellets
-					-40% ammo damage
+					-50% ammo damage
 					'''
 			}
 

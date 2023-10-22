@@ -22,7 +22,7 @@ public class RaktaBallistica : ModItem
         Item.autoReuse = false;
         Item.shoot = ProjectileID.WoodenArrowFriendly;
         Item.shootSpeed = 16;
-        Item.useAmmo = AmmoID.Arrow; // The "ammo Id" of the ammo Item that this weapon uses. Note that this is not an Item Id, but just a magic value.
+        Item.useAmmo = AmmoID.Arrow;
     }
     double lastShotTime = 0;
     double timeSinceLastShot = 60;
@@ -32,11 +32,7 @@ public class RaktaBallistica : ModItem
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
         timeSinceLastShot = Main.time - lastShotTime;
         lastShotTime = Main.time;
-        float chargeMult = (float)(timeSinceLastShot / Item.useTime);
-        if (chargeMult < 1)
-            chargeMult = 1;
-        else if (chargeMult > 2)
-            chargeMult = 2;
+        float chargeMult = (float)Math.Clamp(timeSinceLastShot / Item.useTime, 1, 2);
         for (int i = 0; i < 4; i++)
         {
             int projectileID = Projectile.NewProjectile(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(7) / chargeMult), type, (int)(damage * chargeMult), knockback, player.whoAmI);

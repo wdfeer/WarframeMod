@@ -41,11 +41,7 @@ public class Ballistica : ModItem
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
         timeSinceLastShot = Main.time - lastShotTime;
         lastShotTime = Main.time;
-        float chargeMult = (float)timeSinceLastShot / Item.useTime * 0.6f;
-        if (chargeMult < 1)
-            chargeMult = 1;
-        else if (chargeMult > 2)
-            chargeMult = 2;
+        float chargeMult = (float)Math.Clamp(timeSinceLastShot / Item.useTime * 0.6f, 1, 2);
         velocity *= chargeMult;
         for (int i = 0; i < 4; i++)
         {
