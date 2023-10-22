@@ -1,5 +1,17 @@
 Mods: {
 	WarframeMod: {
+		Common: {
+			ModifyDamageDealt: "{0} damage dealt"
+			ModifyDamageTaken: "{0} damage taken"
+			ModifyMeleeDamageDealt: "{0} melee damage"
+			ModifyRangedDamageDealt: "{0} ranged damage"
+			ModifyMagicDamageDealt: "{0} magic damage"
+			ModifySummonDamageDealt: "{0} summon damage"
+			ModifyCritChance: "{0} critical chance"
+			ModifyMaxLife: "{0} max life"
+			ModifyDefense: "{0} defense"
+		}
+
 		Buffs: {
 			ArcaneArachneBuff: {
 				DisplayName: Arcane Arachne Cooldown
