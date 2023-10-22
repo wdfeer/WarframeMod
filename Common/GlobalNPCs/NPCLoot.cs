@@ -14,6 +14,8 @@ internal class NPCLoot : GlobalNPC
         {
             case NPCID.GreenSlime or NPCID.BlueSlime:
                 return ItemDropRule.Common(ModContent.ItemType<Vitality>(), 150);
+            case NPCID.JungleBat:
+                return ItemDropRule.Common(ModContent.ItemType<Furis>(), 20);
             case NPCID.Skeleton or NPCID.SkeletonAlien or NPCID.SkeletonAstonaut or NPCID.SkeletonTopHat or NPCID.BoneThrowingSkeleton or NPCID.BoneThrowingSkeleton2:
                 return ItemDropRule.Common(ModContent.ItemType<PointStrike>(), 12);
             case NPCID.Harpy:

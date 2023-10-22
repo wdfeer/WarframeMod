@@ -9,7 +9,6 @@ Mods: {
 			ModifySummonDamageDealt: "{0} summon damage"
 			ModifyCritChance: "{0} critical chance"
 			ModifyMaxLife: "{0} max life"
-			ModifyDefense: "{0} defense"
 		}
 
 		Buffs: {
@@ -114,6 +113,10 @@ Mods: {
 		}
 
 		Items: {
+			Furis: {
+				DisplayName: Furis
+			}
+
 			ArmoredAgility: {
 				DisplayName: Armored Agility
 				Tooltip:
@@ -1090,6 +1093,11 @@ Mods: {
 					Disk range is affected by Reach and Primed Reach
 					Doubled benefit from melee speed for the melee attack
 					'''
+			}
+
+			Furis: {
+				DisplayName: Furis
+				Tooltip: ""
 			}
 		}
 
