@@ -1,7 +1,11 @@
+using Terraria.Localization;
+
 namespace WarframeMod.Content.Items.Weapons;
 
 internal class MK1Bo : ModItem
 {
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(DEFENSE_PENETRATION);
+    public const int DEFENSE_PENETRATION = 6;
     public override string Texture => "WarframeMod/Content/Items/Weapons/Bo";
     public override void SetDefaults()
     {

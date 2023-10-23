@@ -1,9 +1,11 @@
 using Terraria.DataStructures;
+using Terraria.Localization;
 
 namespace WarframeMod.Content.Items.Weapons;
 
 public class FluxRifle : ModItem
 {
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(DEFENSE_PENETRATION);
     public const int DEFENSE_PENETRATION = 12;
     public override void SetDefaults()
     {

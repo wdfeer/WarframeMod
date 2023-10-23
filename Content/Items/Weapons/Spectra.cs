@@ -1,4 +1,5 @@
 using Terraria.DataStructures;
+using Terraria.Localization;
 using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Projectiles;
 
@@ -6,6 +7,7 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Spectra : ModItem
 {
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(DEFENSE_PENETRATION);
     public const int DEFENSE_PENETRATION = 8;
     public override void SetDefaults()
     {
