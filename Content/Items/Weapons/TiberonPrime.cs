@@ -1,11 +1,14 @@
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using WarframeMod.Common.GlobalProjectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
 
 internal class TiberonPrime : ModItem
 {
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(AMMO_SAVE_CHANCE_AUTO);
+    public const int AMMO_SAVE_CHANCE_AUTO = 75;
     FireMode mode = FireMode.Burst;
     public enum FireMode
     {
@@ -74,7 +77,7 @@ internal class TiberonPrime : ModItem
     }
     public override bool CanConsumeAmmo(Item ammo, Player player)
     {
-        if (Mode == FireMode.Auto && Main.rand.Next(0, 100) < 75) return false;
+        if (Mode == FireMode.Auto && Main.rand.Next(0, 100) < AMMO_SAVE_CHANCE_AUTO) return false;
         return base.CanConsumeAmmo(ammo, player);
     }
     public override bool AltFunctionUse(Player player)

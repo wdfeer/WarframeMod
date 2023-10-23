@@ -1,9 +1,12 @@
 using Terraria.DataStructures;
+using Terraria.Localization;
 using WarframeMod.Common.GlobalProjectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
 public class GorgonWraith : ModItem
 {
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(AMMO_SAVE_CHANCE);
+    public const int AMMO_SAVE_CHANCE = 60;
     public override void SetDefaults()
     {
         Item.damage = 8;
@@ -26,7 +29,7 @@ public class GorgonWraith : ModItem
     }
     public override bool CanConsumeAmmo(Item ammo, Player player)
     {
-        if (Main.rand.Next(0, 100) <= 60) return false;
+        if (Main.rand.Next(0, 100) <= AMMO_SAVE_CHANCE) return false;
         return true;
     }
     float lastShotTime = 0;

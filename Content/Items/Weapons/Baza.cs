@@ -1,10 +1,13 @@
 using Terraria.DataStructures;
+using Terraria.Localization;
 using WarframeMod.Common.GlobalProjectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
 
 public class Baza : ModItem
 {
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(AMMO_SAVE_CHANCE);
+    public const int AMMO_SAVE_CHANCE = 75;
     public const float AMMO_DAMAGE_MULT = 0.25f;
     public override void SetDefaults()
     {
@@ -32,7 +35,7 @@ public class Baza : ModItem
     }
     public override bool CanConsumeAmmo(Item ammo, Player player)
     {
-        if (Main.rand.Next(0, 100) <= 75) return false;
+        if (Main.rand.Next(0, 100) <= AMMO_SAVE_CHANCE) return false;
         return base.CanConsumeAmmo(ammo, player);
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

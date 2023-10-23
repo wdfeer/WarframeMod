@@ -10,6 +10,8 @@ Mods: {
 			ModifyCritChance: "{0} critical chance"
 			ModifyMaxLife: "{0} max life"
 			DefensePenetration: "{0} defense penetration"
+			NoAmmoConsumption: Doesn't consume ammo
+			AmmoSaveChance: "{0}% chance to save ammo"
 		}
 
 		Buffs: {
@@ -583,7 +585,7 @@ Mods: {
 				DisplayName: Baza
 				Tooltip:
 					'''
-					75% Chance not to consume ammo
+					{$Mods.WarframeMod.Common.AmmoSaveChance}
 					+50% Critical Damage
 					-75% ammo damage
 					'''
@@ -593,7 +595,7 @@ Mods: {
 				DisplayName: Baza Prime
 				Tooltip:
 					'''
-					80% Chance not to consume ammo
+					{$Mods.WarframeMod.Common.AmmoSaveChance}
 					+50% Critical Damage
 					-50% ammo damage
 					'''
@@ -656,7 +658,7 @@ Mods: {
 				DisplayName: Flux Rifle
 				Tooltip:
 					'''
-					Doesn't consume ammo
+					{$Mods.WarframeMod.Common.NoAmmoConsumption}
 					{$Mods.WarframeMod.Common.DefensePenetration}
 					'''
 			}
@@ -681,7 +683,7 @@ Mods: {
 					'''
 					Shoots rapidly but inaccurately
 					-5% Critical Damage
-					60% Chance not to consume ammo
+					{$Mods.WarframeMod.Common.AmmoSaveChance}
 					'''
 			}
 
@@ -810,7 +812,7 @@ Mods: {
 					Semicharged shots have +50% damage, 35% base critical chance
 					Perfect shots have +100% damage, 60% base critical chance and +20% critical damage
 					Fully charged shots have +100% damage, 50% base critical chance and +10% critical damage
-					Doesn't consume ammo
+					{$Mods.WarframeMod.Common.NoAmmoConsumption}
 					'''
 			}
 
@@ -873,7 +875,7 @@ Mods: {
 					'''
 					Shoots rapidly but inaccurately
 					+15% Critical Damage
-					75% chance not to consume ammo
+					{$Mods.WarframeMod.Common.AmmoSaveChance}
 					'''
 			}
 
@@ -988,7 +990,7 @@ Mods: {
 				Tooltip:
 					'''
 					Right Click to switch between Auto and Semi-auto fire modes
-					50% Chance not to consume ammo in Auto
+					{$Mods.WarframeMod.Common.AmmoSaveChance} in Auto
 					'''
 			}
 
@@ -998,7 +1000,7 @@ Mods: {
 					'''
 					Right Click to switch between Auto and Semi-auto fire modes
 					+30% Critical Damage in Auto, +40% in Semi-auto
-					70% Chance not to consume ammo in Auto
+					{$Mods.WarframeMod.Common.AmmoSaveChance} in Auto
 					'''
 			}
 
@@ -1052,7 +1054,7 @@ Mods: {
 					'''
 					Right Click to switch between Auto, Burst and Semi-auto fire modes
 					+40%, 50% or 70% Critical damage in Auto, Burst and Semi
-					75% Chance not to consume ammo in Auto
+					{$Mods.WarframeMod.Common.AmmoSaveChance} in Auto
 					'''
 			}
 

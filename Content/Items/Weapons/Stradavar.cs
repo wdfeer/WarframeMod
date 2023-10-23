@@ -1,9 +1,12 @@
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.Localization;
 
 namespace WarframeMod.Content.Items.Weapons;
 public class Stradavar : ModItem
 {
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(AMMO_SAVE_CHANCE_AUTO);
+    public const int AMMO_SAVE_CHANCE_AUTO = 50;
     int mode = 1;
     public int Mode // 0 is Auto, 1 is Semi
     {
@@ -61,7 +64,7 @@ public class Stradavar : ModItem
     }
     public override bool CanConsumeAmmo(Item ammo, Player player)
     {
-        if (Mode == 0 && Main.rand.Next(0, 100) < 50) return false;
+        if (Mode == 0 && Main.rand.Next(0, 100) < AMMO_SAVE_CHANCE_AUTO) return false;
         return base.CanConsumeAmmo(ammo, player);
     }
     public override bool AltFunctionUse(Player player)
