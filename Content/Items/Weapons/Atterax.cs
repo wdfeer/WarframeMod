@@ -28,4 +28,6 @@ public class Atterax : ModItem
 			.AddTile(TileID.Anvils)
 			.Register();
 	}
+	public override bool MeleePrefix()
+		=> true;
 }

@@ -25,4 +25,6 @@ public class Scoliac : ModItem
 				   .AddIngredient(ItemID.SpiderFang, 6)
 				   .AddTile(TileID.MythrilAnvil)
 				   .Register();
+	public override bool MeleePrefix()
+		=> true;
 }

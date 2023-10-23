@@ -22,4 +22,6 @@ public class Lecta : ModItem
 		float freeSlots = player.maxMinions - player.slotsMinions;
 		damage *= 1 + DMG_MULT_PER_MINION_SLOT * freeSlots;
 	}
+	public override bool MeleePrefix()
+		=> true;
 }
