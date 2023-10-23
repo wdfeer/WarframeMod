@@ -7,8 +7,8 @@ public enum StackableBuff
 public struct StackableBuffChance
 {
 
-    StackableBuff type;
-    float chance;
+    public StackableBuff type;
+    public float chance;
     public StackableBuffChance(StackableBuff type, float chance)
     {
         this.type = type;

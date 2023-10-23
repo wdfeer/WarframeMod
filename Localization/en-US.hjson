@@ -116,6 +116,15 @@ Mods: {
 		}
 
 		Items: {
+			Falcor: {
+				DisplayName: Falcor
+				Tooltip:
+					'''
+					Can explode mid-flight with 100% electricity chance
+					36% bleed chance
+					'''
+			}
+
 			Furis: {
 				DisplayName: Furis
 				Tooltip: ""
@@ -1127,6 +1136,7 @@ Mods: {
 			VelocitusProjectile.DisplayName: Velocitus Projectile
 			ZenistarDisk.DisplayName: Zenistar Disk
 			ZenistarFlame.DisplayName: Zenistar Flame
+			FalcorProjectile.DisplayName: Falcor Projectile
 		}
 
 		Configs: {

@@ -39,6 +39,8 @@ public abstract class ExplosiveProjectile : ModProjectile
     {
         exploding = true;
 
+        Projectile.hide = true;
+
         Projectile.Resize(ExplosionWidth, ExplosionHeight);
         Projectile.timeLeft = 2;
         Projectile.tileCollide = false;
