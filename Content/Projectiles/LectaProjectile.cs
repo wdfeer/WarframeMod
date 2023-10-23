@@ -4,16 +4,13 @@ using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Projectiles;
-public class LectaProjectile : ModProjectile
+public class LectaProjectile : WhipProjectile
 {
-
 	public override void SetDefaults()
 	{
-		Projectile.DefaultToWhip();
+		base.SetDefaults();
 		Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances = new() { new Common.StackableBuffChance(Common.StackableBuff.Electro, Lecta.ELECTRO_CHANCE) };
 		Projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 0.75f;
-		Projectile.usesLocalNPCImmunity = true;
-		Projectile.localNPCHitCooldown = -1;
 	}
 	private float Timer
 	{

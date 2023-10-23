@@ -5,16 +5,13 @@ using WarframeMod.Content.Buffs;
 using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Projectiles;
-public class ScoliacProjectile : ModProjectile
+public class ScoliacProjectile : WhipProjectile
 {
-
 	public override void SetDefaults()
 	{
-		Projectile.DefaultToWhip();
+		base.SetDefaults();
 		Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances = new() { new Common.StackableBuffChance(Common.StackableBuff.Bleed, Scoliac.BLEED_CHANCE) };
 		Projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 0.75f;
-		Projectile.usesLocalNPCImmunity = true;
-		Projectile.localNPCHitCooldown = -1;
 	}
 	private float Timer
 	{

@@ -4,16 +4,13 @@ using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Projectiles;
-public class AtteraxProjectile : ModProjectile
+public class AtteraxProjectile : WhipProjectile
 {
-
 	public override void SetDefaults()
 	{
-		Projectile.DefaultToWhip();
+		base.SetDefaults();
 		Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances = new() { new Common.StackableBuffChance(Common.StackableBuff.Bleed, Atterax.BLEED_CHANCE) };
 		Projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier += Atterax.EXTRA_CRIT_MULT;
-		Projectile.usesLocalNPCImmunity = true;
-		Projectile.localNPCHitCooldown = -1;
 	}
 	private float Timer
 	{
