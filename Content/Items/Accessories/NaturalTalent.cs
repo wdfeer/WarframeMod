@@ -2,7 +2,7 @@
 
 public class NaturalTalent : ModItem
 {
-    public const int MAGIC_USE_SPEED_PERCENT = 15;
+    public const int MAGIC_USE_SPEED_INCREASE_PERCENT = 12;
     public override void SetDefaults()
     {
         Item.accessory = true;
@@ -13,6 +13,6 @@ public class NaturalTalent : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetAttackSpeed(DamageClass.Magic) += MAGIC_USE_SPEED_PERCENT / 100f;
+        player.GetAttackSpeed(DamageClass.Magic) += MAGIC_USE_SPEED_INCREASE_PERCENT / 100f;
     }
 }

@@ -390,7 +390,7 @@ Mods: {
 
 			NaturalTalent: {
 				DisplayName: Natural Talent
-				Tooltip: +15% magic weapon use speed
+				Tooltip: +12% magic weapon use speed
 			}
 
 			PiercingCaliber: {
@@ -496,7 +496,7 @@ Mods: {
 
 			VileAcceleration: {
 				DisplayName: Vile Acceleration
-				Tooltip: +25% Use Speed, but -15% damage
+				Tooltip: +20% weapon use speed, but -15% damage
 			}
 
 			Vitality: {

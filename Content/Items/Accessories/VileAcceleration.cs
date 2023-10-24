@@ -4,6 +4,7 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class VileAcceleration : ModItem
 {
+    public const int USE_SPEED_INCREASE_PERCENT = 20;
     public override void SetDefaults()
     {
         Item.accessory = true;
@@ -14,7 +15,7 @@ public class VileAcceleration : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetAttackSpeed(DamageClass.Generic) += 0.25f;
+        player.GetAttackSpeed(DamageClass.Generic) += USE_SPEED_INCREASE_PERCENT / 100f;
         player.GetDamage(DamageClass.Generic) -= 0.15f;
     }
 }
