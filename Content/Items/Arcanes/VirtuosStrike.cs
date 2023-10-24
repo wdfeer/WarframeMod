@@ -19,7 +19,7 @@ class VirtuosStrikePlayer : ModPlayer
         => enabled = false;
     public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
     {
-        if (enabled && proj.DamageType == DamageClass.Magic && Main.rand.Next(0, 100) < VirtuosStrike.CHANCE)
+        if (enabled && proj.DamageType == DamageClass.Magic && hit.Crit && (Main.rand.NextFloat() < VirtuosStrike.CHANCE / 100f))
             Player.AddBuff(ModContent.BuffType<VirtuosStrikeBuff>(), VirtuosStrike.BUFF_DURATION);
     }
 }

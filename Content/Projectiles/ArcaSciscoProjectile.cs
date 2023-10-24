@@ -7,6 +7,7 @@ public class ArcaSciscoProjectile : ModProjectile
     {
         Projectile.friendly = true;
         Projectile.hide = true;
+        Projectile.DamageType = DamageClass.Magic;
         Projectile.width = 16;
         Projectile.height = 16;
         Projectile.timeLeft = 360;

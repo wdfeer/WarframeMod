@@ -4,6 +4,7 @@ internal class ArcaPlasmorProjectile : ModProjectile
     public virtual bool Tenet => false;
     public override void SetDefaults()
     {
+        Projectile.DamageType = DamageClass.Magic;
         Projectile.width = 80;
         Projectile.height = 80;
         Projectile.scale = 0.6f;
