@@ -421,7 +421,7 @@ Mods: {
 				DisplayName: Reach
 				Tooltip:
 					'''
-					+5 tiles of True Melee and Whip range
+					+5 tiles of True Melee range
 					+22.5% whip range
 					'''
 			}
