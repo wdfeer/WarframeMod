@@ -15,7 +15,6 @@ public class Xoris : BaseGlaive
         base.SetDefaults();
         Item.damage = 332;
         Item.crit = 20;
-        Item.knockBack = 4;
         Item.value = Item.sellPrice(gold: 15);
         Item.rare = ItemRarityID.Red;
         Item.shoot = ModContent.ProjectileType<XorisProjectile>();

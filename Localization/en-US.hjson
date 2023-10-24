@@ -116,6 +116,16 @@ Mods: {
 		}
 
 		Items: {
+			Orvius: {
+				DisplayName: Orvius
+				Tooltip:
+					'''
+					Can explode mid-flight with 100% slow chance
+					20% bleed chance
+					+10% critical damage
+					'''
+			}
+
 			Xoris: {
 				DisplayName: Xoris
 				Tooltip:
@@ -1152,6 +1162,7 @@ Mods: {
 			ZenistarFlame.DisplayName: Zenistar Flame
 			FalcorProjectile.DisplayName: Falcor Projectile
 			XorisProjectile.DisplayName: Xoris Projectile
+			OrviusProjectile.DisplayName: Orvius Projectile
 		}
 
 		Configs: {

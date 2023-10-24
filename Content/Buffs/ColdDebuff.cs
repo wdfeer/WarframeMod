@@ -2,6 +2,7 @@ namespace WarframeMod.Content.Buffs;
 
 public class ColdDebuff : ModBuff
 {
+    public const int DEFAULT_DURATION = 360;
     public override void SetStaticDefaults()
     {
         Main.pvpBuff[Type] = true;

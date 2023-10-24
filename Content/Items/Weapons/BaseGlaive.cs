@@ -13,6 +13,7 @@ public abstract class BaseGlaive : ModItem
 {
     public override void SetDefaults()
     {
+        Item.knockBack = 4;
         Item.DamageType = DamageClass.Melee;
         Item.noMelee = true;
         Item.noUseGraphic = true;
@@ -34,8 +35,7 @@ public abstract class BaseGlaive : ModItem
     public abstract void PreExplode();
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-
-        if (Proj != null && Proj.active && Proj.ModProjectile is FalcorProjectile)
+        if (glaiveProjectiles.ContainsKey(Type) && Proj != null && Proj.active && Proj.type == type)
         {
             PreExplode();
             (Proj.ModProjectile as ExplosiveProjectile).Explode();

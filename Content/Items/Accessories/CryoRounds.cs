@@ -8,7 +8,7 @@ namespace WarframeMod.Content.Items.Accessories;
 public class CryoRounds : ModItem
 {
     public const int CHANCE_PERCENT = 15;
-    public const int DEBUFF_DURATION_FRAMES = 360;
+    public const int DEBUFF_DURATION_FRAMES = ColdDebuff.DEFAULT_DURATION;
     public override void SetDefaults()
     {
         Item.accessory = true;

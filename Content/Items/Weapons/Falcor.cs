@@ -18,7 +18,6 @@ public class Falcor : BaseGlaive
         base.SetDefaults();
         Item.damage = 166;
         Item.crit = 10;
-        Item.knockBack = 4;
         Item.value = Item.sellPrice(gold: 7);
         Item.rare = ItemRarityID.Yellow;
         Item.shoot = ModContent.ProjectileType<FalcorProjectile>();
