@@ -15,7 +15,7 @@ internal class NPCLoot : GlobalNPC
             case NPCID.GreenSlime or NPCID.BlueSlime:
                 return ItemDropRule.Common(ModContent.ItemType<Vitality>(), 150);
             case NPCID.JungleBat:
-                return ItemDropRule.Common(ModContent.ItemType<Furis>(), 20);
+                return ItemDropRule.Common(ModContent.ItemType<Furis>(), 25);
             case NPCID.Skeleton or NPCID.SkeletonAlien or NPCID.SkeletonAstonaut or NPCID.SkeletonTopHat or NPCID.BoneThrowingSkeleton or NPCID.BoneThrowingSkeleton2:
                 return ItemDropRule.Common(ModContent.ItemType<PointStrike>(), 12);
             case NPCID.Harpy:
@@ -33,8 +33,11 @@ internal class NPCLoot : GlobalNPC
             case NPCID.Crimslime or NPCID.CorruptSlime or NPCID.Slimer:
                 return ItemDropRule.Common(ModContent.ItemType<KuvaKraken>(), 12);
 
+            case NPCID.GoblinPeon or NPCID.GoblinSorcerer or NPCID.GoblinThief or NPCID.GoblinWarrior or NPCID.GoblinArcher:
+                return ItemDropRule.Common(ModContent.ItemType<Tonkor>(), 75);
+
             case NPCID.MartianSaucerCore:
-                return ItemDropRule.Common(ModContent.ItemType<Fieldron>(), 4);
+                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Fieldron>(), 4);
             case NPCID.Scutlix or NPCID.MartianWalker or NPCID.MartianDrone or NPCID.MartianEngineer or NPCID.MartianOfficer or NPCID.MartianTurret or NPCID.GigaZapper or NPCID.RayGunner or NPCID.GrayGrunt or NPCID.BrainScrambler:
                 return ItemDropRule.Common(ModContent.ItemType<Fieldron>(), 250);
             default:

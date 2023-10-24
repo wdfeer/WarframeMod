@@ -8,10 +8,12 @@ Mods: {
 			ModifyMagicDamageDealt: "{0} magic damage"
 			ModifySummonDamageDealt: "{0} summon damage"
 			ModifyCritChance: "{0} critical chance"
+			ModifyCritDamage: "{0} critical damage"
 			ModifyMaxLife: "{0} max life"
 			DefensePenetration: "{0} defense penetration"
 			NoAmmoConsumption: Doesn't consume ammo
 			AmmoSaveChance: "{0}% chance to save ammo"
+			ModifyAmmoDamage: "{0} ammo damage"
 		}
 
 		Buffs: {
@@ -116,6 +118,26 @@ Mods: {
 		}
 
 		Items: {
+			KuvaAyanga: {
+				DisplayName: Kuva Ayanga
+				Tooltip:
+					'''
+					Rapidly launches grenades that explode on impact without self-damage
+					{$Mods.WarframeMod.Common.ModifyAmmoDamage}
+					'''
+			}
+
+			Tonkor: {
+				DisplayName: Tonkor
+				Tooltip:
+					'''
+					Launches grenades that explode on impact without self-damage
+					-50% damage against the Eater of Worlds
+					{$Mods.WarframeMod.Common.ModifyCritDamage}
+					{$Mods.WarframeMod.Common.ModifyAmmoDamage@1}
+					'''
+			}
+
 			Lenz: {
 				DisplayName: Lenz
 				Tootlip:
@@ -1175,6 +1197,7 @@ Mods: {
 			OrviusProjectile.DisplayName: Orvius Projectile
 			LenzProjArrow.DisplayName: Lenz Proj Arrow
 			LenzProjBubble.DisplayName: Lenz Proj Bubble
+			TonkorProjectile.DisplayName: Tonkor Projectile
 		}
 
 		Configs: {

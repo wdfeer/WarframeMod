@@ -17,6 +17,7 @@ internal class TownNPCWares : GlobalNPC
                 return;
             case NPCID.GoblinTinkerer:
                 shop.Add(ModContent.ItemType<Ballistica>());
+                shop.Add(ModContent.ItemType<Tonkor>());
                 return;
             case NPCID.Mechanic:
                 shop.Add(ModContent.ItemType<Spectra>());
