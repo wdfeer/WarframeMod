@@ -116,6 +116,16 @@ Mods: {
 		}
 
 		Items: {
+			Lenz: {
+				DisplayName: Lenz
+				Tootlip:
+					'''
+					Slows nearby enemies on impact
+					Explodes after a short while
+					'''
+				Tooltip: ""
+			}
+
 			Orvius: {
 				DisplayName: Orvius
 				Tooltip:
@@ -249,7 +259,7 @@ Mods: {
 				Tooltip:
 					'''
 					Dealing summon damage reveals weak points on enemies for 2.5 seconds
-					Projectiles deal 1.2x damage on weak points
+					Projectiles deal +20% damage on weak points
 					'''
 			}
 
@@ -1163,6 +1173,8 @@ Mods: {
 			FalcorProjectile.DisplayName: Falcor Projectile
 			XorisProjectile.DisplayName: Xoris Projectile
 			OrviusProjectile.DisplayName: Orvius Projectile
+			LenzProjArrow.DisplayName: Lenz Proj Arrow
+			LenzProjBubble.DisplayName: Lenz Proj Bubble
 		}
 
 		Configs: {
