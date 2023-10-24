@@ -116,6 +116,11 @@ Mods: {
 		}
 
 		Items: {
+			Fieldron: {
+				DisplayName: Fieldron
+				Tooltip: Rare drop from the Martian Madness event
+			}
+
 			Falcor: {
 				DisplayName: Falcor
 				Tooltip:

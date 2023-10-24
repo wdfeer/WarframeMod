@@ -32,6 +32,11 @@ internal class NPCLoot : GlobalNPC
                 return ItemDropRule.Common(ModContent.ItemType<NaturalTalent>(), 10);
             case NPCID.Crimslime or NPCID.CorruptSlime or NPCID.Slimer:
                 return ItemDropRule.Common(ModContent.ItemType<KuvaKraken>(), 12);
+
+            case NPCID.MartianSaucerCore:
+                return ItemDropRule.Common(ModContent.ItemType<Fieldron>(), 4);
+            case NPCID.Scutlix or NPCID.MartianWalker or NPCID.MartianDrone or NPCID.MartianEngineer or NPCID.MartianOfficer or NPCID.MartianTurret or NPCID.GigaZapper or NPCID.RayGunner or NPCID.GrayGrunt or NPCID.BrainScrambler:
+                return ItemDropRule.Common(ModContent.ItemType<Fieldron>(), 250);
             default:
                 return null;
         }

@@ -95,11 +95,9 @@ public class BossBags : GlobalItem
                     ModContent.ItemType<SerratedRounds>()
                 });
             case ItemID.GolemBossBag:
-                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
                 {
-                    ModContent.ItemType<Supra>(),
                     ModContent.ItemType<BazaPrime>(),
-                    ModContent.ItemType<Falcor>()
                 });
             default:
                 return null;
