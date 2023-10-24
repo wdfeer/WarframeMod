@@ -116,6 +116,15 @@ Mods: {
 		}
 
 		Items: {
+			Xoris: {
+				DisplayName: Xoris
+				Tooltip:
+					'''
+					Can explode mid-flight with 18% electricity chance
+					Every third explosion deals 3x damage
+					'''
+			}
+
 			Fieldron: {
 				DisplayName: Fieldron
 				Tooltip: Rare drop from the Martian Madness event
@@ -1142,6 +1151,7 @@ Mods: {
 			ZenistarDisk.DisplayName: Zenistar Disk
 			ZenistarFlame.DisplayName: Zenistar Flame
 			FalcorProjectile.DisplayName: Falcor Projectile
+			XorisProjectile.DisplayName: Xoris Projectile
 		}
 
 		Configs: {
