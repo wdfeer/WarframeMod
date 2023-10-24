@@ -1,1 +1,15 @@
-Adds Weapons, Mods and Arcanes (in form of accessories) from Warframe, as well as some gameplay mechanics (most notably crits)
+Adds stuff from Warframe
+
+138 items:
+- 75 Weapons
+- 62 Accessories (including 16 Arcanes and 5 Auras)
+- 1 Material
+
+4 new Debuffs available via the mod's items: Bleed, Electro, Cold, Weak
+
+Gameplay changes:
+- Over 100% Crits from Warframe, hit colors configurable
+- Extra accessory slot for Arcanes, expert-exclusive
+  (all enemies are slightly buffed to compensate)
+
+Note that some items' effects are not the same as in Warframe
