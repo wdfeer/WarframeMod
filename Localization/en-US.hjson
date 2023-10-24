@@ -118,6 +118,11 @@ Mods: {
 		}
 
 		Items: {
+			SupraVandal: {
+				DisplayName: Supra Vandal
+				Tooltip: 20% weak debuff chance
+			}
+
 			KuvaAyanga: {
 				DisplayName: Kuva Ayanga
 				Tooltip:

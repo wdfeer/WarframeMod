@@ -13,8 +13,8 @@ public class Supra : ModItem
         Item.mana = 2;
         Item.width = 17;
         Item.height = 48;
-        Item.useTime = 16;
-        Item.useAnimation = 16;
+        Item.useTime = BaseUseTime;
+        Item.useAnimation = BaseUseTime;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.noMelee = true;
         Item.knockBack = 2;
@@ -24,8 +24,9 @@ public class Supra : ModItem
         Item.shoot = ProjectileID.MartianWalkerLaser;
         Item.shootSpeed = 16f;
     }
-    int lastShotTime = 0;
-    int timeSinceLastShot = 60;
+    protected int lastShotTime = 0;
+    protected int timeSinceLastShot = 60;
+    protected virtual int BaseUseTime => 16;
     public override bool CanUseItem(Player player)
     {
         timeSinceLastShot = (int)Main.time - lastShotTime;
@@ -39,14 +40,14 @@ public class Supra : ModItem
                 Item.useAnimation = 5;
             }
         }
-        else if (timeSinceLastShot > 15)
+        else if (timeSinceLastShot >= BaseUseTime)
         {
             Item.useTime += timeSinceLastShot / 3;
             Item.useAnimation += timeSinceLastShot / 3;
-            if (Item.useTime > 16)
+            if (Item.useTime > BaseUseTime)
             {
-                Item.useTime = 16;
-                Item.useAnimation = 16;
+                Item.useTime = BaseUseTime;
+                Item.useAnimation = BaseUseTime;
             }
         }
         lastShotTime = (int)Main.time;
