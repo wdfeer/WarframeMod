@@ -30,7 +30,7 @@ public class Xoris : BaseGlaive
         recipe.Register();
     }
 
-    int explosionCount = 0;
+    int explosionCount = 1;
     public override void OnShoot() { }
     public override void PreExplode()
     {
