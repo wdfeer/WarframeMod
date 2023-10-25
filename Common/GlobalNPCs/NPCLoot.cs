@@ -30,8 +30,12 @@ internal class NPCLoot : GlobalNPC
                 return ItemDropRule.Common(ModContent.ItemType<Blaze>(), 15);
             case NPCID.DarkCaster:
                 return ItemDropRule.Common(ModContent.ItemType<NaturalTalent>(), 10);
-            case NPCID.Crimslime or NPCID.CorruptSlime or NPCID.Slimer:
-                return ItemDropRule.Common(ModContent.ItemType<KuvaKraken>(), 12);
+
+            case NPCID.Corruptor or NPCID.CorruptSlime or NPCID.Slimer or NPCID.CursedHammer or NPCID.Clinger or NPCID.PigronCorruption or NPCID.DarkMummy or NPCID.DesertGhoulCorruption or
+                 NPCID.Herpling or NPCID.Crimslime or NPCID.BloodJelly or NPCID.BloodFeeder or NPCID.CrimsonAxe or NPCID.IchorSticker or NPCID.FloatyGross or NPCID.PigronCrimson or NPCID.BloodMummy or NPCID.DesertGhoulCrimson:
+                return ItemDropRule.Common(ModContent.ItemType<Kuva>(), 15);
+            case NPCID.BigMimicCorruption or NPCID.BigMimicCrimson:
+                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Kuva>(), 3);
 
             case NPCID.GoblinPeon or NPCID.GoblinSorcerer or NPCID.GoblinThief or NPCID.GoblinWarrior or NPCID.GoblinArcher:
                 return ItemDropRule.Common(ModContent.ItemType<Tonkor>(), 75);
@@ -40,6 +44,7 @@ internal class NPCLoot : GlobalNPC
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Fieldron>(), 4);
             case NPCID.Scutlix or NPCID.MartianWalker or NPCID.MartianDrone or NPCID.MartianEngineer or NPCID.MartianOfficer or NPCID.MartianTurret or NPCID.GigaZapper or NPCID.RayGunner or NPCID.GrayGrunt or NPCID.BrainScrambler:
                 return ItemDropRule.Common(ModContent.ItemType<Fieldron>(), 250);
+
             default:
                 return null;
         }

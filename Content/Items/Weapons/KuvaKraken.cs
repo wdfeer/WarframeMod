@@ -25,6 +25,14 @@ internal class KuvaKraken : ModItem
         Item.shootSpeed = 12f;
         Item.useAmmo = AmmoID.Bullet;
     }
+    public override void AddRecipes()
+    {
+        var recipe = CreateRecipe();
+        recipe.AddIngredient<Kraken>();
+        recipe.AddIngredient<Kuva>(2);
+        recipe.AddTile(TileID.Anvils);
+        recipe.Register();
+    }
     public override Vector2? HoldoutOffset()
     {
         return new Vector2(4f, -1f);

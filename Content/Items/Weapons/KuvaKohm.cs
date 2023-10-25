@@ -35,7 +35,8 @@ public class KuvaKohm : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.FragmentVortex, 11);
+        recipe.AddIngredient(ItemID.FragmentVortex, 12);
+        recipe.AddIngredient<Kuva>(5);
         recipe.AddTile(TileID.LunarCraftingStation);
         recipe.Register();
     }

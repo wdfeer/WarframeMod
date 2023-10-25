@@ -81,9 +81,8 @@ public class BossBags : GlobalItem
                     ModContent.ItemType<Lecta>()
                 });
             case ItemID.SkeletronPrimeBossBag:
-                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
                 {
-                    ModContent.ItemType<KuvaNukor>(),
                     ModContent.ItemType<Acceltra>()
                 });
             case ItemID.TwinsBossBag:

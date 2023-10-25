@@ -118,6 +118,11 @@ Mods: {
 		}
 
 		Items: {
+			Kuva: {
+				DisplayName: Kuva
+				Tooltip: Uncommon drop from hardmode corruption/crimson enemies
+			}
+
 			SupraVandal: {
 				DisplayName: Supra Vandal
 				Tooltip: 20% weak debuff chance

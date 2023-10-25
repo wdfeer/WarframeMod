@@ -27,7 +27,14 @@ public class KuvaNukor : ModItem
         Item.mana = 6;
         Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/KuvaNukorStartSound");
     }
-
+    public override void AddRecipes()
+    {
+        var recipe = CreateRecipe();
+        recipe.AddIngredient(ItemID.HallowedBar, 8);
+        recipe.AddIngredient<Kuva>(3);
+        recipe.AddTile(TileID.MythrilAnvil);
+        recipe.Register();
+    }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);

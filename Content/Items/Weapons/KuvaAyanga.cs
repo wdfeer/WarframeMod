@@ -35,8 +35,8 @@ internal class KuvaAyanga : ModItem
     public override void AddRecipes()
     {
         var recipe = CreateRecipe();
-        recipe.AddIngredient(ModContent.ItemType<Tonkor>());
         recipe.AddIngredient(ItemID.GrenadeLauncher);
+        recipe.AddIngredient<Kuva>(3);
         recipe.AddTile(TileID.MythrilAnvil);
         recipe.Register();
     }
