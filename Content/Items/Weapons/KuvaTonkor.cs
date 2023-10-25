@@ -36,7 +36,7 @@ internal class KuvaTonkor : ModItem
     {
         var recipe = CreateRecipe();
         recipe.AddIngredient<Tonkor>();
-        recipe.AddIngredient<Kuva>(5);
+        recipe.AddIngredient<Kuva>(3);
         recipe.AddTile(TileID.MythrilAnvil);
         recipe.Register();
     }

@@ -36,9 +36,9 @@ internal class KuvaBramma : ModItem
     public override void AddRecipes()
     {
         var recipe = CreateRecipe();
-        recipe.AddIngredient<Kuva>(12);
-        recipe.AddIngredient(ItemID.GrenadeLauncher, 1);
         recipe.AddIngredient(ItemID.Phantasm, 1);
+        recipe.AddIngredient(ItemID.GrenadeLauncher, 1);
+        recipe.AddIngredient<Kuva>(5);
         recipe.AddTile(TileID.LunarCraftingStation);
         recipe.Register();
     }

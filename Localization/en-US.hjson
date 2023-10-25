@@ -121,19 +121,19 @@ Mods: {
 			KuvaBramma: {
 				DisplayName: Kuva Bramma
 				Tooltip:
-				'''
-				Shoots explosive arrows that spawn 3 smaller explosions on impact
-				Uses grenades as Ammo
-				'''
+					'''
+					Shoots explosive arrows that spawn 3 smaller explosions on impact
+					Uses grenades as Ammo
+					'''
 			}
 
 			KuvaTonkor: {
 				DisplayName: Kuva Tonkor
 				Tooltip:
-				'''
-				Launches grenades that explode on impact without self-damage
-				{$Mods.WarframeMod.Common.ModifyCritDamage}
-				'''
+					'''
+					Launches grenades that explode on impact without self-damage
+					{$Mods.WarframeMod.Common.ModifyCritDamage}
+					'''
 			}
 
 			Kuva: {
@@ -1226,6 +1226,7 @@ Mods: {
 			LenzProjArrow.DisplayName: Lenz Proj Arrow
 			LenzProjBubble.DisplayName: Lenz Proj Bubble
 			TonkorProjectile.DisplayName: Tonkor Projectile
+			KuvaBrammaProjectile.DisplayName: Kuva Bramma Projectile
 		}
 
 		Configs: {
