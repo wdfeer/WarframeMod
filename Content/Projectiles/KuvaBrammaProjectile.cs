@@ -26,7 +26,7 @@ internal class KuvaBrammaProjectile : ExplosiveProjectile
 
         for (int i = 0; i < 3; i++)
         {
-            var proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.position + new Vector2(Main.rand.Next(0, 240) + Projectile.width / 2, Main.rand.Next(0, 240) + Projectile.height / 2), Vector2.Zero, ModContent.ProjectileType<TonkorProjectile>(), Projectile.damage / 4, Projectile.knockBack / 4, Projectile.owner);
+            var proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center + Main.rand.NextVector2CircularEdge(80, 80), Main.rand.NextVector2CircularEdge(20, 20), ModContent.ProjectileType<TonkorProjectile>(), Projectile.damage / 4, Projectile.knockBack / 4, Projectile.owner);
         }
     }
     public override void ExplosionDusts()
