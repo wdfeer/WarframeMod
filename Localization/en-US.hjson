@@ -118,6 +118,15 @@ Mods: {
 		}
 
 		Items: {
+			KuvaTonkor: {
+				DisplayName: Kuva Tonkor
+				Tooltip:
+				'''
+				Launches grenades that explode on impact without self-damage
+				{$Mods.WarframeMod.Common.ModifyCritDamage}
+				'''
+			}
+
 			Kuva: {
 				DisplayName: Kuva
 				Tooltip: Uncommon drop from hardmode corruption/crimson enemies
