@@ -118,6 +118,15 @@ Mods: {
 		}
 
 		Items: {
+			KuvaChakkhurr: {
+				DisplayName: Kuva Chakkhurr
+				Tooltip:
+					'''
+					Shoots bullets that explode on impact, dealing {0}% of the damage
+					{$Mods.WarframeMod.Common.ModifyCritDamage@1}
+					'''
+			}
+
 			KuvaBramma: {
 				DisplayName: Kuva Bramma
 				Tooltip:
@@ -1227,6 +1236,7 @@ Mods: {
 			LenzProjBubble.DisplayName: Lenz Proj Bubble
 			TonkorProjectile.DisplayName: Tonkor Projectile
 			KuvaBrammaProjectile.DisplayName: Kuva Bramma Projectile
+			KuvaChakkhurrProjectile.DisplayName: Kuva Chakkhurr Projectile
 		}
 
 		Configs: {
