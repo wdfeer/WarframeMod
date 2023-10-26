@@ -1,9 +1,9 @@
 Adds stuff from Warframe
 
-138 items:
-- 75 Weapons
+144 items:
+- 80 Weapons
 - 62 Accessories (including 16 Arcanes and 5 Auras)
-- 1 Material
+- 2 Materials
 
 4 new Debuffs available via the mod's items: Bleed, Electro, Cold, Weak
 
