@@ -7,7 +7,7 @@ public class Sarpa : ModItem
 {
     public override void SetDefaults()
     {
-        Item.damage = 17;
+        Item.damage = 15;
         Item.crit = 10;
         Item.DamageType = DamageClass.Melee;
         Item.noMelee = true;
@@ -27,7 +27,7 @@ public class Sarpa : ModItem
     }
     public override float UseSpeedMultiplier(Player player)
     {
-        return player.GetAttackSpeed(Item.DamageType);
+        return MathF.Sqrt(player.GetAttackSpeed(Item.DamageType));
     }
     public override Vector2? HoldoutOffset()
     {
