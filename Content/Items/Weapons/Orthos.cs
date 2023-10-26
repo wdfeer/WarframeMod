@@ -15,8 +15,8 @@ internal class Orthos : ModItem
         Item.scale = 2.5f;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item1;
-        Item.useTime = 40;
-        Item.useAnimation = 40;
+        Item.useTime = 24;
+        Item.useAnimation = 24;
         Item.autoReuse = true;
         Item.rare = 1;
         Item.value = Item.sellPrice(silver: 50);
@@ -25,7 +25,7 @@ internal class Orthos : ModItem
     }
     public override float UseSpeedMultiplier(Player player)
     {
-        return MathF.Sqrt(player.GetAttackSpeed(DamageClass.Melee)) * (SuperSwing ? 0.8f : 1f);
+        return SuperSwing ? 0.8f : 1f;
     }
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {

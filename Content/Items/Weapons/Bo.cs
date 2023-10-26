@@ -17,15 +17,15 @@ internal class Bo : ModItem
         Item.scale = 2.25f;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item1;
-        Item.useTime = 60;
-        Item.useAnimation = 60;
+        Item.useTime = 28;
+        Item.useAnimation = 28;
         Item.autoReuse = true;
         Item.rare = 2;
         Item.value = Item.sellPrice(silver: 33);
     }
     public override float UseSpeedMultiplier(Player player)
     {
-        return player.GetAttackSpeed(Item.DamageType) * (SuperSwing ? 0.7f : 1f);
+        return SuperSwing ? 0.7f : 1f;
     }
     static float HoldingPointMult => 1.8f;
     public override void UseStyle(Player player, Rectangle heldItemFrame)

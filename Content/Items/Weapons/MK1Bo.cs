@@ -19,8 +19,8 @@ internal class MK1Bo : ModItem
         Item.scale = 1.75f;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item1;
-        Item.useTime = 42;
-        Item.useAnimation = 42;
+        Item.useTime = 29;
+        Item.useAnimation = 29;
         Item.autoReuse = true;
         Item.rare = 1;
         Item.value = Item.buyPrice(silver: 25);

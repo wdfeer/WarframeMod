@@ -16,15 +16,11 @@ internal class Hate : ModItem
         Item.scale = 1.2f;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item1;
-        Item.useTime = 40;
-        Item.useAnimation = 40;
+        Item.useTime = 24;
+        Item.useAnimation = 24;
         Item.rare = 3;
         Item.value = Item.sellPrice(gold: 2);
         Item.GetGlobalItem<CritGlobalItem>().critMultiplier = 1.25f;
         Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 0.2f;
-    }
-    public override float UseSpeedMultiplier(Player player)
-    {
-        return player.GetAttackSpeed(DamageClass.Melee);
     }
 }

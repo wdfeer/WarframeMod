@@ -20,16 +20,12 @@ internal class Zenistar : ModItem
         Item.scale = 1.75f;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item1;
-        Item.useTime = 72;
-        Item.useAnimation = 72;
+        Item.useTime = 43;
+        Item.useAnimation = 43;
         Item.rare = 4;
         Item.value = Item.sellPrice(gold: 10);
         Item.shoot = ModContent.ProjectileType<ZenistarDisk>();
         Item.shootSpeed = 16f;
-    }
-    public override float UseSpeedMultiplier(Player player)
-    {
-        return player.GetAttackSpeed(DamageClass.Melee);
     }
     public override bool AltFunctionUse(Player player)
     {

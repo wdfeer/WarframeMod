@@ -724,11 +724,7 @@ Mods: {
 
 			Bo: {
 				DisplayName: Bo
-				Tooltip:
-					'''
-					Every third swing has tripled damage and {$Mods.WarframeMod.Common.DefensePenetration}
-					Doubled benefit from Attack Speed
-					'''
+				Tooltip: Every third swing has tripled damage and {$Mods.WarframeMod.Common.DefensePenetration}
 			}
 
 			Boar: {
@@ -756,7 +752,6 @@ Mods: {
 					Every third swing has doubled damage and guaranteed Bleeding
 					20% Bleeding chance
 					-30% Critical Damage
-					Doubled benefit from Attack Speed
 					'''
 			}
 
@@ -814,7 +809,6 @@ Mods: {
 					'''
 					+25% Critical damage
 					20% bleeding chance
-					Benefits twice as much from attack speed bonuses
 					'''
 			}
 
@@ -967,7 +961,6 @@ Mods: {
 					Every third swing has doubled damage and guaranteed bleeding
 					15% bleeding chance
 					-25% Critical damage
-					Benefits more from attack speed bonuses
 					'''
 			}
 
@@ -1216,7 +1209,6 @@ Mods: {
 					Guaranteed bleeding when the disk is deployed
 					Disk damage is boosted by your melee speed
 					Disk range is affected by Reach and Primed Reach
-					Doubled benefit from melee speed for the melee attack
 					'''
 			}
 		}

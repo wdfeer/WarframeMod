@@ -15,8 +15,8 @@ internal class Cassowar : ModItem
         Item.scale = 2.15f;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item1;
-        Item.useTime = 45;
-        Item.useAnimation = 45;
+        Item.useTime = 27;
+        Item.useAnimation = 27;
         Item.autoReuse = true;
         Item.rare = 2;
         Item.value = Item.sellPrice(gold: 1);
@@ -24,7 +24,7 @@ internal class Cassowar : ModItem
     }
     public override float UseSpeedMultiplier(Player player)
     {
-        return player.GetAttackSpeed(Item.DamageType) * (SuperSwing ? 0.75f : 1f);
+        return SuperSwing ? 0.75f : 1f;
     }
     static float HoldingPointMult => 1.6f;
     public override void UseStyle(Player player, Rectangle heldItemFrame)
