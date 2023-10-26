@@ -14,5 +14,6 @@ internal class EnemyBuff : GlobalNPC
         npc.life = (int)(npc.life * GetMaxLifeMult());
         npc.defense = (int)(npc.defense * GetDefenseMult());
     }
-    public static float GetDamageMult() => ModContent.GetInstance<WarframeServerConfig>().enemyDamageIncreasePercent / 100f + 1f;
+    public static float GetDamageMult()
+        => Main.expertMode ? (ModContent.GetInstance<WarframeServerConfig>().enemyDamageIncreasePercent / 100f + 1f) : 1f;
 }
