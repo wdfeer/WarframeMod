@@ -1,4 +1,6 @@
-﻿namespace WarframeMod.Common.GlobalItems;
+﻿using WarframeMod.Common.Configs;
+
+namespace WarframeMod.Common.GlobalItems;
 
 internal class VanillaWeaponStatChanges : GlobalItem
 {
@@ -6,23 +8,14 @@ internal class VanillaWeaponStatChanges : GlobalItem
     {
         if (item.ModItem != null)
             return;
-        (int, int) extraDmgAndCrit = GetExtraDamageAndCrit(item);
-        item.damage += extraDmgAndCrit.Item1;
-        item.crit += extraDmgAndCrit.Item2;
+        item.crit += GetExtraCrit(item);
     }
-    (int, int) GetExtraDamageAndCrit(Item item)
+    int GetExtraCrit(Item item)
     {
         if (item.ammo > 0)
-            goto no;
-        if (item.DamageType == DamageClass.MeleeNoSpeed)
-            return ((int)(item.damage * -0.07f), 8);
-        else if (item.DamageType == DamageClass.Melee)
-            return ((int)(item.damage * -0.08f), 10);
-        else if (item.DamageType == DamageClass.Ranged)
-            return ((int)(item.damage * -0.06f), 6);
-        else if (item.DamageType == DamageClass.Magic)
-            return ((int)(item.damage * -0.07f), 7);
-        no:
-        return (0, 0);
+            return 0;
+        return GetConfigCritIncrease();
     }
+    static int GetConfigCritIncrease()
+        => ModContent.GetInstance<WarframeServerConfig>().vanillaCritIncrease;
 }
