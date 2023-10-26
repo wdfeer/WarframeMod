@@ -118,6 +118,15 @@ Mods: {
 		}
 
 		Items: {
+			TenetEnvoy: {
+				DisplayName: Tenet Envoy
+				Tooltip:
+					'''
+					Launches manually-controlled rockets that have a {0}% chance to slow enemies
+					{$Mods.WarframeMod.Common.ModifyCritDamage@1}
+					'''
+			}
+
 			KuvaChakkhurr: {
 				DisplayName: Kuva Chakkhurr
 				Tooltip:
@@ -1237,6 +1246,7 @@ Mods: {
 			TonkorProjectile.DisplayName: Tonkor Projectile
 			KuvaBrammaProjectile.DisplayName: Kuva Bramma Projectile
 			KuvaChakkhurrProjectile.DisplayName: Kuva Chakkhurr Projectile
+			TenetEnvoyProjectile.DisplayName: Tenet Envoy Projectile
 		}
 
 		Configs: {
