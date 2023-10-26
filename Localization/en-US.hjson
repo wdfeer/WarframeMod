@@ -118,6 +118,16 @@ Mods: {
 		}
 
 		Items: {
+			Amprex: {
+				DisplayName: Amprex
+				Tooltip:
+					'''
+					{0}% electricity chance
+					{$Mods.WarframeMod.Common.ModifyCritDamage@1}
+					Chains between nearby enemies,-{2}% damage for each previous hit
+					'''
+			}
+
 			TenetEnvoy: {
 				DisplayName: Tenet Envoy
 				Tooltip:
@@ -1247,6 +1257,7 @@ Mods: {
 			KuvaBrammaProjectile.DisplayName: Kuva Bramma Projectile
 			KuvaChakkhurrProjectile.DisplayName: Kuva Chakkhurr Projectile
 			TenetEnvoyProjectile.DisplayName: Tenet Envoy Projectile
+			AmprexProjectile.DisplayName: Amprex Projectile
 		}
 
 		Configs: {
