@@ -1302,6 +1302,21 @@ Mods: {
 					Label: Vanilla Weapon Crit Increase
 					Tooltip: Increases crit chance of every vanilla weapon
 				}
+
+				enemyDamageIncreasePercent: {
+					Label: Enemy Damage Increase %
+					Tooltip: Designed to compensate for the arcane slot in expert mode, has no effect in normal mode
+				}
+
+				enemyDefenseIncreasePercent: {
+					Label: Enemy Defense Increase %
+					Tooltip: Designed to compensate for the arcane slot in expert mode, has no effect in normal mode
+				}
+
+				enemyMaxLifeIncreasePercent: {
+					Label: Enemy Max Life Increase %
+					Tooltip: Designed to compensate for the arcane slot in expert mode, has no effect in normal mode
+				}
 			}
 		}
 	}

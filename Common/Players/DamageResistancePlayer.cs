@@ -9,7 +9,7 @@ internal class DamageResistancePlayer : ModPlayer
     public float ResistsMult => resists.Any() ? resists.Select(x => 1 - x).Aggregate((x, y) => x * y) : 1f;
     public List<float> multipliers = new List<float>();
     public float MultsMult => multipliers.Any() ? multipliers.Aggregate((x, y) => x * y) : 1f;
-    public float TotalDamageMultiplier => ResistsMult * MultsMult * EnemyBuff.DAMAGE_MULT;
+    public float TotalDamageMultiplier => ResistsMult * MultsMult * EnemyBuff.GetDamageMult();
     public override void ResetEffects()
     {
         resists = new List<float>();

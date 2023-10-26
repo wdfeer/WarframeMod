@@ -12,4 +12,19 @@ public class WarframeServerConfig : ModConfig
     [Range(0, 20)]
     [ReloadRequired]
     public int vanillaCritIncrease;
+
+    [DefaultValue(5)]
+    [Range(0, 20)]
+    [ReloadRequired]
+    public int enemyMaxLifeIncreasePercent;
+
+    [DefaultValue(5)]
+    [Range(0, 20)]
+    [ReloadRequired]
+    public int enemyDefenseIncreasePercent;
+
+    [DefaultValue(5)]
+    [Range(0, 20)]
+    [ReloadRequired]
+    public int enemyDamageIncreasePercent;
 }

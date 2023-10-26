@@ -1,17 +1,18 @@
-﻿namespace WarframeMod.Common.GlobalNPCs;
+﻿using WarframeMod.Common.Configs;
+
+namespace WarframeMod.Common.GlobalNPCs;
 internal class EnemyBuff : GlobalNPC
 {
-    public const float MAX_LIFE_MULT = 1.05f;
-    public const float DEFENSE_MULT = 1.1f;
+    public static float GetMaxLifeMult() => ModContent.GetInstance<WarframeServerConfig>().enemyMaxLifeIncreasePercent / 100f + 1f;
+    public static float GetDefenseMult() => ModContent.GetInstance<WarframeServerConfig>().enemyDefenseIncreasePercent / 100f + 1f;
     public override void SetDefaults(NPC npc)
     {
         base.SetDefaults(npc);
         if (!Main.expertMode)
             return;
-        float netMult = Main.netMode == NetmodeID.SinglePlayer ? 1f : 1.05f;
-        npc.lifeMax = (int)(npc.lifeMax * MAX_LIFE_MULT * netMult);
-        npc.life = (int)(npc.life * MAX_LIFE_MULT * netMult);
-        npc.defense = (int)(npc.defense * DEFENSE_MULT * netMult);
+        npc.lifeMax = (int)(npc.lifeMax * GetMaxLifeMult());
+        npc.life = (int)(npc.life * GetMaxLifeMult());
+        npc.defense = (int)(npc.defense * GetDefenseMult());
     }
-    public const float DAMAGE_MULT = 1.1f;
+    public static float GetDamageMult() => ModContent.GetInstance<WarframeServerConfig>().enemyDamageIncreasePercent / 100f + 1f;
 }
