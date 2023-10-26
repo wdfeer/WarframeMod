@@ -15,6 +15,7 @@ public class Scoliac : ModItem
 		Item.DefaultToWhip(ModContent.ProjectileType<ScoliacProjectile>(), 16, 4f, 5f, 35);
 		Item.crit = BASE_CRIT_CHANCE;
 		Item.rare = 4;
+		Item.value = Item.sellPrice(gold: 4);
 	}
 	public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
 	{

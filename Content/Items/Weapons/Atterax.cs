@@ -15,6 +15,7 @@ public class Atterax : ModItem
 		Item.crit = BASE_CRIT_CHANCE;
 		Item.rare = 3;
 		Item.GetGlobalItem<WhipRange>().extraRangeMult = 1.4f;
+		Item.value = Item.sellPrice(silver: 75);
 	}
 	public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
 	{

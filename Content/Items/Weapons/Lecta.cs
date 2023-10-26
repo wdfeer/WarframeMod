@@ -12,6 +12,7 @@ public class Lecta : ModItem
 		Item.DefaultToWhip(ModContent.ProjectileType<LectaProjectile>(), 60, 2f, 4.25f, 50);
 		Item.crit = BASE_CRIT_CHANCE;
 		Item.rare = 4;
+		Item.value = Item.sellPrice(gold: 3);
 	}
 	public override float UseSpeedMultiplier(Player player)
 	{
