@@ -8,6 +8,7 @@ using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Common;
 using WarframeMod.Content.Projectiles;
 using WarframeMod.Content.Buffs;
+using Terraria.Localization;
 
 namespace WarframeMod.Content.Items.Weapons;
 public class Orvius : BaseGlaive
@@ -15,6 +16,7 @@ public class Orvius : BaseGlaive
     public const int SLOW_CHANCE = 100;
     public const int BLEED_CHANCE = 20;
     public const float CRIT_MULT = 1.1f;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(BLEED_CHANCE);
     public override void SetDefaults()
     {
         base.SetDefaults();

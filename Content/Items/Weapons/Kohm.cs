@@ -1,11 +1,14 @@
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using WarframeMod.Common.GlobalProjectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
 
 public class Kohm : ModItem
 {
+    public const int BLEED_CHANCE = 33;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(BLEED_CHANCE);
     const int maxUseTime = 82;
     const int minUseTime = 17;
     const int maxMultishot = 5;
@@ -76,7 +79,7 @@ public class Kohm : ModItem
             proj.timeLeft = 120;
             proj.GetGlobalProjectile<FalloffGlobalProjectile>().SetFalloff(position, 16 * 32, 16 * 48, 0.4f);
             var buffProj = proj.GetGlobalProjectile<BuffGlobalProjectile>();
-            buffProj.AddBleed(0.4f);
+            buffProj.AddBleed(BLEED_CHANCE);
         }
         return false;
     }

@@ -1,10 +1,14 @@
 using System.Security.Policy;
+using Terraria.Localization;
 using WarframeMod.Common.GlobalItems;
 
 namespace WarframeMod.Content.Items.Weapons;
 
 internal class Hate : ModItem
 {
+    public const int CRIT_DAMAGE_BONUS = 25;
+    public const int BLEED_CHANCE = 20;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs($"+{CRIT_DAMAGE_BONUS}%", BLEED_CHANCE);
     public override void SetDefaults()
     {
         Item.damage = 35;
@@ -21,7 +25,7 @@ internal class Hate : ModItem
         Item.useAnimation = 24;
         Item.rare = 3;
         Item.value = Item.sellPrice(gold: 5);
-        Item.GetGlobalItem<CritGlobalItem>().critMultiplier = 1.25f;
-        Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 0.2f;
+        Item.GetGlobalItem<CritGlobalItem>().critMultiplier = 1f + CRIT_DAMAGE_BONUS / 100f;
+        Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = BLEED_CHANCE / 100f;
     }
 }

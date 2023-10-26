@@ -7,8 +7,9 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Spectra : ModItem
 {
-    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(DEFENSE_PENETRATION);
+    public const int BLEED_CHANCE = 40;
     public const int DEFENSE_PENETRATION = 8;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(BLEED_CHANCE, DEFENSE_PENETRATION);
     public override void SetDefaults()
     {
         Item.damage = 8;
@@ -45,7 +46,7 @@ public class Spectra : ModItem
     {
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width - 4);
         Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-        projectile.GetGlobalProjectile<BuffGlobalProjectile>().AddBleed(0.4f);
+        projectile.GetGlobalProjectile<BuffGlobalProjectile>().AddBleed(BLEED_CHANCE);
         return false;
     }
 }

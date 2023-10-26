@@ -7,12 +7,14 @@ using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Common;
 using WarframeMod.Content.Projectiles;
+using Terraria.Localization;
 
 namespace WarframeMod.Content.Items.Weapons;
 public class Falcor : BaseGlaive
 {
     public const int ELECTRO_CHANCE = 100;
     public const int BLEED_CHANCE = 36;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(BLEED_CHANCE);
     public override void SetDefaults()
     {
         base.SetDefaults();

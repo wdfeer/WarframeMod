@@ -9,7 +9,7 @@ public class AtteraxProjectile : WhipProjectile
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
-		Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances = new() { new Common.StackableBuffChance(Common.StackableBuff.Bleed, Atterax.BLEED_CHANCE) };
+		Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances = new() { new Common.StackableBuffChance(Common.StackableBuff.Bleed, chancePercent: Atterax.BLEED_CHANCE) };
 		Projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier += Atterax.EXTRA_CRIT_MULT;
 	}
 	private float Timer

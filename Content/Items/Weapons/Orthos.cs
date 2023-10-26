@@ -1,10 +1,12 @@
+using Terraria.Localization;
 using WarframeMod.Common.GlobalItems;
 
 namespace WarframeMod.Content.Items.Weapons;
 
 internal class Orthos : CircularMelee
 {
-    protected virtual float BaseBleedChance => 0.15f;
+    public const int BLEED_CHANCE = 15;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(BLEED_CHANCE);
     public override void SetDefaults()
     {
         base.SetDefaults();
@@ -19,7 +21,7 @@ internal class Orthos : CircularMelee
         Item.rare = 1;
         Item.value = Item.sellPrice(silver: 50);
         Item.GetGlobalItem<CritGlobalItem>().critMultiplier = 0.75f;
-        Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = BaseBleedChance;
+        Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = BLEED_CHANCE / 100f;
     }
     public override float SizeMult => 2f;
     public override float UseSpeedMultiplier(Player player)
@@ -34,7 +36,7 @@ internal class Orthos : CircularMelee
         if (SuperSwing)
             Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 1f;
         else
-            Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = BaseBleedChance;
+            Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = BLEED_CHANCE / 100f;
         return base.CanUseItem(player);
     }
     public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)

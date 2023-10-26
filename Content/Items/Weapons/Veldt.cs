@@ -1,9 +1,12 @@
 using Terraria.DataStructures;
+using Terraria.Localization;
 using WarframeMod.Common.GlobalProjectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
 public class Veldt : ModItem
 {
+    public const int BLEED_CHANCE = 22;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(BLEED_CHANCE);
     public override void SetDefaults()
     {
         Item.damage = 20;
@@ -34,7 +37,7 @@ public class Veldt : ModItem
     {
         var proj = this.ShootWith(player, source, position, velocity, type, damage, knockback, spawnOffset: 16);
         proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 1.1f;
-        proj.GetGlobalProjectile<BuffGlobalProjectile>().AddBleed(0.22f);
+        proj.GetGlobalProjectile<BuffGlobalProjectile>().AddBleed(BLEED_CHANCE);
         return false;
     }
     public override void AddRecipes()

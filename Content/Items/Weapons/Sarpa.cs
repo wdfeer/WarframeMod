@@ -1,10 +1,13 @@
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.Localization;
 using WarframeMod.Common.GlobalProjectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
 public class Sarpa : ModItem
 {
+    public const int BLEED_CHANCE = 28;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(BLEED_CHANCE);
     public override void SetDefaults()
     {
         Item.damage = 15;
@@ -49,7 +52,7 @@ public class Sarpa : ModItem
         projectile.usesLocalNPCImmunity = true;
         projectile.localNPCHitCooldown = 2;
         var buffProj = projectile.GetGlobalProjectile<BuffGlobalProjectile>();
-        buffProj.stackableBuffChances.Add(new Common.StackableBuffChance(Common.StackableBuff.Bleed, 0.28f));
+        buffProj.stackableBuffChances.Add(new Common.StackableBuffChance(Common.StackableBuff.Bleed, chancePercent: BLEED_CHANCE));
 
         return false;
     }

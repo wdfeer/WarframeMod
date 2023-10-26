@@ -10,7 +10,7 @@ public class ScoliacProjectile : WhipProjectile
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
-		Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances = new() { new Common.StackableBuffChance(Common.StackableBuff.Bleed, Scoliac.BLEED_CHANCE) };
+		Projectile.GetGlobalProjectile<BuffGlobalProjectile>().AddBleed(Scoliac.BLEED_CHANCE);
 		Projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 0.75f;
 	}
 	private float Timer

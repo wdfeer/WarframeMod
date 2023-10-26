@@ -1,9 +1,12 @@
+using Terraria.Localization;
 using WarframeMod.Common.GlobalItems;
 
 namespace WarframeMod.Content.Items.Weapons;
 
 internal class Cassowar : CircularMelee
 {
+    public const int BLEED_CHANCE = 20;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(BLEED_CHANCE);
     public override void SetDefaults()
     {
         base.SetDefaults();
@@ -32,7 +35,7 @@ internal class Cassowar : CircularMelee
         if (SuperSwing)
             Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 1f;
         else
-            Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 0.2f;
+            Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = BLEED_CHANCE / 100f;
         return base.CanUseItem(player);
     }
     public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)

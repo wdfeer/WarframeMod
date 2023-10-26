@@ -1,4 +1,5 @@
 ﻿using Terraria.GameContent.Creative;
+using Terraria.Localization;
 using WarframeMod.Common.GlobalItems;
 using WarframeMod.Content.Projectiles;
 
@@ -7,8 +8,9 @@ public class Atterax : ModItem
 {
 	public const int BASE_CRIT_CHANCE = 21;
 	public const float EXTRA_CRIT_MULT = 0.5f;
-	public const float BLEED_CHANCE = 0.25f;
+	public const int BLEED_CHANCE = 25;
 	public const float DMG_MULT_PER_MINION_SLOT = 0.33f;
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(BLEED_CHANCE);
 	public override void SetDefaults()
 	{
 		Item.DefaultToWhip(ModContent.ProjectileType<AtteraxProjectile>(), 16, 3, 4.2f, 40);
