@@ -7,9 +7,10 @@ internal class Hate : ModItem
 {
     public override void SetDefaults()
     {
-        Item.damage = 29;
+        Item.damage = 35;
         Item.crit = 26;
         Item.knockBack = 4f;
+        Item.pick = 109;
         Item.DamageType = DamageClass.Melee;
         Item.width = 46;
         Item.height = 48;
@@ -19,7 +20,7 @@ internal class Hate : ModItem
         Item.useTime = 24;
         Item.useAnimation = 24;
         Item.rare = 3;
-        Item.value = Item.sellPrice(gold: 2);
+        Item.value = Item.sellPrice(gold: 5);
         Item.GetGlobalItem<CritGlobalItem>().critMultiplier = 1.25f;
         Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 0.2f;
     }
