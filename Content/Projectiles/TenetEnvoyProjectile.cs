@@ -17,12 +17,19 @@ internal class TenetEnvoyProjectile : ExplosiveProjectile
     }
     public override void AI()
     {
-        Projectile.velocity = Vector2.Normalize(Main.MouseWorld - Projectile.position) * 11;
+        var dust = Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.UnusedWhiteBluePurple, Scale: 1.2f)];
+
+        if (Main.myPlayer != Projectile.owner)
+            return;
+
+        Vector2 diff = Main.MouseWorld - Projectile.position;
+        Projectile.velocity = Vector2.Normalize(diff);
+        Projectile.position += Math.Min(10, diff.Length()) * Projectile.velocity;
 
         float rotation = (float)(Math.PI / 2 + -Math.Atan2(Projectile.velocity.X, Projectile.velocity.Y));
         Projectile.rotation = rotation;
 
-        var dust = Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.UnusedWhiteBluePurple, Scale: 1.2f)];
+        Projectile.netUpdate = true;
     }
     public override void ExplosionDusts()
     {
