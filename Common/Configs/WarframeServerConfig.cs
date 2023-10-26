@@ -9,6 +9,7 @@ public class WarframeServerConfig : ModConfig
 
     [Header("Stats")]
     [DefaultValue(10)]
+    [Range(0, 20)]
     [ReloadRequired]
     public int vanillaCritIncrease;
 }
