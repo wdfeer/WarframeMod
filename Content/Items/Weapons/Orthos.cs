@@ -4,6 +4,7 @@ namespace WarframeMod.Content.Items.Weapons;
 
 internal class Orthos : ModItem
 {
+    protected virtual float BaseBleedChance => 0.15f;
     public override void SetDefaults()
     {
         Item.damage = 13;
@@ -21,7 +22,7 @@ internal class Orthos : ModItem
         Item.rare = 1;
         Item.value = Item.sellPrice(silver: 50);
         Item.GetGlobalItem<CritGlobalItem>().critMultiplier = 0.75f;
-        Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 0.15f;
+        Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = BaseBleedChance;
     }
     public override float UseSpeedMultiplier(Player player)
     {
@@ -50,7 +51,7 @@ internal class Orthos : ModItem
         if (SuperSwing)
             Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 1f;
         else
-            Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 0.15f;
+            Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = BaseBleedChance;
         return base.CanUseItem(player);
     }
     public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)

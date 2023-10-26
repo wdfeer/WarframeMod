@@ -118,6 +118,16 @@ Mods: {
 		}
 
 		Items: {
+			OrthosPrime: {
+				DisplayName: Orthos Prime
+				Tooltip:
+					'''
+					Every third swing has doubled damage and guaranteed bleeding
+					{0}% bleeding chance
+					{$Mods.WarframeMod.Common.ModifyCritDamage@1}
+					'''
+			}
+
 			Amprex: {
 				DisplayName: Amprex
 				Tooltip:
