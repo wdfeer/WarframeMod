@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -50,8 +51,8 @@ public class Ordis : ModNPC
 	{
 		NPC.townNPC = true; // Sets NPC to be a Town NPC
 		NPC.friendly = true; // NPC Will not attack player
-		NPC.width = 18;
-		NPC.height = 40;
+		NPC.width = 100;
+		NPC.height = 100;
 		NPC.aiStyle = 7;
 		NPC.damage = 0;
 		NPC.lifeMax = 1;
@@ -77,31 +78,19 @@ public class Ordis : ModNPC
 				// With Town NPCs, you usually set this to what biome it likes the most in regards to NPC happiness.
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 
-				// Sets your NPC's flavor text in the bestiary.
-				new FlavorTextBestiaryInfoElement("Hailing from a mysterious greyscale cube world, the Example Person is here to help you understand everything about tModLoader."),
-
-				// You can add multiple elements if you really wanted to
-				// You can also use localization keys (see Localization/en-US.lang)
 				new FlavorTextBestiaryInfoElement("Mods.WarframeMod.Bestiary.Ordis")
 			});
 	}
-
-	// The PreDraw hook is useful for drawing things before our sprite is drawn or running code before the sprite is drawn
-	// Returning false will allow you to manually draw your NPC
-	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+	public override void DrawEffects(ref Color drawColor)
 	{
-		// This code slowly rotates the NPC in the bestiary
-		// (simply checking NPC.IsABestiaryIconDummy and incrementing NPC.Rotation won't work here as it gets overridden by drawModifiers.Rotation each tick)
-		if (NPCID.Sets.NPCBestiaryDrawOffset.TryGetValue(Type, out NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers))
+		for (int i = 0; i < 3; i++)
 		{
-			drawModifiers.Rotation += 0.001f;
+			Vector2 pos = NPC.position + NPC.Size / 4;
+			Vector2 area = NPC.Size / 2;
 
-			// Replace the existing NPCBestiaryDrawModifiers with our new one with an adjusted rotation
-			NPCID.Sets.NPCBestiaryDrawOffset.Remove(Type);
-			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+			Dust d = Dust.NewDustDirect(pos, (int)area.X, (int)area.Y, DustID.WhiteTorch);
+			d.noGravity = true;
 		}
-
-		return true;
 	}
 	public override bool CanTownNPCSpawn(int numTownNPCs)
 	{ // Requirements for the town NPC to spawn.
