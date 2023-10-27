@@ -120,6 +120,15 @@ Mods: {
 		}
 
 		Items: {
+			KuvaSeer: {
+				DisplayName: Kuva Seer
+				Tooltip:
+					'''
+					Shoots bullets that explode on impact, dealing {0}% of the damage
+					{1}% ichor chance
+					'''
+			}
+
 			Cronus: {
 				DisplayName: Cronus
 				Tooltip: "{$Common.BleedChance}"
@@ -1282,6 +1291,7 @@ Mods: {
 			KuvaChakkhurrProjectile.DisplayName: Kuva Chakkhurr Projectile
 			TenetEnvoyProjectile.DisplayName: Tenet Envoy Projectile
 			AmprexProjectile.DisplayName: Amprex Projectile
+			KuvaSeerProjectile.DisplayName: Kuva Seer Projectile
 		}
 
 		Configs: {
