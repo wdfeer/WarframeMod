@@ -15,6 +15,7 @@ Mods: {
 			AmmoSaveChance: "{0}% chance to save ammo"
 			ModifyAmmoDamage: "{0} ammo damage"
 			BleedChance: "{0}% bleeding chance"
+			ElectroChance: "{0}% electricity chance"
 		}
 
 		Buffs: {
@@ -119,6 +120,16 @@ Mods: {
 		}
 
 		Items: {
+			Quatz: {
+				DisplayName: Quatz
+				Tooltip:
+					'''
+					Right Click to fire in bursts
+					{$Common.ElectroChance} and {$Common.AmmoSaveChance@1} in Auto
+					Increased critical stats, damage and accuraccy in Burst mode
+					'''
+			}
+
 			OrthosPrime: {
 				DisplayName: Orthos Prime
 				Tooltip:
