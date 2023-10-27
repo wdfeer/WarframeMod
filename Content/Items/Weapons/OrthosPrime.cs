@@ -12,7 +12,7 @@ internal class OrthosPrime : CircularMelee
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(BLEED_CHANCE, $"+{CRIT_DAMAGE_BONUS_PERCENT}%");
     public override void SetDefaults()
     {
-        Item.damage = 100;
+        Item.damage = 70;
         Item.crit = 20;
         Item.knockBack = 3f;
         Item.DamageType = DamageClass.Melee;
