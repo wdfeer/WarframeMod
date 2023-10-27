@@ -109,5 +109,5 @@ public class BossBags : GlobalItem
         }
     }
     public static IItemDropRule GetArcanesDropRule()
-        => ItemDropRule.OneFromOptionsNotScalingWithLuck(4, Arcane.GetArcaneTypes());
+        => ItemDropRule.OneFromOptionsNotScalingWithLuck(2, Arcane.GetArcaneTypes());
 }
