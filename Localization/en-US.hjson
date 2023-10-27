@@ -120,6 +120,16 @@ Mods: {
 		}
 
 		Items: {
+			Cronus: {
+				DisplayName: Cronus
+				Tooltip: "{$Common.BleedChance}"
+			}
+
+			Seer: {
+				DisplayName: Seer
+				Tooltip: +100% projectile velocity
+			}
+
 			Quatz: {
 				DisplayName: Quatz
 				Tooltip:

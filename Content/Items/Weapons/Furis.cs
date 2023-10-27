@@ -13,8 +13,8 @@ public class Furis : ModItem
     {
         Item.damage = 3;
         Item.DamageType = DamageClass.Ranged;
-        Item.width = 16;
-        Item.height = 14;
+        Item.width = 24;
+        Item.height = 21;
         Item.useTime = 6;
         Item.useAnimation = 6;
         Item.useStyle = ItemUseStyleID.Shoot;

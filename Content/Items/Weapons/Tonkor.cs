@@ -26,7 +26,7 @@ internal class Tonkor : ModItem
         Item.UseSound = SoundID.Item61;
         Item.useTime = 66;
         Item.useAnimation = 66;
-        Item.rare = 2;
+        Item.rare = ItemRarityID.Green;
         Item.value = Item.sellPrice(silver: 50);
         Item.shoot = ModContent.ProjectileType<TonkorProjectile>();
         Item.shootSpeed = 16f;

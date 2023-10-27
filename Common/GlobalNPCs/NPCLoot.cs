@@ -38,7 +38,12 @@ internal class NPCLoot : GlobalNPC
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Kuva>(), 3);
 
             case NPCID.GoblinPeon or NPCID.GoblinSorcerer or NPCID.GoblinThief or NPCID.GoblinWarrior or NPCID.GoblinArcher:
-                return ItemDropRule.Common(ModContent.ItemType<Tonkor>(), 75);
+                return ItemDropRule.OneFromOptions(25, new int[]
+                {
+                    ModContent.ItemType<Tonkor>(),
+                    ModContent.ItemType<Seer>(),
+                    ModContent.ItemType<Cronus>()
+                });
 
             case NPCID.MartianSaucerCore:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Fieldron>(), 4);
