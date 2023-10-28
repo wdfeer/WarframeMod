@@ -1,10 +1,12 @@
-﻿using WarframeMod.Common.Players;
+﻿using Terraria.Localization;
+using WarframeMod.Common.Players;
 
 namespace WarframeMod.Content.Items.Accessories;
 
 public class CriticalDelay : ModItem
 {
-    public const int PERCENT_CRIT_RELATIVE = 80;
+    public const int RELATIVE_CRIT_PERCENT = 80;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(RELATIVE_CRIT_PERCENT);
     public override void SetDefaults()
     {
         Item.accessory = true;
@@ -15,7 +17,7 @@ public class CriticalDelay : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetModPlayer<CritPlayer>().relativeCritChance += PERCENT_CRIT_RELATIVE / 100f;
+        player.GetModPlayer<CritPlayer>().relativeCritChance += RELATIVE_CRIT_PERCENT / 100f;
         player.GetAttackSpeed(DamageClass.Generic) -= 0.1f;
     }
 }

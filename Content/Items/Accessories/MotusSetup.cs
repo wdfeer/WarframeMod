@@ -1,11 +1,13 @@
+using Terraria.Localization;
 using WarframeMod.Content.Buffs;
 
 namespace WarframeMod.Content.Items.Accessories;
 
 public class MotusSetup : ModItem
 {
-    public const int CRIT_RELATIVE_PERCENT = CriticalDelay.PERCENT_CRIT_RELATIVE;
+    public const int RELATIVE_CRIT_PERCENT = CriticalDelay.RELATIVE_CRIT_PERCENT;
     public const int DURATION_SECONDS = 6;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(RELATIVE_CRIT_PERCENT, DURATION_SECONDS);
     public override void SetDefaults()
     {
         Item.accessory = true;

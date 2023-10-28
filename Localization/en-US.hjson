@@ -16,6 +16,7 @@ Mods: {
 			ModifyAmmoDamage: "{0} ammo damage"
 			BleedChance: "{0}% bleeding chance"
 			ElectroChance: "{0}% electricity chance"
+			IncreaseRelativeCritChance: "+{0}% crit chance relative to the weapon's base crit chance"
 		}
 
 		Buffs: {
@@ -356,7 +357,11 @@ Mods: {
 
 			CriticalDelay: {
 				DisplayName: Critical Delay
-				Tooltip: +80% Crit Chance relative to the weapon's base crit chance, but -10% Use Speed
+				Tooltip:
+					'''
+					{$Common.IncreaseRelativeCritChance}
+					-10% Use Speed
+					'''
 			}
 
 			CryoRounds: {
@@ -472,7 +477,11 @@ Mods: {
 
 			MotusSetup: {
 				DisplayName: Motus Setup
-				Tooltip: +80% Relative Critical Chance after landing from a Double Jump or from Wing flight for 6 seconds
+				Tooltip:
+					'''
+					Upon landing from a Double Jump or from Wing flight: 
+					{$Common.IncreaseRelativeCritChance} for {1} seconds
+					'''
 			}
 
 			MotusSignal: {
@@ -497,7 +506,7 @@ Mods: {
 
 			PointStrike: {
 				DisplayName: Point Strike
-				Tooltip: +60% Crit Chance relative to the weapon's base crit chance
+				Tooltip: {$Common.IncreaseRelativeCritChance}
 			}
 
 			PrimedReach: {
