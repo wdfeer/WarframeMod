@@ -16,7 +16,7 @@ Mods: {
 			ModifyAmmoDamage: "{0} ammo damage"
 			BleedChance: "{0}% bleeding chance"
 			ElectroChance: "{0}% electricity chance"
-			IncreaseRelativeCritChance: "+{0}% crit chance relative to the weapon's base crit chance"
+			IncreaseRelativeCritChance: +{0}% crit chance relative to the weapon's base crit chance
 		}
 
 		Buffs: {
@@ -506,7 +506,7 @@ Mods: {
 
 			PointStrike: {
 				DisplayName: Point Strike
-				Tooltip: {$Common.IncreaseRelativeCritChance}
+				Tooltip: "{$Common.IncreaseRelativeCritChance}"
 			}
 
 			PrimedReach: {
