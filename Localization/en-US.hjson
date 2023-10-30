@@ -1306,15 +1306,7 @@ Mods: {
 		Configs: {
 			WarframeClientConfig: {
 				DisplayName: Warframe Client Config
-
-				Headers: {
-					Config: {
-						noCritHitColor: Non-Crit Hit Color
-						tier1CritColor: Tier 1 Crit Color
-						tier2CritColor: Tier 2 Crit Color
-						maxCritColor: Tier 3+ Crit Color
-					}
-				}
+				Headers.Config.hitcolors: Hit Colors
 
 				noCritHitColor: {
 					Label: Non-Crit Hit Color
