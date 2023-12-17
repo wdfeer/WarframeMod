@@ -22,7 +22,11 @@ internal class KuvaBrammaProjectile : ExplosiveProjectile
     }
     public override void Explode()
     {
+        if (exploding)
+            return;
+
         base.Explode();
+
 
         for (int i = 0; i < 3; i++)
         {
