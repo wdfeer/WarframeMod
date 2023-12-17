@@ -693,6 +693,15 @@ Mods: {
 					'''
 			}
 
+			ArcaneBlessing: {
+				DisplayName: Arcane Blessing
+				Tooltip:
+					'''
+					On Heart pick up: +{$Common.ModifyMaxLife}
+					Stacks up to {1} times
+					'''
+			}
+
 			VirtuosStrike: {
 				DisplayName: Virtuos Strike
 				Tooltip: On magic Critical hit: 15% chance for +33% Critical Damage for 7 seconds

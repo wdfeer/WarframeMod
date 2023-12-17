@@ -13,7 +13,7 @@ public class MoltAugmented : Arcane
             int expertIndex = tooltips.FindIndex(tip => tip.Text == "Expert");
             if (expertIndex == -1)
                 return;
-            TooltipLine line = new(Mod, "ActiveBonus", $"Current bonus is {augmentedPlayer.CurrentBonusPercent:0.00}%");
+            TooltipLine line = new(Mod, "ActiveBonus", $"Current bonus: +{augmentedPlayer.CurrentBonusPercent:0.00}%");
             tooltips.Insert(expertIndex, line);
         }
     }
