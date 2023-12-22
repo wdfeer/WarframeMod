@@ -20,6 +20,11 @@ Mods: {
 		}
 
 		Buffs: {
+			ArcaneAccelerationBuff: {
+				DisplayName: Arcane Acceleration
+				Description: +15% use speed
+			}
+
 			ArcaneArachneBuff: {
 				DisplayName: Arcane Arachne Cooldown
 				Description: -25% Damage
@@ -121,6 +126,11 @@ Mods: {
 		}
 
 		Items: {
+			ArcaneAcceleration: {
+				DisplayName: Arcane Acceleration
+				Tooltip: On critical hit: {0}% chance for +{1}% use speed for {2} seconds
+			}
+
 			KuvaSeer: {
 				DisplayName: Kuva Seer
 				Tooltip:
@@ -631,12 +641,12 @@ Mods: {
 
 			ArcaneConsequence: {
 				DisplayName: Arcane Consequence
-				Tooltip: On Critical hit: +20% movement speed and +12 wing flight speed for 6 seconds
+				Tooltip: On critical hit: +20% movement speed and +12 wing flight speed for 6 seconds
 			}
 
 			ArcaneFury: {
 				DisplayName: Arcane Fury
-				Tooltip: On critical strike: 25% chance for +15% melee damage for 12 seconds
+				Tooltip: On critical hit: 25% chance for +15% melee damage for 12 seconds
 			}
 
 			ArcaneGrace: {
