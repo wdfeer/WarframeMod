@@ -703,6 +703,11 @@ Mods: {
 					'''
 			}
 
+			ArcaneEruption: {
+				DisplayName: Arcane Eruption
+				Tooltip: On Mana Star pick up: explode damaging all enemies within {0} tiles by your defense
+			}
+
 			ArcaneBlessing: {
 				DisplayName: Arcane Blessing
 				Tooltip:
@@ -1320,6 +1325,7 @@ Mods: {
 			TenetEnvoyProjectile.DisplayName: Tenet Envoy Projectile
 			AmprexProjectile.DisplayName: Amprex Projectile
 			KuvaSeerProjectile.DisplayName: Kuva Seer Projectile
+			ArcaneEruptionProjectile.DisplayName: Arcane Eruption Projectile
 		}
 
 		Configs: {

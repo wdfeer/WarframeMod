@@ -19,7 +19,8 @@ public abstract class Arcane : ModItem
         () => ModContent.ItemType<EmergenceSavior>(),
         () => ModContent.ItemType<ArcanePistoleer>(),
         () => ModContent.ItemType<ArcaneBlessing>(),
-        () => ModContent.ItemType<ArcaneAcceleration>()
+        () => ModContent.ItemType<ArcaneAcceleration>(),
+        () => ModContent.ItemType<ArcaneEruption>()
     };
     public static int[] GetArcaneTypes()
         => arcaneTypeGetters.Select(x => x()).ToArray();
