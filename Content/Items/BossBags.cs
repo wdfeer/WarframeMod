@@ -71,6 +71,7 @@ public class BossBags : GlobalItem
                 {
                     ModContent.ItemType<HunterRecovery>(),
                     ModContent.ItemType<HunterCommand>(),
+                    ModContent.ItemType<AcceleratedIsotope>(),
                     ModContent.ItemType<Magnetize>(),
                     ModContent.ItemType<Gammacor>()
                 });

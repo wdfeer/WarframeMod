@@ -126,6 +126,16 @@ Mods: {
 		}
 
 		Items: {
+			AcceleratedIsotope: {
+				DisplayName: Accelerated Isotope
+				Tooltip:
+					'''
+					{$Common.ModifyDamageDealt}
+					+{1}% chance to confuse enemies on hit
+					+{2}% use speed
+					'''
+			}
+
 			ArcaneAcceleration: {
 				DisplayName: Arcane Acceleration
 				Tooltip: On critical hit: {0}% chance for +{1}% use speed for {2} seconds
