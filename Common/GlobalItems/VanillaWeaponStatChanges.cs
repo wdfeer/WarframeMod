@@ -6,11 +6,12 @@ internal class VanillaWeaponStatChanges : GlobalItem
 {
     public override void SetDefaults(Item item)
     {
-        if (item.ModItem != null)
-            return;
-        item.crit += GetExtraCrit(item);
+        if (IsVanillaWeapon(item))
+            item.crit += GetExtraCrit(item);
     }
-    int GetExtraCrit(Item item)
+    static bool IsVanillaWeapon(Item item)
+        => item.ModItem == null && (item.damage > 0 || item.DamageType != DamageClass.Default || item.crit > 0) && item.ammo == AmmoID.None;
+    static int GetExtraCrit(Item item)
     {
         if (item.ammo > 0)
             return 0;
