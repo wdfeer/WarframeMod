@@ -7,29 +7,29 @@ namespace WarframeMod.Common.GlobalNPCs;
 
 internal class NPCLoot : GlobalNPC
 {
-    public IItemDropRule GetItemDropRule(NPC npc)
+    static IItemDropRule GetItemDropRule(NPC npc)
     {
         int type = npc.type;
         switch (type)
         {
             case NPCID.GreenSlime or NPCID.BlueSlime:
-                return ItemDropRule.Common(ModContent.ItemType<Vitality>(), 150);
+                return ItemDropRule.Common(ModContent.ItemType<Vitality>(), 200);
             case NPCID.JungleBat:
-                return ItemDropRule.Common(ModContent.ItemType<Furis>(), 25);
+                return ItemDropRule.Common(ModContent.ItemType<Furis>(), 40);
             case NPCID.Skeleton or NPCID.SkeletonAlien or NPCID.SkeletonAstonaut or NPCID.SkeletonTopHat or NPCID.BoneThrowingSkeleton or NPCID.BoneThrowingSkeleton2:
-                return ItemDropRule.Common(ModContent.ItemType<PointStrike>(), 12);
+                return ItemDropRule.Common(ModContent.ItemType<PointStrike>(), 15);
             case NPCID.Harpy:
-                return ItemDropRule.OneFromOptions(25, new int[]
+                return ItemDropRule.OneFromOptions(30, new int[]
                 {
                     ModContent.ItemType<MotusSetup>(),
                     ModContent.ItemType<MotusSignal>(),
                 });
             case NPCID.BloodZombie or NPCID.Drippler:
-                return ItemDropRule.Common(ModContent.ItemType<PiercingHit>(), 60);
+                return ItemDropRule.Common(ModContent.ItemType<PiercingHit>(), 80);
             case NPCID.FireImp:
-                return ItemDropRule.Common(ModContent.ItemType<Blaze>(), 15);
+                return ItemDropRule.Common(ModContent.ItemType<Blaze>(), 25);
             case NPCID.DarkCaster:
-                return ItemDropRule.Common(ModContent.ItemType<NaturalTalent>(), 10);
+                return ItemDropRule.Common(ModContent.ItemType<NaturalTalent>(), 15);
 
             case NPCID.Corruptor or NPCID.CorruptSlime or NPCID.Slimer or NPCID.CursedHammer or NPCID.Clinger or NPCID.PigronCorruption or NPCID.DarkMummy or NPCID.DesertGhoulCorruption or
                  NPCID.Herpling or NPCID.Crimslime or NPCID.BloodJelly or NPCID.BloodFeeder or NPCID.CrimsonAxe or NPCID.IchorSticker or NPCID.FloatyGross or NPCID.PigronCrimson or NPCID.BloodMummy or NPCID.DesertGhoulCrimson:
@@ -38,7 +38,7 @@ internal class NPCLoot : GlobalNPC
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Kuva>(), 3);
 
             case NPCID.GoblinPeon or NPCID.GoblinSorcerer or NPCID.GoblinThief or NPCID.GoblinWarrior or NPCID.GoblinArcher:
-                return ItemDropRule.OneFromOptions(25, new int[]
+                return ItemDropRule.OneFromOptions(30, new int[]
                 {
                     ModContent.ItemType<Tonkor>(),
                     ModContent.ItemType<Seer>(),
@@ -54,19 +54,22 @@ internal class NPCLoot : GlobalNPC
                 return null;
         }
     }
-    IItemDropRule GetEaterOfWorldsDropRule(IItemDropRule normalRule)
+
+    static IItemDropRule GetEaterOfWorldsDropRule(IItemDropRule normalRule)
     {
         LeadingConditionRule leadingConditionRule = new(new Conditions.LegacyHack_IsABoss());
         leadingConditionRule.OnSuccess(normalRule);
         return leadingConditionRule;
     }
-    IItemDropRule GetTwinsDropRule(IItemDropRule normalRule)
+
+    static IItemDropRule GetTwinsDropRule(IItemDropRule normalRule)
     {
         LeadingConditionRule leadingConditionRule = new(new Conditions.MissingTwin());
         leadingConditionRule.OnSuccess(normalRule);
         return leadingConditionRule;
     }
-    IItemDropRule GetBossDropRule(NPC npc)
+
+    static IItemDropRule GetBossDropRule(NPC npc)
     {
         switch (npc.type)
         {
@@ -108,7 +111,8 @@ internal class NPCLoot : GlobalNPC
                 return null;
         }
     }
-    IItemDropRule GetDragonKeyDropRule(NPC npc)
+
+    static IItemDropRule GetDragonKeyDropRule(NPC npc)
     {
         if (npc.boss)
         {
