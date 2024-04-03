@@ -105,7 +105,8 @@ public class BossBags : GlobalItem
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
                 {
                     ModContent.ItemType<PrismaGorgon>(),
-                    ModContent.ItemType<TenetDetron>()
+                    ModContent.ItemType<TenetDetron>(),
+                    ModContent.ItemType<PrismaLenz>()
                 });
         }
     }

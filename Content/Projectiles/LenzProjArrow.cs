@@ -46,6 +46,7 @@ internal class LenzProjArrow : ExplosiveProjectile
     public override void OnKill(int timeLeft)
     {
         var proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<LenzProjBubble>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+        proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = Projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier;
         if (hitNpc != null && hitNpc.active)
         {
             Vector2 offset = Projectile.Center - hitNpc.Center;

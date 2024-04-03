@@ -256,6 +256,17 @@ Mods: {
 					'''
 			}
 
+			PrismaLenz: {
+				DisplayName: Prisma Lenz
+				Tootlip:
+					'''
+					Slows nearby enemies on impact
+					Explodes after a short while
+					{$Mods.WarframeMod.Common.ModifyCritDamage}
+					'''
+				Tooltip: ""
+			}
+
 			Lenz: {
 				DisplayName: Lenz
 				Tootlip:
