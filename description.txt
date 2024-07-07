@@ -16,3 +16,4 @@ Gameplay changes:
 Note that some items' effects are not the same as in Warframe
 
 Source Code: https://github.com/wdfeer/WarframeMod
+License: GPL-3.0
