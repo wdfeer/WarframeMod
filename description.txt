@@ -14,3 +14,5 @@ Gameplay changes:
 - Vanilla weapons have increased crit chance (10% by default, configurable)
 
 Note that some items' effects are not the same as in Warframe
+
+Source Code: https://github.com/wdfeer/WarframeMod
