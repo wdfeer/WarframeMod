@@ -14,7 +14,7 @@ public class ScourgeProjectile : ModProjectile
         Projectile.ArmorPenetration = Scourge.DEFENSE_PENETRATION;
     }
     const int numOfProjectilesSpawnedOnKill = 5;
-    public override void Kill(int timeLeft)
+    public override void OnKill(int timeLeft)
     {
         Vector2 launchVelocity = new Vector2(-4, 0);
         launchVelocity = launchVelocity.RotatedByRandom(MathHelper.Pi);

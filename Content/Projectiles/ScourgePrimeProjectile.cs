@@ -12,7 +12,7 @@ public class ScourgePrimeProjectile : ModProjectile
         Projectile.penetrate = 1;
     }
     const int numOfProjectilesSpawnedOnKill = 5;
-    public override void Kill(int timeLeft)
+    public override void OnKill(int timeLeft)
     {
         Vector2 launchVelocity = new Vector2(-6, 0);
         launchVelocity = launchVelocity.RotatedByRandom(MathHelper.Pi);
