@@ -35,13 +35,15 @@ public class Scourge : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.TungstenBar, 9);
+        recipe.AddIngredient(ItemID.TungstenBar, 10);
+        recipe.AddIngredient(ItemID.JungleSpores, 6);
         recipe.AddIngredient(ItemID.Emerald, 4);
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
 
         recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.SilverBar, 9);
+        recipe.AddIngredient(ItemID.SilverBar, 10);
+        recipe.AddIngredient(ItemID.JungleSpores, 6);
         recipe.AddIngredient(ItemID.Emerald, 4);
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
