@@ -166,7 +166,7 @@ Mods: {
 					'''
 					Right Click to fire in bursts
 					{$Common.ElectroChance} and {$Common.AmmoSaveChance@1} in Auto
-					Increased critical stats, damage and accuraccy in Burst mode
+					Increased critical stats, damage and accuracy in Burst mode
 					'''
 			}
 
@@ -790,7 +790,7 @@ Mods: {
 				Tooltip:
 					'''
 					Shoots 4 arrows at once with greatly decreased velocity
-					Not shooting charges the next shot, increasing damage, accuraccy and velocity
+					Not shooting charges the next shot, increasing damage, accuracy and velocity
 					-90% ammo damage
 					'''
 			}
