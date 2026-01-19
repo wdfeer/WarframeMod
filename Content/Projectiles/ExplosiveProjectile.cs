@@ -1,6 +1,7 @@
 ﻿using Terraria.Audio;
 
 namespace WarframeMod.Content.Projectiles;
+
 public abstract class ExplosiveProjectile : ModProjectile
 {
     public abstract int ExplosionWidth { get; }
@@ -16,7 +17,7 @@ public abstract class ExplosiveProjectile : ModProjectile
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = -1;
     }
-    protected bool exploding = false;
+    public bool exploding = false;
     public override bool PreAI()
     {
         if (Projectile.timeLeft <= 2 && ExplodeOnTimeOut && CanExplode() && !exploding)
