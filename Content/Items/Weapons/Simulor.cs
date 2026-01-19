@@ -7,24 +7,6 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Simulor : ModItem
 {
-    private readonly List<int> activeProjectileIDs = [];
-
-    public const int MERGE_DAMAGE_INCREASE_PERCENT = 20;
-    public const int MERGE_DAMAGE_INCREASE_MAX_PERCENT = 300;
-
-    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MERGE_DAMAGE_INCREASE_PERCENT, MERGE_DAMAGE_INCREASE_MAX_PERCENT);
-
-    // public override void SetStaticDefaults() // TODO: put this in localization file
-    // {
-    //     Tooltip.SetDefault(
-    //         "Launches orbs that can't hit enemies directly and bounce off tiles\n" +
-    //         "Orbs attract and merge, creating an implosion that increases damage\n" +
-    //         "Damage increases by 20% per merge up to 300%\n" +
-    //         "Implosions electrify enemies\n" +
-    //         "Right-click to force all active orbs to explode"
-    //     );
-    // }
-
     public override void SetDefaults()
     {
         Item.damage = 42;
@@ -46,6 +28,7 @@ public class Simulor : ModItem
     }
 
     public override bool AltFunctionUse(Player player) => true;
+    private readonly List<int> activeProjectileIDs = [];
 
     public override bool Shoot(
         Player player,

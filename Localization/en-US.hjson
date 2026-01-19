@@ -1304,6 +1304,18 @@ Mods: {
 					Disk range is affected by Reach and Primed Reach
 					'''
 			}
+
+			Simulor: {
+				DisplayName: Simulor
+				Tooltip:
+					'''
+					Launches orbs that can't hit enemies directly and bounce off tiles 
+					Orbs attract and merge, creating an implosion dealing half of the damage
+					Other 50% of the damage is absorbed into the orb with additional 20% 
+					Implosions electrify enemies
+					Right-click to force all active orbs to explode
+					'''
+			}
 		}
 
 		Projectiles: {
@@ -1345,6 +1357,7 @@ Mods: {
 			AmprexProjectile.DisplayName: Amprex Projectile
 			KuvaSeerProjectile.DisplayName: Kuva Seer Projectile
 			ArcaneEruptionProjectile.DisplayName: Arcane Eruption Projectile
+			SimulorProjectile.DisplayName: Simulor Projectile
 		}
 
 		Configs: {
