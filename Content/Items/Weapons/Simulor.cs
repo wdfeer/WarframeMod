@@ -31,23 +31,21 @@ public class Simulor : ModItem
         Item.crit = 8;
         Item.DamageType = DamageClass.Magic;
         Item.mana = 10;
-
         Item.width = 36;
         Item.height = 15;
-
         Item.useTime = 24;
         Item.useAnimation = 24;
         Item.useStyle = ItemUseStyleID.Shoot;
-
         Item.noMelee = true;
         Item.knockBack = 6.9f;
-
         Item.value = Item.buyPrice(gold: 33);
         Item.rare = ItemRarityID.LightRed;
-
         Item.autoReuse = false;
-
         Item.shoot = ModContent.ProjectileType<SimulorProjectile>();
+        Item.UseSound = new SoundStyle("WarframeMod/Content/Sounds/SynoidSimulorSound")
+        {
+            PitchVariance = 0.08f
+        };;
         Item.shootSpeed = 16f;
     }
 
@@ -87,14 +85,6 @@ public class Simulor : ModItem
             ref position,
             velocity,
             Item.width * 0.75f
-        );
-
-        SoundEngine.PlaySound(
-            new SoundStyle("WarframeMod/Assets/Sounds/SynoidSimulorSound")
-            {
-                PitchVariance = 0.08f
-            },
-            position
         );
 
         int projID = Projectile.NewProjectile(
