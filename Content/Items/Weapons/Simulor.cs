@@ -7,7 +7,7 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Simulor : ModItem
 {
-    private readonly List<Projectile> activeProjectiles = new();
+    private readonly List<int> activeProjectileIDs = [];
 
     public const int MERGE_DAMAGE_INCREASE_PERCENT = 20;
     public const int MERGE_DAMAGE_INCREASE_MAX_PERCENT = 300;
@@ -42,35 +42,10 @@ public class Simulor : ModItem
         Item.rare = ItemRarityID.LightRed;
         Item.autoReuse = false;
         Item.shoot = ModContent.ProjectileType<SimulorProjectile>();
-        Item.UseSound = new SoundStyle("WarframeMod/Content/Sounds/SynoidSimulorSound")
-        {
-            PitchVariance = 0.08f
-        };;
         Item.shootSpeed = 16f;
     }
 
     public override bool AltFunctionUse(Player player) => true;
-
-    public override bool CanUseItem(Player player)
-    {
-        if (player.altFunctionUse == 1)
-        {
-            for (int i = activeProjectiles.Count - 1; i >= 0; i--)
-            {
-                Projectile proj = activeProjectiles[i];
-
-                if (proj.active && proj.ModProjectile is SimulorProjectile simulor)
-                {
-                    simulor.Explode();
-                }
-            }
-
-            activeProjectiles.Clear();
-            return false;
-        }
-
-        return base.CanUseItem(player);
-    }
 
     public override bool Shoot(
         Player player,
@@ -81,25 +56,48 @@ public class Simulor : ModItem
         int damage,
         float knockback)
     {
-        WeaponCommon.ModifyProjectileSpawnPosition(
-            ref position,
-            velocity,
-            Item.width * 0.75f
-        );
+        if (player.altFunctionUse == 2)
+        {
+            for (int i = 0; i < activeProjectileIDs.Count; i++)
+            {
+                int id = activeProjectileIDs[i];
+                Projectile proj = Main.projectile[id];
 
-        int projID = Projectile.NewProjectile(
-            source,
-            position,
-            velocity,
-            type,
-            damage,
-            knockback,
-            player.whoAmI
-        );
+                if (proj.active && proj.ModProjectile is SimulorProjectile simulor)
+                {
+                    simulor.TryExplode();
+                }
+            }
 
-        activeProjectiles.Add(Main.projectile[projID]);
+            activeProjectileIDs.Clear();
+            return false;
+        }
+        else
+        {
+            WeaponCommon.ModifyProjectileSpawnPosition(
+                ref position,
+                velocity,
+                Item.width * 0.75f
+            );
 
-        return false;
+            int projID = Projectile.NewProjectile(
+                source,
+                position,
+                velocity,
+                type,
+                damage,
+                knockback,
+                player.whoAmI
+            );
+            activeProjectileIDs.Add(projID);
+
+            SoundEngine.PlaySound(new SoundStyle("WarframeMod/Content/Sounds/SynoidSimulorSound")
+            {
+                PitchVariance = 0.08f
+            }, position);
+
+            return false;
+        }
     }
 }
 

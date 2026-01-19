@@ -19,18 +19,21 @@ internal class NPCLoot : GlobalNPC
             case NPCID.Skeleton or NPCID.SkeletonAlien or NPCID.SkeletonAstonaut or NPCID.SkeletonTopHat or NPCID.BoneThrowingSkeleton or NPCID.BoneThrowingSkeleton2:
                 return ItemDropRule.Common(ModContent.ItemType<PointStrike>(), 15);
             case NPCID.Harpy:
-                return ItemDropRule.OneFromOptions(30, new int[]
-                {
+                return ItemDropRule.OneFromOptions(30,
+                [
                     ModContent.ItemType<MotusSetup>(),
                     ModContent.ItemType<MotusSignal>(),
-                });
+                ]);
             case NPCID.BloodZombie or NPCID.Drippler:
                 return ItemDropRule.Common(ModContent.ItemType<PiercingHit>(), 80);
             case NPCID.FireImp:
                 return ItemDropRule.Common(ModContent.ItemType<Blaze>(), 25);
             case NPCID.DarkCaster:
-                return ItemDropRule.Common(ModContent.ItemType<NaturalTalent>(), 15);
-
+                return ItemDropRule.OneFromOptions(15,
+                [
+                    ModContent.ItemType<NaturalTalent>(),
+                    ModContent.ItemType<Simulor>()
+                ]);
             case NPCID.Corruptor or NPCID.CorruptSlime or NPCID.Slimer or NPCID.CursedHammer or NPCID.Clinger or NPCID.PigronCorruption or NPCID.DarkMummy or NPCID.DesertGhoulCorruption or
                  NPCID.Herpling or NPCID.Crimslime or NPCID.BloodJelly or NPCID.BloodFeeder or NPCID.CrimsonAxe or NPCID.IchorSticker or NPCID.FloatyGross or NPCID.PigronCrimson or NPCID.BloodMummy or NPCID.DesertGhoulCrimson:
                 return ItemDropRule.Common(ModContent.ItemType<Kuva>(), 15);
@@ -38,18 +41,16 @@ internal class NPCLoot : GlobalNPC
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Kuva>(), 3);
 
             case NPCID.GoblinPeon or NPCID.GoblinSorcerer or NPCID.GoblinThief or NPCID.GoblinWarrior or NPCID.GoblinArcher:
-                return ItemDropRule.OneFromOptions(30, new int[]
-                {
+                return ItemDropRule.OneFromOptions(30,
+                [
                     ModContent.ItemType<Tonkor>(),
                     ModContent.ItemType<Seer>(),
                     ModContent.ItemType<Cronus>()
-                });
-
+                ]);
             case NPCID.MartianSaucerCore:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Fieldron>(), 4);
             case NPCID.Scutlix or NPCID.MartianWalker or NPCID.MartianDrone or NPCID.MartianEngineer or NPCID.MartianOfficer or NPCID.MartianTurret or NPCID.GigaZapper or NPCID.RayGunner or NPCID.GrayGrunt or NPCID.BrainScrambler:
                 return ItemDropRule.Common(ModContent.ItemType<Fieldron>(), 250);
-
             default:
                 return null;
         }
@@ -117,13 +118,13 @@ internal class NPCLoot : GlobalNPC
         if (npc.boss)
         {
             LeadingConditionRule dragonKeyRule = new LeadingConditionRule(new DragonKeyCondition());
-            dragonKeyRule.OnSuccess(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
-            {
+            dragonKeyRule.OnSuccess(ItemDropRule.OneFromOptionsNotScalingWithLuck(1,
+            [
                 ModContent.ItemType<CriticalDelay>(),
                 ModContent.ItemType<VileAcceleration>(),
                 ModContent.ItemType<HollowPoint>(),
                 ModContent.ItemType<SpoiledStrike>(),
-            }));
+            ]));
             return dragonKeyRule;
         }
         return null;

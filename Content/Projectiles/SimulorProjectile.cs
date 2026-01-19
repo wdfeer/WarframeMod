@@ -1,6 +1,7 @@
 using Terraria.Audio;
 using WarframeMod.Common;
 using WarframeMod.Common.GlobalProjectiles;
+using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Projectiles;
 
@@ -15,10 +16,12 @@ public class SimulorProjectile : ExplosiveProjectile
         get => damageMult;
         set
         {
-            if (value > 3) value = 3;
+            if (value > Simulor.MERGE_DAMAGE_INCREASE_MAX_PERCENT / 100f)
+                value = Simulor.MERGE_DAMAGE_INCREASE_MAX_PERCENT / 100f;
             damageMult = value;
         }
     }
+    const float mergeDamageIncrease = Simulor.MERGE_DAMAGE_INCREASE_PERCENT / 100f;
 
     int explosionWidth = 200;
     public override int ExplosionWidth => explosionWidth;
@@ -44,17 +47,17 @@ public class SimulorProjectile : ExplosiveProjectile
     }
     public override void AI()
     {
-        if (Projectile.timeLeft <= 8) Explode();
-        if (Projectile.velocity.Length() > 0.1f) Projectile.velocity -= Vector2.Normalize(Projectile.velocity) * 0.2f;
+        if (Projectile.timeLeft <= 8) TryExplode();
         if (exploding)
             return;
+        if (Projectile.velocity.Length() > 0.1f) Projectile.velocity -= Vector2.Normalize(Projectile.velocity) * 0.2f;
 
         for (int i = 0; i < Main.maxProjectiles; i++)
         {
             Projectile proj = Main.projectile[i];
-            if (!proj.active || !(proj.ModProjectile is SimulorProjectile) || (proj.ModProjectile as ExplosiveProjectile).exploding) continue;
+            if (!proj.active || proj.ModProjectile is not SimulorProjectile) continue;
             SimulorProjectile simulorProj = proj.ModProjectile as SimulorProjectile;
-            if (simulorProj == this) continue;
+            if (simulorProj == this || simulorProj.exploding) continue;
             float dist = (proj.position - Projectile.position).Length();
             if (dist > 480f) continue;
             if (dist > Projectile.width / 2)
@@ -65,23 +68,19 @@ public class SimulorProjectile : ExplosiveProjectile
             {
                 if (proj.timeLeft > Projectile.timeLeft)
                 {
-                    // Increases damage of the surviving Projectile by 20% of the Projectile with the highest damage
-                    if (!TryExplode(480, 100))
-                        continue;
-                    DamageMult *= 1.2f;
-                    simulorProj.DamageMult *= 1.2f;
+                    simulorProj.DamageMult += mergeDamageIncrease + simulorProj.DamageMult / 2;
+                    DamageMult /= 2;
                     proj.timeLeft = baseTimeLeft;
                     proj.velocity *= 0.1f;
+                    TryExplode(480, 100);
                 }
                 else
                 {
-                    // Increases damage of the surviving Projectile by 20% of the Projectile with the highest damage
-                    if (!simulorProj.TryExplode(480, 100))
-                        continue;
-                    DamageMult *= 1.2f;
-                    simulorProj.DamageMult *= 1.2f;
+                    DamageMult += mergeDamageIncrease + simulorProj.DamageMult / 2;
+                    simulorProj.DamageMult /= 2;
                     Projectile.timeLeft = baseTimeLeft;
                     Projectile.velocity *= 0.1f;
+                    simulorProj.TryExplode(480, 100);
                 }
             }
         }
@@ -116,11 +115,6 @@ public class SimulorProjectile : ExplosiveProjectile
         Explode();
 
         return true;
-    }
-
-    public override void ExplosionSound()
-    {
-        SoundEngine.PlaySound(SoundID.DD2_KoboldExplosion, Projectile.position); // TODO: maybe incorrect sound?
     }
 
     public override void ExplosionDusts()
