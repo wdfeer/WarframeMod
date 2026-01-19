@@ -1319,7 +1319,7 @@ Mods: {
 
 			MorphicTransformer: {
 				DisplayName: Morphic Transformer
-				Tooltip: "+20% damage whilst flying with wings"
+				Tooltip: +20% damage whilst flying with wings
 			}
 		}
 
