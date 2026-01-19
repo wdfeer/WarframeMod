@@ -1316,6 +1316,11 @@ Mods: {
 					Right-click to force all active orbs to explode, restoring mana
 					'''
 			}
+
+			MorphicTransformer: {
+				DisplayName: Morphic Transformer
+				Tooltip: "+20% damage whilst flying with wings"
+			}
 		}
 
 		Projectiles: {
