@@ -1321,6 +1321,16 @@ Mods: {
 				DisplayName: Morphic Transformer
 				Tooltip: +20% damage whilst flying with wings
 			}
+
+			AmarAnguish: {
+				DisplayName: Amar's Anguish
+				Tooltip:
+					'''
+					+5% movement speed
+					+5% jump height
+					You teleport to enemies upon swinging a melee weapon
+					'''
+			}
 		}
 
 		Projectiles: {
