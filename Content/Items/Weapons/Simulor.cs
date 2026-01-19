@@ -7,6 +7,8 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Simulor : ModItem
 {
+    public const int MERGE_DAMAGE_INCREASE_PERCENT = 20;
+    public const int MERGE_DAMAGE_INCREASE_MAX_PERCENT = 300;
     public override void SetDefaults()
     {
         Item.damage = 42;
@@ -27,9 +29,15 @@ public class Simulor : ModItem
         Item.shootSpeed = 16f;
     }
 
-    public override bool AltFunctionUse(Player player) => true;
+    public override bool AltFunctionUse(Player player) => activeProjectileIDs.Count > 0;
     private readonly List<int> activeProjectileIDs = [];
-
+    public override void ModifyManaCost(Player player, ref float reduce, ref float mult)
+    {
+        if (player.altFunctionUse == 2 && activeProjectileIDs.Count > 0)
+        {
+            mult = 0;
+        }
+    }
     public override bool Shoot(
         Player player,
         EntitySource_ItemUse_WithAmmo source,
@@ -41,18 +49,24 @@ public class Simulor : ModItem
     {
         if (player.altFunctionUse == 2)
         {
+            float manaMult = 0;
             for (int i = 0; i < activeProjectileIDs.Count; i++)
             {
                 int id = activeProjectileIDs[i];
                 Projectile proj = Main.projectile[id];
 
-                if (proj.active && proj.ModProjectile is SimulorProjectile simulor)
+                if (proj.active && proj.ModProjectile is SimulorProjectile simulor && simulor.TryExplode())
                 {
-                    simulor.TryExplode();
+                    manaMult += simulor.DamageMult;
                 }
             }
 
+            int manaGain = (int)(manaMult * 8);
+            player.statMana = Math.Min(player.statMana + manaGain, player.statManaMax2);
+            player.ManaEffect(manaGain);
+
             activeProjectileIDs.Clear();
+
             return false;
         }
         else

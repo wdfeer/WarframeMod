@@ -1313,7 +1313,7 @@ Mods: {
 					Orbs attract and merge, creating an implosion dealing half of the damage
 					Other 50% of the damage is absorbed into the orb with additional 20% 
 					Implosions electrify enemies
-					Right-click to force all active orbs to explode
+					Right-click to force all active orbs to explode, restoring mana
 					'''
 			}
 		}
