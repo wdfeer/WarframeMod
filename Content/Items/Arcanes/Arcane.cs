@@ -3,24 +3,25 @@ public abstract class Arcane : ModItem
 {
     public static readonly Func<int>[] arcaneTypeGetters =
     [
-        () => ModContent.ItemType<ArcaneAvenger>(),
-        () => ModContent.ItemType<ArcaneGuardian>(),
-        () => ModContent.ItemType<VirtuosStrike>(),
-        () => ModContent.ItemType<ArcaneStrike>(),
-        () => ModContent.ItemType<ArcanePrecision>(),
-        () => ModContent.ItemType<ArcaneFury>(),
-        () => ModContent.ItemType<ArcaneBodyguard>(),
-        () => ModContent.ItemType<ArcaneArachne>(),
-        () => ModContent.ItemType<ArcaneVictory>(),
-        () => ModContent.ItemType<MoltAugmented>(),
-        () => ModContent.ItemType<EternalOnslaught>(),
-        () => ModContent.ItemType<ArcaneConsequence>(),
-        () => ModContent.ItemType<ArcaneGrace>(),
-        () => ModContent.ItemType<EmergenceSavior>(),
-        () => ModContent.ItemType<ArcanePistoleer>(),
-        () => ModContent.ItemType<ArcaneBlessing>(),
-        () => ModContent.ItemType<ArcaneAcceleration>(),
-        () => ModContent.ItemType<ArcaneEruption>()
+        ModContent.ItemType<ArcaneAvenger>,
+        ModContent.ItemType<ArcaneGuardian>,
+        ModContent.ItemType<VirtuosStrike>,
+        ModContent.ItemType<ArcaneStrike>,
+        ModContent.ItemType<ArcanePrecision>,
+        ModContent.ItemType<ArcaneFury>,
+        ModContent.ItemType<ArcaneBodyguard>,
+        ModContent.ItemType<ArcaneArachne>,
+        ModContent.ItemType<ArcaneVictory>,
+        ModContent.ItemType<MoltAugmented>,
+        ModContent.ItemType<EternalOnslaught>,
+        ModContent.ItemType<ArcaneConsequence>,
+        ModContent.ItemType<ArcaneGrace>,
+        ModContent.ItemType<EmergenceSavior>,
+        ModContent.ItemType<ArcanePistoleer>,
+        ModContent.ItemType<ArcaneBlessing>,
+        ModContent.ItemType<ArcaneAcceleration>,
+        ModContent.ItemType<ArcaneEruption>,
+        ModContent.ItemType<ArcaneBattery>,
     ];
     public static int[] GetArcaneTypes()
         => arcaneTypeGetters.Select(x => x()).ToArray();

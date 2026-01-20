@@ -736,6 +736,11 @@ Mods: {
 					'''
 			}
 
+			ArcaneBattery: {
+				DisplayName: Arcane Battery
+				Tooltip: +{0} max mana per point of defense, up to +{1} max mana
+			}
+
 			VirtuosStrike: {
 				DisplayName: Virtuos Strike
 				Tooltip: On magic Critical hit: 15% chance for +33% Critical Damage for 7 seconds
