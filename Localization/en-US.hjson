@@ -1328,7 +1328,7 @@ Mods: {
 					'''
 					+5% movement speed
 					+5% jump height
-					You teleport to enemies upon swinging a melee weapon
+					You teleport to enemies within +{0} tiles upon swinging a melee weapon.
 					'''
 			}
 		}

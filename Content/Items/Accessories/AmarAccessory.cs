@@ -1,8 +1,12 @@
-﻿namespace WarframeMod.Content.Items.Accessories;
+﻿using Terraria.Localization;
+
+namespace WarframeMod.Content.Items.Accessories;
 
 public abstract class AmarAccessory : ModItem
 {
-    public const int TELEPORT_RANGE = 10 * 16;
+    const int TELEPORT_RANGE_TILES = 10;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(TELEPORT_RANGE_TILES);
+    public const int TELEPORT_RANGE = TELEPORT_RANGE_TILES * 16;
     public const int ENEMY_DESIRED_DISTANCE = 2 * 16;
     public const float MAX_ENEMY_ANGLE_FROM_CURSOR = 15 * (MathF.PI / 180f);
     public override void SetDefaults()
