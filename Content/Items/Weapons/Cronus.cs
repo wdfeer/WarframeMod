@@ -18,7 +18,7 @@ internal class Cronus : ModItem
         Item.DamageType = DamageClass.Melee;
         Item.width = 37;
         Item.height = 40;
-        Item.scale = 1.25f;
+        Item.scale = 1.3f;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.UseSound = SoundID.Item1;
         Item.useTime = 23;
