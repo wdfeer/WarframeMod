@@ -2,9 +2,8 @@
 
 public abstract class AmarAccessory : ModItem
 {
-    public const int TELEPORT_RANGE = 3 * 16;
-    public const int ENEMY_DESIRED_DISTANCE = 3 * 16;
-    public const int ENEMY_SCAN_RANGE = 20 * 16;
+    public const int TELEPORT_RANGE = 8 * 16;
+    public const int ENEMY_DESIRED_DISTANCE = 2 * 16;
     public const float MAX_ENEMY_ANGLE_FROM_CURSOR = 15 * (MathF.PI / 180f);
     public override void SetDefaults()
     {
@@ -32,7 +31,10 @@ class AmarGlobalItem : GlobalItem
     public override bool? UseItem(Item item, Player player)
     {
         if (player.whoAmI != Main.myPlayer) return null;
+        if (player.itemTime > 0) return null;
         if (item.DamageType != DamageClass.Melee || player.GetModPlayer<AmarPlayer>().teleportRange <= 0) return null;
+
+        float maxRange = player.GetModPlayer<AmarPlayer>().teleportRange;
 
         Vector2 lookDirection = Vector2.Normalize(Main.MouseWorld - player.Center);
 
@@ -54,7 +56,7 @@ class AmarGlobalItem : GlobalItem
             .Where(e =>
                 e.dot >= minDotProduct &&
                 e.dist > AmarAccessory.ENEMY_DESIRED_DISTANCE &&
-                e.dist < AmarAccessory.ENEMY_SCAN_RANGE
+                e.dist < maxRange
             );
 
         var best = candidates
@@ -64,7 +66,7 @@ class AmarGlobalItem : GlobalItem
         if (best.npc == null) return null;
 
         NPC target = best.npc;
-        var tpDistance = Math.Min(player.GetModPlayer<AmarPlayer>().teleportRange,
+        var tpDistance = Math.Min(maxRange,
             target.Hitbox.Distance(player.Center) - AmarAccessory.ENEMY_DESIRED_DISTANCE);
         var direction = Vector2.Normalize(target.Center - player.Center);
         var tpPos = player.position + direction * tpDistance;
