@@ -22,7 +22,7 @@ public class SimulorProjectile : ExplosiveProjectile
     }
     const float mergeDamageIncrease = Simulor.MERGE_DAMAGE_INCREASE_PERCENT / 100f;
 
-    int explosionWidth = 200;
+    public int explosionWidth = 100;
     public override int ExplosionWidth => explosionWidth;
 
     public override void SetDefaults()
@@ -71,7 +71,7 @@ public class SimulorProjectile : ExplosiveProjectile
                     DamageMult /= 2;
                     proj.timeLeft = baseTimeLeft;
                     proj.velocity *= 0.1f;
-                    TryExplode(480, 100);
+                    TryExplode((int)(explosionWidth * 2.4f), 100);
                 }
                 else
                 {
@@ -79,7 +79,7 @@ public class SimulorProjectile : ExplosiveProjectile
                     simulorProj.DamageMult /= 2;
                     Projectile.timeLeft = baseTimeLeft;
                     Projectile.velocity *= 0.1f;
-                    simulorProj.TryExplode(480, 100);
+                    simulorProj.TryExplode((int)(explosionWidth * 2.4f), 100);
                 }
             }
         }
@@ -95,10 +95,10 @@ public class SimulorProjectile : ExplosiveProjectile
     /// Makes this Projectile explode with the chosen radius (width and height) and chance to proc Electrified
     /// </summary>
     /// <returns>False if the Projectile is already exploding, otherwise true</returns>
-    public bool TryExplode(int radius = 200, int electricityChance = 30)
+    public bool TryExplode(int width = 100, int electricityChance = 30)
     {
         if (exploding) return false;
-        explosionWidth = radius;
+        explosionWidth = width;
         Projectile.GetGlobalProjectile<BuffGlobalProjectile>().AddElectro(electricityChance);
         if (electricityChance != 30)
         {
