@@ -1327,7 +1327,7 @@ Mods: {
 				Tooltip:
 					'''
 					+5% movement speed
-					+5% jump height
+					Slightly increases jump height
 					You teleport to enemies within +{0} tiles upon swinging a melee weapon.
 					'''
 			}

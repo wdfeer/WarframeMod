@@ -12,7 +12,7 @@ public class AmarAnguish : AmarAccessory
     {
         base.UpdateAccessory(player, hideVisual);
         player.moveSpeed += 0.05f;
-        player.jumpSpeedBoost += 0.05f;
+        player.jumpSpeedBoost += 1f;
     }
     public override void AddRecipes()
     {
