@@ -9,7 +9,10 @@ public class AtteraxProjectile : WhipProjectile
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
-		Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances = new() { new Common.StackableBuffChance(Common.StackableBuff.Bleed, chancePercent: Atterax.BLEED_CHANCE) };
+		Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances =
+        [
+            new Common.StackableBuffChance(Common.StackableBuff.Bleed, chancePercent: Atterax.BLEED_CHANCE)
+        ];
 		Projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier += Atterax.EXTRA_CRIT_MULT;
 	}
 	private float Timer
@@ -47,7 +50,7 @@ public class AtteraxProjectile : WhipProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		List<Vector2> list = new List<Vector2>();
+		List<Vector2> list = [];
 		Projectile.FillWhipControlPoints(Projectile, list);
 
 		DrawLine(list);

@@ -50,7 +50,7 @@ class ArcaneBlessingPlayer : ModPlayer
         if (stacks < ArcaneBlessing.MAX_STACKS)
             stacks++;
     }
-    public readonly int[] heartTypes = new int[] { ItemID.Heart, ItemID.CandyApple, ItemID.CandyCane };
+    public readonly int[] heartTypes = [ItemID.Heart, ItemID.CandyApple, ItemID.CandyCane];
     public override bool OnPickup(Item item)
     {
         if (enabled && heartTypes.Contains(item.type))

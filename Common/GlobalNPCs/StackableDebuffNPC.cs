@@ -3,8 +3,8 @@ public class StackableDebuffNPC : GlobalNPC
 {
     public override bool InstancePerEntity => true;
 
-    public List<BleedingBuff> bleeds = new();
-    public List<ElectricityBuff> electricity = new();
+    public List<BleedingBuff> bleeds = [];
+    public List<ElectricityBuff> electricity = [];
     const int tickTime = 60;
     int bleedDPS = 0;
     int BleedDamagePerTick => bleedDPS * tickTime / 60;
@@ -14,13 +14,13 @@ public class StackableDebuffNPC : GlobalNPC
     int electroTimer = 0;
     void ResetBleeds()
     {
-        bleeds = new List<BleedingBuff>();
+        bleeds = [];
         bleedDPS = 0;
         bleedTimer = 0;
     }
     void ResetElectro()
     {
-        electricity = new();
+        electricity = [];
         electroDPS = 0;
         electroTimer = 0;
     }

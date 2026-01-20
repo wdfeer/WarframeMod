@@ -34,8 +34,8 @@ public class BuffPlayer : CritPlayerHooks
     }
     public override void ResetEffects()
     {
-        buffsOnHitNPC = new List<BuffChance>();
-        stackableBuffsOnHitNPC = new List<StackableBuffChance>();
+        buffsOnHitNPC = [];
+        stackableBuffsOnHitNPC = [];
         bleedingChances = new();
     }
     public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)

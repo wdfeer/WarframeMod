@@ -50,7 +50,7 @@ public class ScoliacProjectile : WhipProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		List<Vector2> list = new List<Vector2>();
+		List<Vector2> list = [];
 		Projectile.FillWhipControlPoints(Projectile, list);
 
 		DrawLine(list);

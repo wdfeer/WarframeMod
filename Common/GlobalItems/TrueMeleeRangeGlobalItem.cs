@@ -98,8 +98,7 @@ class TrueMeleeRangeGlobalItem : GlobalItem
     }
 
     Vector2[] GetRectCorners(Rectangle rect) =>
-            new Vector2[]
-            {
-                rect.TopLeft(), rect.TopRight(),rect.BottomLeft(), rect.BottomRight()
-            };
+    [
+        rect.TopLeft(), rect.TopRight(),rect.BottomLeft(), rect.BottomRight()
+    ];
 }

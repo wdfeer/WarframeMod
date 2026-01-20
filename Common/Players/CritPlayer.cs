@@ -9,7 +9,7 @@ namespace WarframeMod.Common.Players;
 internal class CritPlayer : ModPlayer
 {
     public float critMultiplierPlayer = 1f;
-    public int[] GetItemTypesThatDoNotUseRelativeCrit() => new int[] { ModContent.ItemType<Nataruk>() };
+    public int[] GetItemTypesThatDoNotUseRelativeCrit() => [ModContent.ItemType<Nataruk>()];
     public float relativeCritChance = 0f;
     public float BaseCritChanceMult => relativeCritChance + 1f;
     public int summonCritChance = 0;
@@ -41,7 +41,7 @@ internal class CritPlayer : ModPlayer
     }
     CritPlayerHooks[] GetHookers()
     {
-        List<CritPlayerHooks> hookers = new();
+        List<CritPlayerHooks> hookers = [];
         for (int i = 0; i < Player.ModPlayers.Length; i++)
         {
             var element = Player.ModPlayers[i];

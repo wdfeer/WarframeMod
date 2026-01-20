@@ -66,7 +66,7 @@ public class KuvaNukorProjectile : BeamProjectile
     protected override void SetLaserPosition(Player player)
     {
         bool Hostile(NPC npc) => npc.active && !npc.friendly;
-        childLaserDestinations = new Vector2[0];
+        childLaserDestinations = [];
         for (Distance = MinDistance; Distance <= 1200f; Distance += 5f)
         {
             Vector2 start = BeamEnd;

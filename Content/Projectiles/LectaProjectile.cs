@@ -9,7 +9,8 @@ public class LectaProjectile : WhipProjectile
 	public override void SetDefaults()
 	{
 		base.SetDefaults();
-		Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances = new() { new Common.StackableBuffChance(Common.StackableBuff.Electro, Lecta.ELECTRO_CHANCE) };
+		Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances =
+            [new Common.StackableBuffChance(Common.StackableBuff.Electro, Lecta.ELECTRO_CHANCE)];
 		Projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 0.75f;
 	}
 	private float Timer
@@ -48,7 +49,7 @@ public class LectaProjectile : WhipProjectile
 
 	public override bool PreDraw(ref Color lightColor)
 	{
-		List<Vector2> list = new List<Vector2>();
+		List<Vector2> list = [];
 		Projectile.FillWhipControlPoints(Projectile, list);
 
 		DrawLine(list);

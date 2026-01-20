@@ -4,8 +4,8 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public abstract class UmbralAccessory : ModItem
 {
-    public static readonly int[] PERCENT_DAMAGE_REDUCTION_NOBOSS = new int[] { 8, 10, 12 };
-    public static readonly float[] TOTAL_DAMAGE_REDUCTION_NOBOSS = new float[] { 0.08f, 0.2f, 0.36f };
+    public static readonly int[] PERCENT_DAMAGE_REDUCTION_NOBOSS = [8, 10, 12];
+    public static readonly float[] TOTAL_DAMAGE_REDUCTION_NOBOSS = [0.08f, 0.2f, 0.36f];
     int umbraPower = 0;
     public abstract string UniqueTooltipDefault { get; }
     public abstract string GetCurrentUniqueTooltipValue(int umbraCount);

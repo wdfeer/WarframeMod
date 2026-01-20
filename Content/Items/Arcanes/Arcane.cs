@@ -1,8 +1,8 @@
 ﻿namespace WarframeMod.Content.Items.Arcanes;
 public abstract class Arcane : ModItem
 {
-    public static readonly Func<int>[] arcaneTypeGetters = new Func<int>[]
-    {
+    public static readonly Func<int>[] arcaneTypeGetters =
+    [
         () => ModContent.ItemType<ArcaneAvenger>(),
         () => ModContent.ItemType<ArcaneGuardian>(),
         () => ModContent.ItemType<VirtuosStrike>(),
@@ -21,7 +21,7 @@ public abstract class Arcane : ModItem
         () => ModContent.ItemType<ArcaneBlessing>(),
         () => ModContent.ItemType<ArcaneAcceleration>(),
         () => ModContent.ItemType<ArcaneEruption>()
-    };
+    ];
     public static int[] GetArcaneTypes()
         => arcaneTypeGetters.Select(x => x()).ToArray();
     public static int GetArcaneIndex(int type)

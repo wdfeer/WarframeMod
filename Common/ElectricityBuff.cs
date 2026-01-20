@@ -18,7 +18,7 @@ public struct ElectricityBuff
     }
     public static List<ElectricityBuff> UpdateAll(IEnumerable<ElectricityBuff> debuffs, out int damage)
     {
-        List<ElectricityBuff> newDebuffs = new List<ElectricityBuff>();
+        List<ElectricityBuff> newDebuffs = [];
         float totalDamage = 0;
         foreach (var item in debuffs)
         {

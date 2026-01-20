@@ -18,7 +18,7 @@ public struct BleedingBuff
     }
     public static List<BleedingBuff> UpdateAll(IEnumerable<BleedingBuff> bleeds, out int damage)
     {
-        List<BleedingBuff> newBleeds = new List<BleedingBuff>();
+        List<BleedingBuff> newBleeds = [];
         float totalDamage = 0;
         foreach (var item in bleeds)
         {

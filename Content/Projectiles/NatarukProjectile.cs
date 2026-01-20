@@ -137,9 +137,10 @@ public class NatarukProjectile : ModProjectile
         Projectile.velocity *= 16;
         Projectile.timeLeft = 180;
         Projectile.tileCollide = launchedLevel == ChargeLevel.Quick;
-        SoundStyle[] sounds = new SoundStyle[] { SoundID.Item5, SoundID.Item5.WithPitchOffset(-0.4f), SoundID.Item43.WithPitchOffset(0.5f), SoundID.Item8 };
+        SoundStyle[] sounds = [SoundID.Item5, SoundID.Item5.WithPitchOffset(-0.4f), SoundID.Item43.WithPitchOffset(0.5f), SoundID.Item8
+        ];
         SoundEngine.PlaySound(sounds[lvl], Projectile.Center);
-        float[] damageMults = new float[] { 1f, 1.5f, 2f, 2f };
+        float[] damageMults = [1f, 1.5f, 2f, 2f];
         Projectile.damage = (int)(Projectile.damage * damageMults[lvl]);
         Projectile.knockBack *= damageMults[lvl];
         int baseCritChance = new int[] { Nataruk.BASE_CRIT_UNCHARGED, Nataruk.BASE_CRIT_CHARGED - 15, Nataruk.BASE_CRIT_PERFECT, Nataruk.BASE_CRIT_CHARGED }[lvl];

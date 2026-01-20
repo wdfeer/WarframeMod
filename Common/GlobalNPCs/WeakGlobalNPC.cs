@@ -3,7 +3,7 @@
 internal class WeakGlobalNPC : GlobalNPC
 {
     public override bool InstancePerEntity => true;
-    List<int> weakTimes = new List<int>();
+    List<int> weakTimes = [];
     int WeakPower => weakTimes.Count;
     float DamageMultiplier => 1f / (MathF.Sqrt(WeakPower) + 1f);
     public override void AI(NPC npc)

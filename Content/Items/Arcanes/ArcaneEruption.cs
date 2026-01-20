@@ -26,7 +26,7 @@ class ArcaneEruptionPlayer : ModPlayer
                                        5f,
                                        Player.whoAmI);
     }
-    public readonly int[] starTypes = new int[] { ItemID.Star, ItemID.SoulCake, ItemID.SugarPlum };
+    public readonly int[] starTypes = [ItemID.Star, ItemID.SoulCake, ItemID.SugarPlum];
     public override bool OnPickup(Item item)
     {
         if (enabled && starTypes.Contains(item.type))

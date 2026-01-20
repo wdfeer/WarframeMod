@@ -24,7 +24,7 @@ internal class AmprexProjectile : ModProjectile
         Projectile.penetrate = 3;
     }
     const int HOMING_DISTANCE = 240;
-    List<NPC> hitNPCs = new();
+    List<NPC> hitNPCs = [];
     public override bool PreAI()
     {
         NPC closestEnemy = Main.npc.Where(x => x != null
