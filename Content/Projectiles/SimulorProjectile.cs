@@ -98,7 +98,7 @@ public class SimulorProjectile : ExplosiveProjectile
     public bool TryExplode(int width = 100, int electricityChance = 30)
     {
         if (exploding) return false;
-        explosionWidth = width;
+        explosionWidth = (int)(width * MathF.Sqrt(DamageMult));
         Projectile.GetGlobalProjectile<BuffGlobalProjectile>().AddElectro(electricityChance);
         if (electricityChance != 30)
         {

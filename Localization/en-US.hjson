@@ -1321,9 +1321,9 @@ Mods: {
 					Right-click to force all active orbs to explode in a small area, restoring mana
 					'''
 			}
-			
+
 			SynoidSimulor: {
-				DisplayName: SynoidSimulor
+				DisplayName: Synoid Simulor
 				Tooltip:
 					'''
 					Launches orbs that can't hit enemies directly and bounce off tiles 
