@@ -12,6 +12,6 @@ public class CatsEyeBuff : ModBuff
     }
     public override void Update(Player player, ref int buffIndex)
     {
-        player.GetModPlayer<CritPlayer>().summonCritChance += 50;
+        player.GetModPlayer<CritPlayer>().summonCritChance += CatsEye.CRIT;
     }
 }
