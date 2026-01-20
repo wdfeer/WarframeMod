@@ -1,5 +1,6 @@
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.Localization;
 using WarframeMod.Content.Projectiles;
 
@@ -28,6 +29,15 @@ public class SynoidSimulor : ModItem
         Item.autoReuse = false;
         Item.shoot = ModContent.ProjectileType<SimulorProjectile>();
         Item.shootSpeed = 16f;
+    }
+
+    public override void AddRecipes()
+    {
+        Recipe recipe = CreateRecipe();
+        recipe.AddIngredient<Simulor>();
+        recipe.AddIngredient(ItemID.SoulofSight, 8);
+        recipe.AddTile(TileID.MythrilAnvil);
+        recipe.Register();
     }
 
     public override bool AltFunctionUse(Player player) => activeProjectileIDs.Count > 0;
