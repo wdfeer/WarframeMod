@@ -2,7 +2,7 @@
 
 public abstract class AmarAccessory : ModItem
 {
-    public const int TELEPORT_RANGE = 8 * 16;
+    public const int TELEPORT_RANGE = 10 * 16;
     public const int ENEMY_DESIRED_DISTANCE = 2 * 16;
     public const float MAX_ENEMY_ANGLE_FROM_CURSOR = 15 * (MathF.PI / 180f);
     public override void SetDefaults()
