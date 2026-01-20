@@ -1341,6 +1341,16 @@ Mods: {
 					You teleport to enemies within +{0} tiles upon swinging a melee weapon.
 					'''
 			}
+
+			AmarContempt: {
+				DisplayName: Amar's Contempt
+				Tooltip:
+					'''
+					+12% melee damage
+					+20% true melee bleeding chance
+					You teleport to enemies within +{0} tiles upon swinging a melee weapon.
+					'''
+			}
 		}
 
 		Projectiles: {

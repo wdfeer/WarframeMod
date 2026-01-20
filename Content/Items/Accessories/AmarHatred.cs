@@ -8,7 +8,7 @@ public class AmarHatred : AmarAccessory
     {
         base.SetDefaults();
         Item.rare = ItemRarityID.LightRed;
-        Item.value = Item.sellPrice(silver: 33);
+        Item.value = Item.sellPrice(gold: 1);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
