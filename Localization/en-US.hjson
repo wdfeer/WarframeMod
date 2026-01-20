@@ -1331,6 +1331,16 @@ Mods: {
 					You teleport to enemies within +{0} tiles upon swinging a melee weapon.
 					'''
 			}
+
+			AmarHatred: {
+				DisplayName: Amar's Hatred
+				Tooltip:
+					'''
+					+7 defense
+					+10% melee damage
+					You teleport to enemies within +{0} tiles upon swinging a melee weapon.
+					'''
+			}
 		}
 
 		Projectiles: {
