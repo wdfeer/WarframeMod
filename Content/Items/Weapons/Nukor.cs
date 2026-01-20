@@ -7,7 +7,7 @@ public class Nukor : ModItem
 {
     public override void SetDefaults()
     {
-        Item.damage = 11;
+        Item.damage = 13;
         Item.crit = -2;
         Item.DamageType = DamageClass.Magic;
         Item.channel = true;
@@ -23,7 +23,7 @@ public class Nukor : ModItem
         Item.autoReuse = true;
         Item.shoot = ModContent.ProjectileType<NukorProjectile>();
         Item.shootSpeed = 12f;
-        Item.mana = 3;
+        Item.mana = 4;
         Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/KuvaNukorStartSound");
     }
 

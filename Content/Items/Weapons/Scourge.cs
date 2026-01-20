@@ -12,7 +12,7 @@ public class Scourge : ModItem
         Item.damage = 15;
         Item.crit = 0;
         Item.DamageType = DamageClass.Magic;
-        Item.mana = 8;
+        Item.mana = 9;
         Item.width = 95;
         Item.height = 15;
         Item.scale = 1f;

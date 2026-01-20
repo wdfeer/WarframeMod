@@ -11,7 +11,7 @@ public class Detron : ModItem
         Item.crit = 0;
         Item.noMelee = true;
         Item.DamageType = DamageClass.Magic;
-        Item.mana = 18;
+        Item.mana = 17;
         Item.width = 32;
         Item.height = 16;
         Item.useTime = 20;
