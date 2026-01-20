@@ -11,7 +11,7 @@ public class AmarAnguish : AmarAccessory
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         base.UpdateAccessory(player, hideVisual);
-        player.moveSpeed += 0.05f;
+        player.moveSpeed += 0.08f;
         player.jumpSpeedBoost += 1f;
     }
     public override void AddRecipes()

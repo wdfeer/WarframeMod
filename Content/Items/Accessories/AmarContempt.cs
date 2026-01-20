@@ -4,7 +4,7 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class AmarContempt : AmarAccessory
 {
-    private const int MELEE_DAMAGE_INCREASE_PERCENT = 12;
+    private const int MELEE_DAMAGE_INCREASE_PERCENT = 15;
     private const int TRUE_MELEE_BLEED_CHANCE = 20;
     public override void SetDefaults()
     {

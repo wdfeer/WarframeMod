@@ -1326,9 +1326,9 @@ Mods: {
 				DisplayName: Amar's Anguish
 				Tooltip:
 					'''
-					+5% movement speed
+					+8% movement speed
 					Slightly increases jump height
-					You teleport to enemies within +{0} tiles upon swinging a melee weapon.
+					You teleport to enemies within +{0} tiles upon swinging a melee weapon
 					'''
 			}
 
@@ -1338,7 +1338,7 @@ Mods: {
 					'''
 					+7 defense
 					+10% melee damage
-					You teleport to enemies within +{0} tiles upon swinging a melee weapon.
+					You teleport to enemies within +{0} tiles upon swinging a melee weapon
 					'''
 			}
 
@@ -1346,9 +1346,9 @@ Mods: {
 				DisplayName: Amar's Contempt
 				Tooltip:
 					'''
-					+12% melee damage
+					+15% melee damage
 					+20% true melee bleeding chance
-					You teleport to enemies within +{0} tiles upon swinging a melee weapon.
+					You teleport to enemies within +{0} tiles upon swinging a melee weapon
 					'''
 			}
 		}
