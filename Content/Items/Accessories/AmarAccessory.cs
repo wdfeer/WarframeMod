@@ -8,7 +8,7 @@ public abstract class AmarAccessory : ModItem
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(TELEPORT_RANGE_TILES);
     public const int TELEPORT_RANGE = TELEPORT_RANGE_TILES * 16;
     public const int ENEMY_DESIRED_DISTANCE = 2 * 16;
-    public const float MAX_ENEMY_ANGLE_FROM_CURSOR = 15 * (MathF.PI / 180f);
+    public const float MAX_ENEMY_DISTANCE_FROM_CURSOR = 5 * 16;
     public override void SetDefaults()
     {
         Item.accessory = true;
@@ -40,31 +40,26 @@ class AmarGlobalItem : GlobalItem
 
         float maxRange = player.GetModPlayer<AmarPlayer>().teleportRange;
 
-        Vector2 lookDirection = Vector2.Normalize(Main.MouseWorld - player.Center);
-
-        float minDotProduct = MathF.Cos(AmarAccessory.MAX_ENEMY_ANGLE_FROM_CURSOR);
-
         var candidates = Main.npc
             .Where(npc => npc.active && !npc.friendly)
             .Select(npc =>
             {
                 var dist = npc.Hitbox.Distance(player.Center);
                 var diff = npc.Center - player.Center;
-                if (diff == Vector2.Zero)
-                    return (npc, dot: -1f, dist);
+                if (diff == Vector2.Zero) return (npc, dist: 9999, distToCursor: 9999);
+                
+                var distToCursor = Main.MouseWorld.Distance(npc.Center);
 
-                var dir = Vector2.Normalize(diff);
-                var dot = Vector2.Dot(lookDirection, dir);
-                return (npc, dot, dist);
+                return (npc, dist, distToCursor);
             })
             .Where(e =>
-                e.dot >= minDotProduct &&
                 e.dist > AmarAccessory.ENEMY_DESIRED_DISTANCE &&
-                e.dist < maxRange
+                e.dist < maxRange &&
+                e.distToCursor < AmarAccessory.MAX_ENEMY_DISTANCE_FROM_CURSOR
             );
 
         var best = candidates
-            .OrderByDescending(e => e.dot / e.dist)
+            .OrderByDescending(e => e.distToCursor)
             .FirstOrDefault();
 
         if (best.npc == null) return null;
