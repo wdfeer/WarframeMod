@@ -1396,6 +1396,15 @@ Mods: {
 					{$Common.ElectroChance}
 					'''
 			}
+
+			Dread: {
+				DisplayName: Dread
+				Tooltip:
+					'''
+					20% bleed chance
+					+200% projectile velocity
+					'''
+			}
 		}
 
 		Projectiles: {
