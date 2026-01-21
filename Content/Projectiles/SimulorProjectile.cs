@@ -102,14 +102,7 @@ public class SimulorProjectile : ExplosiveProjectile
         Projectile.GetGlobalProjectile<BuffGlobalProjectile>().AddElectro(electricityChance);
         if (electricityChance != 30)
         {
-            Projectile.knockBack = 0f;
             implosion = true;
-            for (int i = 0; i < Main.maxNPCs; i++)
-            {
-                NPC target = Main.npc[i];
-                if (target.boss || target.type == NPCID.TargetDummy || (target.Center - Projectile.Center).Length() > Projectile.width) continue;
-                target.velocity += Vector2.Normalize(Projectile.Center - target.Center) * 6f;
-            }
         }
         Explode();
 
@@ -135,6 +128,13 @@ public class SimulorProjectile : ExplosiveProjectile
 
     public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
     {
+        if (implosion)
+        {
+            Vector2 extraVelocity = Projectile.Center.DirectionFrom(target.Center) *
+                                    Projectile.knockBack * target.knockBackResist;
+            target.velocity += extraVelocity;
+            modifiers.Knockback *= 0;
+        }
         modifiers.FinalDamage *= DamageMult;
     }
 }

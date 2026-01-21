@@ -23,7 +23,7 @@ public class SynoidSimulor : ModItem
         Item.useAnimation = 24;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.noMelee = true;
-        Item.knockBack = 6.9f;
+        Item.knockBack = 9f;
         Item.value = Item.sellPrice(gold: 10);
         Item.rare = ItemRarityID.LightPurple;
         Item.autoReuse = false;
