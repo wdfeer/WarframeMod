@@ -1385,7 +1385,16 @@ Mods: {
 
 			BulletDance: {
 				DisplayName: Bullet Dance
-				Tooltip: "+50% use speed on Sarpa, Redeemer and Redeemer Prime"
+				Tooltip: +50% use speed on Sarpa, Redeemer and Redeemer Prime
+			}
+
+			Cadus: {
+				DisplayName: Cadus
+				Tooltip:
+					'''
+					Every third swing has tripled damage
+					{$Common.ElectroChance}
+					'''
 			}
 		}
 
