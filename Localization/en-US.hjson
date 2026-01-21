@@ -769,7 +769,21 @@ Mods: {
 
 			ArcaScisco: {
 				DisplayName: Arca Scisco
-				Tooltip: On Hit: +5% Critical and Bleed chance, stacks up to 4 times
+				Tooltip:
+					'''
+					13% bleed chance
+					On Hit: +5% Critical and bleed chance, stacks up to 4 times
+					'''
+			}
+
+			TenetArcaScisco: {
+				DisplayName: Tenet Arca Scisco
+				Tooltip:
+					'''
+					13% bleed and weak chance
+					On Hit: +5% Critical and Bleed chance, stacks up to 6 times
+					Additional penetration
+					'''
 			}
 
 			ArumSpinosa: {

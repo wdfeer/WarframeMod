@@ -28,7 +28,7 @@ public class TenetArcaPlasmor : ModItem
     {
         Recipe recipe = CreateRecipe();
         recipe.AddIngredient(ItemID.FragmentNebula, 12);
-        recipe.AddIngredient(ModContent.ItemType<Fieldron>(), 1);
+        recipe.AddIngredient<Fieldron>();
         recipe.AddTile(TileID.LunarCraftingStation);
         recipe.Register();
     }
