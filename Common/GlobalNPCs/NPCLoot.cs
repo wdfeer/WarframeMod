@@ -1,4 +1,5 @@
 ﻿using Terraria.GameContent.ItemDropRules;
+using Terraria.Localization;
 using WarframeMod.Content.Items;
 using WarframeMod.Content.Items.Accessories;
 using WarframeMod.Content.Items.Weapons;
@@ -39,7 +40,6 @@ internal class NPCLoot : GlobalNPC
                 return ItemDropRule.Common(ModContent.ItemType<Kuva>(), 15);
             case NPCID.BigMimicCorruption or NPCID.BigMimicCrimson:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Kuva>(), 3);
-
             case NPCID.GoblinPeon or NPCID.GoblinSorcerer or NPCID.GoblinThief or NPCID.GoblinWarrior or NPCID.GoblinArcher:
                 return ItemDropRule.OneFromOptions(30,
                 [
@@ -51,6 +51,8 @@ internal class NPCLoot : GlobalNPC
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Fieldron>(), 4);
             case NPCID.Scutlix or NPCID.MartianWalker or NPCID.MartianDrone or NPCID.MartianEngineer or NPCID.MartianOfficer or NPCID.MartianTurret or NPCID.GigaZapper or NPCID.RayGunner or NPCID.GrayGrunt or NPCID.BrainScrambler:
                 return ItemDropRule.Common(ModContent.ItemType<Fieldron>(), 250);
+            case NPCID.WallofFlesh:
+                return ItemDropRule.ByCondition(new DreadDropCondition(), ModContent.ItemType<Dread>());
             default:
                 return null;
         }

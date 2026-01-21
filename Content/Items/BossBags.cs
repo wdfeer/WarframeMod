@@ -100,8 +100,6 @@ public class BossBags : GlobalItem
                     ModContent.ItemType<BazaPrime>(),
                     ModContent.ItemType<BulletDance>(),
                 });
-            default:
-                return null;
             case ItemID.MoonLordBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
                 {
@@ -109,6 +107,8 @@ public class BossBags : GlobalItem
                     ModContent.ItemType<TenetDetron>(),
                     ModContent.ItemType<PrismaLenz>()
                 });
+            default:
+                return null;
         }
     }
     public static IItemDropRule GetArcanesDropRule()

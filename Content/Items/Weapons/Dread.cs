@@ -1,4 +1,5 @@
 using Terraria.DataStructures;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.Localization;
 using WarframeMod.Common.GlobalProjectiles;
 
@@ -42,4 +43,18 @@ internal class Dread : ModItem
         (Mod as WarframeMod).SetProjectileExtraUpdatesNetSafe(projectileID, projectile.extraUpdates + 2);
         return false;
     }
+}
+
+class DreadDropCondition : IItemDropRuleCondition
+{
+    public bool CanDrop(DropAttemptInfo info)
+    {
+        int[] necroArmor = [ItemID.NecroHelmet, ItemID.NecroBreastplate, ItemID.NecroGreaves];
+        int[] playerArmor = info.player.armor.Select(item => item.type).ToArray();
+        return necroArmor.All(type => playerArmor.Contains(type));
+    }
+    public bool CanShowItemDropInUI()
+        => false;
+    public string GetConditionDescription()
+        => "Necro armor required.";
 }
