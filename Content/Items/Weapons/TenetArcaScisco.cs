@@ -1,4 +1,5 @@
 using Terraria.DataStructures;
+using Terraria.Localization;
 using WarframeMod.Common;
 using WarframeMod.Content.Projectiles;
 using WarframeMod.Common.GlobalProjectiles;
@@ -8,25 +9,27 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class TenetArcaScisco : ModItem
 {
+    public const int ELECTRO_CHANCE = 20;
     public const int MAX_STACKS = 6;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(ELECTRO_CHANCE);
     public override void SetDefaults()
     {
         Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/ArcaSciscoSound").ModifySoundStyle(pitchVariance: 0.08f);
-        Item.damage = 73;
-        Item.crit = 22;
+        Item.damage = 70;
+        Item.crit = 18;
         Item.DamageType = DamageClass.Magic;
         Item.mana = 10;
         Item.width = 32;
         Item.height = 20;
-        Item.useTime = 15;
-        Item.useAnimation = 15;
+        Item.useTime = 13;
+        Item.useAnimation = 13;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.noMelee = true;
         Item.knockBack = 1.6f;
         Item.value = Item.buyPrice(gold: 4);
         Item.rare = 9;
         Item.autoReuse = false;
-        Item.shoot = ModContent.ProjectileType<ArcaSciscoProjectile>();
+        Item.shoot = ModContent.ProjectileType<TenetArcaSciscoProjectile>();
         Item.shootSpeed = 16f;
     }
 
@@ -52,16 +55,14 @@ public class TenetArcaScisco : ModItem
     {
         int stacks = GetStacks(player);
         var proj = this.ShootWith(player, source, position, velocity, type, damage, knockback, spawnOffset: Item.width + 1);
-        proj.penetrate += 1;
-        var modProj = proj.ModProjectile as ArcaSciscoProjectile;
+        var modProj = proj.ModProjectile as TenetArcaSciscoProjectile;
         modProj.onHit = () =>
         {
             player.AddBuff(ModContent.BuffType<ArcaSciscoBuff>(), 180);
             player.GetModPlayer<ArcaSciscoPlayer>().stacks++;
         };
         var buffProj = proj.GetGlobalProjectile<BuffGlobalProjectile>();
-        buffProj.AddBleed(stacks * 5 + 13);
-        buffProj.buffChances.Add(new(BuffID.Weak, 300, 13));
+        buffProj.AddElectro(ELECTRO_CHANCE);
 
         return false;
     }

@@ -780,9 +780,9 @@ Mods: {
 				DisplayName: Tenet Arca Scisco
 				Tooltip:
 					'''
-					13% bleed and weak chance
+					{$Common.ElectroChance}
 					On Hit: +5% Critical and Bleed chance, stacks up to 6 times
-					Additional penetration
+					Projectiles explode in a small area
 					'''
 			}
 
@@ -1424,6 +1424,7 @@ Mods: {
 			KuvaSeerProjectile.DisplayName: Kuva Seer Projectile
 			ArcaneEruptionProjectile.DisplayName: Arcane Eruption Projectile
 			SimulorProjectile.DisplayName: Simulor Projectile
+			TenetArcaSciscoProjectile.DisplayName: Tenet Arca Scisco Projectile
 		}
 
 		Configs: {
