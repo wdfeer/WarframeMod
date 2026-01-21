@@ -22,7 +22,7 @@ public class SimulorProjectile : ExplosiveProjectile
     }
     const float mergeDamageIncrease = Simulor.MERGE_DAMAGE_INCREASE_PERCENT / 100f;
 
-    public int explosionWidth = 100;
+    public int explosionWidth = 120;
     public override int ExplosionWidth => explosionWidth;
 
     public override void SetDefaults()
