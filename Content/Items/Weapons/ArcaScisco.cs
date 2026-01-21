@@ -49,10 +49,12 @@ public class ArcaScisco : ModItem
         var modProj = proj.ModProjectile as ArcaSciscoProjectile;
         modProj.onHit = () =>
         {
-            player.AddBuff(Mod.Find<ModBuff>("ArcaSciscoBuff").Type, 180);
+            player.AddBuff(ModContent.BuffType<ArcaSciscoBuff>(), 180);
             player.GetModPlayer<ArcaSciscoPlayer>().stacks++;
         };
-        proj.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances.Add(new Common.StackableBuffChance(Common.StackableBuff.Bleed, stacks * 5 + 13));
+        proj.GetGlobalProjectile<BuffGlobalProjectile>()
+            .stackableBuffChances.Add(new Common.StackableBuffChance(Common.StackableBuff.Bleed,
+                stacks * 5 + 13));
 
         return false;
     }
