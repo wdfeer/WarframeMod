@@ -98,6 +98,7 @@ public class BossBags : GlobalItem
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
                 {
                     ModContent.ItemType<BazaPrime>(),
+                    ModContent.ItemType<BulletDance>(),
                 });
             default:
                 return null;

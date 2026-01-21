@@ -1382,6 +1382,11 @@ Mods: {
 					You teleport to enemies within +{0} tiles upon swinging a melee weapon
 					'''
 			}
+
+			BulletDance: {
+				DisplayName: Bullet Dance
+				Tooltip: "+50% use speed on Sarpa, Redeemer and Redeemer Prime"
+			}
 		}
 
 		Projectiles: {
