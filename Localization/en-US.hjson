@@ -1405,6 +1405,15 @@ Mods: {
 					+200% projectile velocity
 					'''
 			}
+
+			AnabolicPollination: {
+				DisplayName: Anabolic Pollination
+				Tooltip:
+					'''
+					+{0}% poison chance per minion slot above 1
+					+{1} poison damage per second per minion slot above 1
+					'''
+			}
 		}
 
 		Projectiles: {

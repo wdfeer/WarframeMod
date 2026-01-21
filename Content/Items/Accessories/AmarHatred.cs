@@ -19,7 +19,7 @@ public class AmarHatred : AmarAccessory
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ModContent.ItemType<SteelFiber>());
+        recipe.AddIngredient<SteelFiber>();
         recipe.AddIngredient(ItemID.WarriorEmblem);
         recipe.AddTile(TileID.TinkerersWorkbench);
         recipe.Register();

@@ -8,7 +8,7 @@ internal class DebuffDamageGlobalNPC : GlobalNPC
         InfectedClip,
         MalignantForce,
         Hellfire,
-        Other
+        AnabolicPollination,
     }
     public void AddBuffDamage(SourceId id, int buffType, int dps)
     {
