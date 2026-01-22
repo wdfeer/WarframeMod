@@ -19,15 +19,11 @@ public class GrimoireProjectile : ExplosiveProjectile
 
     public override void ExplosionDusts()
     {
-        DustHelper.NewDustsCircleFromCenter(8,
+        DustHelper.NewDustsCircleEdge(7, Projectile.Center, ExplosionWidth / 2, DustID.GemAmethyst);
+        DustHelper.NewDustsCircleFromCenter(3,
             Projectile.Center,
             ExplosionWidth / 2,
             DustID.Electric,
             2f);
-    }
-
-    public override void ExplosionSound()
-    {
-        // SoundEngine.PlaySound(SoundID.Dig);
     }
 }

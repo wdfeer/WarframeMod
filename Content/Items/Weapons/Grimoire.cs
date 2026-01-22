@@ -11,7 +11,7 @@ public class Grimoire : ModItem
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(ELECTRO_CHANCE);
     public override void SetDefaults()
     {
-        Item.damage = 12;
+        Item.damage = 28;
         Item.crit = 16;
         Item.DamageType = DamageClass.Magic;
         Item.mana = 6;
@@ -21,15 +21,32 @@ public class Grimoire : ModItem
         Item.useAnimation = 45;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.noMelee = true;
-        Item.knockBack = 2.25f;
+        Item.knockBack = 2f;
         Item.value = Item.sellPrice(gold: 3);
         Item.rare = 3;
         Item.shoot = ModContent.ProjectileType<GrimoireProjectile>();
-        Item.shootSpeed = 20f;
-        Item.UseSound = SoundID.Item11;
+        Item.shootSpeed = 16f;
     }
     public override bool AltFunctionUse(Player player)
         => true;
+
+    public override void ModifyManaCost(Player player, ref float reduce, ref float mult)
+    {
+        if (player.altFunctionUse == 2)
+        {
+            mult = 3f;
+        }
+    }
+
+    public override float UseSpeedMultiplier(Player player)
+    {
+        if (player.altFunctionUse == 2)
+        {
+            return 0.5f;
+        }
+
+        return 1f;
+    }
 
     public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage,
         ref float knockback)
@@ -37,7 +54,8 @@ public class Grimoire : ModItem
         if (player.altFunctionUse == 2)
         {
             type = ModContent.ProjectileType<GrimoireAltProjectile>();
-            velocity /= 2;
+            knockback += 5f;
+            velocity /= 3;
         }
     }
 }

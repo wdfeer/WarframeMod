@@ -1438,19 +1438,19 @@ Mods: {
 					Can penetrate enemies
 					'''
 			}
-			
+
 			SnipetronVandal: {
 				DisplayName: Snipetron Vandal
 				Tooltip: Can penetrate enemies
 			}
-			
+
 			Grimoire: {
 				DisplayName: Grimoire
 				Tooltip:
 					'''
-                    {$Common.ElectroChance}
+					{$Common.ElectroChance}
 					Alternate fire shoots a slow piercing orb with guaranteed electricity
-					Allows the collection of Grimoire accessories
+					Allows the collection of Grimoire upgrades
 					'''
 			}
 		}
@@ -1496,6 +1496,8 @@ Mods: {
 			ArcaneEruptionProjectile.DisplayName: Arcane Eruption Projectile
 			SimulorProjectile.DisplayName: Simulor Projectile
 			TenetArcaSciscoProjectile.DisplayName: Tenet Arca Scisco Projectile
+			GrimoireProjectile.DisplayName: Grimoire Projectile
+			GrimoireAltProjectile.DisplayName: Grimoire Alt Projectile
 		}
 
 		Configs: {
