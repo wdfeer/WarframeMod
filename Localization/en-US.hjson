@@ -1419,6 +1419,11 @@ Mods: {
 				DisplayName: Energy Conversion
 				Tooltip: +{0}% magic damage on next attack upon picking up a mana star
 			}
+
+			EnergyGenerator: {
+				DisplayName: Energy Generator
+				Tooltip: Minions drop a mana star every 10 assist kills
+			}
 		}
 
 		Projectiles: {

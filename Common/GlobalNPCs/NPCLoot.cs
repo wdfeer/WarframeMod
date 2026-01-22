@@ -47,6 +47,8 @@ internal class NPCLoot : GlobalNPC
                     ModContent.ItemType<Seer>(),
                     ModContent.ItemType<Cronus>()
                 ]);
+            case NPCID.SandElemental:
+                return ItemDropRule.Common(ModContent.ItemType<EnergyGenerator>(), 3);
             case NPCID.MartianSaucerCore:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Fieldron>(), 4);
             case NPCID.Scutlix or NPCID.MartianWalker or NPCID.MartianDrone or NPCID.MartianEngineer or NPCID.MartianOfficer or NPCID.MartianTurret or NPCID.GigaZapper or NPCID.RayGunner or NPCID.GrayGrunt or NPCID.BrainScrambler:
