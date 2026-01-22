@@ -1,6 +1,5 @@
 ﻿using WarframeMod.Common;
 using WarframeMod.Common.Players;
-using Terraria.ID;
 using Terraria.Localization;
 
 

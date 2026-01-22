@@ -1,5 +1,4 @@
 using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.Localization;
 using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Projectiles;

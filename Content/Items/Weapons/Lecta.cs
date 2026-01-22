@@ -1,5 +1,4 @@
-﻿using Terraria.GameContent.Creative;
-using WarframeMod.Content.Projectiles;
+﻿using WarframeMod.Content.Projectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
 public class Lecta : ModItem

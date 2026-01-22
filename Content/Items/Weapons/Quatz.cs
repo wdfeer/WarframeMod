@@ -1,8 +1,3 @@
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using System;
-using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
 using Terraria.Localization;

@@ -1,5 +1,4 @@
-﻿using Terraria.DataStructures;
-using WarframeMod.Common.GlobalNPCs;
+﻿using WarframeMod.Common.GlobalNPCs;
 
 namespace WarframeMod.Common.Players;
 

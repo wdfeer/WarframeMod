@@ -1,6 +1,4 @@
-﻿using Terraria.Localization;
-
-namespace WarframeMod.Content.Items.Accessories;
+﻿namespace WarframeMod.Content.Items.Accessories;
 
 public class EnergyGenerator : ModItem
 {

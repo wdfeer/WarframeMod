@@ -1,5 +1,3 @@
-using Terraria.Localization;
-
 namespace WarframeMod.Content.Items.Weapons;
 
 public abstract class CircularMelee : ModItem

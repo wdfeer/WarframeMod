@@ -1,5 +1,4 @@
 using Terraria.DataStructures;
-using WarframeMod.Common;
 using WarframeMod.Common.GlobalItems;
 using WarframeMod.Common.Players;
 using WarframeMod.Content.Projectiles;

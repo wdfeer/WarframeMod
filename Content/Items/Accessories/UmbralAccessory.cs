@@ -1,5 +1,3 @@
-using Terraria.DataStructures;
-
 namespace WarframeMod.Content.Items.Accessories;
 
 public abstract class UmbralAccessory : ModItem

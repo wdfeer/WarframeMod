@@ -1,4 +1,3 @@
-using Terraria.DataStructures;
 using WarframeMod.Content.Buffs;
 
 namespace WarframeMod.Content.Items.Arcanes;

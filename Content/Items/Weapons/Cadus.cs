@@ -1,8 +1,5 @@
-using Terraria.GameContent.UI.States;
 using Terraria.Localization;
 using WarframeMod.Common;
-using WarframeMod.Common.GlobalItems;
-using WarframeMod.Common.GlobalNPCs;
 
 namespace WarframeMod.Content.Items.Weapons;
 

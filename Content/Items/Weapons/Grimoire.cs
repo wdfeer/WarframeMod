@@ -1,8 +1,5 @@
-using Terraria.DataStructures;
 using Terraria.Localization;
 using WarframeMod.Content.Projectiles;
-using WarframeMod.Common.GlobalProjectiles;
-using WarframeMod.Common.Players;
 
 namespace WarframeMod.Content.Items.Weapons;
 public class Grimoire : ModItem

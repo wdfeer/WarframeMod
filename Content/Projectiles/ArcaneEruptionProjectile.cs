@@ -1,8 +1,3 @@
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using System;
 using WarframeMod.Content.Items.Arcanes;
 
 namespace WarframeMod.Content.Projectiles;

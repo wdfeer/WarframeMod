@@ -1,9 +1,3 @@
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using System;
-using Microsoft.Xna.Framework;
-
 namespace WarframeMod.Content.Items;
 public class Kuva : ModItem
 {

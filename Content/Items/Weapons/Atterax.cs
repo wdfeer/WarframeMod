@@ -1,5 +1,4 @@
-﻿using Terraria.GameContent.Creative;
-using Terraria.Localization;
+﻿using Terraria.Localization;
 using WarframeMod.Common.GlobalItems;
 using WarframeMod.Content.Projectiles;
 

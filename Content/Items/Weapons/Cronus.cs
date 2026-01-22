@@ -1,7 +1,5 @@
-using System.Security.Policy;
 using Terraria.Localization;
 using WarframeMod.Common.GlobalItems;
-using Terraria.ID;
 
 
 namespace WarframeMod.Content.Items.Weapons;

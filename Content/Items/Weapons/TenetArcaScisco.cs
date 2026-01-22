@@ -1,6 +1,5 @@
 using Terraria.DataStructures;
 using Terraria.Localization;
-using WarframeMod.Common;
 using WarframeMod.Content.Projectiles;
 using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Buffs;

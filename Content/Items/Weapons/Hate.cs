@@ -1,4 +1,3 @@
-using System.Security.Policy;
 using Terraria.Localization;
 using WarframeMod.Common.GlobalItems;
 

@@ -1,5 +1,3 @@
-using Terraria.ID;
-
 namespace WarframeMod.Content.Projectiles;
 
 internal class OrviusProjectile : GlaiveProjectile

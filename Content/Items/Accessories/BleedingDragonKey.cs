@@ -1,6 +1,4 @@
 ﻿using Terraria.GameContent.ItemDropRules;
-using WarframeMod.Common;
-using WarframeMod.Common.Players;
 
 namespace WarframeMod.Content.Items.Accessories;
 

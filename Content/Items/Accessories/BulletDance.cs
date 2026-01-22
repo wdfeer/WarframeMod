@@ -1,6 +1,4 @@
-﻿using WarframeMod.Common;
-using WarframeMod.Common.Players;
-using WarframeMod.Content.Items.Weapons;
+﻿using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Items.Accessories;
 
