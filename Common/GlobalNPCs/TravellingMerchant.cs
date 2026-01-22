@@ -10,6 +10,10 @@ internal class TravellingMerchant : GlobalNPC
         if (!Main.hardMode)
             return;
         AddItemToShop(ModContent.ItemType<PrimedReach>(), ref shop, ref nextSlot);
+        if (NPC.downedQueenSlime)
+        {
+            AddItemToShop(ModContent.ItemType<SnipetronVandal>(), ref shop, ref nextSlot);
+        }
         if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
         {
             AddItemToShop(ModContent.ItemType<MaraDetron>(), ref shop, ref nextSlot);

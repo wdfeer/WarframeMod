@@ -4,16 +4,13 @@ using WarframeMod.Common.GlobalProjectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
 
-public class Snipetron : ModItem
+public class SnipetronVandal : ModItem
 {
-    public const int CRIT_DAMAGE_DECREASE_PERCENT = 25;
-    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(CRIT_DAMAGE_DECREASE_PERCENT);
-
     public override void SetDefaults()
     {
-        Item.damage = 60;
-        Item.crit = 26;
-        Item.mana = 12;
+        Item.damage = 180;
+        Item.crit = 24;
+        Item.mana = 24;
         Item.DamageType = DamageClass.Magic;
         Item.width = 64;
         Item.height = 12;
@@ -22,8 +19,8 @@ public class Snipetron : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.noMelee = true;
         Item.knockBack = 6;
-        Item.value = Item.buyPrice(gold: 8);
-        Item.rare = 3;
+        Item.value = Item.buyPrice(gold: 33);
+        Item.rare = 5;
         Item.UseSound = SoundID.Item40;
         Item.autoReuse = false;
         Item.shootSpeed = 16f;
@@ -40,8 +37,7 @@ public class Snipetron : ModItem
     {
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width * 0.75f);
         var proj = this.ShootWith(player, source, position, velocity, type, damage, knockback);
-        proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier -= CRIT_DAMAGE_DECREASE_PERCENT / 100f;
-        proj.penetrate += 2;
+        proj.penetrate += 3;
         proj.usesLocalNPCImmunity = true;
         proj.localNPCHitCooldown = -1;
         return false;

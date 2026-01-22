@@ -1438,6 +1438,11 @@ Mods: {
 					Can penetrate enemies
 					'''
 			}
+			
+			SnipetronVandal: {
+				DisplayName: Snipetron Vandal
+				Tooltip: Can penetrate enemies
+			}
 		}
 
 		Projectiles: {
