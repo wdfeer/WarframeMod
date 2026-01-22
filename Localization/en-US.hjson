@@ -1453,7 +1453,7 @@ Mods: {
 					Allows the collection of Grimoire upgrades
 					'''
 			}
-			
+
 			VomeInvocation: {
 				DisplayName: Vome Invocation
 				Tooltip: Permanently triples Grimoire damage upon usage
