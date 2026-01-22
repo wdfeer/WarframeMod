@@ -47,6 +47,8 @@ internal class NPCLoot : GlobalNPC
                     ModContent.ItemType<Seer>(),
                     ModContent.ItemType<Cronus>()
                 ]);
+            case NPCID.PirateCorsair:
+                return ItemDropRule.Common(ModContent.ItemType<Rubico>(), 50);
             case NPCID.SandElemental:
                 return ItemDropRule.Common(ModContent.ItemType<EnergyGenerator>(), 3);
             case NPCID.MartianSaucerCore:

@@ -17,7 +17,6 @@ public class Vectis : ModItem
         Item.knockBack = 6;
         Item.value = Item.sellPrice(silver: 75);
         Item.rare = 3;
-        Item.UseSound = SoundID.Item40;
         Item.autoReuse = false;
         Item.shootSpeed = 16f;
         Item.shoot = 10;

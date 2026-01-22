@@ -1424,6 +1424,11 @@ Mods: {
 				DisplayName: Energy Generator
 				Tooltip: Minions drop a mana star every 10 assist kills
 			}
+
+			Rubico: {
+				DisplayName: Rubico
+				Tooltip: +50% critical damage
+			}
 		}
 
 		Projectiles: {
