@@ -14,9 +14,12 @@ internal class NPCLoot : GlobalNPC
         {
             case NPCID.GreenSlime or NPCID.BlueSlime:
                 return ItemDropRule.Common(ModContent.ItemType<Vitality>(), 200);
+            case NPCID.EaterofSouls or NPCID.DevourerHead or NPCID.BloodCrawler or NPCID.Crimera:
+                return ItemDropRule.ByCondition(new GrimoireDropCondition(), ModContent.ItemType<Grimoire>(), 25);
             case NPCID.JungleBat:
                 return ItemDropRule.Common(ModContent.ItemType<Furis>(), 40);
-            case NPCID.Skeleton or NPCID.SkeletonAlien or NPCID.SkeletonAstonaut or NPCID.SkeletonTopHat or NPCID.BoneThrowingSkeleton or NPCID.BoneThrowingSkeleton2:
+            case NPCID.Skeleton or NPCID.SkeletonAlien or NPCID.SkeletonAstonaut or NPCID.SkeletonTopHat
+                or NPCID.BoneThrowingSkeleton or NPCID.BoneThrowingSkeleton2:
                 return ItemDropRule.Common(ModContent.ItemType<PointStrike>(), 15);
             case NPCID.Harpy:
                 return ItemDropRule.OneFromOptions(30,
@@ -34,12 +37,16 @@ internal class NPCLoot : GlobalNPC
                     ModContent.ItemType<NaturalTalent>(),
                     ModContent.ItemType<Simulor>()
                 ]);
-            case NPCID.Corruptor or NPCID.CorruptSlime or NPCID.Slimer or NPCID.CursedHammer or NPCID.Clinger or NPCID.PigronCorruption or NPCID.DarkMummy or NPCID.DesertGhoulCorruption or
-                 NPCID.Herpling or NPCID.Crimslime or NPCID.BloodJelly or NPCID.BloodFeeder or NPCID.CrimsonAxe or NPCID.IchorSticker or NPCID.FloatyGross or NPCID.PigronCrimson or NPCID.BloodMummy or NPCID.DesertGhoulCrimson:
+            case NPCID.Corruptor or NPCID.CorruptSlime or NPCID.Slimer or NPCID.CursedHammer or NPCID.Clinger
+                or NPCID.PigronCorruption or NPCID.DarkMummy or NPCID.DesertGhoulCorruption or
+                NPCID.Herpling or NPCID.Crimslime or NPCID.BloodJelly or NPCID.BloodFeeder or NPCID.CrimsonAxe
+                or NPCID.IchorSticker or NPCID.FloatyGross or NPCID.PigronCrimson or NPCID.BloodMummy
+                or NPCID.DesertGhoulCrimson:
                 return ItemDropRule.Common(ModContent.ItemType<Kuva>(), 15);
             case NPCID.BigMimicCorruption or NPCID.BigMimicCrimson:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Kuva>(), 3);
-            case NPCID.GoblinPeon or NPCID.GoblinSorcerer or NPCID.GoblinThief or NPCID.GoblinWarrior or NPCID.GoblinArcher:
+            case NPCID.GoblinPeon or NPCID.GoblinSorcerer or NPCID.GoblinThief or NPCID.GoblinWarrior
+                or NPCID.GoblinArcher:
                 return ItemDropRule.OneFromOptions(30,
                 [
                     ModContent.ItemType<Tonkor>(),
@@ -52,7 +59,9 @@ internal class NPCLoot : GlobalNPC
                 return ItemDropRule.Common(ModContent.ItemType<EnergyGenerator>(), 3);
             case NPCID.MartianSaucerCore:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Fieldron>(), 4);
-            case NPCID.Scutlix or NPCID.MartianWalker or NPCID.MartianDrone or NPCID.MartianEngineer or NPCID.MartianOfficer or NPCID.MartianTurret or NPCID.GigaZapper or NPCID.RayGunner or NPCID.GrayGrunt or NPCID.BrainScrambler:
+            case NPCID.Scutlix or NPCID.MartianWalker or NPCID.MartianDrone or NPCID.MartianEngineer
+                or NPCID.MartianOfficer or NPCID.MartianTurret or NPCID.GigaZapper or NPCID.RayGunner or NPCID.GrayGrunt
+                or NPCID.BrainScrambler:
                 return ItemDropRule.Common(ModContent.ItemType<Fieldron>(), 250);
             case NPCID.WallofFlesh:
                 return ItemDropRule.ByCondition(new DreadDropCondition(), ModContent.ItemType<Dread>());
@@ -132,8 +141,10 @@ internal class NPCLoot : GlobalNPC
             ]));
             return dragonKeyRule;
         }
+
         return null;
     }
+
     public override void ModifyNPCLoot(NPC npc, Terraria.ModLoader.NPCLoot npcLoot)
     {
         var dropRule = GetItemDropRule(npc);
@@ -146,6 +157,7 @@ internal class NPCLoot : GlobalNPC
             normalModeRule.OnSuccess(dropRule);
             npcLoot.Add(normalModeRule);
         }
+
         dropRule = GetDragonKeyDropRule(npc);
         if (dropRule != null)
             npcLoot.Add(dropRule);

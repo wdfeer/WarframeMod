@@ -1,3 +1,4 @@
+using Terraria.GameContent.ItemDropRules;
 using Terraria.Localization;
 using WarframeMod.Content.Projectiles;
 
@@ -55,4 +56,15 @@ public class Grimoire : ModItem
             velocity /= 3;
         }
     }
+}
+class GrimoireDropCondition : IItemDropRuleCondition
+{
+    public bool CanDrop(DropAttemptInfo info)
+    {
+        return info.player.statManaMax2 > 200;
+    }
+    public bool CanShowItemDropInUI()
+        => false;
+    public string GetConditionDescription()
+        => "More mana required.";
 }
