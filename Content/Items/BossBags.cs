@@ -21,14 +21,14 @@ public class BossBags : GlobalItem
         switch (bagType)
         {
             case ItemID.KingSlimeBossBag:
-                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new[]
                 {
                     ModContent.ItemType<Tetra>(),
                     ModContent.ItemType<Physique>(),
                     ModContent.ItemType<InfectedClip>(),
                 });
             case ItemID.EyeOfCthulhuBossBag:
-                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new[]
                 {
                     ModContent.ItemType<HunterSynergy>(),
                     ModContent.ItemType<HunterMunitions>(),
@@ -36,7 +36,7 @@ public class BossBags : GlobalItem
                     ModContent.ItemType<SteelFiber>()
                 });
             case ItemID.EaterOfWorldsBossBag or ItemID.BrainOfCthulhuBossBag:
-                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new[]
                 {
                     ModContent.ItemType<RaktaBallistica>(),
                     ModContent.ItemType<GorgonWraith>(),
@@ -44,21 +44,21 @@ public class BossBags : GlobalItem
                     ModContent.ItemType<Intensify>()
                 });
             case ItemID.SkeletronBossBag:
-                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new[]
                 {
                     ModContent.ItemType<Desecrate>(),
                     ModContent.ItemType<Hate>(),
                     ModContent.ItemType<Baza>()
                 });
             case ItemID.QueenBeeBossBag:
-                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new[]
                 {
                     ModContent.ItemType<Kohm>(),
                     ModContent.ItemType<MaimingStrike>(),
                     ModContent.ItemType<DetectVulnerability>()
                 });
             case ItemID.WallOfFleshBossBag:
-                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new[]
                 {
                     ModContent.ItemType<Bite>(),
                     ModContent.ItemType<SplitChamber>(),
@@ -67,41 +67,42 @@ public class BossBags : GlobalItem
                     ModContent.ItemType<Zenistar>()
                 });
             case ItemID.QueenSlimeBossBag:
-                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new[]
                 {
                     ModContent.ItemType<HunterRecovery>(),
                     ModContent.ItemType<HunterCommand>(),
                     ModContent.ItemType<AcceleratedIsotope>(),
                     ModContent.ItemType<Magnetize>(),
-                    ModContent.ItemType<Gammacor>()
+                    ModContent.ItemType<Gammacor>(),
+                    ModContent.ItemType<EnergyConversion>()
                 });
             case ItemID.DestroyerBossBag:
-                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new[]
                 {
                     ModContent.ItemType<Opticor>(),
                     ModContent.ItemType<Lecta>()
                 });
             case ItemID.SkeletronPrimeBossBag:
-                return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new[]
                 {
                     ModContent.ItemType<Acceltra>()
                 });
             case ItemID.TwinsBossBag:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Vaporize>(), 2);
             case ItemID.PlanteraBossBag:
-                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new int[]
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1, new[]
                 {
                     ModContent.ItemType<StradavarPrime>(),
                     ModContent.ItemType<SerratedRounds>()
                 });
             case ItemID.GolemBossBag:
-                return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new[]
                 {
                     ModContent.ItemType<BazaPrime>(),
                     ModContent.ItemType<BulletDance>(),
                 });
             case ItemID.MoonLordBossBag:
-                return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new int[]
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(2, new[]
                 {
                     ModContent.ItemType<PrismaGorgon>(),
                     ModContent.ItemType<TenetDetron>(),

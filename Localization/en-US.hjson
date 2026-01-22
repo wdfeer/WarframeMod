@@ -1414,6 +1414,11 @@ Mods: {
 					+{1} poison damage per second per minion slot above 1
 					'''
 			}
+
+			EnergyConversion: {
+				DisplayName: Energy Conversion
+				Tooltip: +{0}% magic damage on next attack upon picking up a mana star
+			}
 		}
 
 		Projectiles: {
