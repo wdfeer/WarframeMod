@@ -1427,7 +1427,16 @@ Mods: {
 
 			Rubico: {
 				DisplayName: Rubico
-				Tooltip: +50% critical damage
+				Tooltip: +{0}% critical damage
+			}
+
+			Snipetron: {
+				DisplayName: Snipetron
+				Tooltip:
+					'''
+					-{0}% critical damage
+					Can penetrate enemies
+					'''
 			}
 		}
 
