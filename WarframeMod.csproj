@@ -6,8 +6,6 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-  </ItemGroup>
-  <ItemGroup>
     <EditorConfigFiles Remove="./.editorconfig" />
   </ItemGroup>
   <ItemGroup>

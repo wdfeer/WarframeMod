@@ -5,6 +5,7 @@ using WarframeMod.Content.Projectiles;
 namespace WarframeMod.Content.Items.Weapons;
 public class Grimoire : ModItem
 {
+    public static bool vomeInvocationActive;
     public const int ELECTRO_CHANCE = 20;
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(ELECTRO_CHANCE);
     public override void SetDefaults()
@@ -25,27 +26,28 @@ public class Grimoire : ModItem
         Item.shoot = ModContent.ProjectileType<GrimoireProjectile>();
         Item.shootSpeed = 16f;
     }
-    public override bool AltFunctionUse(Player player)
-        => true;
 
-    public override void ModifyManaCost(Player player, ref float reduce, ref float mult)
+    public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
     {
-        if (player.altFunctionUse == 2)
+        if (vomeInvocationActive)
         {
-            mult = 3f;
+            damage *= 3;
         }
     }
 
+    public override bool AltFunctionUse(Player player)
+        => true;
+    public override void ModifyManaCost(Player player, ref float reduce, ref float mult)
+    {
+        if (player.altFunctionUse == 2) mult = 3f;
+    }
     public override float UseSpeedMultiplier(Player player)
     {
         if (player.altFunctionUse == 2)
-        {
             return 0.5f;
-        }
 
         return 1f;
     }
-
     public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage,
         ref float knockback)
     {
@@ -67,4 +69,15 @@ class GrimoireDropCondition : IItemDropRuleCondition
         => false;
     public string GetConditionDescription()
         => "More mana required.";
+}
+class GrimoireUpgradeDropCondition : IItemDropRuleCondition
+{
+    public bool CanDrop(DropAttemptInfo info)
+    {
+        return info.player.HeldItem.type == ModContent.ItemType<Grimoire>();
+    }
+    public bool CanShowItemDropInUI()
+        => false;
+    public string GetConditionDescription()
+        => "Requires holding a Grimoire.";
 }

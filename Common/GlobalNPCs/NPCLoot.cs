@@ -1,6 +1,7 @@
 ﻿using Terraria.GameContent.ItemDropRules;
 using WarframeMod.Content.Items;
 using WarframeMod.Content.Items.Accessories;
+using WarframeMod.Content.Items.Consumables;
 using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Common.GlobalNPCs;
@@ -64,7 +65,9 @@ internal class NPCLoot : GlobalNPC
                 or NPCID.BrainScrambler:
                 return ItemDropRule.Common(ModContent.ItemType<Fieldron>(), 250);
             case NPCID.WallofFlesh:
-                return ItemDropRule.ByCondition(new DreadDropCondition(), ModContent.ItemType<Dread>());
+                return ItemDropRule.AlwaysAtleastOneSuccess(
+                    ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<VomeInvocation>()),
+                    ItemDropRule.ByCondition(new DreadDropCondition(), ModContent.ItemType<Dread>()));
             default:
                 return null;
         }
