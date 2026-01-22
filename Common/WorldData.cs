@@ -7,7 +7,7 @@ public class WorldData : ModSystem
 {
     public override void LoadWorldData(TagCompound tag)
     {
-        Grimoire.vomeInvocationActive = (bool)tag["VomeInvocationActive"];
+        Grimoire.vomeInvocationActive = (Byte)tag["VomeInvocationActive"] != 0;
     }
     public override void SaveWorldData(TagCompound tag)
     {
