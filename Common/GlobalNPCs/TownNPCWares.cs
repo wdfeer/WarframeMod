@@ -9,18 +9,21 @@ internal class TownNPCWares : GlobalNPC
         switch (shop.NpcType)
         {
             case NPCID.Merchant:
-                shop.Add(ModContent.ItemType<MK1Paris>());
-                shop.Add(ModContent.ItemType<MK1Bo>());
+                shop.Add<MK1Paris>();
+                shop.Add<MK1Bo>();
                 return;
             case NPCID.ArmsDealer:
-                shop.Add(ModContent.ItemType<Burston>());
+                shop.Add<Burston>();
                 return;
             case NPCID.GoblinTinkerer:
-                shop.Add(ModContent.ItemType<Ballistica>());
-                shop.Add(ModContent.ItemType<Tonkor>());
+                shop.Add<Ballistica>();
+                shop.Add<Tonkor>();
                 return;
             case NPCID.Mechanic:
-                shop.Add(ModContent.ItemType<Spectra>());
+                shop.Add<Spectra>();
+                return;
+            case NPCID.SkeletonMerchant:
+                shop.Add<Snipetron>(Condition.DownedSkeletron);
                 return;
             default:
                 return;
