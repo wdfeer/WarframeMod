@@ -123,6 +123,11 @@ Mods: {
 				DisplayName: Virtuos Strike
 				Description: +33% Critical Damage
 			}
+
+			VomeInvocationBuff: {
+				DisplayName: Grimoire Damage
+				Description: Mods.WarframeMod.Buffs.VomeInvocationBuff.Description
+			}
 		}
 
 		Items: {
@@ -1457,12 +1462,12 @@ Mods: {
 			VomeInvocation: {
 				DisplayName: Vome Invocation
 				Tooltip:
-				    '''
+					'''
 					Permanently upgrades a Grimoire in the inventory:
 					+20 damage
 					Alternate Fire hits increase Grimoire damage by 4% for each enemy hit for 15 seconds
 					Stacks up to 60%
-				    '''
+					'''
 			}
 		}
 

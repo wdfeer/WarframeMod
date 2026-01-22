@@ -47,7 +47,6 @@ public class GrimoireAltProjectile : ModProjectile
         {
             owner.AddBuff(ModContent.BuffType<VomeInvocationBuff>(), 60 * 15);
             owner.GetModPlayer<VomeInvocationPlayer>().stacks++;
-
         }
     }
 }

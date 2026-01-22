@@ -27,6 +27,13 @@ public class Grimoire : ModItem
         Item.shoot = ModContent.ProjectileType<GrimoireProjectile>();
         Item.shootSpeed = 16f;
     }
+    public override void UpdateInventory(Player player)
+    {
+        if (vomeInvocationActive)
+        {
+            Item.rare = 5;
+        }
+    }
 
     public override bool AltFunctionUse(Player player)
         => true;
@@ -55,9 +62,7 @@ public class Grimoire : ModItem
     public override void LoadData(TagCompound tag)
     {
         if (tag.ContainsKey("vomeInvocationActive"))
-        {
             vomeInvocationActive = tag.GetBool("vomeInvocationActive");
-        }
     }
     public override void SaveData(TagCompound tag)
     {
