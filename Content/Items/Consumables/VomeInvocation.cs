@@ -12,6 +12,10 @@ public class VomeInvocation : ModItem
         Item.rare = 4;
         Item.value = Item.sellPrice(gold: 2);
         Item.consumable = true;
+        Item.useTime = 45;
+        Item.useAnimation = 45;
+        Item.useStyle = ItemUseStyleID.HoldUp;
+        Item.UseSound = SoundID.Item4;
     }
 
     public override bool? UseItem(Player player)
