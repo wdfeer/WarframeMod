@@ -1,13 +1,14 @@
 using Terraria.GameContent.ItemDropRules;
 using Terraria.Localization;
+using Terraria.ModLoader.IO;
 using WarframeMod.Content.Projectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
 public class Grimoire : ModItem
 {
-    public static bool vomeInvocationActive;
     public const int ELECTRO_CHANCE = 20;
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(ELECTRO_CHANCE);
+    public bool vomeInvocationActive;
     public override void SetDefaults()
     {
         Item.damage = 28;
@@ -25,14 +26,6 @@ public class Grimoire : ModItem
         Item.rare = 3;
         Item.shoot = ModContent.ProjectileType<GrimoireProjectile>();
         Item.shootSpeed = 16f;
-    }
-
-    public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
-    {
-        if (vomeInvocationActive)
-        {
-            damage *= 3;
-        }
     }
 
     public override bool AltFunctionUse(Player player)
@@ -58,6 +51,21 @@ public class Grimoire : ModItem
             velocity /= 3;
         }
     }
+
+    public override void LoadData(TagCompound tag)
+    {
+        if (tag.ContainsKey("vomeInvocationActive"))
+        {
+            vomeInvocationActive = tag.GetBool("vomeInvocationActive");
+        }
+    }
+    public override void SaveData(TagCompound tag)
+    {
+        tag["vomeInvocationActive"] = vomeInvocationActive;
+    }
+    
+    public static Grimoire GetPlayerGrimoire(Player player)
+        => player.inventory.First(item => item.type == ModContent.ItemType<Grimoire>()).ModItem as Grimoire;
 }
 class GrimoireDropCondition : IItemDropRuleCondition
 {

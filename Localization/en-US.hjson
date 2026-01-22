@@ -1456,7 +1456,13 @@ Mods: {
 
 			VomeInvocation: {
 				DisplayName: Vome Invocation
-				Tooltip: Permanently triples Grimoire damage upon usage
+				Tooltip:
+				    '''
+					Permanently upgrades a Grimoire in the inventory:
+					+20 damage
+					Alternate Fire hits increase Grimoire damage by 4% for each enemy hit for 15 seconds
+					Stacks up to 60%
+				    '''
 			}
 		}
 

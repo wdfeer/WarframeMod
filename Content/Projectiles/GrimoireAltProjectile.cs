@@ -1,5 +1,8 @@
 using WarframeMod.Common;
 using WarframeMod.Common.GlobalProjectiles;
+using WarframeMod.Content.Buffs;
+using WarframeMod.Content.Items.Consumables;
+using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Projectiles;
 
@@ -22,7 +25,6 @@ public class GrimoireAltProjectile : ModProjectile
         Projectile.idStaticNPCHitCooldown = 20;
         Projectile.GetGlobalProjectile<BuffGlobalProjectile>().AddElectro(100);
     }
-
     public override void AI()
     {
         float dustMultiplier = (float)Projectile.timeLeft / baseTimeLeft;
@@ -36,5 +38,16 @@ public class GrimoireAltProjectile : ModProjectile
             Projectile.width / 3,
             DustID.Electric,
             2f);
+    }
+
+    public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+    {
+        var owner = Main.player[Projectile.owner];
+        if (Grimoire.GetPlayerGrimoire(owner).vomeInvocationActive)
+        {
+            owner.AddBuff(ModContent.BuffType<VomeInvocationBuff>(), 60 * 15);
+            owner.GetModPlayer<VomeInvocationPlayer>().stacks++;
+
+        }
     }
 }
