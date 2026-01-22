@@ -1,4 +1,5 @@
 using Terraria.DataStructures;
+using Terraria.Localization;
 using WarframeMod.Content.Projectiles;
 using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Common.Players;
@@ -6,6 +7,8 @@ using WarframeMod.Common.Players;
 namespace WarframeMod.Content.Items.Weapons;
 public class Grimoire : ModItem
 {
+    public const int ELECTRO_CHANCE = 20;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(ELECTRO_CHANCE);
     public override void SetDefaults()
     {
         Item.damage = 12;
@@ -34,7 +37,7 @@ public class Grimoire : ModItem
         if (player.altFunctionUse == 2)
         {
             type = ModContent.ProjectileType<GrimoireAltProjectile>();
-
+            velocity /= 2;
         }
     }
 }
