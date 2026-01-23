@@ -23,7 +23,12 @@ class RisInvocationPlayer : ModPlayer
         if (item.ModItem is Grimoire grimoire && grimoire.HasUpgrade(GrimoireUpgradeType.RisInvocation))
             damage.Base += 40;
     }
-
+    public override float UseSpeedMultiplier(Item item)
+    {
+        if (item.ModItem is Grimoire grimoire && grimoire.HasUpgrade(GrimoireUpgradeType.RisInvocation) && Player.altFunctionUse != 2)
+            return 1.5f;
+        return 1f;
+    }
     public override void ModifyShootStats(Item item, ref Vector2 position, ref Vector2 velocity, ref int type,
         ref int damage,
         ref float knockback)

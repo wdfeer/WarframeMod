@@ -1491,6 +1491,7 @@ Mods: {
 					'''
 					Permanently upgrades a Grimoire in the inventory:
 					+40 base damage
+					+50% base primary fire rate
 					Doubled secondary fire projectile velocity
 					'''
 			}
