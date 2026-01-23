@@ -1480,7 +1480,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permanently upgrades a Grimoire in the inventory:
-					+20 base damage
+					+30 base damage
 					Killed enemies grant all teammates +{0}% fire rate for {1} seconds
 					'''
 			}
@@ -1490,7 +1490,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permanently upgrades a Grimoire in the inventory:
-					+60 base damage
+					+70 base damage
 					+50% base primary fire rate
 					Doubled secondary fire projectile velocity
 					'''
@@ -1501,7 +1501,7 @@ Mods: {
 				Tooltip:
 					'''
 					Permanently upgrades a Grimoire in the inventory:
-					+40 base damage
+					+50 base damage
 					+20% critical chance
 					'''
 			}

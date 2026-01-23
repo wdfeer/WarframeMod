@@ -29,7 +29,7 @@ class LohkCanticlePlayer : ModPlayer
     public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
     {
         if (item.ModItem is Grimoire grimoire && grimoire.HasUpgrade(GrimoireUpgradeType.LohkCanticle))
-            damage.Base += 20;
+            damage.Base += 30;
     }
     public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
     {
