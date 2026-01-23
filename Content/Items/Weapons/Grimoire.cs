@@ -1,6 +1,7 @@
 using Terraria.GameContent.ItemDropRules;
 using Terraria.Localization;
 using Terraria.ModLoader.IO;
+using WarframeMod.Content.Items.Consumables;
 using WarframeMod.Content.Projectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
@@ -8,7 +9,8 @@ public class Grimoire : ModItem
 {
     public const int ELECTRO_CHANCE = 20;
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(ELECTRO_CHANCE);
-    public bool vomeInvocationActive;
+    public List<string> upgrades = [];
+    public bool HasUpgrade(uint index) => upgrades.Contains(GrimoireUpgrade.Upgrades[index]);
     public override void SetDefaults()
     {
         Item.damage = 28;
@@ -29,10 +31,7 @@ public class Grimoire : ModItem
     }
     public override void UpdateInventory(Player player)
     {
-        if (vomeInvocationActive)
-        {
-            Item.rare = 5;
-        }
+        Item.rare = 3 + upgrades.Count;
     }
 
     public override bool AltFunctionUse(Player player)
@@ -61,18 +60,27 @@ public class Grimoire : ModItem
 
     public override void LoadData(TagCompound tag)
     {
-        if (tag.ContainsKey("vomeInvocationActive"))
-            vomeInvocationActive = tag.GetBool("vomeInvocationActive");
+        foreach (var id in GrimoireUpgrade.Upgrades)
+        {
+            if (tag.ContainsKey(id) && !upgrades.Contains(id))
+            {
+                upgrades.Add(id);
+            }
+        }
     }
     public override void SaveData(TagCompound tag)
     {
-        tag["vomeInvocationActive"] = vomeInvocationActive;
+        foreach (var id in upgrades)
+        {
+            tag[id] = true;
+        }
     }
     
     public static Grimoire GetPlayerGrimoire(Player player)
         => player.inventory.First(item => item.type == ModContent.ItemType<Grimoire>()).ModItem as Grimoire;
 }
-class GrimoireDropCondition : IItemDropRuleCondition
+
+public class GrimoireDropCondition : IItemDropRuleCondition
 {
     public bool CanDrop(DropAttemptInfo info)
     {
@@ -83,7 +91,7 @@ class GrimoireDropCondition : IItemDropRuleCondition
     public string GetConditionDescription()
         => "More mana required.";
 }
-class GrimoireUpgradeDropCondition : IItemDropRuleCondition
+public class GrimoireUpgradeDropCondition : IItemDropRuleCondition
 {
     public bool CanDrop(DropAttemptInfo info)
     {
