@@ -8,8 +8,8 @@ namespace WarframeMod.Content.Items.Consumables;
 public class LohkCanticle : GrimoireUpgrade
 {
     public const int FIRE_RATE_INCREASE_PERCENT = 15;
-    public const int BUFF_TIME = 15 * 60;
-    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(FIRE_RATE_INCREASE_PERCENT, BUFF_TIME);
+    public const int BUFF_TIME_SECONDS = 15;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(FIRE_RATE_INCREASE_PERCENT, BUFF_TIME_SECONDS);
     public override GrimoireUpgradeType UpgradeType => GrimoireUpgradeType.LohkCanticle;
     public override void SetDefaults()
     {
@@ -52,7 +52,7 @@ class LohkCanticleGlobalNPC : GlobalNPC
         {
             foreach (var player in Main.player.Where(it => it.active && it.team == markedByTeam))
             {
-                player.AddBuff(ModContent.BuffType<LohkCanticleBuff>(), LohkCanticle.BUFF_TIME,
+                player.AddBuff(ModContent.BuffType<LohkCanticleBuff>(), LohkCanticle.BUFF_TIME_SECONDS * 60,
                     Main.LocalPlayer == player);
             }
         }

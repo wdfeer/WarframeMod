@@ -131,7 +131,7 @@ Mods: {
 
 			LohkCanticleBuff: {
 				DisplayName: Lohk Canticle Buff
-				Description: Mods.WarframeMod.Buffs.LohkCanticleBuff.Description
+				Description: +15% fire rate
 			}
 		}
 
