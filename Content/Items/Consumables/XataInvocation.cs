@@ -26,6 +26,6 @@ class XataInvocationPlayer : ModPlayer
     public override void ModifyWeaponCrit(Item item, ref float crit)
     {
         if (item.ModItem is Grimoire grimoire && grimoire.HasUpgrade(GrimoireUpgradeType.XataInvocation))
-            crit += 0.2f;
+            crit += 20;
     }
 }

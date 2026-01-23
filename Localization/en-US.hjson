@@ -1495,7 +1495,7 @@ Mods: {
 					Doubled secondary fire projectile velocity
 					'''
 			}
-			
+
 			XataInvocation: {
 				DisplayName: Xata Invocation
 				Tooltip:
