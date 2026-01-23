@@ -128,6 +128,11 @@ Mods: {
 				DisplayName: Grimoire Damage
 				Description: Mods.WarframeMod.Buffs.VomeInvocationBuff.Description
 			}
+
+			LohkCanticleBuff: {
+				DisplayName: Lohk Canticle Buff
+				Description: Mods.WarframeMod.Buffs.LohkCanticleBuff.Description
+			}
 		}
 
 		Items: {
@@ -1464,9 +1469,19 @@ Mods: {
 				Tooltip:
 					'''
 					Permanently upgrades a Grimoire in the inventory:
-					+20 damage
+					+20 base damage
 					Alternate Fire hits increase Grimoire damage by 4% for each enemy hit for 15 seconds
 					Stacks up to 60%
+					'''
+			}
+
+			LohkCanticle: {
+				DisplayName: LohkCanticle
+				Tooltip:
+					'''
+					Permanently upgrades a Grimoire in the inventory:
+					+20 base damage
+					Killed enemies grant all teammates +{0}% fire rate for {1} seconds
 					'''
 			}
 		}

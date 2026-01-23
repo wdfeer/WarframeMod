@@ -4,9 +4,7 @@ namespace WarframeMod.Content.Items.Consumables;
 
 public abstract class GrimoireUpgrade : ModItem
 {
-    public static string[] Upgrades = ["VomeInvocation"];
-    public abstract uint Index { get; }
-    public string Upgrade => Upgrades[Index];
+    public abstract GrimoireUpgradeType UpgradeType { get; }
     public override void SetDefaults()
     {
         Item.width = 44;
@@ -20,10 +18,15 @@ public abstract class GrimoireUpgrade : ModItem
     public override bool? UseItem(Player player)
     {
         var grimoire = Grimoire.GetPlayerGrimoire(player);
-        if (grimoire.upgrades.Contains(Upgrade))
+        if (grimoire.upgrades.Contains(UpgradeType))
             return false;
 
-        grimoire.upgrades.Add(Upgrade);
+        grimoire.upgrades.Add(UpgradeType);
         return true;
     }
+}
+public enum GrimoireUpgradeType : uint
+{
+    VomeInvocation,
+    LohkCanticle
 }

@@ -9,8 +9,8 @@ public class Grimoire : ModItem
 {
     public const int ELECTRO_CHANCE = 20;
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(ELECTRO_CHANCE);
-    public List<string> upgrades = [];
-    public bool HasUpgrade(uint index) => upgrades.Contains(GrimoireUpgrade.Upgrades[index]);
+    public List<GrimoireUpgradeType> upgrades = [];
+    public bool HasUpgrade(GrimoireUpgradeType type) => upgrades.Contains(type);
     public override void SetDefaults()
     {
         Item.damage = 28;
@@ -60,11 +60,12 @@ public class Grimoire : ModItem
 
     public override void LoadData(TagCompound tag)
     {
-        foreach (var id in GrimoireUpgrade.Upgrades)
+        foreach (uint index in GrimoireUpgradeType.GetValuesAsUnderlyingType(typeof(uint)))
         {
-            if (tag.ContainsKey(id) && !upgrades.Contains(id))
+            string id = index.ToString();
+            if (tag.ContainsKey(id) && !upgrades.Contains((GrimoireUpgradeType)index))
             {
-                upgrades.Add(id);
+                upgrades.Add((GrimoireUpgradeType)index);
             }
         }
     }
@@ -72,12 +73,19 @@ public class Grimoire : ModItem
     {
         foreach (var id in upgrades)
         {
-            tag[id] = true;
+            tag[((uint)id).ToString()] = true;
         }
     }
-    
+
     public static Grimoire GetPlayerGrimoire(Player player)
-        => player.inventory.First(item => item.type == ModContent.ItemType<Grimoire>()).ModItem as Grimoire;
+    {
+        var item = player.inventory.FirstOrDefault(item => item.type == ModContent.ItemType<Grimoire>(), null);
+        if (item != null)
+        {
+           return item.ModItem as Grimoire;
+        }
+        return null;
+    }
 }
 
 public class GrimoireDropCondition : IItemDropRuleCondition

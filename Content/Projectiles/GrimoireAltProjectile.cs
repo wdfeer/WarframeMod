@@ -43,7 +43,7 @@ public class GrimoireAltProjectile : ModProjectile
     public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
     {
         var owner = Main.player[Projectile.owner];
-        if (Grimoire.GetPlayerGrimoire(owner).HasUpgrade(VomeInvocation.INDEX))
+        if (Grimoire.GetPlayerGrimoire(owner).HasUpgrade(GrimoireUpgradeType.VomeInvocation))
         {
             owner.AddBuff(ModContent.BuffType<VomeInvocationBuff>(), 60 * 15);
             owner.GetModPlayer<VomeInvocationPlayer>().stacks++;
