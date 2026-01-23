@@ -1,16 +1,12 @@
-﻿namespace WarframeMod.Content.Items.Accessories;
+﻿using Terraria.Localization;
+
+namespace WarframeMod.Content.Items.Accessories;
 
 public class HunterRecovery : HunterAccessory
 {
     public const int HEAL_TIMES_PER_SECOND = 2;
-    public override string DefaultTooltip => $"Summon hits heal 1 life, up to {HEAL_TIMES_PER_SECOND} times per second\nHeal amount scales with your max life and your minion slots";
     int oldHealAmount = 1;
-    public override void ModifyTooltips(List<TooltipLine> tooltips)
-    {
-        var t0 = tooltips.Find(t => t.Name == "Tooltip0");
-        if (t0 != null)
-            t0.Text = $"Summon hits heal {oldHealAmount} life, up to {HEAL_TIMES_PER_SECOND} times per second";
-    }
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(oldHealAmount, HEAL_TIMES_PER_SECOND);
     public override void SetDefaults()
     {
         Item.accessory = true;

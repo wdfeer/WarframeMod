@@ -5,7 +5,6 @@ namespace WarframeMod.Content.Items.Accessories;
 public class HunterCommand : HunterAccessory
 {
     public const int DAMAGE_ON_BLEEDING_PERCENT = 15;
-    public override string DefaultTooltip => $"+{DAMAGE_ON_BLEEDING_PERCENT}% summon damage on bleeding enemies as a separate multiplier";
     public override void SetDefaults()
     {
         Item.accessory = true;

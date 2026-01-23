@@ -6,7 +6,6 @@ namespace WarframeMod.Content.Items.Accessories;
 public class HunterMunitions : HunterAccessory
 {
     public const int BLEED_CHANCE_PERCENT = 30;
-    public override string DefaultTooltip => $"{BLEED_CHANCE_PERCENT}% bleeding chance on critical hits";
     public override void SetDefaults()
     {
         Item.accessory = true;
