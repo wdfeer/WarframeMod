@@ -21,7 +21,7 @@ class RisInvocationPlayer : ModPlayer
     public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
     {
         if (item.ModItem is Grimoire grimoire && grimoire.HasUpgrade(GrimoireUpgradeType.RisInvocation))
-            damage.Base += 40;
+            damage.Base += 60;
     }
     public override float UseSpeedMultiplier(Item item)
     {
