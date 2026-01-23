@@ -750,6 +750,11 @@ Mods: {
 				DisplayName: Arcane Battery
 				Tooltip: +{0} max mana per point of defense, up to +{1} max mana
 			}
+			
+			MoltVigor: {
+				DisplayName: Molt Vigor
+				Tooltip: +{0}% magic damage on other weapons after using a magic weapon
+			}
 
 			VirtuosStrike: {
 				DisplayName: Virtuos Strike
