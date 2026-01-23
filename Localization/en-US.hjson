@@ -1495,6 +1495,16 @@ Mods: {
 					Doubled secondary fire projectile velocity
 					'''
 			}
+			
+			XataInvocation: {
+				DisplayName: Xata Invocation
+				Tooltip:
+					'''
+					Permanently upgrades a Grimoire in the inventory:
+					+30 base damage
+					+20% critical chance
+					'''
+			}
 		}
 
 		Projectiles: {

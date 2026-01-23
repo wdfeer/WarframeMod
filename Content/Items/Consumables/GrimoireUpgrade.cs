@@ -29,5 +29,6 @@ public enum GrimoireUpgradeType : uint
 {
     VomeInvocation,
     LohkCanticle,
-    RisInvocation
+    RisInvocation,
+    XataInvocation
 }
