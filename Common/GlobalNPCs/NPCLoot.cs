@@ -58,6 +58,9 @@ internal class NPCLoot : GlobalNPC
                 return ItemDropRule.Common(ModContent.ItemType<Rubico>(), 50);
             case NPCID.SandElemental:
                 return ItemDropRule.Common(ModContent.ItemType<EnergyGenerator>(), 3);
+            case NPCID.DD2DrakinT2 or NPCID.DD2OgreT2 or NPCID.DD2LightningBugT3:
+                return ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<LohkCanticle>(),
+                    50);
             case NPCID.MartianSaucerCore:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Fieldron>(), 4);
             case NPCID.Scutlix or NPCID.MartianWalker or NPCID.MartianDrone or NPCID.MartianEngineer
