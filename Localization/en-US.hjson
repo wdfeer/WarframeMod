@@ -1484,6 +1484,16 @@ Mods: {
 					Killed enemies grant all teammates +{0}% fire rate for {1} seconds
 					'''
 			}
+
+			RisInvocation: {
+				DisplayName: Ris Invocation
+				Tooltip:
+					'''
+					Permanently upgrades a Grimoire in the inventory:
+					+40 base damage
+					Doubled secondary fire projectile velocity
+					'''
+			}
 		}
 
 		Projectiles: {

@@ -71,6 +71,9 @@ internal class NPCLoot : GlobalNPC
                 return ItemDropRule.SequentialRules(1,
                     ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<VomeInvocation>()),
                     ItemDropRule.ByCondition(new DreadDropCondition(), ModContent.ItemType<Dread>()));
+            case NPCID.HallowBoss:
+                return ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(),
+                    ModContent.ItemType<RisInvocation>(), 1);
             default:
                 return null;
         }

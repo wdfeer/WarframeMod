@@ -21,19 +21,16 @@ public class LohkCanticle : GrimoireUpgrade
 class LohkCanticlePlayer : ModPlayer
 {
     private bool active;
-
     public override void ResetEffects()
     {
         var grimoire = Grimoire.GetPlayerGrimoire(Player);
         active = grimoire != null && grimoire.HasUpgrade(GrimoireUpgradeType.LohkCanticle);
     }
-
     public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
     {
         if (item.ModItem is Grimoire grimoire && grimoire.HasUpgrade(GrimoireUpgradeType.LohkCanticle))
             damage.Base += 20;
     }
-
     public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
     {
         if (active && proj.ModProjectile is GrimoireProjectile or GrimoireAltProjectile)

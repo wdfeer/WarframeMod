@@ -28,5 +28,6 @@ public abstract class GrimoireUpgrade : ModItem
 public enum GrimoireUpgradeType : uint
 {
     VomeInvocation,
-    LohkCanticle
+    LohkCanticle,
+    RisInvocation
 }
