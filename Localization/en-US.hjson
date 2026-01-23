@@ -1476,7 +1476,7 @@ Mods: {
 			}
 
 			LohkCanticle: {
-				DisplayName: LohkCanticle
+				DisplayName: Lohk Canticle
 				Tooltip:
 					'''
 					Permanently upgrades a Grimoire in the inventory:

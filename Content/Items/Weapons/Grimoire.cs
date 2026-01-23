@@ -60,12 +60,12 @@ public class Grimoire : ModItem
 
     public override void LoadData(TagCompound tag)
     {
-        foreach (uint index in GrimoireUpgradeType.GetValuesAsUnderlyingType(typeof(uint)))
+        foreach (GrimoireUpgradeType type in GrimoireUpgradeType.GetValuesAsUnderlyingType(typeof(GrimoireUpgradeType)))
         {
-            string id = index.ToString();
-            if (tag.ContainsKey(id) && !upgrades.Contains((GrimoireUpgradeType)index))
+            string id = type.ToString();
+            if (tag.ContainsKey(id) && !upgrades.Contains((GrimoireUpgradeType)type))
             {
-                upgrades.Add((GrimoireUpgradeType)index);
+                upgrades.Add((GrimoireUpgradeType)type);
             }
         }
     }
@@ -73,7 +73,7 @@ public class Grimoire : ModItem
     {
         foreach (var id in upgrades)
         {
-            tag[((uint)id).ToString()] = true;
+            tag[id.ToString()] = true;
         }
     }
 

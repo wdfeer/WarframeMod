@@ -22,8 +22,11 @@ class LohkCanticlePlayer : ModPlayer
 {
     private bool active;
 
-    public override void ResetEffects() =>
-        active = Grimoire.GetPlayerGrimoire(Player).HasUpgrade(GrimoireUpgradeType.LohkCanticle);
+    public override void ResetEffects()
+    {
+        var grimoire = Grimoire.GetPlayerGrimoire(Player);
+        active = grimoire != null && grimoire.HasUpgrade(GrimoireUpgradeType.LohkCanticle);
+    }
 
     public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
     {
