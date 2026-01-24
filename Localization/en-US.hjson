@@ -1515,19 +1515,19 @@ Mods: {
 					+20% critical chance
 					'''
 			}
-			
+
 			BuzzKill: {
 				DisplayName: Buzz Kill
 				Tooltip: +{0}% melee bleeding chance
 			}
-			
+
 			HealingReturn: {
 				DisplayName: Healing Return
 				Tooltip:
-				'''
-				On true melee hit:
-				Heal yourself by the number of buffs and debuffs on the target, up to once per second
-				'''
+					'''
+					On true melee hit:
+					Heal yourself by the number of buffs and debuffs on the target, up to once per second
+					'''
 			}
 		}
 

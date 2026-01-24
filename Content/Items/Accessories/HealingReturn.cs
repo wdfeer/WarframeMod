@@ -14,29 +14,32 @@ public class HealingReturn : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetModPlayer<HealingReturnPlayer>().active = true;
+        var modPlayer = player.GetModPlayer<HealingReturnPlayer>();
+        modPlayer.active = true;
+        modPlayer.lastHealTimer++;
     }
 }
 
 class HealingReturnPlayer : ModPlayer
 {
     public bool active;
-    private double lastHealTime;
+    public int lastHealTimer;
     public override void ResetEffects()
     {
         active = false;
     }
-
     public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
     {
-        if (active && !item.noMelee && item.DamageType == DamageClass.Melee && (Main.time - lastHealTime) < 1)
+        if (active && !item.noMelee && item.DamageType == DamageClass.Melee && lastHealTimer >= 60)
         {
             int buffs = target.buffTime.Count(time => time > 0);
             buffs += target.GetGlobalNPC<StackableDebuffNPC>().bleeds.Count == 0 ? 0 : 1;
             buffs += target.GetGlobalNPC<StackableDebuffNPC>().electricity.Count == 0 ? 0 : 1;
-            Player.Heal(buffs);
-            Player.HealEffect(buffs);
-            lastHealTime = Main.time;
+            if (buffs > 0)
+            {
+                Player.Heal(buffs);
+                lastHealTimer = 0;
+            }
         }
     }
 }
