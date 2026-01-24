@@ -1515,7 +1515,7 @@ Mods: {
 					+20% critical chance
 					'''
 			}
-			
+
 			JahuCanticle: {
 				DisplayName: Jahu Canticle
 				Tooltip:
