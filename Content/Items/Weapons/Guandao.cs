@@ -27,7 +27,10 @@ internal class Guandao : CircularMelee
     public override Vector2 HitboxOffset => new(16, 0);
     public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
     {
-        if (target.defense < ENEMY_DEFENSE_LESS_THAN)
+        int defense = target.defense;
+        if (target.HasBuff(BuffID.Ichor))
+            defense -= 20; // target.defense is for some reason not decreased by default
+        if (defense < ENEMY_DEFENSE_LESS_THAN)
         {
             modifiers.SourceDamage *= 2;
             modifiers.Knockback *= 2;
