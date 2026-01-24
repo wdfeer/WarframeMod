@@ -40,10 +40,12 @@ internal class NPCLoot : GlobalNPC
                 ]);
             case NPCID.Corruptor or NPCID.CorruptSlime or NPCID.Slimer or NPCID.CursedHammer or NPCID.Clinger
                 or NPCID.PigronCorruption or NPCID.DarkMummy or NPCID.DesertGhoulCorruption or
-                NPCID.Herpling or NPCID.Crimslime or NPCID.BloodJelly or NPCID.BloodFeeder or NPCID.CrimsonAxe
+                NPCID.Herpling or NPCID.Crimslime or NPCID.BloodJelly or NPCID.CrimsonAxe
                 or NPCID.IchorSticker or NPCID.FloatyGross or NPCID.PigronCrimson or NPCID.BloodMummy
                 or NPCID.DesertGhoulCrimson:
                 return ItemDropRule.Common(ModContent.ItemType<Kuva>(), 15);
+            case NPCID.BloodFeeder or NPCID.CorruptGoldfish:
+                return ItemDropRule.Common(ModContent.ItemType<BuzzKill>(), 33);
             case NPCID.BigMimicCorruption or NPCID.BigMimicCrimson:
                 return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Kuva>(), 3);
             case NPCID.GoblinPeon or NPCID.GoblinSorcerer or NPCID.GoblinThief or NPCID.GoblinWarrior
