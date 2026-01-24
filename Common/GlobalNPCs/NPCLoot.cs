@@ -59,7 +59,9 @@ internal class NPCLoot : GlobalNPC
             case NPCID.PirateCorsair:
                 return ItemDropRule.Common(ModContent.ItemType<Rubico>(), 50);
             case NPCID.SandElemental:
-                return ItemDropRule.Common(ModContent.ItemType<EnergyGenerator>(), 3);
+                return ItemDropRule.OneFromOptions(2,
+                    ModContent.ItemType<EnergyGenerator>(),
+                    ModContent.ItemType<Guandao>());
             case NPCID.Unicorn or NPCID.Gastropod:
                 return ItemDropRule.Common(ModContent.ItemType<HealingReturn>(), 50);
             case NPCID.DD2DrakinT2 or NPCID.DD2OgreT2 or NPCID.DD2LightningBugT3:

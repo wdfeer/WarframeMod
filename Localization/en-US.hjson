@@ -1529,6 +1529,15 @@ Mods: {
 					Heal yourself by the number of buffs and debuffs on the target, up to once per second
 					'''
 			}
+
+			Guandao: {
+				DisplayName: Guandao
+				Tooltip:
+					'''
+					{$Mods.WarframeMod.Common.ModifyCritDamage}
+                    Doubled damage and knockback against enemies with less than 10 defense
+					'''
+			}
 		}
 
 		Projectiles: {
