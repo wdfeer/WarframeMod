@@ -27,8 +27,9 @@ public abstract class GrimoireUpgrade : ModItem
 }
 public enum GrimoireUpgradeType : uint
 {
+    JahuCanticle,
     VomeInvocation,
     LohkCanticle,
     RisInvocation,
-    XataInvocation
+    XataInvocation,
 }

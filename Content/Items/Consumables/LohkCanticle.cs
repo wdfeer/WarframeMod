@@ -1,4 +1,5 @@
 using Terraria.Localization;
+using WarframeMod.Common.GlobalNPCs;
 using WarframeMod.Content.Buffs;
 using WarframeMod.Content.Items.Weapons;
 using WarframeMod.Content.Projectiles;
@@ -11,6 +12,7 @@ public class LohkCanticle : GrimoireUpgrade
     public const int BUFF_TIME_SECONDS = 15;
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(FIRE_RATE_INCREASE_PERCENT, BUFF_TIME_SECONDS);
     public override GrimoireUpgradeType UpgradeType => GrimoireUpgradeType.LohkCanticle;
+
     public override void SetDefaults()
     {
         base.SetDefaults();
@@ -18,42 +20,28 @@ public class LohkCanticle : GrimoireUpgrade
         Item.value = Item.sellPrice(gold: 2);
     }
 }
+
 class LohkCanticlePlayer : ModPlayer
 {
     private bool active;
+
     public override void ResetEffects()
     {
         var grimoire = Grimoire.GetPlayerGrimoire(Player);
         active = grimoire != null && grimoire.HasUpgrade(GrimoireUpgradeType.LohkCanticle);
     }
+
     public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
     {
         if (item.ModItem is Grimoire grimoire && grimoire.HasUpgrade(GrimoireUpgradeType.LohkCanticle))
             damage.Base += 30;
     }
+
     public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
     {
         if (active && proj.ModProjectile is GrimoireProjectile or GrimoireAltProjectile)
         {
-            target.GetGlobalNPC<LohkCanticleGlobalNPC>().markedByTeam = Player.team;
+            target.GetGlobalNPC<GrimoireKillGlobalNPC>().Mark(Player, GrimoireUpgradeType.LohkCanticle);
         }
-    }
-}
-class LohkCanticleGlobalNPC : GlobalNPC
-{
-    public override bool InstancePerEntity => true;
-    public int markedByTeam = -1;
-    public override bool PreKill(NPC npc)
-    {
-        if (markedByTeam != -1)
-        {
-            foreach (var player in Main.player.Where(it => it.active && it.team == markedByTeam))
-            {
-                player.AddBuff(ModContent.BuffType<LohkCanticleBuff>(), LohkCanticle.BUFF_TIME_SECONDS * 60,
-                    Main.LocalPlayer == player);
-            }
-        }
-
-        return base.PreKill(npc);
     }
 }

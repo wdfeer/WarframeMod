@@ -28,6 +28,9 @@ internal class NPCLoot : GlobalNPC
                     ModContent.ItemType<MotusSetup>(),
                     ModContent.ItemType<MotusSignal>(),
                 ]);
+            case NPCID.CochinealBeetle or NPCID.CyanBeetle or NPCID.LacBeetle:
+                return ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<JahuCanticle>(),
+                    2);
             case NPCID.BloodZombie or NPCID.Drippler:
                 return ItemDropRule.Common(ModContent.ItemType<PiercingHit>(), 80);
             case NPCID.FireImp:

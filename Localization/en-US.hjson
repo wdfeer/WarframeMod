@@ -1515,6 +1515,16 @@ Mods: {
 					+20% critical chance
 					'''
 			}
+			
+			JahuCanticle: {
+				DisplayName: Jahu Canticle
+				Tooltip:
+					'''
+					Permanently upgrades a Grimoire in the inventory:
+					+15% fire rate
+					Killing enemies inflicts Ichor on nearby enemies
+					'''
+			}
 
 			BuzzKill: {
 				DisplayName: Buzz Kill
