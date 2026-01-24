@@ -1515,6 +1515,11 @@ Mods: {
 					+20% critical chance
 					'''
 			}
+			
+			BuzzKill: {
+				DisplayName: Buzz Kill
+				Tooltip: +{0}% melee bleeding chance
+			}
 		}
 
 		Projectiles: {
