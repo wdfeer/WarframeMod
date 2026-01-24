@@ -1520,6 +1520,15 @@ Mods: {
 				DisplayName: Buzz Kill
 				Tooltip: +{0}% melee bleeding chance
 			}
+			
+			HealingReturn: {
+				DisplayName: Healing Return
+				Tooltip:
+				'''
+				On true melee hit:
+				Heal yourself by the number of buffs and debuffs on the target, up to once per second
+				'''
+			}
 		}
 
 		Projectiles: {

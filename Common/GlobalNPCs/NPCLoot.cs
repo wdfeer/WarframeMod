@@ -58,6 +58,8 @@ internal class NPCLoot : GlobalNPC
                 return ItemDropRule.Common(ModContent.ItemType<Rubico>(), 50);
             case NPCID.SandElemental:
                 return ItemDropRule.Common(ModContent.ItemType<EnergyGenerator>(), 3);
+            case NPCID.Unicorn or NPCID.Gastropod:
+                return ItemDropRule.Common(ModContent.ItemType<HealingReturn>(), 50);
             case NPCID.DD2DrakinT2 or NPCID.DD2OgreT2 or NPCID.DD2LightningBugT3:
                 return ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<LohkCanticle>(),
                     50);
