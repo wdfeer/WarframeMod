@@ -1535,7 +1535,7 @@ Mods: {
 				Tooltip:
 					'''
 					{$Mods.WarframeMod.Common.ModifyCritDamage}
-                    Doubled damage and knockback against enemies with less than 10 defense
+					Doubled damage and knockback against enemies with less than 10 defense
 					'''
 			}
 		}

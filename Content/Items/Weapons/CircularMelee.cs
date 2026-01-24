@@ -10,6 +10,8 @@ public abstract class CircularMelee : ModItem
         Item.autoReuse = true;
     }
     public virtual float SizeMult => 1.5f;
+    public virtual float HitboxSizeMult => 1f;
+    public virtual Vector2 HitboxOffset => new();
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
         float rotation = player.itemRotation + MathHelper.PiOver4;
@@ -20,9 +22,9 @@ public abstract class CircularMelee : ModItem
     }
     public override void UseItemHitbox(Player player, ref Rectangle hitbox, ref bool noHitbox)
     {
-        int radius = (int)(player.itemWidth * SizeMult);
+        int radius = (int)(player.itemWidth * SizeMult * HitboxSizeMult);
         Point pos = (player.Center - new Vector2(radius, radius)).ToPoint();
+        pos += (HitboxOffset * player.direction).ToPoint();
         hitbox = new Rectangle(pos.X, pos.Y, radius * 2, radius * 2);
-        hitbox.X += player.direction;
     }
 }
