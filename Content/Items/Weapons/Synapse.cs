@@ -10,7 +10,7 @@ public class Synapse : ModItem
     {
         Item.damage = 21;
         Item.crit = 31;
-        Item.mana = 3;
+        Item.mana = 4;
         Item.DamageType = DamageClass.Magic;
         Item.channel = true;
         Item.width = 48;
@@ -30,7 +30,15 @@ public class Synapse : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.SoulofNight, 5);
+        recipe.AddIngredient(ItemID.AdamantiteBar, 8);
+        recipe.AddIngredient(ItemID.SoulofNight, 15);
+        recipe.AddIngredient(ItemID.Ichor, 12);
+        recipe.AddTile(TileID.Anvils);
+        recipe.Register();
+        
+        recipe = CreateRecipe();
+        recipe.AddIngredient(ItemID.TitaniumBar, 12);
+        recipe.AddIngredient(ItemID.SoulofNight, 20);
         recipe.AddIngredient(ItemID.Ichor, 12);
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
