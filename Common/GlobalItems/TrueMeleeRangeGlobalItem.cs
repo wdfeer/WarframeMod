@@ -20,7 +20,13 @@ class TrueMeleeRangeGlobalItem : GlobalItem
         if (radialAttack)
             SpawnDusts(player, oldLength, newLength, MathF.PI);
     }
-    void ModifyHitboxSize(Player player, ref Rectangle hitbox, float sizeMult, int sizeIncrease, out float oldLength, out float newLength, out bool radialAttack)
+    void ModifyHitboxSize(Player player,
+        ref Rectangle hitbox,
+        float sizeMult,
+        int sizeIncrease,
+        out float oldLength,
+        out float newLength,
+        out bool radialAttack)
     {
         bool IsRadialAttack(Player player, Rectangle hitbox)
         {
