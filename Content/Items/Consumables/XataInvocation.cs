@@ -1,7 +1,4 @@
-using Terraria.Localization;
-using WarframeMod.Content.Buffs;
 using WarframeMod.Content.Items.Weapons;
-using WarframeMod.Content.Projectiles;
 
 namespace WarframeMod.Content.Items.Consumables;
 

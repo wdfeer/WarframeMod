@@ -1,5 +1,4 @@
 ﻿using Terraria.Localization;
-using WarframeMod.Common;
 using WarframeMod.Common.Players;
 
 namespace WarframeMod.Content.Items.Accessories;

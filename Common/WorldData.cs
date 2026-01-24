@@ -1,5 +1,4 @@
 using Terraria.ModLoader.IO;
-using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Common;
 
