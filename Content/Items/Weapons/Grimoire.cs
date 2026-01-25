@@ -1,3 +1,4 @@
+using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.Localization;
 using Terraria.ModLoader.IO;
@@ -77,6 +78,7 @@ public class Grimoire : ModItem
     {
         if (player.altFunctionUse == 2)
         {
+            SoundEngine.PlaySound(SoundID.Item117, position);
             type = ModContent.ProjectileType<GrimoireAltProjectile>();
             knockback += 5f;
             velocity /= 3;
