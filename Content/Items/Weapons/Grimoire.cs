@@ -11,33 +11,21 @@ public class Grimoire : ModItem
 {
     public const int ELECTRO_CHANCE = 20;
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(ELECTRO_CHANCE);
-
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
-        foreach (GrimoireUpgradeType type in upgrades)
-        {
-            string text = "";
-            switch (type)
-            {
-                case GrimoireUpgradeType.VomeInvocation:
-                    text = Mod.GetLocalization("Items.VomeCanticle.Upgrade").Value;
-                    break;
-                case GrimoireUpgradeType.LohkCanticle:
-                    text = Mod.GetLocalization("Items.VomeCanticle.Upgrade")
-                        .WithFormatArgs(LohkCanticle.FIRE_RATE_INCREASE_PERCENT, LohkCanticle.BUFF_TIME_SECONDS).Value;
-                    break;
-                case GrimoireUpgradeType.JahuCanticle:
-                    text = Mod.GetLocalization("Items.JahuCanticle.Upgrade").Value;
-                    break;
-                case GrimoireUpgradeType.RisInvocation:
-                    text = Mod.GetLocalization("Items.RisInvocation.Upgrade").Value;
-                    break;
-                case GrimoireUpgradeType.XataInvocation:
-                    text = Mod.GetLocalization("Items.XataInvocation.Upgrade").Value;
-                    break;
-            }
-            TooltipHelper.InsertTooltipLine(Mod, tooltips, text);
-        }
+        string text = Mod.GetLocalizationKey("Items.Grimoire.FullUpgraded");
+        if (!upgrades.Contains(GrimoireUpgradeType.JahuCanticle))
+            text = Mod.GetLocalizationKey("Items.Grimoire.JahuNext");
+        else if (!upgrades.Contains(GrimoireUpgradeType.VomeInvocation))
+            text = Mod.GetLocalizationKey("Items.Grimoire.VomeNext");
+        else if (!upgrades.Contains(GrimoireUpgradeType.LohkCanticle))
+            text = Mod.GetLocalizationKey("Items.Grimoire.LohkNext");
+        else if (!upgrades.Contains(GrimoireUpgradeType.XataInvocation))
+            text = Mod.GetLocalizationKey("Items.Grimoire.XataNext");
+        else if (!upgrades.Contains(GrimoireUpgradeType.RisInvocation))
+            text = Mod.GetLocalizationKey("Items.Grimoire.RisNext");
+        
+        TooltipHelper.InsertTooltipLine(Mod, tooltips, text);
     }
 
     public List<GrimoireUpgradeType> upgrades = [];
