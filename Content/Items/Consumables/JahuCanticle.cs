@@ -14,18 +14,16 @@ public class JahuCanticle : GrimoireUpgrade
         Item.rare = 3;
         Item.value = Item.sellPrice(gold: 2);
     }
-
-    public override void UpdateAccessory(Player player, bool hideVisual)
-    {
-        player.GetModPlayer<JahuCanticlePlayer>().active = true;
-    }
 }
 
 class JahuCanticlePlayer : ModPlayer
 {
-    public bool active;
+    private bool active;
     public override void ResetEffects()
-        => active = false;
+    {
+        var grimoire = Grimoire.GetPlayerGrimoire(Player);
+        active = grimoire != null && grimoire.HasUpgrade(GrimoireUpgradeType.JahuCanticle);
+    }
 
     public override float UseSpeedMultiplier(Item item)
     {

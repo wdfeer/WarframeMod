@@ -32,6 +32,7 @@ public class GrimoireKillGlobalNPC : GlobalNPC
             if (jahu)
             {
                 foreach (NPC other in Main.npc.Where(other =>
+                             !other.friendly &&
                              self.Distance(other.position) < JahuCanticle.ICHOR_DISTANCE))
                 {
                     other.AddBuff(BuffID.Ichor, 10 * 60);

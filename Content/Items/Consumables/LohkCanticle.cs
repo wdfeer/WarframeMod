@@ -23,7 +23,6 @@ public class LohkCanticle : GrimoireUpgrade
 class LohkCanticlePlayer : ModPlayer
 {
     private bool active;
-
     public override void ResetEffects()
     {
         var grimoire = Grimoire.GetPlayerGrimoire(Player);
