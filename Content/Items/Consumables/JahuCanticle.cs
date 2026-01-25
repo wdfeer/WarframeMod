@@ -33,7 +33,7 @@ class JahuCanticlePlayer : ModPlayer
         return 1f;
     }
 
-    public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
+    public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
     {
         if (active && proj.ModProjectile is GrimoireProjectile or GrimoireAltProjectile)
         {
