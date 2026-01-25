@@ -18,6 +18,8 @@ public abstract class GrimoireUpgrade : ModItem
     public override bool? UseItem(Player player)
     {
         var grimoire = Grimoire.GetPlayerGrimoire(player);
+        if (grimoire == null)
+            return false;
         if (grimoire.upgrades.Contains(UpgradeType))
             return false;
 
