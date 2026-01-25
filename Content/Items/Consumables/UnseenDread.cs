@@ -23,7 +23,7 @@ public class UnseenDread : ModItem
     {
         foreach (Item item in player.inventory)
         {
-            if (item.ModItem is Dread { unseenDread: true } dread)
+            if (item.ModItem is Dread { unseenDread: false } dread)
             {
                 dread.unseenDread = true;
                 return true;
