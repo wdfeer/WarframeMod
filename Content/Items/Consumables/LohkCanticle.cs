@@ -1,6 +1,5 @@
 using Terraria.Localization;
 using WarframeMod.Common.GlobalNPCs;
-using WarframeMod.Content.Buffs;
 using WarframeMod.Content.Items.Weapons;
 using WarframeMod.Content.Projectiles;
 

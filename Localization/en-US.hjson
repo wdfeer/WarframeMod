@@ -1476,53 +1476,73 @@ Mods: {
 
 			VomeInvocation: {
 				DisplayName: Vome Invocation
-				Tooltip:
+				Upgrade:
 					'''
-					Permanently upgrades a Grimoire in the inventory:
 					+20 base damage
 					Alternate Fire hits increase Grimoire damage by 4% for each enemy hit for 15 seconds
 					Stacks up to 60%
+					'''
+				Tooltip:
+					'''
+					Permanently upgrades a Grimoire in the inventory:
+                    {$Upgrade}
 					'''
 			}
 
 			LohkCanticle: {
 				DisplayName: Lohk Canticle
+				Upgrade:
+				    '''
+					+30 base damage
+					Killed enemies grant all teammates +{0}% fire rate for {1} seconds
+					'''
 				Tooltip:
 					'''
 					Permanently upgrades a Grimoire in the inventory:
-					+30 base damage
-					Killed enemies grant all teammates +{0}% fire rate for {1} seconds
+                    {$Upgrade}
 					'''
 			}
 
 			RisInvocation: {
 				DisplayName: Ris Invocation
-				Tooltip:
-					'''
-					Permanently upgrades a Grimoire in the inventory:
+				Upgrade:
+				    '''
 					+70 base damage
 					+50% base primary fire rate
 					Doubled secondary fire projectile velocity
+					'''
+				Tooltip:
+					'''
+					Permanently upgrades a Grimoire in the inventory:
+                    {$Upgrade}
 					'''
 			}
 
 			XataInvocation: {
 				DisplayName: Xata Invocation
+				Upgrade:
+				    '''
+					+50 base damage
+					+20% critical chance
+					'''
 				Tooltip:
 					'''
 					Permanently upgrades a Grimoire in the inventory:
-					+50 base damage
-					+20% critical chance
+                    {$Upgrade}
 					'''
 			}
 
 			JahuCanticle: {
 				DisplayName: Jahu Canticle
+				Upgrade:
+				    '''
+					+15% fire rate
+					Killing enemies inflicts Ichor on nearby enemies
+					'''
 				Tooltip:
 					'''
 					Permanently upgrades a Grimoire in the inventory:
-					+15% fire rate
-					Killing enemies inflicts Ichor on nearby enemies
+                    {$Upgrade}
 					'''
 			}
 

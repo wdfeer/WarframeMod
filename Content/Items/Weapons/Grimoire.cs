@@ -1,16 +1,48 @@
 using Terraria.GameContent.ItemDropRules;
 using Terraria.Localization;
 using Terraria.ModLoader.IO;
+using WarframeMod.Common;
 using WarframeMod.Content.Items.Consumables;
 using WarframeMod.Content.Projectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
+
 public class Grimoire : ModItem
 {
     public const int ELECTRO_CHANCE = 20;
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(ELECTRO_CHANCE);
+
+    public override void ModifyTooltips(List<TooltipLine> tooltips)
+    {
+        foreach (GrimoireUpgradeType type in upgrades)
+        {
+            string text = "";
+            switch (type)
+            {
+                case GrimoireUpgradeType.VomeInvocation:
+                    text = Mod.GetLocalization("Items.VomeCanticle.Upgrade").Value;
+                    break;
+                case GrimoireUpgradeType.LohkCanticle:
+                    text = Mod.GetLocalization("Items.VomeCanticle.Upgrade")
+                        .WithFormatArgs(LohkCanticle.FIRE_RATE_INCREASE_PERCENT, LohkCanticle.BUFF_TIME_SECONDS).Value;
+                    break;
+                case GrimoireUpgradeType.JahuCanticle:
+                    text = Mod.GetLocalization("Items.JahuCanticle.Upgrade").Value;
+                    break;
+                case GrimoireUpgradeType.RisInvocation:
+                    text = Mod.GetLocalization("Items.RisInvocation.Upgrade").Value;
+                    break;
+                case GrimoireUpgradeType.XataInvocation:
+                    text = Mod.GetLocalization("Items.XataInvocation.Upgrade").Value;
+                    break;
+            }
+            TooltipHelper.InsertTooltipLine(Mod, tooltips, text);
+        }
+    }
+
     public List<GrimoireUpgradeType> upgrades = [];
     public bool HasUpgrade(GrimoireUpgradeType type) => upgrades.Contains(type);
+
     public override void SetDefaults()
     {
         Item.damage = 28;
@@ -29,6 +61,7 @@ public class Grimoire : ModItem
         Item.shoot = ModContent.ProjectileType<GrimoireProjectile>();
         Item.shootSpeed = 16f;
     }
+
     public override void UpdateInventory(Player player)
     {
         Item.rare = 3 + upgrades.Count;
@@ -36,10 +69,12 @@ public class Grimoire : ModItem
 
     public override bool AltFunctionUse(Player player)
         => true;
+
     public override void ModifyManaCost(Player player, ref float reduce, ref float mult)
     {
         if (player.altFunctionUse == 2) mult = 3f;
     }
+
     public override float UseSpeedMultiplier(Player player)
     {
         if (player.altFunctionUse == 2)
@@ -47,7 +82,9 @@ public class Grimoire : ModItem
 
         return 1f;
     }
-    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage,
+
+    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type,
+        ref int damage,
         ref float knockback)
     {
         if (player.altFunctionUse == 2)
@@ -69,6 +106,7 @@ public class Grimoire : ModItem
             }
         }
     }
+
     public override void SaveData(TagCompound tag)
     {
         foreach (var id in upgrades)
@@ -82,8 +120,9 @@ public class Grimoire : ModItem
         var item = player.inventory.FirstOrDefault(item => item.type == ModContent.ItemType<Grimoire>(), null);
         if (item != null)
         {
-           return item.ModItem as Grimoire;
+            return item.ModItem as Grimoire;
         }
+
         return null;
     }
 }
@@ -94,19 +133,24 @@ public class GrimoireDropCondition : IItemDropRuleCondition
     {
         return info.player.statManaMax2 > 200;
     }
+
     public bool CanShowItemDropInUI()
         => false;
+
     public string GetConditionDescription()
         => "More mana required.";
 }
+
 public class GrimoireUpgradeDropCondition : IItemDropRuleCondition
 {
     public bool CanDrop(DropAttemptInfo info)
     {
         return info.player.HeldItem.type == ModContent.ItemType<Grimoire>();
     }
+
     public bool CanShowItemDropInUI()
         => false;
+
     public string GetConditionDescription()
         => "Requires holding a Grimoire.";
 }
