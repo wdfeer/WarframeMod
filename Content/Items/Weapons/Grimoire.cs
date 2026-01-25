@@ -13,17 +13,17 @@ public class Grimoire : ModItem
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(ELECTRO_CHANCE);
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
-        string text = Mod.GetLocalizationKey("Items.Grimoire.FullUpgraded");
+        string text = Mod.GetLocalization("Items.Grimoire.FullUpgraded").Value;
         if (!upgrades.Contains(GrimoireUpgradeType.JahuCanticle))
-            text = Mod.GetLocalizationKey("Items.Grimoire.JahuNext");
+            text = Mod.GetLocalization("Items.Grimoire.JahuNext").Value;
         else if (!upgrades.Contains(GrimoireUpgradeType.VomeInvocation))
-            text = Mod.GetLocalizationKey("Items.Grimoire.VomeNext");
+            text = Mod.GetLocalization("Items.Grimoire.VomeNext").Value;
         else if (!upgrades.Contains(GrimoireUpgradeType.LohkCanticle))
-            text = Mod.GetLocalizationKey("Items.Grimoire.LohkNext");
+            text = Mod.GetLocalization("Items.Grimoire.LohkNext").Value;
         else if (!upgrades.Contains(GrimoireUpgradeType.XataInvocation))
-            text = Mod.GetLocalizationKey("Items.Grimoire.XataNext");
+            text = Mod.GetLocalization("Items.Grimoire.XataNext").Value;
         else if (!upgrades.Contains(GrimoireUpgradeType.RisInvocation))
-            text = Mod.GetLocalizationKey("Items.Grimoire.RisNext");
+            text = Mod.GetLocalization("Items.Grimoire.RisNext").Value;
         
         TooltipHelper.InsertTooltipLine(Mod, tooltips, text);
     }

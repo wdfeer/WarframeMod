@@ -1498,7 +1498,7 @@ Mods: {
 					'''
 				FullUpgraded: All upgrades obtained
 			}
-			
+
 			JahuCanticle: {
 				DisplayName: Jahu Canticle
 				Tooltip:
@@ -1529,7 +1529,7 @@ Mods: {
 					Killed enemies grant all teammates +{0}% fire rate for {1} seconds
 					'''
 			}
-			
+
 			XataInvocation: {
 				DisplayName: Xata Invocation
 				Tooltip:
