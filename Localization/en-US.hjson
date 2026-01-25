@@ -1548,6 +1548,15 @@ Mods: {
 					Doubled damage and knockback against enemies with less than 10 defense
 					'''
 			}
+
+			UnseenDread: {
+				DisplayName: Unseen Dread
+				Tooltip:
+					'''
+					Permanently upgrades a Dread in the inventory:
+					{$Mods.WarframeMod.Common.ModifyCritDamage} whilst invisible
+					'''
+			}
 		}
 
 		Projectiles: {
