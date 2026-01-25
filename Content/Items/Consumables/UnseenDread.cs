@@ -7,6 +7,7 @@ public class UnseenDread : ModItem
 {
     public const int CRITICAL_DAMAGE_BONUS_PERCENT = 200;
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs($"+{CRITICAL_DAMAGE_BONUS_PERCENT}%");
+
     public override void SetDefaults()
     {
         Item.width = 44;
@@ -17,18 +18,21 @@ public class UnseenDread : ModItem
         Item.useStyle = ItemUseStyleID.HoldUp;
         Item.UseSound = SoundID.Item4;
     }
+
     public override bool? UseItem(Player player)
     {
         foreach (Item item in player.inventory)
         {
-            if (item.ModItem is Dread dread)
+            if (item.ModItem is Dread { unseenDread: true } dread)
             {
                 dread.unseenDread = true;
                 return true;
             }
         }
+
         return false;
     }
+
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
