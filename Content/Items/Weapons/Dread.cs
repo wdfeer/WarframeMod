@@ -18,16 +18,9 @@ internal class Dread : ModItem
     {
         if (!unseenDread) return;
 
-        var (index, lineNumber) = TooltipHelper.GetIndexOfLastItemTooltip(tooltips);
-        if (index == -1) return;
-
-        index++;
-        lineNumber++;
-
-        tooltips.Insert(index,
-            new TooltipLine(Mod, $"Tooltip{lineNumber}",
-                Mod.GetLocalization("Items.UnseenDread.Upgrade")
-                    .WithFormatArgs($"+{UnseenDread.CRITICAL_DAMAGE_BONUS_PERCENT}%").Value));
+        string text = Mod.GetLocalization("Items.UnseenDread.Upgrade")
+            .WithFormatArgs($"+{UnseenDread.CRITICAL_DAMAGE_BONUS_PERCENT}%").Value;
+        TooltipHelper.InsertTooltipLine(Mod, tooltips, text);
     }
 
     public override void SetDefaults()
