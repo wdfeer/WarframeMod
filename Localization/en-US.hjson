@@ -92,7 +92,7 @@ Mods: {
 
 			ColdDebuff: {
 				DisplayName: Slowed
-				Description: Mods.WarframeMod.BuffDescription.ColdDebuff
+				Description: BuffDescription.ColdDebuff
 			}
 
 			EmergenceSaviorBuff: {
@@ -116,7 +116,7 @@ Mods: {
 
 			ScoliacDebuff: {
 				DisplayName: Scoliac
-				Description: Mods.WarframeMod.BuffDescription.ScoliacDebuff
+				Description: BuffDescription.ScoliacDebuff
 			}
 
 			VirtuosStrikeBuff: {
@@ -126,7 +126,7 @@ Mods: {
 
 			VomeInvocationBuff: {
 				DisplayName: Grimoire Damage
-				Description: Mods.WarframeMod.Buffs.VomeInvocationBuff.Description
+				Description: Buffs.VomeInvocationBuff.Description
 			}
 
 			LohkCanticleBuff: {
@@ -190,8 +190,8 @@ Mods: {
 				Tooltip:
 					'''
 					Every third swing has doubled damage and guaranteed bleeding
-					{$Mods.WarframeMod.Common.BleedChance}
-					{$Mods.WarframeMod.Common.ModifyCritDamage@1}
+					{$Common.BleedChance}
+					{$Common.ModifyCritDamage@1}
 					'''
 			}
 
@@ -200,7 +200,7 @@ Mods: {
 				Tooltip:
 					'''
 					{0}% electricity chance
-					{$Mods.WarframeMod.Common.ModifyCritDamage@1}
+					{$Common.ModifyCritDamage@1}
 					Chains between nearby enemies,-{2}% damage for each previous hit
 					'''
 			}
@@ -210,7 +210,7 @@ Mods: {
 				Tooltip:
 					'''
 					Launches manually-controlled rockets that have a {0}% chance to slow enemies
-					{$Mods.WarframeMod.Common.ModifyCritDamage@1}
+					{$Common.ModifyCritDamage@1}
 					'''
 			}
 
@@ -219,7 +219,7 @@ Mods: {
 				Tooltip:
 					'''
 					Shoots bullets that explode on impact, dealing {0}% of the damage
-					{$Mods.WarframeMod.Common.ModifyCritDamage@1}
+					{$Common.ModifyCritDamage@1}
 					'''
 			}
 
@@ -237,7 +237,7 @@ Mods: {
 				Tooltip:
 					'''
 					Launches grenades that explode on impact without self-damage
-					{$Mods.WarframeMod.Common.ModifyCritDamage}
+					{$Common.ModifyCritDamage}
 					'''
 			}
 
@@ -256,7 +256,7 @@ Mods: {
 				Tooltip:
 					'''
 					Rapidly launches grenades that explode on impact without self-damage
-					{$Mods.WarframeMod.Common.ModifyAmmoDamage}
+					{$Common.ModifyAmmoDamage}
 					'''
 			}
 
@@ -266,8 +266,8 @@ Mods: {
 					'''
 					Launches grenades that explode on impact without self-damage
 					-50% damage against the Eater of Worlds
-					{$Mods.WarframeMod.Common.ModifyCritDamage}
-					{$Mods.WarframeMod.Common.ModifyAmmoDamage@1}
+					{$Common.ModifyCritDamage}
+					{$Common.ModifyAmmoDamage@1}
 					'''
 			}
 
@@ -277,7 +277,7 @@ Mods: {
 					'''
 					Slows nearby enemies on impact
 					Explodes after a short while
-					{$Mods.WarframeMod.Common.ModifyCritDamage}
+					{$Common.ModifyCritDamage}
 					'''
 			}
 
@@ -295,7 +295,7 @@ Mods: {
 				Tooltip:
 					'''
 					Can explode mid-flight with 100% slow chance
-					{$Mods.WarframeMod.Common.BleedChance}
+					{$Common.BleedChance}
 					+10% critical damage
 					'''
 			}
@@ -319,7 +319,7 @@ Mods: {
 				Tooltip:
 					'''
 					Can explode mid-flight with 100% electricity chance
-					{$Mods.WarframeMod.Common.BleedChance}
+					{$Common.BleedChance}
 					'''
 			}
 
@@ -816,7 +816,7 @@ Mods: {
 				Tooltip:
 					'''
 					Your summons will focus struck enemies
-					{$Mods.WarframeMod.Common.BleedChance}
+					{$Common.BleedChance}
 					+50% Critical Damage
 					Damage is increased by 33% for each empty minion slot
 					Increased benefit from Reach and Primed Reach
@@ -838,7 +838,7 @@ Mods: {
 				DisplayName: Baza
 				Tooltip:
 					'''
-					{$Mods.WarframeMod.Common.AmmoSaveChance}
+					{$Common.AmmoSaveChance}
 					+50% Critical Damage
 					-75% ammo damage
 					'''
@@ -848,7 +848,7 @@ Mods: {
 				DisplayName: Baza Prime
 				Tooltip:
 					'''
-					{$Mods.WarframeMod.Common.AmmoSaveChance}
+					{$Common.AmmoSaveChance}
 					+50% Critical Damage
 					-50% ammo damage
 					'''
@@ -856,7 +856,7 @@ Mods: {
 
 			Bo: {
 				DisplayName: Bo
-				Tooltip: Every third swing has tripled damage and {$Mods.WarframeMod.Common.DefensePenetration}
+				Tooltip: Every third swing has tripled damage and {$Common.DefensePenetration}
 			}
 
 			Boar: {
@@ -882,7 +882,7 @@ Mods: {
 				Tooltip:
 					'''
 					Every third swing has doubled damage and guaranteed Bleeding
-					{$Mods.WarframeMod.Common.BleedChance}
+					{$Common.BleedChance}
 					-30% Critical Damage
 					'''
 			}
@@ -906,8 +906,8 @@ Mods: {
 				DisplayName: Flux Rifle
 				Tooltip:
 					'''
-					{$Mods.WarframeMod.Common.NoAmmoConsumption}
-					{$Mods.WarframeMod.Common.DefensePenetration}
+					{$Common.NoAmmoConsumption}
+					{$Common.DefensePenetration}
 					'''
 			}
 
@@ -931,7 +931,7 @@ Mods: {
 					'''
 					Shoots rapidly but inaccurately
 					-5% Critical Damage
-					{$Mods.WarframeMod.Common.AmmoSaveChance}
+					{$Common.AmmoSaveChance}
 					'''
 			}
 
@@ -939,8 +939,8 @@ Mods: {
 				DisplayName: Hate
 				Tooltip:
 					'''
-					{$Mods.WarframeMod.Common.ModifyCritDamage}
-					{$Mods.WarframeMod.Common.BleedChance@1}
+					{$Common.ModifyCritDamage}
+					{$Common.BleedChance@1}
 					'''
 			}
 
@@ -949,7 +949,7 @@ Mods: {
 				Tooltip:
 					'''
 					Takes a while to spool up while increasing Multishot up to 5 pellets
-					{$Mods.WarframeMod.Common.BleedChance}
+					{$Common.BleedChance}
 					Linear damage falloff starting at 32 tiles
 					+15% Critical Damage
 					-60% ammo damage
@@ -975,7 +975,7 @@ Mods: {
 				Tooltip:
 					'''
 					Takes a while to spool up while increasing Multishot up to 5 pellets
-					{$Mods.WarframeMod.Common.BleedChance}
+					{$Common.BleedChance}
 					Linear damage falloff starting at 36 tiles
 					+15% Critical Damage
 					-40% ammo damage
@@ -1041,7 +1041,7 @@ Mods: {
 
 			MK1Bo: {
 				DisplayName: MK1-Bo
-				Tooltip: "{$Mods.WarframeMod.Common.DefensePenetration}"
+				Tooltip: "{$Common.DefensePenetration}"
 			}
 
 			MK1Paris: {
@@ -1059,7 +1059,7 @@ Mods: {
 					Semicharged shots have +50% damage, 35% base critical chance
 					Perfect shots have +100% damage, 60% base critical chance and +20% critical damage
 					Fully charged shots have +100% damage, 50% base critical chance and +10% critical damage
-					{$Mods.WarframeMod.Common.NoAmmoConsumption}
+					{$Common.NoAmmoConsumption}
 					'''
 			}
 
@@ -1091,7 +1091,7 @@ Mods: {
 				Tooltip:
 					'''
 					Every third swing has doubled damage and guaranteed bleeding
-					{$Mods.WarframeMod.Common.BleedChance}
+					{$Common.BleedChance}
 					-25% Critical damage
 					'''
 			}
@@ -1121,7 +1121,7 @@ Mods: {
 					'''
 					Shoots rapidly but inaccurately
 					+15% Critical Damage
-					{$Mods.WarframeMod.Common.AmmoSaveChance}
+					{$Common.AmmoSaveChance}
 					'''
 			}
 
@@ -1176,7 +1176,7 @@ Mods: {
 				Tooltip:
 					'''
 					Fires 5 rounds in a burst
-					{$Mods.WarframeMod.Common.BleedChance}
+					{$Common.BleedChance}
 					Increased benefit from Attack Speed
 					'''
 			}
@@ -1189,7 +1189,7 @@ Mods: {
 					10 summon tag damage
 					50% summon tag poison chance
 					20% summon tag venom chance
-					{$Mods.WarframeMod.Common.BleedChance}
+					{$Common.BleedChance}
 					-25% Critical damage
 					Damage is increased by 25% multiplied by the number of max minion slots
 					'''
@@ -1200,7 +1200,7 @@ Mods: {
 				Tooltip:
 					'''
 					Fires a projectile that splits into multiple projectiles on impact and inflicts poison
-					{$Mods.WarframeMod.Common.DefensePenetration}
+					{$Common.DefensePenetration}
 					'''
 			}
 
@@ -1226,8 +1226,8 @@ Mods: {
 				DisplayName: Spectra
 				Tooltip:
 					'''
-					{$Mods.WarframeMod.Common.BleedChance}
-					{$Mods.WarframeMod.Common.DefensePenetration@1}
+					{$Common.BleedChance}
+					{$Common.DefensePenetration@1}
 					'''
 			}
 
@@ -1236,7 +1236,7 @@ Mods: {
 				Tooltip:
 					'''
 					Right Click to switch between Auto and Semi-auto fire modes
-					{$Mods.WarframeMod.Common.AmmoSaveChance} in Auto
+					{$Common.AmmoSaveChance} in Auto
 					'''
 			}
 
@@ -1246,7 +1246,7 @@ Mods: {
 					'''
 					Right Click to switch between Auto and Semi-auto fire modes
 					+30% Critical Damage in Auto, +40% in Semi-auto
-					{$Mods.WarframeMod.Common.AmmoSaveChance} in Auto
+					{$Common.AmmoSaveChance} in Auto
 					'''
 			}
 
@@ -1300,7 +1300,7 @@ Mods: {
 					'''
 					Right Click to switch between Auto, Burst and Semi-auto fire modes
 					+40%, 50% or 70% Critical damage in Auto, Burst and Semi
-					{$Mods.WarframeMod.Common.AmmoSaveChance} in Auto
+					{$Common.AmmoSaveChance} in Auto
 					'''
 			}
 
@@ -1323,7 +1323,7 @@ Mods: {
 				Tooltip:
 					'''
 					+10% Critical damage
-					{$Mods.WarframeMod.Common.BleedChance}
+					{$Common.BleedChance}
 					'''
 			}
 
@@ -1421,7 +1421,7 @@ Mods: {
 				DisplayName: Dread
 				Tooltip:
 					'''
-					20% bleed chance
+					{0}% bleed chance
 					+200% projectile velocity
 					'''
 			}
@@ -1544,17 +1544,18 @@ Mods: {
 				DisplayName: Guandao
 				Tooltip:
 					'''
-					{$Mods.WarframeMod.Common.ModifyCritDamage}
+					{$Common.ModifyCritDamage}
 					Doubled damage and knockback against enemies with less than 10 defense
 					'''
 			}
 
 			UnseenDread: {
 				DisplayName: Unseen Dread
+				Upgrade: "{$Common.ModifyCritDamage} whilst invisible"
 				Tooltip:
 					'''
 					Permanently upgrades a Dread in the inventory:
-					{$Mods.WarframeMod.Common.ModifyCritDamage} whilst invisible
+					{$Items.UnseenDread.Upgrade}
 					'''
 			}
 		}

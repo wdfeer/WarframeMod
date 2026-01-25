@@ -2,6 +2,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.Localization;
 using Terraria.ModLoader.IO;
+using WarframeMod.Common;
 using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Items.Consumables;
 
@@ -12,6 +13,22 @@ internal class Dread : ModItem
     public bool unseenDread;
     public const int BLEED_CHANCE = 20;
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(BLEED_CHANCE);
+
+    public override void ModifyTooltips(List<TooltipLine> tooltips)
+    {
+        if (!unseenDread) return;
+
+        var (index, lineNumber) = TooltipHelper.GetIndexOfLastItemTooltip(tooltips);
+        if (index == -1) return;
+
+        index++;
+        lineNumber++;
+
+        tooltips.Insert(index,
+            new TooltipLine(Mod, $"Tooltip{lineNumber}",
+                Mod.GetLocalization("Items.UnseenDread.Upgrade")
+                    .WithFormatArgs($"+{UnseenDread.CRITICAL_DAMAGE_BONUS_PERCENT}%").Value));
+    }
 
     public override void SetDefaults()
     {
