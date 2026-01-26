@@ -1,3 +1,5 @@
+using WarframeMod.Content.Items.Accessories;
+
 namespace WarframeMod.Content.Items.Arcanes;
 
 public class ArcaneCircumvent : Arcane
@@ -62,17 +64,18 @@ class ArcaneCircumventPlayer : ModPlayer
         // if the player can use our dash, has double tapped in a direction, and our dash isn't currently on cooldown
         if (CanUseDash() && dashDir != -1 && dashDelay == 0)
         {
+            float dashSpeed = Player.GetModPlayer<SonicBoostPlayer>().active ? DASH_VELOCITY * 1.5f : DASH_VELOCITY;
             Vector2 newVelocity = Player.velocity;
 
             switch (dashDir)
             {
                 // Only apply the dash velocity if our current speed in the wanted direction is less than DashVelocity
-                case DASH_LEFT when Player.velocity.X > -DASH_VELOCITY:
-                case DASH_RIGHT when Player.velocity.X < DASH_VELOCITY:
+                case DASH_LEFT when Player.velocity.X > -dashSpeed:
+                case DASH_RIGHT when Player.velocity.X < dashSpeed:
                 {
                     // X-velocity is set here
                     float dashDirection = dashDir == DASH_RIGHT ? 1 : -1;
-                    newVelocity.X = dashDirection * DASH_VELOCITY;
+                    newVelocity.X = dashDirection * dashSpeed;
                     break;
                 }
                 default:
