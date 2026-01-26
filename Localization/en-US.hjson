@@ -1611,9 +1611,18 @@ Mods: {
 			PrecisionConditioning: {
 				DisplayName: Precision Conditioning
 				Tooltip:
-                    '''
+					'''
 					{$Common.ModifySummonDamageDealt}
 					{$Common.SummonBleedChance}
+					'''
+			}
+
+			SonicBoost: {
+				DisplayName: Sonic Boost
+				Tooltip:
+					'''
+					+{0}% horizontal wing speed
+					Increased dash speed and duration
 					'''
 			}
 		}
