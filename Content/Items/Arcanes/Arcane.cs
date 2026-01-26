@@ -24,6 +24,7 @@ public abstract class Arcane : ModItem
         ModContent.ItemType<ArcaneBattery>,
         ModContent.ItemType<MoltVigor>,
         ModContent.ItemType<ArcaneCircumvent>,
+        ModContent.ItemType<ArcaneHealing>,
     ];
     public static int[] GetArcaneTypes()
         => arcaneTypeGetters.Select(x => x()).ToArray();
