@@ -7,7 +7,7 @@ public class HunterSynergy : HunterAccessory
 {
     public const int CRIT_LEECH_PERCENT = 33;
     int critBonus = 0;
-    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(critBonus);
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(critBonus, bleedChanceFormatArg);
     public override void SetDefaults()
     {
         Item.accessory = true;

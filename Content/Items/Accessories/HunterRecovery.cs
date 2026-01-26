@@ -6,7 +6,10 @@ public class HunterRecovery : HunterAccessory
 {
     public const int HEAL_TIMES_PER_SECOND = 2;
     int oldHealAmount = 1;
-    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(oldHealAmount, HEAL_TIMES_PER_SECOND);
+
+    public override LocalizedText Tooltip =>
+        base.Tooltip.WithFormatArgs(oldHealAmount, HEAL_TIMES_PER_SECOND, bleedChanceFormatArg);
+
     public override void SetDefaults()
     {
         Item.accessory = true;
@@ -15,6 +18,7 @@ public class HunterRecovery : HunterAccessory
         Item.rare = 5;
         Item.value = Item.sellPrice(gold: 5);
     }
+
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         base.UpdateAccessory(player, hideVisual);
@@ -23,14 +27,18 @@ public class HunterRecovery : HunterAccessory
         oldHealAmount = modPl.oldHealAmount;
     }
 }
+
 class HunterRecoveryPlayer : ModPlayer
 {
     public bool enabled = false;
+
     public override void ResetEffects()
         => enabled = false;
+
     const int HEAL_COOLDOWN = 60 / HunterRecovery.HEAL_TIMES_PER_SECOND;
     int healTimer = 0;
     public int oldHealAmount = 1;
+
     public int GetHealAmount()
     {
         int calculated = (int)(Player.statLifeMax2 / 200f * (Player.maxMinions > 6.5f ? 1f : Player.maxMinions / 6.5f));
@@ -38,6 +46,7 @@ class HunterRecoveryPlayer : ModPlayer
             return calculated;
         return 1;
     }
+
     public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
     {
         if (enabled && proj.DamageType == DamageClass.Summon && healTimer > HEAL_COOLDOWN)
@@ -46,6 +55,7 @@ class HunterRecoveryPlayer : ModPlayer
             Player.Heal(GetHealAmount());
         }
     }
+
     public override void PostUpdate()
     {
         if (enabled)

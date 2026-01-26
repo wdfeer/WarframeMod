@@ -471,7 +471,7 @@ Mods: {
 					'''
 					Summon hits heal {0} life, up to {1} times per second
 					Heal amount scales with your max life and your minion slots
-					{$Common.SummonBleedChance}
+					{$Common.SummonBleedChance@2}
 					'''
 			}
 
@@ -481,7 +481,7 @@ Mods: {
 					'''
 					Increase summon critical chance by 33% of the highest base crit chance of all weapons in inventory
 					Current bonus: {0}%
-					{$Common.SummonBleedChance}
+					{$Common.SummonBleedChance@1}
 					'''
 			}
 
