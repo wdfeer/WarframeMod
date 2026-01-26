@@ -15,6 +15,7 @@ Mods: {
 			AmmoSaveChance: "{0}% chance to save ammo"
 			ModifyAmmoDamage: "{0} ammo damage"
 			BleedChance: "{0}% bleeding chance"
+			SummonBleedChance: "{0}% summon bleeding chance"
 			ElectroChance: "{0}% electricity chance"
 			IncreaseRelativeCritChance: +{0}% crit chance relative to the weapon's base crit chance
 		}
@@ -451,7 +452,7 @@ Mods: {
 				Tooltip:
 					'''
 					+15% summon damage on bleeding enemies as a separate multiplier
-					+7.5% summon bleeding chance
+					{$Common.SummonBleedChance}
 					'''
 			}
 
@@ -460,7 +461,7 @@ Mods: {
 				Tooltip:
 					'''
 					30% bleeding chance on critical hits
-					+7.5% summon bleeding chance
+					{$Common.SummonBleedChance}
 					'''
 			}
 
@@ -470,7 +471,7 @@ Mods: {
 					'''
 					Summon hits heal {0} life, up to {1} times per second
 					Heal amount scales with your max life and your minion slots
-					+7.5% summon bleeding chance
+					{$Common.SummonBleedChance}
 					'''
 			}
 
@@ -480,7 +481,7 @@ Mods: {
 					'''
 					Increase summon critical chance by 33% of the highest base crit chance of all weapons in inventory
 					Current bonus: {0}%
-					+7.5% summon bleeding chance
+					{$Common.SummonBleedChance}
 					'''
 			}
 
