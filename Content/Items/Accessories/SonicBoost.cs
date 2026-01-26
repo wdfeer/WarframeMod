@@ -43,9 +43,9 @@ class SonicBoostPlayer : ModPlayer
 
     public override void PreUpdateMovement()
     {
-        if (active && Player.dashDelay != 0)
+        if (active && Player.dashDelay != 0 && MathF.Abs(Player.velocity.X) < 15f)
         {
-            Player.velocity.X = MathF.Min(Player.velocity.X * 1.018f, 15f);
+            Player.velocity.X *= 1.015f;
         }
     }
 }
