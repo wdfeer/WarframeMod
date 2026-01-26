@@ -13,9 +13,9 @@ class ArcaneCircumventPlayer : ModPlayer
     public bool enabled;
 
     // These indicate what direction is what in the timer arrays used
-    public const int DASH_RIGHT = 0;
+    public const int DASH_RIGHT = 2;
 
-    public const int DASH_LEFT = 1;
+    public const int DASH_LEFT = 3;
 
     // Time (frames) between starting dashes. If this is shorter than DashDuration you can start a new dash before an old one has finished
     public const int DASH_COOLDOWN = 50;
