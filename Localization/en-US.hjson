@@ -1607,6 +1607,15 @@ Mods: {
 					Grants Campfire buff permanently
 					'''
 			}
+			
+			PrecisionConditioning: {
+				DisplayName: Precision Conditioning
+				Tooltip:
+					'''
+                    {$Common.ModifySummonDamageDealt}
+					{$Common.BleedChance}
+					'''
+			}
 		}
 
 		Projectiles: {
