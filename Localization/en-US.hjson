@@ -1583,6 +1583,11 @@ Mods: {
 					{$Items.UnseenDread.Upgrade}
 					'''
 			}
+
+			ArcaneCircumvent: {
+				DisplayName: Arcane Circumvent
+				Tooltip: Allows the ability to dash
+			}
 		}
 
 		Projectiles: {
