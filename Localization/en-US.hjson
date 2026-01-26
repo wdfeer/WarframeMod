@@ -1588,13 +1588,22 @@ Mods: {
 				DisplayName: Arcane Circumvent
 				Tooltip: Allows the ability to dash
 			}
-			
+
 			ArcaneHealing: {
 				DisplayName: Arcane Healing
 				Tooltip:
 					'''
 					Grants immunity to Confused
 					+20% healing and mana potion effectiveness
+					'''
+			}
+
+			ArcaneIce: {
+				DisplayName: Arcane Ice
+				Tooltip:
+					'''
+					Grants immunity to On Fire, Frostburn, Shadowflames and Cursed Flames
+					Grants Campfire buff permanently
 					'''
 			}
 		}
