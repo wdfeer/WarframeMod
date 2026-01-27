@@ -686,7 +686,7 @@ Mods: {
 
 			ArcaneGrace: {
 				DisplayName: Arcane Grace
-				Tooltip: When damaged: 50% chance for +1% max life regen per second for 7 seconds
+				Tooltip: When damaged: {0}% chance for +{1}% max life regen per second for {2} seconds
 			}
 
 			ArcaneGuardian: {
