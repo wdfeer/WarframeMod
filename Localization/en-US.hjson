@@ -1625,6 +1625,17 @@ Mods: {
 					Increased dash speed and duration
 					'''
 			}
+
+			Nagantaka: {
+				DisplayName: Nagantaka
+				Tooltip:
+					'''
+					+100% primary fire projectile velocity
+					Alt fire shoots 9 arrows at once with a longer downtime
+					{$Common.ModifyCritDamage}
+					{$Common.BleedChance@1}
+					'''
+			}
 		}
 
 		Projectiles: {
