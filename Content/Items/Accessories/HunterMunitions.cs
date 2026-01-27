@@ -1,10 +1,13 @@
-﻿using WarframeMod.Common;
+﻿using Terraria.Localization;
+using WarframeMod.Common;
 using WarframeMod.Common.Players;
 
 namespace WarframeMod.Content.Items.Accessories;
 
 public class HunterMunitions : HunterAccessory
 {
+    public override LocalizedText Tooltip =>
+        base.Tooltip.WithFormatArgs(bleedChanceFormatArg);
     public const int BLEED_CHANCE_PERCENT = 30;
     public override void SetDefaults()
     {

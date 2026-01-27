@@ -6,7 +6,7 @@ namespace WarframeMod.Content.Items.Accessories;
 public class HunterSynergy : HunterAccessory
 {
     public const int CRIT_LEECH_PERCENT = 33;
-    int critBonus = 0;
+    int critBonus;
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(critBonus, bleedChanceFormatArg);
     public override void SetDefaults()
     {

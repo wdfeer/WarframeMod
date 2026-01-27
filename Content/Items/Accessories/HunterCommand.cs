@@ -1,9 +1,12 @@
-﻿using WarframeMod.Common.GlobalNPCs;
+﻿using Terraria.Localization;
+using WarframeMod.Common.GlobalNPCs;
 
 namespace WarframeMod.Content.Items.Accessories;
 
 public class HunterCommand : HunterAccessory
 {
+    public override LocalizedText Tooltip =>
+        base.Tooltip.WithFormatArgs(bleedChanceFormatArg);
     public const int DAMAGE_ON_BLEEDING_PERCENT = 15;
     public override void SetDefaults()
     {
