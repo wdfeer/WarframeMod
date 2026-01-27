@@ -13,13 +13,20 @@ class TrueMeleeRangeGlobalItem : GlobalItem
             return;
 
         // DustHelper.RectangleCorners(hitbox, DustID.GemRuby, 0, false);
-        ModifyHitboxSize(player, ref hitbox, modPl.rangeMult, modPl.absoluteExtraRange, out float oldLength, out float newLength, out bool radialAttack);
+        ModifyHitboxSize(player,
+            ref hitbox,
+            modPl.rangeMult,
+            modPl.absoluteExtraRange,
+            out float oldLength,
+            out float newLength,
+            out bool radialAttack);
         // DustHelper.RectangleCorners(hitbox, DustID.GemSapphire, 0, false);
 
         SpawnDusts(player, oldLength, newLength);
         if (radialAttack)
             SpawnDusts(player, oldLength, newLength, MathF.PI);
     }
+
     void ModifyHitboxSize(Player player,
         ref Rectangle hitbox,
         float sizeMult,
@@ -30,9 +37,11 @@ class TrueMeleeRangeGlobalItem : GlobalItem
     {
         bool IsRadialAttack(Player player, Rectangle hitbox)
         {
-            IEnumerable<float> distances = GetRectCorners(hitbox).Select(x => player.Center.Distance(x));
-            return distances.Max() / distances.Min() < 1.05f;
+            float[] distances = GetRectCorners(hitbox).Select(x => player.Center.Distance(x)).ToArray();
+            float minDist = distances.Min();
+            return minDist != 0 && distances.Max() / minDist < 1.05f;
         }
+
         Vector2 GetFurthestCorner(Rectangle rect, Vector2 origin)
         {
             Vector2[] corners = GetRectCorners(rect);
@@ -44,6 +53,7 @@ class TrueMeleeRangeGlobalItem : GlobalItem
 
         if (radialAttack)
         {
+            // Double range increase because radial on 2 sides
             sizeMult = 1 + (sizeMult - 1) * 2;
             sizeIncrease *= 2;
 
@@ -58,11 +68,13 @@ class TrueMeleeRangeGlobalItem : GlobalItem
         }
         else
         {
-            var relativeFurthest = GetFurthestCorner(hitbox, player.Center) - player.Center;
-            relativeFurthest *= sizeMult;
-            relativeFurthest += Vector2.Normalize(relativeFurthest) * sizeIncrease;
-            hitbox = new Rectangle((int)player.Center.X, (int)player.Center.Y, (int)relativeFurthest.X, (int)relativeFurthest.Y);
+            Vector2 furthestCornerRelativeToPlayer = GetFurthestCorner(hitbox, player.Center) - player.Center;
+            furthestCornerRelativeToPlayer *= sizeMult;
+            furthestCornerRelativeToPlayer += Vector2.Normalize(furthestCornerRelativeToPlayer) * sizeIncrease;
+            hitbox = new Rectangle((int)player.Center.X, (int)player.Center.Y, (int)furthestCornerRelativeToPlayer.X,
+                (int)furthestCornerRelativeToPlayer.Y);
         }
+
         newLength = GetFurthestCorner(hitbox, player.Center).Distance(player.Center);
 
         FixNegativeRectangleDimensions(ref hitbox);
@@ -77,13 +89,16 @@ class TrueMeleeRangeGlobalItem : GlobalItem
             newPos.X += rect.Width;
             newSize.X = -newSize.X;
         }
+
         if (rect.Height < 0)
         {
             newPos.Y += rect.Height;
             newSize.Y = -newSize.Y;
         }
+
         rect = new Rectangle(newPos.X, newPos.Y, newSize.X, newSize.Y);
     }
+
     void SpawnDusts(Player player, float innerRadius, float outerRadius, float rotationOffset = 0f)
     {
         Vector2 direction = Vector2.UnitX.RotatedBy(player.itemRotation) * player.direction;
@@ -105,6 +120,6 @@ class TrueMeleeRangeGlobalItem : GlobalItem
 
     Vector2[] GetRectCorners(Rectangle rect) =>
     [
-        rect.TopLeft(), rect.TopRight(),rect.BottomLeft(), rect.BottomRight()
+        rect.TopLeft(), rect.TopRight(), rect.BottomLeft(), rect.BottomRight()
     ];
 }
