@@ -1636,6 +1636,16 @@ Mods: {
 					{$Common.BleedChance@1}
 					'''
 			}
+
+			Ion: {
+				DisplayName: Ion
+				Tooltip: 
+					'''
+					{$Common.ElectroChance}
+					Shoots stars
+					'''
+
+			}
 		}
 
 		Projectiles: {
@@ -1681,6 +1691,7 @@ Mods: {
 			TenetArcaSciscoProjectile.DisplayName: Tenet Arca Scisco Projectile
 			GrimoireProjectile.DisplayName: Grimoire Projectile
 			GrimoireAltProjectile.DisplayName: Grimoire Alt Projectile
+			IonProjectile.DisplayName: Ion Projectile
 		}
 
 		Configs: {
