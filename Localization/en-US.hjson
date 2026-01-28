@@ -1645,6 +1645,16 @@ Mods: {
 					Shoots exploding stars
 					'''
 			}
+
+			Magesty: {
+				DisplayName: Magesty
+				Tooltip:
+					'''
+					Every third swing has doubled damage and guaranteed bleeding
+					{$Common.BleedChance}
+					{$Common.ModifyCritDamage@1}
+					'''
+			}
 		}
 
 		Projectiles: {
