@@ -1650,7 +1650,7 @@ Mods: {
 				DisplayName: Magesty
 				Tooltip:
 					'''
-					Every third swing has doubled damage, guaranteed bleeding and shoots a magic bolt
+					Every third swing has doubled damage and guaranteed bleeding
 					{$Common.BleedChance}
 					{$Common.ModifyCritDamage@1}
 					'''

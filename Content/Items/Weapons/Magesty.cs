@@ -31,7 +31,6 @@ internal class Magesty : CircularMelee
         Item.value = Item.sellPrice(gold: 16);
         Item.GetGlobalItem<CritGlobalItem>().critMultiplier = 1f + CRIT_DAMAGE_BONUS_PERCENT / 100f;
         Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = BLEED_CHANCE / 100f;
-        Item.shootSpeed = 16f;
     }
 
     public override void AddRecipes()
@@ -54,15 +53,9 @@ internal class Magesty : CircularMelee
     {
         swings++;
         if (SuperSwing)
-        {
             Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 1f;
-            Item.shoot = ModContent.ProjectileType<MagestyProjectile>();
-        }
         else
-        {
             Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = BLEED_CHANCE / 100f;
-            Item.shoot = ProjectileID.None;
-        }
 
         return base.CanUseItem(player);
     }
