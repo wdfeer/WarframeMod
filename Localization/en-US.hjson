@@ -1650,7 +1650,7 @@ Mods: {
 				DisplayName: Magesty
 				Tooltip:
 					'''
-					Every third swing has doubled damage and guaranteed bleeding
+					Every third swing has doubled damage, guaranteed bleeding and shoots a magic bolt
 					{$Common.BleedChance}
 					{$Common.ModifyCritDamage@1}
 					'''
@@ -1701,6 +1701,7 @@ Mods: {
 			GrimoireProjectile.DisplayName: Grimoire Projectile
 			GrimoireAltProjectile.DisplayName: Grimoire Alt Projectile
 			IonProjectile.DisplayName: Ion Projectile
+			MagestyProjectile.DisplayName: Magesty Projectile
 		}
 
 		Configs: {

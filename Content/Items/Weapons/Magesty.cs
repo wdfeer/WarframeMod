@@ -1,5 +1,6 @@
 using Terraria.Localization;
 using WarframeMod.Common.GlobalItems;
+using WarframeMod.Content.Projectiles;
 
 
 namespace WarframeMod.Content.Items.Weapons;
@@ -14,7 +15,7 @@ internal class Magesty : CircularMelee
 
     public override void SetDefaults()
     {
-        Item.damage = 150;
+        Item.damage = 120;
         Item.crit = 24;
         Item.knockBack = 4f;
         Item.DamageType = DamageClass.Melee;
@@ -30,6 +31,7 @@ internal class Magesty : CircularMelee
         Item.value = Item.sellPrice(gold: 16);
         Item.GetGlobalItem<CritGlobalItem>().critMultiplier = 1f + CRIT_DAMAGE_BONUS_PERCENT / 100f;
         Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = BLEED_CHANCE / 100f;
+        Item.shootSpeed = 16f;
     }
 
     public override void AddRecipes()
@@ -52,9 +54,16 @@ internal class Magesty : CircularMelee
     {
         swings++;
         if (SuperSwing)
+        {
             Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = 1f;
+            Item.shoot = ModContent.ProjectileType<MagestyProjectile>();
+        }
         else
+        {
             Item.GetGlobalItem<BleedingGlobalItem>().bleedingChance = BLEED_CHANCE / 100f;
+            Item.shoot = ProjectileID.None;
+        }
+
         return base.CanUseItem(player);
     }
 
