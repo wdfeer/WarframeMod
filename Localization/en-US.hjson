@@ -1639,12 +1639,11 @@ Mods: {
 
 			Ion: {
 				DisplayName: Ion
-				Tooltip: 
+				Tooltip:
 					'''
 					{$Common.ElectroChance}
-					Shoots stars
+					Shoots exploding stars
 					'''
-
 			}
 		}
 

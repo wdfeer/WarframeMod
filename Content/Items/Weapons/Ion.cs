@@ -31,8 +31,7 @@ internal class Ion : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.FragmentStardust, 8);
-        recipe.AddIngredient(ItemID.FragmentNebula, 8);
+        recipe.AddIngredient(ItemID.FragmentStardust, 12);
         recipe.AddTile(TileID.LunarCraftingStation);
         recipe.Register();
     }
