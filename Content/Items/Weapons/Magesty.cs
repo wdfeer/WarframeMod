@@ -15,7 +15,7 @@ internal class Magesty : CircularMelee
 
     public override void SetDefaults()
     {
-        Item.damage = 120;
+        Item.damage = 105;
         Item.crit = 24;
         Item.knockBack = 4f;
         Item.DamageType = DamageClass.Melee;
@@ -43,7 +43,7 @@ internal class Magesty : CircularMelee
 
     public override float UseSpeedMultiplier(Player player)
     {
-        return SuperSwing ? 0.7f : 1f;
+        return SuperSwing ? 0.6f : 1f;
     }
 
     uint swings = 0;
@@ -63,9 +63,20 @@ internal class Magesty : CircularMelee
     public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
     {
         if (SuperSwing)
-        {
-            modifiers.SourceDamage *= 2;
             modifiers.Knockback *= 2;
+    }
+
+    public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
+    {
+        if (SuperSwing)
+        {
+            Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item),
+                target.Center,
+                Vector2.Zero,
+                ModContent.ProjectileType<MagestyProjectile>(),
+                damageDone,
+                0f
+            );
         }
     }
 
