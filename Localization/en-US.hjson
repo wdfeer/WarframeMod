@@ -1675,6 +1675,16 @@ Mods: {
 					{$Common.DefensePenetration@1}
 					'''
 			}
+
+			AkjagaraPrime: {
+				DisplayName: Akjagara Prime
+				Tooltip:
+					'''
+					Shoots a burst of two bullets in rapid succession
+					{$Common.BleedChance}, scales with damage modifiers
+					{$Common.ModifyCritDamage@1}
+					'''
+			}
 		}
 
 		Projectiles: {
