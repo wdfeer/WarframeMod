@@ -1660,6 +1660,11 @@ Mods: {
 				DisplayName: Afuris
 				Tooltip: Increased fire rate at the cost of accuracy
 			}
+
+			DexAfuris: {
+				DisplayName: Dex Furis
+				Tooltip: ""
+			}
 		}
 
 		Projectiles: {
