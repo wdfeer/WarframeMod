@@ -24,7 +24,7 @@ public class VectisPrime : ModItem
         Item.shoot = 10;
         Item.useAmmo = AmmoID.Bullet;
     }
-    bool reloading = false;
+    bool reloading;
     string SoundPath => "WarframeMod/Content/Sounds/" + (reloading ? "VectisPrimeSound2" : "VectisPrimeSound1");
     public override bool CanUseItem(Player player)
     {
@@ -46,6 +46,7 @@ public class VectisPrime : ModItem
 
         var proj = this.ShootWith(player, source, position, velocity, ProjectileID.SniperBullet, damage, knockback, spawnOffset: Item.width - 3);
         proj.friendly = true;
+        proj.hostile = false;
         (Mod as WarframeMod).SetProjectileExtraUpdatesNetSafe(proj, proj.extraUpdates + 1);
 
         reloading = !reloading;

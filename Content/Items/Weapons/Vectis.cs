@@ -36,6 +36,7 @@ public class Vectis : ModItem
     {
         var proj = this.ShootWith(player, source, position, velocity, ProjectileID.SniperBullet, damage, knockback, spawnOffset: 16);
         proj.friendly = true;
+        proj.hostile = false;
         return false;
     }
 }
