@@ -1655,6 +1655,11 @@ Mods: {
 					{$Common.ModifyCritDamage@1}
 					'''
 			}
+
+			Afuris: {
+				DisplayName: Afuris
+				Tooltip: Doubled fire rate at the cost of accuracy
+			}
 		}
 
 		Projectiles: {
