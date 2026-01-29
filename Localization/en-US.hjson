@@ -1658,7 +1658,7 @@ Mods: {
 
 			Afuris: {
 				DisplayName: Afuris
-				Tooltip: Doubled fire rate at the cost of accuracy
+				Tooltip: Increased fire rate at the cost of accuracy
 			}
 		}
 

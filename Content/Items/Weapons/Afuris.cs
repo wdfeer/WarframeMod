@@ -10,13 +10,13 @@ public class Afuris : ModItem
         Item.DamageType = DamageClass.Ranged;
         Item.width = 27;
         Item.height = 22;
-        Item.useTime = 3;
-        Item.useAnimation = 3;
+        Item.useTime = 4;
+        Item.useAnimation = 4;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.noMelee = true;
         Item.knockBack = 0;
         Item.value = 5000;
-        Item.rare = 2;
+        Item.rare = 3;
         Item.UseSound = SoundID.Item11.WithVolumeScale(0.7f);
         Item.autoReuse = true;
         Item.shoot = 10;
