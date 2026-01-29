@@ -1665,6 +1665,16 @@ Mods: {
 				DisplayName: Dex Furis
 				Tooltip: ""
 			}
+
+			Cestra: {
+				DisplayName: Cestra
+				Tooltip:
+					'''
+					Double stack to increase fire rate at the cost of accuraccy
+					{$Common.ModifyCritDamage}
+					{$Common.DefensePenetration@1}
+					'''
+			}
 		}
 
 		Projectiles: {

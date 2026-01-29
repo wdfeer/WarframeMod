@@ -21,7 +21,7 @@ public class Supra : ModItem
         Item.value = Item.buyPrice(gold: 5);
         Item.rare = 9;
         Item.autoReuse = true;
-        Item.shoot = ProjectileID.MartianWalkerLaser;
+        Item.shoot = ProjectileID.LaserMachinegunLaser;
         Item.shootSpeed = 16f;
     }
     protected int lastShotTime = 0;
@@ -56,7 +56,7 @@ public class Supra : ModItem
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        var proj = this.ShootWith(player, source, position, velocity * 4, ProjectileID.LaserMachinegunLaser, damage, knockback, timeSinceLastShot > 30 ? 0 : 0.065f, 50);
+        var proj = this.ShootWith(player, source, position, velocity * 4, type, damage, knockback, timeSinceLastShot > 30 ? 0 : 0.065f, 50);
         proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 0.9f;
         return false;
     }
