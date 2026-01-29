@@ -1685,6 +1685,16 @@ Mods: {
 					{$Common.ModifyCritDamage@1}
 					'''
 			}
+
+			BallisticaPrime: {
+				DisplayName: Ballistica Prime
+				Tooltip:
+					'''
+					Shoots 4 arrows at once
+					Not shooting charges the next shot, increasing damage and accuracy
+					+100% arrow velocity
+					'''
+			}
 		}
 
 		Projectiles: {
