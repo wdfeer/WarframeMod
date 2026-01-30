@@ -139,6 +139,11 @@ Mods: {
 				DisplayName: Molt Vigor Buff
 				Description: +25% damage with other magic weapons
 			}
+
+			SecuraLectaDebuff: {
+				DisplayName: Secura Lecta Debuff
+				Description: Mods.WarframeMod.Buffs.SecuraLectaDebuff.Description
+			}
 		}
 
 		Items: {
@@ -1726,6 +1731,7 @@ Mods: {
 				Tooltip:
 					'''
 					Your summons will focus struck enemies
+					20% summon tag electricity chance
 					50% electricity chance
 					-25% critical damage
 					Damage is increased by 20% for each empty minion slot
