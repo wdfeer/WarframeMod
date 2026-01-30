@@ -1705,6 +1705,17 @@ Mods: {
 					Damage falloff from 10 to 30 tiles, reducing damage by up to 70%
 					'''
 			}
+
+			PyranaPrime: {
+				DisplayName: Pyrana Prime
+				Tooltip:
+					'''
+					Shoots 7 pellets at once
+					+10% critical damage
+					-50% ammo damage
+					Damage falloff from 15 to 30 tiles, reducing damage by up to 50%
+					'''
+			}
 		}
 
 		Projectiles: {
