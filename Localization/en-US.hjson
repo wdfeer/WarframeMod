@@ -1695,6 +1695,16 @@ Mods: {
 					+100% arrow velocity
 					'''
 			}
+
+			Pyrana: {
+				DisplayName: Pyrana
+				Tooltip:
+					'''
+					Shoots 5 pellets at once
+					-50% ammo damage
+					Damage falloff from 10 to 30 tiles, reducing damage by up to 70%
+					'''
+			}
 		}
 
 		Projectiles: {

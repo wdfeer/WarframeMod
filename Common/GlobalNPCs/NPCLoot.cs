@@ -19,6 +19,8 @@ internal class NPCLoot : GlobalNPC
                 return ItemDropRule.ByCondition(new GrimoireDropCondition(), ModContent.ItemType<Grimoire>(), 25);
             case NPCID.JungleBat:
                 return ItemDropRule.Common(ModContent.ItemType<Furis>(), 40);
+            case NPCID.Piranha:
+                return ItemDropRule.ByCondition(new BeatQueenBeeCondition(), ModContent.ItemType<Pyrana>(), 60);
             case NPCID.Skeleton or NPCID.SkeletonAlien or NPCID.SkeletonAstonaut or NPCID.SkeletonTopHat
                 or NPCID.BoneThrowingSkeleton or NPCID.BoneThrowingSkeleton2:
                 return ItemDropRule.Common(ModContent.ItemType<PointStrike>(), 15);
