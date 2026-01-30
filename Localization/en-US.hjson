@@ -1267,7 +1267,11 @@ Mods: {
 
 			Synapse: {
 				DisplayName: Synapse
-				Tooltip: +35% Critical Damage
+				Tooltip:
+					'''
+					{$Common.ModifyCritDamage}
+					{1} ichor chance
+					'''
 			}
 
 			TenetArcaPlasmor: {
