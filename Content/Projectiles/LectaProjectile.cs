@@ -13,6 +13,11 @@ public class LectaProjectile : WhipProjectile
             [new Common.StackableBuffChance(Common.StackableBuff.Electro, Lecta.ELECTRO_CHANCE)];
 		Projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 0.75f;
 	}
+    
+    /* TODO: refactor all of the following copypaste code,
+             put it in WhipProjectile, create appropriate virtual properties,
+             remove from other whip projectiles */
+    
 	private float Timer
 	{
 		get => Projectile.ai[0];

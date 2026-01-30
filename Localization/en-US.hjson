@@ -1004,7 +1004,7 @@ Mods: {
 					'''
 					Your summons will focus struck enemies
 					50% electricity chance
-					-25% Critical damage
+					-25% critical damage
 					Damage is increased by 20% for each empty minion slot
 					Increased benefit from Attack Speed
 					'''
@@ -1720,6 +1720,18 @@ Mods: {
 					Damage falloff from 15 to 30 tiles, reducing damage by up to 50%
 					'''
 			}
+
+			SecuraLecta: {
+				DisplayName: Secura Lecta
+				Tooltip:
+					'''
+					Your summons will focus struck enemies
+					50% electricity chance
+					-25% critical damage
+					Damage is increased by 20% for each empty minion slot
+					Hit enemies drop additional money
+					'''
+			}
 		}
 
 		Projectiles: {
@@ -1767,6 +1779,7 @@ Mods: {
 			GrimoireAltProjectile.DisplayName: Grimoire Alt Projectile
 			IonProjectile.DisplayName: Ion Projectile
 			MagestyProjectile.DisplayName: Magesty Projectile
+			SecuraLectaProjectile.DisplayName: Secura Lecta Projectile
 		}
 
 		Configs: {
