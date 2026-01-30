@@ -1738,6 +1738,11 @@ Mods: {
 					Hit enemies drop additional money
 					'''
 			}
+
+			CrewmanHelmet: {
+				DisplayName: Crewman Helmet
+				Tooltip: +{0}% critical chance
+			}
 		}
 
 		Projectiles: {
