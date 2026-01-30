@@ -22,7 +22,7 @@ public class Amprex : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.noMelee = true;
         Item.knockBack = 0;
-        Item.value = Item.buyPrice(gold: 5);
+        Item.value = Item.sellPrice(gold: 10);
         Item.rare = 7;
         // Item.UseSound = SoundID.Item93.WithVolumeScale(0.1f);
         Item.UseSound = SoundID.Item91.WithVolumeScale(0.4f);
