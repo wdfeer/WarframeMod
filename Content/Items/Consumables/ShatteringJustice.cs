@@ -1,12 +1,26 @@
 using Terraria.Localization;
+using WarframeMod.Content.Buffs;
 using WarframeMod.Content.Items.Weapons;
+using WarframeMod.Content.Projectiles;
 
 namespace WarframeMod.Content.Items.Consumables;
 
 public class ShatteringJustice : ModItem
 {
     public const int BASE_DAMAGE_INCREASE = 10;
-    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(BASE_DAMAGE_INCREASE);
+    public const int EFFECT_EXPLOSION_RANGE_TILES = 40;
+    public const int EFFECT_EXPLOSION_DAMAGE = 100;
+    public const int EFFECT_HEAL = 50;
+    public const int EFFECT_DEFENSE_INCREASE = 10;
+    public const int EFFECT_DEFENSE_INCREASE_DURATION_SECONDS = 30;
+
+    public override LocalizedText Tooltip =>
+        base.Tooltip.WithFormatArgs(BASE_DAMAGE_INCREASE,
+            EFFECT_EXPLOSION_RANGE_TILES,
+            EFFECT_EXPLOSION_DAMAGE,
+            EFFECT_HEAL,
+            EFFECT_DEFENSE_INCREASE,
+            EFFECT_DEFENSE_INCREASE_DURATION_SECONDS);
 
     public override void SetDefaults()
     {
@@ -31,5 +45,44 @@ public class ShatteringJustice : ModItem
         }
 
         return false;
+    }
+
+    public static void ProcJustice(Player player, Sobek sobek)
+    {
+        player.Heal(EFFECT_HEAL);
+        player.AddBuff(ModContent.BuffType<JusticeBuff>(), EFFECT_DEFENSE_INCREASE_DURATION_SECONDS * 60);
+
+        foreach (NPC enemy in Main.npc.Where(it =>
+                     it.active && !it.friendly && it.Distance(player.position) < EFFECT_EXPLOSION_RANGE_TILES * 16 &&
+                     it.CanBeChasedBy()))
+        {
+            Projectile proj = Projectile.NewProjectileDirect(player.GetSource_ItemUse(sobek.Item), enemy.Center, Vector2.Zero,
+                ModContent.ProjectileType<JusticeExplosion>(), EFFECT_EXPLOSION_DAMAGE, 1f, owner: player.whoAmI);
+            proj.DamageType = DamageClass.Ranged;
+        }
+    }
+}
+
+class ShatteringJusticeGlobalNPC : GlobalNPC
+{
+    public override bool InstancePerEntity => true;
+    public int sobekPlayer = -1;
+    public override void OnKill(NPC npc)
+    {
+        if (sobekPlayer == -1) return;
+
+        var player = Main.player[sobekPlayer];
+        if (!player.active || player.dead) return;
+
+        Item item = player.inventory.FirstOrDefault(it => it.type == ModContent.ItemType<Sobek>());
+        if (item != null && item.ModItem is Sobek sobek && sobek.shatteringJustice)
+        {
+            sobek.justiceCharge++;
+            if (sobek.justiceCharge > 9)
+            {
+                sobek.justiceCharge -= 10;
+                ShatteringJustice.ProcJustice(player, sobek);
+            }
+        }
     }
 }

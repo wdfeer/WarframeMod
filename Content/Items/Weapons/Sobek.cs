@@ -7,6 +7,7 @@ namespace WarframeMod.Content.Items.Weapons;
 public class Sobek : ModItem
 {
     public bool shatteringJustice;
+    public int justiceCharge;
     public const int BASE_DAMAGE = 10;
 
     public override void SetDefaults()

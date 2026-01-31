@@ -1750,6 +1750,8 @@ Mods: {
 					'''
                     Permanently upgrades a Sobek in inventory:
                     +{0} base damage
+                    Upon killing 10 enemies:
+                    Explode every enemy within {1} tiles dealing {2} damage, restore {3} life and gain +{4}% defense for {5} seconds
 					'''
 			}
 		}
