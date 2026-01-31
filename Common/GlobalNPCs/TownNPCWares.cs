@@ -1,4 +1,5 @@
-﻿using WarframeMod.Content.Items.Weapons;
+﻿using WarframeMod.Content.Items.Accessories;
+using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Common.GlobalNPCs;
 
@@ -24,6 +25,9 @@ internal class TownNPCWares : GlobalNPC
                 return;
             case NPCID.SkeletonMerchant:
                 shop.Add<Snipetron>(Condition.DownedSkeletron);
+                return;
+            case NPCID.WitchDoctor:
+                shop.Add<AnabolicPollination>(Condition.DownedPlantera);
                 return;
             default:
                 return;

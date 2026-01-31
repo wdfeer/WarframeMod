@@ -4,8 +4,8 @@ using WarframeMod.Common.GlobalNPCs;
 namespace WarframeMod.Content.Items.Accessories;
 public class AnabolicPollination : ModItem
 {
-    public const int POISON_CHANCE_PER_MINION_PERCENT = 4;
-    public const int EXTRA_POISON_DPS_PER_MINION = 12;
+    public const int POISON_CHANCE_PER_MINION_PERCENT = 3;
+    public const int EXTRA_POISON_DPS_PER_MINION = 35;
     public const int POISON_DURATION = 300;
 
     public override LocalizedText Tooltip =>
@@ -14,24 +14,15 @@ public class AnabolicPollination : ModItem
     public override void SetDefaults()
     {
         Item.accessory = true;
-        Item.rare = 3;
-        Item.value = Item.sellPrice(gold: 1);
+        Item.rare = ItemRarityID.Lime;
+        Item.value = Item.buyPrice(gold: 30);
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetModPlayer<AnabolicPollinationPlayer>().enabled = true;
     }
-
-    public override void AddRecipes()
-    {
-        Recipe recipe = CreateRecipe();
-        recipe.AddIngredient<InfectedClip>();
-        recipe.AddIngredient(ItemID.Stinger, 10);
-        recipe.AddIngredient(ItemID.JungleSpores, 8);
-        recipe.AddTile(TileID.TinkerersWorkbench);
-        recipe.Register();
-    }
 }
+
 class AnabolicPollinationPlayer : ModPlayer
 {
     public bool enabled;
