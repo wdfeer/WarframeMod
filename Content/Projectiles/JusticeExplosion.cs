@@ -8,11 +8,12 @@ public class JusticeExplosion : ExplosiveProjectile
         base.SetDefaults();
         Projectile.hide = true;
         Projectile.usesLocalNPCImmunity = false;
+        Projectile.localNPCHitCooldown = -2;
         Projectile.usesIDStaticNPCImmunity = true;
-        Projectile.idStaticNPCHitCooldown = -1;
+        Projectile.idStaticNPCHitCooldown = 20;
     }
 
-    public override int ExplosionWidth => 4 * 16;
+    public override int ExplosionWidth => 2 * 16;
     public override void AI()
     {
         base.AI();
