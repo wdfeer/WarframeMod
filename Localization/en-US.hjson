@@ -1743,6 +1743,15 @@ Mods: {
 				DisplayName: Crewman Helmet
 				Tooltip: +{0}% critical chance
 			}
+			
+			ShatteringJustice: {
+				DisplayName: Shattering Justice
+				Tooltip:
+					'''
+                    Permanently upgrades a Sobek in inventory:
+                    +{0} base damage
+					'''
+			}
 		}
 
 		Projectiles: {

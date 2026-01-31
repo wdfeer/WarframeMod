@@ -63,6 +63,8 @@ internal class NPCLoot : GlobalNPC
                 ]);
             case NPCID.PirateCorsair:
                 return ItemDropRule.Common(ModContent.ItemType<Rubico>(), 50);
+            case NPCID.BloodNautilus:
+                return ItemDropRule.Common(ModContent.ItemType<ShatteringJustice>(), 3);
             case NPCID.SandElemental:
                 return ItemDropRule.OneFromOptions(2,
                     ModContent.ItemType<EnergyGenerator>(),
