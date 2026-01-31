@@ -1751,12 +1751,16 @@ Mods: {
 
 			ShatteringJustice: {
 				DisplayName: Shattering Justice
+				JusticeEffect:
+					'''
+					Upon killing 10 enemies:
+					Explode every enemy within {0} tiles dealing {1} damage, restore {2} life and gain +{3} defense for {4} seconds
+					'''
 				Tooltip:
 					'''
 					Permanently upgrades a Sobek in inventory:
 					+{0} base damage
-					Upon killing 10 enemies:
-					Explode every enemy within {1} tiles dealing {2} damage, restore {3} life and gain +{4}% defense for {5} seconds
+					{$Items.ShatteringJustice.JusticeEffect@1}
 					'''
 			}
 		}

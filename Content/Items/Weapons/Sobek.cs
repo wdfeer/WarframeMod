@@ -1,5 +1,6 @@
 using Terraria.DataStructures;
 using Terraria.ModLoader.IO;
+using WarframeMod.Common;
 using WarframeMod.Content.Items.Consumables;
 
 namespace WarframeMod.Content.Items.Weapons;
@@ -9,6 +10,20 @@ public class Sobek : ModItem
     public bool shatteringJustice;
     public int justiceCharge;
     public const int BASE_DAMAGE = 10;
+
+    public override void ModifyTooltips(List<TooltipLine> tooltips)
+    {
+        if (!shatteringJustice) return;
+
+        string text = Mod.GetLocalization("Items.ShatteringJustice.JusticeEffect")
+            .WithFormatArgs(
+                ShatteringJustice.EFFECT_EXPLOSION_RANGE_TILES,
+                ShatteringJustice.EFFECT_EXPLOSION_DAMAGE,
+                ShatteringJustice.EFFECT_HEAL,
+                ShatteringJustice.EFFECT_DEFENSE_INCREASE,
+                ShatteringJustice.EFFECT_DEFENSE_INCREASE_DURATION_SECONDS).Value;
+        TooltipHelper.InsertTooltipLine(Mod, tooltips, text);
+    }
 
     public override void SetDefaults()
     {
