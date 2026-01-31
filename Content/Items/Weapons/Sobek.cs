@@ -64,8 +64,12 @@ public class Sobek : ModItem
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width - 6);
         for (int i = 0; i < 4; i++)
         {
-            Projectile.NewProjectile(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(8 * i)), type,
-                damage, knockback, player.whoAmI);
+            Projectile proj = this.ShootWith(
+                player, source, position, velocity, type, damage, knockback, spread: MathHelper.ToRadians(8 * i));
+            if (shatteringJustice)
+            {
+                proj.GetGlobalProjectile<ShatteringJusticeGlobalProjectile>().active = true;
+            }
         }
 
         return false;

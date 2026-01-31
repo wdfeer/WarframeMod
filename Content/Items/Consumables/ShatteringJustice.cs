@@ -63,6 +63,16 @@ public class ShatteringJustice : ModItem
     }
 }
 
+class ShatteringJusticeGlobalProjectile : GlobalProjectile
+{
+    public override bool InstancePerEntity => true;
+    public bool active;
+    public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
+    {
+        target.GetGlobalNPC<ShatteringJusticeGlobalNPC>().sobekPlayer = projectile.owner;
+    }
+}
+
 class ShatteringJusticeGlobalNPC : GlobalNPC
 {
     public override bool InstancePerEntity => true;
@@ -78,9 +88,9 @@ class ShatteringJusticeGlobalNPC : GlobalNPC
         if (item != null && item.ModItem is Sobek sobek && sobek.shatteringJustice)
         {
             sobek.justiceCharge++;
-            if (sobek.justiceCharge > 9)
+            if (sobek.justiceCharge > 9 && !player.HasBuff<JusticeBuff>())
             {
-                sobek.justiceCharge -= 10;
+                sobek.justiceCharge = 0;
                 ShatteringJustice.ProcJustice(player, sobek);
             }
         }
