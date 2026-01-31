@@ -83,13 +83,13 @@ class ShatteringJusticeGlobalNPC : GlobalNPC
         if (sobekPlayer == -1) return;
 
         var player = Main.player[sobekPlayer];
-        if (!player.active || player.dead) return;
+        if (!player.active || player.dead || player.HasBuff<JusticeBuff>()) return;
 
         Item item = player.inventory.FirstOrDefault(it => it.type == ModContent.ItemType<Sobek>());
         if (item != null && item.ModItem is Sobek sobek && sobek.shatteringJustice)
         {
             sobek.justiceCharge++;
-            if (sobek.justiceCharge > 9 && !player.HasBuff<JusticeBuff>())
+            if (sobek.justiceCharge > 9)
             {
                 sobek.justiceCharge = 0;
                 ShatteringJustice.ProcJustice(player, sobek);
