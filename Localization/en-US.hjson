@@ -1275,7 +1275,7 @@ Mods: {
 				Tooltip:
 					'''
 					{$Common.ModifyCritDamage}
-					{1} ichor chance
+					{1}% ichor chance
 					'''
 			}
 
