@@ -69,7 +69,8 @@ class ShatteringJusticeGlobalProjectile : GlobalProjectile
     public bool active;
     public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
     {
-        target.GetGlobalNPC<ShatteringJusticeGlobalNPC>().sobekPlayer = projectile.owner;
+        if (target.CanBeChasedBy())
+            target.GetGlobalNPC<ShatteringJusticeGlobalNPC>().sobekPlayer = projectile.owner;
     }
 }
 
