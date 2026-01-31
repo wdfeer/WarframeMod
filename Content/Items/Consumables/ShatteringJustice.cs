@@ -7,9 +7,9 @@ namespace WarframeMod.Content.Items.Consumables;
 
 public class ShatteringJustice : ModItem
 {
-    public const int BASE_DAMAGE_INCREASE = 10;
+    public const int BASE_DAMAGE_INCREASE = 13;
     public const int EFFECT_EXPLOSION_RANGE_TILES = 40;
-    public const int EFFECT_EXPLOSION_DAMAGE = 100;
+    public const int EFFECT_EXPLOSION_DAMAGE = 200;
     public const int EFFECT_HEAL = 50;
     public const int EFFECT_DEFENSE_INCREASE = 10;
     public const int EFFECT_DEFENSE_INCREASE_DURATION_SECONDS = 30;
