@@ -1,6 +1,7 @@
 ﻿using Terraria.GameContent.ItemDropRules;
 using WarframeMod.Content.Items;
 using WarframeMod.Content.Items.Accessories;
+using WarframeMod.Content.Items.Arcanes;
 using WarframeMod.Content.Items.Consumables;
 using WarframeMod.Content.Items.Weapons;
 
@@ -30,6 +31,8 @@ internal class NPCLoot : GlobalNPC
                     ModContent.ItemType<MotusSetup>(),
                     ModContent.ItemType<MotusSignal>(),
                 ]);
+            case NPCID.GreekSkeleton:
+                return ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ExodiaValor>(), 30);
             case NPCID.CochinealBeetle or NPCID.CyanBeetle or NPCID.LacBeetle:
                 return ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<JahuCanticle>(),
                     2);

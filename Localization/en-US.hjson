@@ -1621,6 +1621,11 @@ Mods: {
 					Grants Campfire buff permanently
 					'''
 			}
+			
+			ExodiaValor: {
+				DisplayName: Exodia Valor
+				Tooltip: +{0}% damage on true melee weapons whilst moving vertically
+			}
 
 			PrecisionConditioning: {
 				DisplayName: Precision Conditioning
@@ -1768,6 +1773,7 @@ Mods: {
 				DisplayName: Wolf Sledge
 				Tooltip: Doubled benefit from attack speed bonuses
 			}
+
 		}
 
 		Projectiles: {
