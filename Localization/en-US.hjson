@@ -1763,6 +1763,11 @@ Mods: {
 					{$Items.ShatteringJustice.JusticeEffect@1}
 					'''
 			}
+			
+			WolfSledge: {
+				DisplayName: Wolf Sledge
+				Tooltip: Doubled benefit from attack speed bonuses
+			}
 		}
 
 		Projectiles: {
