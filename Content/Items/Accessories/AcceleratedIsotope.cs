@@ -8,9 +8,9 @@ namespace WarframeMod.Content.Items.Accessories;
 public class AcceleratedIsotope : ModItem
 {
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs($"+{DAMAGE_INCREASE}%", CONFUSED_CHANCE, USE_SPEED_INCREASE);
-    public const int DAMAGE_INCREASE = 7;
+    public const int DAMAGE_INCREASE = 8;
     public const int CONFUSED_CHANCE = 20;
-    public const int USE_SPEED_INCREASE = 7;
+    public const int USE_SPEED_INCREASE = 8;
     public override void SetDefaults()
     {
         Item.accessory = true;

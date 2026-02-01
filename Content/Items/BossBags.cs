@@ -60,8 +60,6 @@ public class BossBags : GlobalItem
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1,
                     ModContent.ItemType<HunterRecovery>(),
                     ModContent.ItemType<HunterCommand>(),
-                    ModContent.ItemType<AcceleratedIsotope>(),
-                    ModContent.ItemType<Magnetize>(),
                     ModContent.ItemType<Gammacor>(),
                     ModContent.ItemType<EnergyConversion>());
             case ItemID.DestroyerBossBag:
@@ -69,11 +67,15 @@ public class BossBags : GlobalItem
                     ModContent.ItemType<Opticor>(),
                     ModContent.ItemType<Lecta>());
             case ItemID.SkeletronPrimeBossBag:
-                return ItemDropRule.OneFromOptionsNotScalingWithLuck(2,
-                    ModContent.ItemType<Acceltra>());
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1,
+                    ModContent.ItemType<Acceltra>(),
+                    ModContent.ItemType<Magnetize>()
+                );
             case ItemID.TwinsBossBag:
-                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Vaporize>(),
-                    2);
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(1,
+                    ModContent.ItemType<Vaporize>(),
+                    ModContent.ItemType<AcceleratedIsotope>()
+                );
             case ItemID.PlanteraBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1,
                     ModContent.ItemType<StradavarPrime>(),
