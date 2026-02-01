@@ -1,23 +1,9 @@
-using WarframeMod.Common.GlobalNPCs;
-
 namespace WarframeMod.Content.Items.Arcanes;
 
 public class MoltAugmented : Arcane
 {
-    public override void SetStaticDefaults()
-    {
-        OnKillGlobalNPC.RegisterOnKillEvent(hit => hit.player.GetModPlayer<AugmentedPlayer>().enabled,
-            hit =>
-            {
-                var modPlayer = hit.player.GetModPlayer<AugmentedPlayer>();
-                if (modPlayer.stacks < MAX_STACKS)
-                    modPlayer.stacks++;
-            });
-    }
-
     public const float PERCENT_DAMAGE_PER_KILL = 0.12f;
     public const int MAX_STACKS = 200;
-
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
         Player player = Main.LocalPlayer;
@@ -31,24 +17,18 @@ public class MoltAugmented : Arcane
             tooltips.Insert(expertIndex, line);
         }
     }
-
     public override void UpdateArcane(Player player)
     {
         player.GetModPlayer<AugmentedPlayer>().enabled = true;
     }
 }
-
 class AugmentedPlayer : ModPlayer
 {
     public bool enabled;
     public override void ResetEffects() => enabled = false;
     public float CurrentBonusPercent => PercentDamagePerStack * stacks;
-
-    public float PercentDamagePerStack =>
-        MoltAugmented.PERCENT_DAMAGE_PER_KILL / (Main.npc.Any(npc => npc.active && npc.boss) ? 2 : 1);
-
-    public int stacks;
-
+    public float PercentDamagePerStack => MoltAugmented.PERCENT_DAMAGE_PER_KILL / (Main.npc.Any(npc => npc.active && npc.boss) ? 2 : 1);
+    public int stacks = 0;
     public override void PostUpdateEquips()
     {
         if (!enabled)
@@ -58,9 +38,25 @@ class AugmentedPlayer : ModPlayer
             Player.GetDamage(DamageClass.Generic) += CurrentBonusPercent / 100f;
         }
     }
-
     public override void UpdateDead()
     {
         stacks = 0;
+    }
+    public void OnKillNPCWhenEnabled()
+    {
+        if (stacks < MoltAugmented.MAX_STACKS)
+            stacks++;
+    }
+}
+class AugmentedGlobalNPC : GlobalNPC
+{
+    public override void HitEffect(NPC npc, NPC.HitInfo hit)
+    {
+        if (npc.life > 0)
+            return;
+        var augmentator = Main.LocalPlayer.GetModPlayer<AugmentedPlayer>();
+        if (!augmentator.enabled)
+            return;
+        augmentator.OnKillNPCWhenEnabled();
     }
 }
