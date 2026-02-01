@@ -27,9 +27,8 @@ internal class WolfSledge : CircularMelee
 
     public override void AddRecipes()
         => CreateRecipe()
-            .AddIngredient(ItemID.TurtleShell, 8)
-            .AddIngredient(ItemID.SpookyWood, 30)
-            .AddCondition(Condition.DownedPlantera)
+            .AddIngredient(ItemID.TurtleShell, 2)
+            .AddIngredient(ItemID.BrokenHeroSword)
             .AddTile(TileID.MythrilAnvil)
             .Register();
 
