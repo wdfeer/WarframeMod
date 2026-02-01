@@ -1791,6 +1791,16 @@ Mods: {
 					+{1}% horizontal wing speed
 				    '''
 			}
+			
+			VirtuosTrojan: {
+				DisplayName: Virtuos Trojan
+				Tooltip:
+				    '''
+					+{0}% cold chance
+					+{1}% poison chance
+					Poisoned enemies under the effect of cold take 15% more damage from all sources
+				    '''
+			}
 		}
 
 		Projectiles: {

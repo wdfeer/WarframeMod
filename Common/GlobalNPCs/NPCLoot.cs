@@ -85,6 +85,8 @@ internal class NPCLoot : GlobalNPC
                 or NPCID.MartianOfficer or NPCID.MartianTurret or NPCID.GigaZapper or NPCID.RayGunner or NPCID.GrayGrunt
                 or NPCID.BrainScrambler:
                 return ItemDropRule.Common(ModContent.ItemType<Fieldron>(), 250);
+            case NPCID.QueenBee:
+                return ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<VirtuosTrojan>(), 4);
             case NPCID.WallofFlesh:
                 return ItemDropRule.SequentialRules(1,
                     ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<VomeInvocation>()),
@@ -92,11 +94,13 @@ internal class NPCLoot : GlobalNPC
             case NPCID.QueenSlimeBoss:
                 return ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<PaxSoar>(), 2);
             case NPCID.Plantera:
-                return ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(),
-                    ModContent.ItemType<XataInvocation>(), 1);
+                return ItemDropRule.SequentialRules(1,
+                    ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(),
+                        ModContent.ItemType<XataInvocation>()),
+                    ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<VirtuosTrojan>(), 6));
             case NPCID.HallowBoss:
                 return ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(),
-                    ModContent.ItemType<RisInvocation>(), 1);
+                    ModContent.ItemType<RisInvocation>());
             default:
                 return null;
         }

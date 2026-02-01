@@ -1,7 +1,8 @@
 ﻿namespace WarframeMod.Content.Items.Arcanes;
+
 public abstract class Arcane : ModItem
 {
-    public static readonly Func<int>[] arcaneTypeGetters =
+    public static readonly Func<int>[] bossArcaneTypeGetters =
     [
         ModContent.ItemType<ArcaneAvenger>,
         ModContent.ItemType<ArcaneGuardian>,
@@ -27,10 +28,14 @@ public abstract class Arcane : ModItem
         ModContent.ItemType<ArcaneHealing>,
         ModContent.ItemType<ArcaneIce>,
     ];
-    public static int[] GetArcaneTypes()
-        => arcaneTypeGetters.Select(x => x()).ToArray();
+
+    /// <returns>List of types of arcanes that should drop from all bosses</returns>
+    public static int[] GetArcaneTypesFromBosses()
+        => bossArcaneTypeGetters.Select(x => x()).ToArray();
+
     public static int GetArcaneIndex(int type)
-        => Array.IndexOf(GetArcaneTypes(), type);
+        => Array.IndexOf(GetArcaneTypesFromBosses(), type);
+
     public override void SetDefaults()
     {
         Item.accessory = true;
@@ -38,9 +43,12 @@ public abstract class Arcane : ModItem
         Item.expert = true;
         Item.value = Item.sellPrice(gold: 4);
     }
+
     public abstract void UpdateArcane(Player player);
+
     public override void UpdateAccessory(Player player, bool hideVisual)
         => UpdateArcane(player);
+
     public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
     {
         return equippedItem.ModItem is not Arcane || incomingItem.ModItem is not Arcane;
