@@ -30,7 +30,7 @@ class HealingReturnPlayer : ModPlayer
     }
     public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
     {
-        if (active && !item.noMelee && item.DamageType == DamageClass.Melee && lastHealTimer >= 60)
+        if (active && !item.noMelee && lastHealTimer >= 60)
         {
             int buffs = target.buffTime.Count(time => time > 0);
             buffs += target.GetGlobalNPC<StackableDebuffNPC>().bleeds.Count == 0 ? 0 : 1;
