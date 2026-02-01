@@ -1782,6 +1782,15 @@ Mods: {
 				DisplayName: Wolf Sledge
 				Tooltip: Doubled benefit from attack speed bonuses
 			}
+
+			PaxSoar: {
+				DisplayName: Pax Soar
+				Tooltip:
+				    '''
+					+{0}% damage whilst flying with wings
+					+{1}% horizontal wing speed
+				    '''
+			}
 		}
 
 		Projectiles: {
