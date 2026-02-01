@@ -1,5 +1,3 @@
-using Terraria.Localization;
-using WarframeMod.Common.GlobalItems;
 using WarframeMod.Content.Projectiles;
 
 
@@ -9,7 +7,7 @@ internal class WolfSledge : CircularMelee
 {
     public override void SetDefaults()
     {
-        Item.damage = 240;
+        Item.damage = 130;
         Item.crit = 13;
         Item.knockBack = 12f;
         Item.DamageType = DamageClass.Melee;
@@ -23,6 +21,8 @@ internal class WolfSledge : CircularMelee
         Item.autoReuse = true;
         Item.rare = ItemRarityID.Yellow;
         Item.value = Item.sellPrice(gold: 16);
+        Item.shootSpeed = 20f;
+        Item.shoot = ModContent.ProjectileType<WolfSledgeProjectile>();
     }
 
     public override void AddRecipes()

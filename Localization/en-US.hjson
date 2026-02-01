@@ -1763,7 +1763,7 @@ Mods: {
 					{$Items.ShatteringJustice.JusticeEffect@1}
 					'''
 			}
-			
+
 			WolfSledge: {
 				DisplayName: Wolf Sledge
 				Tooltip: Doubled benefit from attack speed bonuses
@@ -1817,6 +1817,7 @@ Mods: {
 			MagestyProjectile.DisplayName: Magesty Projectile
 			SecuraLectaProjectile.DisplayName: Secura Lecta Projectile
 			JusticeExplosion.DisplayName: Justice Explosion
+			WolfSledgeProjectile.DisplayName: Wolf Sledge Projectile
 		}
 
 		Configs: {
