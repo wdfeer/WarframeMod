@@ -66,6 +66,8 @@ internal class NPCLoot : GlobalNPC
                 ]);
             case NPCID.PirateCorsair:
                 return ItemDropRule.Common(ModContent.ItemType<Rubico>(), 50);
+            case NPCID.GoblinShark or NPCID.BloodEelHead:
+                return ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ExodiaForce>(), 4);
             case NPCID.BloodNautilus:
                 return ItemDropRule.Common(ModContent.ItemType<ShatteringJustice>(), 3);
             case NPCID.SandElemental:

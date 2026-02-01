@@ -1621,10 +1621,19 @@ Mods: {
 					Grants Campfire buff permanently
 					'''
 			}
-			
+
 			ExodiaValor: {
 				DisplayName: Exodia Valor
 				Tooltip: +{0}% damage on true melee weapons whilst moving vertically
+			}
+
+			ExodiaForce: {
+				DisplayName: Exodia Force
+				Tooltip:
+					'''
+					Every {0} seconds on true melee hit:
+					Create an explosion dealing 200% of the dealt damage
+					'''
 			}
 
 			PrecisionConditioning: {
@@ -1773,7 +1782,6 @@ Mods: {
 				DisplayName: Wolf Sledge
 				Tooltip: Doubled benefit from attack speed bonuses
 			}
-
 		}
 
 		Projectiles: {
@@ -1824,6 +1832,7 @@ Mods: {
 			SecuraLectaProjectile.DisplayName: Secura Lecta Projectile
 			JusticeExplosion.DisplayName: Justice Explosion
 			WolfSledgeProjectile.DisplayName: Wolf Sledge Projectile
+			ExodiaForceProjectile.DisplayName: Exodia Force Projectile
 		}
 
 		Configs: {
