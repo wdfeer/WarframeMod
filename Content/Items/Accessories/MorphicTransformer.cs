@@ -14,31 +14,16 @@ public class MorphicTransformer : ModItem
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.AvengerEmblem, 1);
-        recipe.AddIngredient(ItemID.SoulofFlight, 1);
+        recipe.AddIngredient(ItemID.AvengerEmblem);
+        recipe.AddIngredient(ItemID.SoulofFlight);
         recipe.AddTile(TileID.MythrilAnvil);
         recipe.Register();
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        if (player.GetModPlayer<MorphicTransformerPlayer>().winging)
+        if (player.wingTime < player.wingTimeMax)
         {
             player.GetDamage(DamageClass.Generic) += DAMAGE_BONUS;
         }
     }
-}
-
-class MorphicTransformerPlayer : ModPlayer
-{
-    public bool winging = false;
-}
-
-class MorphicTransformerWings : GlobalItem
-{
-    public override bool WingUpdate(int wings, Player player, bool inUse)
-    {
-        player.GetModPlayer<MorphicTransformerPlayer>().winging = inUse;
-        return base.WingUpdate(wings, player, inUse);
-    }
-
 }
