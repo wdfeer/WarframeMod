@@ -1,4 +1,5 @@
 using Terraria.Localization;
+using WarframeMod.Common.GlobalNPCs;
 using WarframeMod.Content.Buffs;
 using WarframeMod.Content.Items.Weapons;
 using WarframeMod.Content.Projectiles;
@@ -7,6 +8,28 @@ namespace WarframeMod.Content.Items.Consumables;
 
 public class ShatteringJustice : ModItem
 {
+    public override void SetStaticDefaults()
+    {
+        OnKillGlobalNPC.RegisterOnKillEvent(
+            hit => hit.player != null && hit.target.CanBeChasedBy() && hit.player.HeldItem.ModItem is Sobek { shatteringJustice: true },
+            hit =>
+            {
+                Player player = hit.player;
+                if (!player.active || player.dead || player.HasBuff<JusticeBuff>()) return;
+
+                Item item = player.inventory.FirstOrDefault(it => it.type == ModContent.ItemType<Sobek>());
+                if (item != null && item.ModItem is Sobek sobek && sobek.shatteringJustice)
+                {
+                    sobek.justiceCharge++;
+                    if (sobek.justiceCharge > 9)
+                    {
+                        sobek.justiceCharge = 0;
+                        ProcJustice(player, sobek);
+                    }
+                }
+            });
+    }
+
     public const int BASE_DAMAGE_INCREASE = 13;
     public const int EFFECT_EXPLOSION_RANGE_TILES = 40;
     public const int EFFECT_EXPLOSION_DAMAGE = 200;
@@ -56,44 +79,10 @@ public class ShatteringJustice : ModItem
                      it.active && !it.friendly && it.Distance(player.position) < EFFECT_EXPLOSION_RANGE_TILES * 16 &&
                      it.CanBeChasedBy()))
         {
-            Projectile proj = Projectile.NewProjectileDirect(player.GetSource_ItemUse(sobek.Item), enemy.Center, Vector2.Zero,
+            Projectile proj = Projectile.NewProjectileDirect(player.GetSource_ItemUse(sobek.Item), enemy.Center,
+                Vector2.Zero,
                 ModContent.ProjectileType<JusticeExplosion>(), EFFECT_EXPLOSION_DAMAGE, 1f, owner: player.whoAmI);
             proj.DamageType = DamageClass.Ranged;
-        }
-    }
-}
-
-class ShatteringJusticeGlobalProjectile : GlobalProjectile
-{
-    public override bool InstancePerEntity => true;
-    public bool active;
-    public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
-    {
-        if (target.CanBeChasedBy())
-            target.GetGlobalNPC<ShatteringJusticeGlobalNPC>().sobekPlayer = projectile.owner;
-    }
-}
-
-class ShatteringJusticeGlobalNPC : GlobalNPC
-{
-    public override bool InstancePerEntity => true;
-    public int sobekPlayer = -1;
-    public override void OnKill(NPC npc)
-    {
-        if (sobekPlayer == -1) return;
-
-        var player = Main.player[sobekPlayer];
-        if (!player.active || player.dead || player.HasBuff<JusticeBuff>()) return;
-
-        Item item = player.inventory.FirstOrDefault(it => it.type == ModContent.ItemType<Sobek>());
-        if (item != null && item.ModItem is Sobek sobek && sobek.shatteringJustice)
-        {
-            sobek.justiceCharge++;
-            if (sobek.justiceCharge > 9)
-            {
-                sobek.justiceCharge = 0;
-                ShatteringJustice.ProcJustice(player, sobek);
-            }
         }
     }
 }
