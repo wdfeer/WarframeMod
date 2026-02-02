@@ -12,15 +12,34 @@ public class ResidualShock : Arcane
 
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(RANGE / 16, DURATION / 60);
 
+    private void UpdateDamage()
+    {
+        Item.damage = BASE_DAMAGE;
+        if (NPC.downedPlantBoss)
+            Item.damage += BASE_DAMAGE / 5;
+        if (NPC.downedGolemBoss)
+            Item.damage += BASE_DAMAGE / 3;
+        if (NPC.downedMoonlord)
+            Item.damage += BASE_DAMAGE;
+    }
+
     public override void SetDefaults()
     {
         base.SetDefaults();
-        Item.damage = BASE_DAMAGE;
+        UpdateDamage();
         Item.DamageType = DamageClass.Summon;
     }
 
+    // to update the damage if the item is in a chest etc
+    public override void ModifyTooltips(List<TooltipLine> tooltips)
+        => UpdateDamage();
+
+    public override void UpdateInventory(Player player)
+        => UpdateDamage();
+
     public override void UpdateArcane(Player player)
     {
+        UpdateDamage();
         player.GetModPlayer<ResidualShockPlayer>().arcane = Item;
     }
 }
