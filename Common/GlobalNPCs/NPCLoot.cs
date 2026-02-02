@@ -66,6 +66,8 @@ internal class NPCLoot : GlobalNPC
                 ]);
             case NPCID.ChaosElemental:
                 return ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<MagusAggress>(), 200);
+            case NPCID.SkeletonArcher or NPCID.ElfArcher:
+                return ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<LongbowSharpshot>(), 150);
             case NPCID.PirateCorsair:
                 return ItemDropRule.Common(ModContent.ItemType<Rubico>(), 50);
             case NPCID.GoblinShark or NPCID.BloodEelHead:

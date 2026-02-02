@@ -1824,6 +1824,15 @@ Mods: {
 					+{0}% melee critical chance
 					'''
 			}
+			
+			LongbowSharpshot: {
+				DisplayName: Longbow Sharpshot
+				Tooltip:
+					'''
+					On ranged hit from over {0} tiles away:
+					+{1}% damage on the next arrow shot
+					'''
+			}
 		}
 
 		Projectiles: {
