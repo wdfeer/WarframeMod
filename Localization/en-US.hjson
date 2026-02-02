@@ -1804,7 +1804,16 @@ Mods: {
 
 			EternalLogistics: {
 				DisplayName: Eternal Logistics
-				Tooltip: "-{0}% mana usage unless affected by Mana Sickness"
+				Tooltip: -{0}% mana usage unless affected by Mana Sickness
+			}
+
+			ResidualShock: {
+				DisplayName: Residual Shock
+				Tooltip:
+					'''
+					On kill:
+					Spawn a sentry dealing summon damage to enemies within {0} tiles for {1} seconds
+					'''
 			}
 		}
 
@@ -1857,6 +1866,8 @@ Mods: {
 			JusticeExplosion.DisplayName: Justice Explosion
 			WolfSledgeProjectile.DisplayName: Wolf Sledge Projectile
 			ExodiaForceProjectile.DisplayName: Exodia Force Projectile
+			ResidualShockBolt.DisplayName: Residual Shock Bolt
+			ResidualShockSpawner.DisplayName: Residual Shock Spawner
 		}
 
 		Configs: {

@@ -93,6 +93,8 @@ internal class NPCLoot : GlobalNPC
                     ItemDropRule.ByCondition(new DreadDropCondition(), ModContent.ItemType<Dread>()));
             case NPCID.QueenSlimeBoss:
                 return ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<PaxSoar>(), 2);
+            case NPCID.TheDestroyer:
+                return ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ResidualShock>(), 2);
             case NPCID.Plantera:
                 return ItemDropRule.SequentialRules(1,
                     ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(),
