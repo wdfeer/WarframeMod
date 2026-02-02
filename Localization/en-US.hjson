@@ -1786,28 +1786,25 @@ Mods: {
 			PaxSoar: {
 				DisplayName: Pax Soar
 				Tooltip:
-				    '''
+					'''
 					+{0}% damage whilst flying with wings
 					+{1}% horizontal wing speed
-				    '''
+					'''
 			}
-			
+
 			VirtuosTrojan: {
 				DisplayName: Virtuos Trojan
 				Tooltip:
-				    '''
+					'''
 					+{0}% cold chance
 					+{1}% poison chance
 					Poisoned enemies under the effect of cold take 15% more damage from all sources
-				    '''
+					'''
 			}
-			
+
 			EternalLogistics: {
 				DisplayName: Eternal Logistics
-				Tooltip:
-				    '''
-                    -{0}% mana usage unless affected by Mana Sickness
-				    '''
+				Tooltip: "-{0}% mana usage unless affected by Mana Sickness"
 			}
 		}
 
