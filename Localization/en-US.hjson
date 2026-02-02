@@ -1801,6 +1801,14 @@ Mods: {
 					Poisoned enemies under the effect of cold take 15% more damage from all sources
 				    '''
 			}
+			
+			EternalLogistics: {
+				DisplayName: Eternal Logistics
+				Tooltip:
+				    '''
+                    -{0}% mana usage unless affected by Mana Sickness
+				    '''
+			}
 		}
 
 		Projectiles: {

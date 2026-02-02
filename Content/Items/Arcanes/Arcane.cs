@@ -27,6 +27,7 @@ public abstract class Arcane : ModItem
         ModContent.ItemType<ArcaneCircumvent>,
         ModContent.ItemType<ArcaneHealing>,
         ModContent.ItemType<ArcaneIce>,
+        ModContent.ItemType<EternalLogistics>,
     ];
 
     /// <returns>List of types of arcanes that should drop from all bosses</returns>
