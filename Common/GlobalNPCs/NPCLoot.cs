@@ -64,6 +64,8 @@ internal class NPCLoot : GlobalNPC
                     ModContent.ItemType<Seer>(),
                     ModContent.ItemType<Cronus>()
                 ]);
+            case NPCID.ChaosElemental:
+                return ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<MagusAggress>(), 200);
             case NPCID.PirateCorsair:
                 return ItemDropRule.Common(ModContent.ItemType<Rubico>(), 50);
             case NPCID.GoblinShark or NPCID.BloodEelHead:
