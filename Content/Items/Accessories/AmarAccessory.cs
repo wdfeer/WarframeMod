@@ -36,7 +36,7 @@ class AmarGlobalItem : GlobalItem
     {
         if (player.whoAmI != Main.myPlayer) return null;
         if (player.itemTime > 0) return null;
-        if (item.DamageType != DamageClass.Melee && item.DamageType != DamageClass.MeleeNoSpeed || player.GetModPlayer<AmarPlayer>().teleportRange <= 0) return null;
+        if (!item.DamageType.CountsAsClass(DamageClass.Melee) || player.GetModPlayer<AmarPlayer>().teleportRange <= 0) return null;
 
         float maxRange = player.GetModPlayer<AmarPlayer>().teleportRange;
 
