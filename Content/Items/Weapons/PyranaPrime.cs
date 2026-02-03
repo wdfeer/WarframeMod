@@ -24,11 +24,11 @@ public class PyranaPrime : ModItem
         Item.knockBack = 1.3f;
         Item.value = Item.sellPrice(gold: 27);
         Item.rare = 5;
-        Item.UseSound = SoundID.Item41.ModifySoundStyle(pitchVariance: 0.1f);
         Item.shootSpeed = 16;
         Item.autoReuse = true;
         Item.shoot = 10;
         Item.useAmmo = AmmoID.Bullet;
+        Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/PyranaPrimeSound").ModifySoundStyle(pitchVariance: 0.1f);
     }
 
     public override void AddRecipes()

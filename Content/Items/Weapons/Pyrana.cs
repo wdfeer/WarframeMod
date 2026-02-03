@@ -24,11 +24,11 @@ public class Pyrana : ModItem
         Item.knockBack = 1.2f;
         Item.value = Item.sellPrice(gold: 17);
         Item.rare = 3;
-        Item.UseSound = SoundID.Item41.ModifySoundStyle(pitchVariance: 0.1f);
         Item.shootSpeed = 13;
         Item.autoReuse = true;
         Item.shoot = 10;
         Item.useAmmo = AmmoID.Bullet;
+        Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/PyranaPrimeSound").ModifySoundStyle(pitchVariance: 0.1f);
     }
     
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
