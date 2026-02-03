@@ -10,7 +10,7 @@ public class AkjagaraPrime : ModItem
     private const int BASE_BLEED_CHANCE = 30;
     private int bleedChance = BASE_BLEED_CHANCE;
     private const int CRIT_DAMAGE_INCREASE = 10;
-    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(BASE_BLEED_CHANCE, CRIT_DAMAGE_INCREASE);
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(BASE_BLEED_CHANCE, $"+{CRIT_DAMAGE_INCREASE}%");
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
         UpdateBleedChance(Main.LocalPlayer);
@@ -39,7 +39,7 @@ public class AkjagaraPrime : ModItem
         Item.shoot = 10;
         Item.shootSpeed = 16f;
         Item.useAmmo = AmmoID.Bullet;
-        Item.UseSound = new SoundStyle("WarframeMod/Content/Sounds/AkjagaraPrimeSound").ModifySoundStyle(pitchVariance: 0.05f);
+        Item.UseSound = new SoundStyle("WarframeMod/Content/Sounds/AkjagaraPrimeSound").ModifySoundStyle(pitchVariance: 0.1f);
     }
 
     public override void AddRecipes()
