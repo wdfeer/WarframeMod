@@ -30,7 +30,12 @@ public class Pyrana : ModItem
         Item.useAmmo = AmmoID.Bullet;
         Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/PyranaPrimeSound").ModifySoundStyle(pitchVariance: 0.1f);
     }
-    
+
+    public override Vector2? HoldoutOffset()
+    {
+        return new Vector2(-1f, 0);
+    }
+
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         this.ModifyAmmoDamage(player, ref damage, 0.5f);

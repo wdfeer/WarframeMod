@@ -1815,7 +1815,7 @@ Mods: {
 					Spawn a sentry dealing summon damage to enemies within {0} tiles for {1} seconds
 					'''
 			}
-			
+
 			MagusAggress: {
 				DisplayName: Magus Aggress
 				Tooltip:
@@ -1824,7 +1824,7 @@ Mods: {
 					+{0}% melee critical chance
 					'''
 			}
-			
+
 			LongbowSharpshot: {
 				DisplayName: Longbow Sharpshot
 				Tooltip:

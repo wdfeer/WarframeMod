@@ -30,6 +30,11 @@ public class PyranaPrime : ModItem
         Item.useAmmo = AmmoID.Bullet;
         Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/PyranaPrimeSound").ModifySoundStyle(pitchVariance: 0.1f);
     }
+    
+    public override Vector2? HoldoutOffset()
+    {
+        return new Vector2(-0.8f, 0);
+    }
 
     public override void AddRecipes()
         => CreateRecipe()
