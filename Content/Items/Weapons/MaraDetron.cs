@@ -1,3 +1,4 @@
+using Terraria.Audio;
 using Terraria.DataStructures;
 using WarframeMod.Common.GlobalProjectiles;
 
@@ -27,6 +28,7 @@ public class MaraDetron : ModItem
         Item.shoot = ProjectileID.LaserMachinegunLaser;
         Item.shootSpeed = 16;
         Item.autoReuse = true;
+        Item.UseSound = new SoundStyle("WarframeMod/Content/Sounds/MaraDetronSound").ModifySoundStyle(pitchVariance: 0.05f);
     }
     public override void AddRecipes()
     {
