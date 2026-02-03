@@ -1,4 +1,5 @@
-﻿using Terraria.GameContent.ItemDropRules;
+﻿using System.Diagnostics;
+using Terraria.GameContent.ItemDropRules;
 using WarframeMod.Content.Items;
 using WarframeMod.Content.Items.Accessories;
 using WarframeMod.Content.Items.Arcanes;
@@ -9,108 +10,126 @@ namespace WarframeMod.Common.GlobalNPCs;
 
 internal class NPCLoot : GlobalNPC
 {
-    static IItemDropRule GetItemDropRule(NPC npc)
+    public static Dictionary<int, IItemDropRule[]> dropRules;
+
+    public override void SetStaticDefaults()
     {
-        int type = npc.type;
-        switch (type)
+        Dictionary<int, List<IItemDropRule>> rules = new();
+
+        void Add(IItemDropRule rule, params int[] npcs)
         {
-            case NPCID.GreenSlime or NPCID.BlueSlime:
-                return ItemDropRule.Common(ModContent.ItemType<Vitality>(), 200);
-            case NPCID.EaterofSouls or NPCID.DevourerHead or NPCID.BloodCrawler or NPCID.Crimera:
-                return ItemDropRule.ByCondition(new GrimoireDropCondition(), ModContent.ItemType<Grimoire>(), 25);
-            case NPCID.JungleBat:
-                return ItemDropRule.Common(ModContent.ItemType<Furis>(), 40);
-            case NPCID.Piranha:
-                return ItemDropRule.ByCondition(new BeatQueenBeeCondition(), ModContent.ItemType<Pyrana>(), 60);
-            case NPCID.Skeleton or NPCID.SkeletonAlien or NPCID.SkeletonAstonaut or NPCID.SkeletonTopHat
-                or NPCID.BoneThrowingSkeleton or NPCID.BoneThrowingSkeleton2:
-                return ItemDropRule.Common(ModContent.ItemType<PointStrike>(), 15);
-            case NPCID.Harpy:
-                return ItemDropRule.OneFromOptions(30,
-                [
-                    ModContent.ItemType<MotusSetup>(),
-                    ModContent.ItemType<MotusSignal>(),
-                ]);
-            case NPCID.GreekSkeleton:
-                return ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ExodiaValor>(), 30);
-            case NPCID.CochinealBeetle or NPCID.CyanBeetle or NPCID.LacBeetle:
-                return ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<JahuCanticle>(),
-                    2);
-            case NPCID.BloodZombie or NPCID.Drippler:
-                return ItemDropRule.Common(ModContent.ItemType<PiercingHit>(), 80);
-            case NPCID.FireImp:
-                return ItemDropRule.Common(ModContent.ItemType<Blaze>(), 25);
-            case NPCID.DarkCaster:
-                return ItemDropRule.OneFromOptions(15,
-                [
-                    ModContent.ItemType<NaturalTalent>(),
-                    ModContent.ItemType<Simulor>()
-                ]);
-            case NPCID.Corruptor or NPCID.CorruptSlime or NPCID.Slimer or NPCID.CursedHammer or NPCID.Clinger
-                or NPCID.PigronCorruption or NPCID.DarkMummy or NPCID.DesertGhoulCorruption or
-                NPCID.Herpling or NPCID.Crimslime or NPCID.BloodJelly or NPCID.CrimsonAxe
-                or NPCID.IchorSticker or NPCID.FloatyGross or NPCID.PigronCrimson or NPCID.BloodMummy
-                or NPCID.DesertGhoulCrimson:
-                return ItemDropRule.Common(ModContent.ItemType<Kuva>(), 15);
-            case NPCID.BloodFeeder or NPCID.CorruptGoldfish:
-                return ItemDropRule.Common(ModContent.ItemType<BuzzKill>(), 33);
-            case NPCID.BigMimicCorruption or NPCID.BigMimicCrimson:
-                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Kuva>(), 3);
-            case NPCID.GoblinPeon or NPCID.GoblinSorcerer or NPCID.GoblinThief or NPCID.GoblinWarrior
-                or NPCID.GoblinArcher:
-                return ItemDropRule.OneFromOptions(30,
-                [
-                    ModContent.ItemType<Tonkor>(),
-                    ModContent.ItemType<Seer>(),
-                    ModContent.ItemType<Cronus>()
-                ]);
-            case NPCID.ChaosElemental:
-                return ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<MagusAggress>(), 200);
-            case NPCID.SkeletonArcher or NPCID.ElfArcher:
-                return ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<LongbowSharpshot>(), 150);
-            case NPCID.PirateCorsair:
-                return ItemDropRule.Common(ModContent.ItemType<Rubico>(), 50);
-            case NPCID.GoblinShark or NPCID.BloodEelHead:
-                return ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ExodiaForce>(), 4);
-            case NPCID.BloodNautilus:
-                return ItemDropRule.Common(ModContent.ItemType<ShatteringJustice>(), 3);
-            case NPCID.SandElemental:
-                return ItemDropRule.OneFromOptions(2,
-                    ModContent.ItemType<EnergyGenerator>(),
-                    ModContent.ItemType<Guandao>());
-            case NPCID.Unicorn or NPCID.Gastropod:
-                return ItemDropRule.Common(ModContent.ItemType<HealingReturn>(), 50);
-            case NPCID.DD2DrakinT2 or NPCID.DD2OgreT2 or NPCID.DD2LightningBugT3:
-                return ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<LohkCanticle>(),
-                    50);
-            case NPCID.MartianSaucerCore:
-                return ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Fieldron>(), 4);
-            case NPCID.Scutlix or NPCID.MartianWalker or NPCID.MartianDrone or NPCID.MartianEngineer
-                or NPCID.MartianOfficer or NPCID.MartianTurret or NPCID.GigaZapper or NPCID.RayGunner or NPCID.GrayGrunt
-                or NPCID.BrainScrambler:
-                return ItemDropRule.Common(ModContent.ItemType<Fieldron>(), 250);
-            case NPCID.QueenBee:
-                return ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<VirtuosTrojan>(), 4);
-            case NPCID.WallofFlesh:
-                return ItemDropRule.SequentialRules(1,
-                    ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<VomeInvocation>()),
-                    ItemDropRule.ByCondition(new DreadDropCondition(), ModContent.ItemType<Dread>()));
-            case NPCID.QueenSlimeBoss:
-                return ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<PaxSoar>(), 2);
-            case NPCID.TheDestroyer:
-                return ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<ResidualShock>(), 2);
-            case NPCID.Plantera:
-                return ItemDropRule.SequentialRules(1,
-                    ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(),
-                        ModContent.ItemType<XataInvocation>()),
-                    ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<VirtuosTrojan>(), 6));
-            case NPCID.HallowBoss:
-                return ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(),
-                    ModContent.ItemType<RisInvocation>());
-            default:
-                return null;
+            Debug.Assert(npcs.Any());
+            foreach (int npc in npcs)
+            {
+                if (!rules.TryGetValue(npc, out var list))
+                {
+                    list = new List<IItemDropRule>();
+                    rules[npc] = list;
+                }
+
+                list.Add(rule);
+            }
         }
+
+        void AddSimple(int itemType, int denominator, params int[] npcs)
+            => Add(ItemDropRule.Common(itemType, denominator), npcs);
+
+        void AddExpert(int itemType, int denominator, params int[] npcs)
+            => Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), itemType, denominator), npcs);
+
+        // Slimes
+        AddSimple(ModContent.ItemType<Vitality>(), 200, NPCID.GreenSlime, NPCID.BlueSlime);
+
+        // Corruption / Crimson early
+        Add(ItemDropRule.ByCondition(new GrimoireDropCondition(), ModContent.ItemType<Grimoire>(), 25),
+            NPCID.EaterofSouls, NPCID.DevourerHead, NPCID.BloodCrawler, NPCID.Crimera);
+
+        AddSimple(ModContent.ItemType<Furis>(), 40, NPCID.JungleBat);
+        Add(ItemDropRule.ByCondition(new BeatQueenBeeCondition(), ModContent.ItemType<Pyrana>(), 60), NPCID.Piranha);
+
+        // Skeletons
+        AddSimple(ModContent.ItemType<PointStrike>(), 15,
+            NPCID.Skeleton, NPCID.SkeletonAlien, NPCID.SkeletonAstonaut, NPCID.SkeletonTopHat,
+            NPCID.BoneThrowingSkeleton, NPCID.BoneThrowingSkeleton2);
+
+        Add(ItemDropRule.OneFromOptions(30,
+                ModContent.ItemType<MotusSetup>(),
+                ModContent.ItemType<MotusSignal>()),
+            NPCID.Harpy);
+
+        AddExpert(ModContent.ItemType<ExodiaValor>(), 30, NPCID.GreekSkeleton);
+
+        // Beetles
+        Add(ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<JahuCanticle>(), 2),
+            NPCID.CochinealBeetle, NPCID.CyanBeetle, NPCID.LacBeetle);
+
+        AddSimple(ModContent.ItemType<PiercingHit>(), 80, NPCID.BloodZombie, NPCID.Drippler);
+        AddSimple(ModContent.ItemType<Blaze>(), 25, NPCID.FireImp);
+
+        Add(ItemDropRule.OneFromOptions(15,
+                ModContent.ItemType<NaturalTalent>(),
+                ModContent.ItemType<Simulor>()),
+            NPCID.DarkCaster);
+
+        AddSimple(ModContent.ItemType<Kuva>(), 15,
+            NPCID.Corruptor, NPCID.CorruptSlime, NPCID.Slimer, NPCID.CursedHammer, NPCID.Clinger,
+            NPCID.PigronCorruption, NPCID.DarkMummy, NPCID.DesertGhoulCorruption, NPCID.Herpling,
+            NPCID.Crimslime, NPCID.BloodJelly, NPCID.CrimsonAxe, NPCID.IchorSticker,
+            NPCID.FloatyGross, NPCID.PigronCrimson, NPCID.BloodMummy, NPCID.DesertGhoulCrimson);
+
+        AddSimple(ModContent.ItemType<BuzzKill>(), 33, NPCID.BloodFeeder, NPCID.CorruptGoldfish);
+        Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Kuva>(), 3), NPCID.BigMimicCorruption,
+            NPCID.BigMimicCrimson);
+
+        Add(ItemDropRule.OneFromOptions(30,
+                ModContent.ItemType<Tonkor>(),
+                ModContent.ItemType<Seer>(),
+                ModContent.ItemType<Cronus>()),
+            NPCID.GoblinPeon, NPCID.GoblinSorcerer, NPCID.GoblinThief,
+            NPCID.GoblinWarrior, NPCID.GoblinArcher);
+
+        AddExpert(ModContent.ItemType<MagusAggress>(), 200, NPCID.ChaosElemental);
+        AddExpert(ModContent.ItemType<LongbowSharpshot>(), 150, NPCID.SkeletonArcher, NPCID.ElfArcher);
+
+        AddSimple(ModContent.ItemType<Rubico>(), 50, NPCID.PirateCorsair);
+        AddExpert(ModContent.ItemType<ExodiaForce>(), 4, NPCID.GoblinShark, NPCID.BloodEelHead);
+        AddSimple(ModContent.ItemType<ShatteringJustice>(), 3, NPCID.BloodNautilus);
+
+        Add(ItemDropRule.OneFromOptions(2,
+                ModContent.ItemType<EnergyGenerator>(),
+                ModContent.ItemType<Guandao>()),
+            NPCID.SandElemental);
+
+        AddSimple(ModContent.ItemType<HealingReturn>(), 50, NPCID.Unicorn, NPCID.Gastropod);
+        Add(ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<LohkCanticle>(), 50),
+            NPCID.DD2DrakinT2, NPCID.DD2OgreT2, NPCID.DD2LightningBugT3);
+
+        Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Fieldron>(), 4), NPCID.MartianSaucerCore);
+
+        AddSimple(ModContent.ItemType<Fieldron>(), 250,
+            NPCID.Scutlix, NPCID.MartianWalker, NPCID.MartianDrone, NPCID.MartianEngineer,
+            NPCID.MartianOfficer, NPCID.MartianTurret, NPCID.GigaZapper,
+            NPCID.RayGunner, NPCID.GrayGrunt, NPCID.BrainScrambler);
+
+        AddExpert(ModContent.ItemType<VirtuosTrojan>(), 4, NPCID.QueenBee);
+
+        Add(ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<VomeInvocation>()),
+            NPCID.WallofFlesh);
+        Add(ItemDropRule.ByCondition(new DreadDropCondition(), ModContent.ItemType<Dread>()), NPCID.WallofFlesh);
+
+        AddExpert(ModContent.ItemType<PaxSoar>(), 2, NPCID.QueenSlimeBoss);
+        AddExpert(ModContent.ItemType<ResidualShock>(), 2, NPCID.TheDestroyer);
+
+        Add(ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<XataInvocation>()),
+            NPCID.Plantera);
+        AddExpert(ModContent.ItemType<VirtuosTrojan>(), 6, NPCID.Plantera);
+
+        Add(ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<RisInvocation>()),
+            NPCID.HallowBoss);
+
+        dropRules = rules.ToDictionary(pair => pair.Key, pair => pair.Value.ToArray());
     }
+
 
     static IItemDropRule GetEaterOfWorldsDropRule(IItemDropRule normalRule)
     {
@@ -189,19 +208,33 @@ internal class NPCLoot : GlobalNPC
 
     public override void ModifyNPCLoot(NPC npc, Terraria.ModLoader.NPCLoot npcLoot)
     {
-        var dropRule = GetItemDropRule(npc);
-        if (dropRule != null)
-            npcLoot.Add(dropRule);
-        dropRule = GetBossDropRule(npc);
-        if (dropRule != null)
         {
-            LeadingConditionRule normalModeRule = new LeadingConditionRule(new Conditions.NotExpert());
-            normalModeRule.OnSuccess(dropRule);
-            npcLoot.Add(normalModeRule);
+            // Normal drop rules
+            var rules = dropRules[npc.type];
+            if (rules != null)
+                foreach (IItemDropRule rule in rules)
+                {
+                    npcLoot.Add(rule);
+                }
         }
 
-        dropRule = GetDragonKeyDropRule(npc);
-        if (dropRule != null)
-            npcLoot.Add(dropRule);
+        {
+            // Loot from boss bags in normal mode
+            IItemDropRule rule = GetBossDropRule(npc);
+            if (rule != null)
+            {
+                LeadingConditionRule normalModeRule = new LeadingConditionRule(new Conditions.NotExpert());
+                normalModeRule.OnSuccess(rule);
+                npcLoot.Add(normalModeRule);
+            }
+        }
+
+        {
+            // Dragon key drop rules
+            IItemDropRule rule = GetDragonKeyDropRule(npc);
+
+            if (rule != null)
+                npcLoot.Add(rule);
+        }
     }
 }
