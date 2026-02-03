@@ -31,6 +31,11 @@ public class TenetArcaScisco : ModItem
         Item.shoot = ModContent.ProjectileType<TenetArcaSciscoProjectile>();
         Item.shootSpeed = 16f;
     }
+    
+    public override Vector2? HoldoutOffset()
+    {
+        return new Vector2(-1.2f, 0);
+    }
 
     public override void AddRecipes()
     {
