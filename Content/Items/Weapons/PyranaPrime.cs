@@ -1,5 +1,4 @@
 using Terraria.DataStructures;
-using Terraria.GameContent.ItemDropRules;
 using WarframeMod.Common.GlobalProjectiles;
 
 namespace WarframeMod.Content.Items.Weapons;

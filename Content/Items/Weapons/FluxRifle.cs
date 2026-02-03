@@ -1,18 +1,18 @@
-using Terraria.DataStructures;
 using Terraria.Localization;
 
 namespace WarframeMod.Content.Items.Weapons;
 
 public class FluxRifle : ModItem
 {
-    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(DEFENSE_PENETRATION);
-    public const int DEFENSE_PENETRATION = 12;
+    public const int BLEED_CHANCE = 100;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(BLEED_CHANCE);
+
     public override void SetDefaults()
     {
-        Item.damage = 10;
+        Item.damage = 14;
         Item.crit = 6;
-        Item.channel = true;
-        Item.DamageType = DamageClass.Ranged;
+        Item.DamageType = DamageClass.Magic;
+        Item.mana = 9;
         Item.width = 45;
         Item.height = 16;
         Item.useTime = 5;
@@ -21,18 +21,22 @@ public class FluxRifle : ModItem
         Item.noMelee = true;
         Item.knockBack = 0;
         Item.value = Item.sellPrice(gold: 2);
-        Item.rare = 3;
+        Item.rare = ItemRarityID.Orange;
         Item.autoReuse = true;
-        Item.shootSpeed = 16f;
+        Item.shootSpeed = 8f;
         Item.shoot = ModContent.ProjectileType<Projectiles.FluxRifleProjectile>();
+        Item.UseSound = new Terraria.Audio.SoundStyle("WarframeMod/Content/Sounds/TenetFluxRifleSound")
+            .ModifySoundStyle(volume: 0.8f, pitchVariance: 0.1f);
     }
+
     public override Vector2? HoldoutOffset()
     {
         return new Vector2(-4, 0);
     }
+
     public override void AddRecipes()
     {
-        var platinum = new RecipeGroup(() => "Any Platinum Bar", new int[] { ItemID.PlatinumBar, ItemID.GoldBar });
+        var platinum = new RecipeGroup(() => "Any Platinum Bar", ItemID.PlatinumBar, ItemID.GoldBar);
         Recipe recipe = CreateRecipe();
         recipe.AddRecipeGroup(platinum, 9);
         recipe.AddIngredient(ItemID.TissueSample, 9);
@@ -45,10 +49,11 @@ public class FluxRifle : ModItem
         recipe.AddTile(TileID.Anvils);
         recipe.Register();
     }
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+
+    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type,
+        ref int damage,
+        ref float knockback)
     {
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
-        Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-        return false;
     }
 }

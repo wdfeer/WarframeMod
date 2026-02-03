@@ -1,30 +1,27 @@
-using Terraria.Audio;
+using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Projectiles;
 
-public class FluxRifleProjectile : BeamProjectile
+public class FluxRifleProjectile : ModProjectile
 {
+    public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.None;
     public override void SetDefaults()
     {
-        base.SetDefaults();
-        Projectile.ArmorPenetration = FluxRifle.DEFENSE_PENETRATION;
+        Projectile.friendly = true;
+        Projectile.hide = true;
+        Projectile.DamageType = DamageClass.Magic;
+        Projectile.width = 8;
+        Projectile.height = 8;
+        Projectile.timeLeft = 360;
+        Projectile.extraUpdates = 10;
+        Projectile.usesLocalNPCImmunity = true;
+        Projectile.localNPCHitCooldown = -1;
+        Projectile.GetGlobalProjectile<BuffGlobalProjectile>().AddBleed(FluxRifle.BLEED_CHANCE);
     }
-    public override int HitCooldown => 5;
-    protected override int WeaponEnergyDustType => DustID.AncientLight;
-    protected override Color WeaponEnergyDustColor => Color.LightCyan;
-    protected override int Contact1DustType => -1;
-    protected override int Contact2DustType => -1;
-    protected override float ExtraDistanceOnLastNPCCollision => 10f;
-    protected override Action OnDetectHitNPC => () =>
+    public override void AI()
     {
-        for (int i = 0; i < 5; i++)
-        {
-            Dust d = Dust.NewDustDirect(Owner.Center + Projectile.velocity * Distance, 0, 0, DustID.AncientLight);
-            d.noGravity = true;
-            d.velocity = Vector2.Normalize(Projectile.velocity) * 12 + Main.rand.NextVector2CircularEdge(5, 5);
-        }
-    };
-    public override DamageClass DamageClass => DamageClass.Ranged;
-    public override SoundStyle? ChargedSound => SoundID.DD2_BetsyWindAttack.ModifySoundStyle(volume: 0.08f, pitchVariance: 0.15f);
+        Dust d = Dust.NewDustPerfect(Projectile.Center, DustID.MagnetSphere);
+        d.velocity *= 0.1f;
+    }
 }

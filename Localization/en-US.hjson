@@ -915,11 +915,7 @@ Mods: {
 
 			FluxRifle: {
 				DisplayName: Flux Rifle
-				Tooltip:
-					'''
-					{$Common.NoAmmoConsumption}
-					{$Common.DefensePenetration}
-					'''
+				Tooltip: "{$Common.BleedChance}"
 			}
 
 			Gammacor: {
