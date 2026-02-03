@@ -6,7 +6,7 @@ internal class VanillaWeaponStatChanges : GlobalItem
 {
     public override void SetDefaults(Item item)
     {
-        if (IsVanillaWeapon(item))
+        if (ModContent.GetInstance<WarframeServerConfig>().enableStatChanges && IsVanillaWeapon(item))
             item.crit += GetExtraCrit(item);
     }
     static bool IsVanillaWeapon(Item item)
@@ -15,8 +15,6 @@ internal class VanillaWeaponStatChanges : GlobalItem
     {
         if (item.ammo > 0)
             return 0;
-        return GetConfigCritIncrease();
+        return ModContent.GetInstance<WarframeServerConfig>().vanillaCritIncrease;
     }
-    static int GetConfigCritIncrease()
-        => ModContent.GetInstance<WarframeServerConfig>().vanillaCritIncrease;
 }

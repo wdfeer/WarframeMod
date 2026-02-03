@@ -1,11 +1,12 @@
-﻿using WarframeMod.Content.Items.Arcanes;
+﻿using WarframeMod.Common.Configs;
+using WarframeMod.Content.Items.Arcanes;
 
 namespace WarframeMod.Common;
 
 public class ArcaneSlot : ModAccessorySlot
 {
     public override bool IsEnabled()
-        => Main.expertMode;
+        => Main.expertMode && ModContent.GetInstance<WarframeServerConfig>().enableArcaneSlot;
     public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
     {
         return checkItem.ModItem is Arcane;

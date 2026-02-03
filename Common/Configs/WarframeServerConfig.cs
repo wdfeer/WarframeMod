@@ -7,7 +7,15 @@ public class WarframeServerConfig : ModConfig
 {
     public override ConfigScope Mode => ConfigScope.ServerSide;
 
+    [Header("Slots")]
+    [DefaultValue(true)]
+    public bool enableArcaneSlot;
+
     [Header("Stats")]
+    [DefaultValue(true)]
+    [ReloadRequired]
+    public bool enableStatChanges;
+    
     [DefaultValue(10)]
     [Range(0, 20)]
     [ReloadRequired]

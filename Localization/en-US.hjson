@@ -1912,25 +1912,39 @@ Mods: {
 
 			WarframeServerConfig: {
 				DisplayName: Warframe Server Config
-				Headers.Stats: Stats
+
+				Headers: {
+					Slots: Slots
+					Stats: Stats
+				}
+
+				enableArcaneSlot: {
+					Label: Arcane Slot
+					Tooltip: Whether the player should have an additional arcane-exclusive accessory slot in expert mode
+				}
+
+				enableStatChanges: {
+					Label: Stat Adjustments
+					Tooltip: Enable/Disable the stat changes below
+				}
 
 				vanillaCritIncrease: {
 					Label: Vanilla Weapon Crit Increase
-					Tooltip: Increases crit chance of every vanilla weapon
+					Tooltip: Increases crit chance of every vanilla weapon to make them more crit-build-viable
 				}
 
 				enemyDamageIncreasePercent: {
-					Label: Enemy Damage Increase %
+					Label: NPC Damage Increase % in expert mode
 					Tooltip: Designed to compensate for the arcane slot in expert mode, has no effect in normal mode
 				}
 
 				enemyDefenseIncreasePercent: {
-					Label: Enemy Defense Increase %
+					Label: NPC Defense Increase % in expert mode
 					Tooltip: Designed to compensate for the arcane slot in expert mode, has no effect in normal mode
 				}
 
 				enemyMaxLifeIncreasePercent: {
-					Label: Enemy Max Life Increase %
+					Label: NPC Life Increase % in expert mode
 					Tooltip: Designed to compensate for the arcane slot in expert mode, has no effect in normal mode
 				}
 			}
