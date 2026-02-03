@@ -56,7 +56,8 @@ internal class NPCLoot : GlobalNPC
             where T1 : ModItem
             where T2 : ModItem
             where T3 : ModItem
-            => AddOneFromOptions(denominator, npcs, ModContent.ItemType<T1>(), ModContent.ItemType<T2>(), ModContent.ItemType<T3>());
+            => AddOneFromOptions(denominator, npcs, ModContent.ItemType<T1>(), ModContent.ItemType<T2>(),
+                ModContent.ItemType<T3>());
 
         // Slimes
         AddSimple<Vitality>(200, NPCID.GreenSlime, NPCID.BlueSlime);
@@ -214,14 +215,13 @@ internal class NPCLoot : GlobalNPC
 
     public override void ModifyNPCLoot(NPC npc, Terraria.ModLoader.NPCLoot npcLoot)
     {
+        if (dropRules.ContainsKey(npc.type)) // Normal drop rules
         {
-            // Normal drop rules
             var rules = dropRules[npc.type];
-            if (rules != null)
-                foreach (IItemDropRule rule in rules)
-                {
-                    npcLoot.Add(rule);
-                }
+            foreach (IItemDropRule rule in rules)
+            {
+                npcLoot.Add(rule);
+            }
         }
 
         {
