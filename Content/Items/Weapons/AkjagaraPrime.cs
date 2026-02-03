@@ -39,6 +39,7 @@ public class AkjagaraPrime : ModItem
         Item.shoot = 10;
         Item.shootSpeed = 16f;
         Item.useAmmo = AmmoID.Bullet;
+        Item.UseSound = new SoundStyle("WarframeMod/Content/Sounds/AkjagaraPrimeSound").ModifySoundStyle(pitchVariance: 0.05f);
     }
 
     public override void AddRecipes()
