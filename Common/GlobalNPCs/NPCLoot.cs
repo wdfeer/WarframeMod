@@ -16,9 +16,10 @@ internal class NPCLoot : GlobalNPC
     {
         Dictionary<int, List<IItemDropRule>> rules = new();
 
+        // Generic helper: add any IItemDropRule to NPC(s)
         void Add(IItemDropRule rule, params int[] npcs)
         {
-            Debug.Assert(npcs.Any());
+            Debug.Assert(npcs.Length > 0);
             foreach (int npc in npcs)
             {
                 if (!rules.TryGetValue(npc, out var list))
@@ -31,101 +32,106 @@ internal class NPCLoot : GlobalNPC
             }
         }
 
-        void AddSimple(int itemType, int denominator, params int[] npcs)
-            => Add(ItemDropRule.Common(itemType, denominator), npcs);
+        // Generic: add a simple common drop
+        void AddSimple<T>(int denominator, params int[] npcs) where T : ModItem
+            => Add(ItemDropRule.Common(ModContent.ItemType<T>(), denominator), npcs);
 
-        void AddConditional(IItemDropRuleCondition condition, int itemType, int denominator, params int[] npcs)
-            => Add(ItemDropRule.ByCondition(condition, itemType, denominator), npcs);
+        // Generic: add a drop with a condition
+        void AddConditional<T>(IItemDropRuleCondition condition, int denominator, params int[] npcs) where T : ModItem
+            => Add(ItemDropRule.ByCondition(condition, ModContent.ItemType<T>(), denominator), npcs);
 
-        void AddExpert(int itemType, int denominator, params int[] npcs)
-            => AddConditional(new Conditions.IsExpert(), itemType, denominator, npcs);
+        // Generic: add an expert-mode only drop
+        void AddExpert<T>(int denominator, params int[] npcs) where T : ModItem
+            => AddConditional<T>(new Conditions.IsExpert(), denominator, npcs);
+
+        void AddOneFromOptions(int denominator, int[] npcs, params int[] itemTypes)
+            => Add(ItemDropRule.OneFromOptions(denominator, itemTypes), npcs);
+
+        void AddOneFromOptions2<T1, T2>(int denominator, params int[] npcs)
+            where T1 : ModItem
+            where T2 : ModItem
+            => AddOneFromOptions(denominator, npcs, ModContent.ItemType<T1>(), ModContent.ItemType<T2>());
+
+        void AddOneFromOptions3<T1, T2, T3>(int denominator, params int[] npcs)
+            where T1 : ModItem
+            where T2 : ModItem
+            where T3 : ModItem
+            => AddOneFromOptions(denominator, npcs, ModContent.ItemType<T1>(), ModContent.ItemType<T2>(), ModContent.ItemType<T3>());
 
         // Slimes
-        AddSimple(ModContent.ItemType<Vitality>(), 200, NPCID.GreenSlime, NPCID.BlueSlime);
+        AddSimple<Vitality>(200, NPCID.GreenSlime, NPCID.BlueSlime);
 
         // Corruption / Crimson early
-        AddConditional(new GrimoireDropCondition(), ModContent.ItemType<Grimoire>(), 25,
+        AddConditional<Grimoire>(new GrimoireDropCondition(), 25,
             NPCID.EaterofSouls, NPCID.DevourerHead, NPCID.BloodCrawler, NPCID.Crimera);
 
-        AddSimple(ModContent.ItemType<Furis>(), 40, NPCID.JungleBat);
-        Add(ItemDropRule.ByCondition(new BeatQueenBeeCondition(), ModContent.ItemType<Pyrana>(), 60), NPCID.Piranha);
+        AddSimple<Furis>(40, NPCID.JungleBat);
+        AddConditional<Pyrana>(new BeatQueenBeeCondition(), 60, NPCID.Piranha);
 
         // Skeletons
-        AddSimple(ModContent.ItemType<PointStrike>(), 15,
+        AddSimple<PointStrike>(15,
             NPCID.Skeleton, NPCID.SkeletonAlien, NPCID.SkeletonAstonaut, NPCID.SkeletonTopHat,
             NPCID.BoneThrowingSkeleton, NPCID.BoneThrowingSkeleton2);
 
-        Add(ItemDropRule.OneFromOptions(30,
-                ModContent.ItemType<MotusSetup>(),
-                ModContent.ItemType<MotusSignal>()),
-            NPCID.Harpy);
+        AddOneFromOptions2<MotusSetup, MotusSignal>(30, NPCID.Harpy);
 
-        AddExpert(ModContent.ItemType<ExodiaValor>(), 30, NPCID.GreekSkeleton);
+        AddExpert<ExodiaValor>(30, NPCID.GreekSkeleton);
 
         // Beetles
-        AddConditional(new GrimoireUpgradeDropCondition(), ModContent.ItemType<JahuCanticle>(), 2,
+        AddConditional<JahuCanticle>(new GrimoireUpgradeDropCondition(), 2,
             NPCID.CochinealBeetle, NPCID.CyanBeetle, NPCID.LacBeetle);
 
-        AddSimple(ModContent.ItemType<PiercingHit>(), 80, NPCID.BloodZombie, NPCID.Drippler);
-        AddSimple(ModContent.ItemType<Blaze>(), 25, NPCID.FireImp);
+        AddSimple<PiercingHit>(80, NPCID.BloodZombie, NPCID.Drippler);
+        AddSimple<Blaze>(25, NPCID.FireImp);
 
-        Add(ItemDropRule.OneFromOptions(15,
-                ModContent.ItemType<NaturalTalent>(),
-                ModContent.ItemType<Simulor>()),
-            NPCID.DarkCaster);
+        AddOneFromOptions2<NaturalTalent, Simulor>(15, NPCID.DarkCaster);
 
-        AddSimple(ModContent.ItemType<Kuva>(), 15,
+        AddSimple<Kuva>(15,
             NPCID.Corruptor, NPCID.CorruptSlime, NPCID.Slimer, NPCID.CursedHammer, NPCID.Clinger,
             NPCID.PigronCorruption, NPCID.DarkMummy, NPCID.DesertGhoulCorruption, NPCID.Herpling,
             NPCID.Crimslime, NPCID.BloodJelly, NPCID.CrimsonAxe, NPCID.IchorSticker,
             NPCID.FloatyGross, NPCID.PigronCrimson, NPCID.BloodMummy, NPCID.DesertGhoulCrimson);
 
-        AddSimple(ModContent.ItemType<BuzzKill>(), 33, NPCID.BloodFeeder, NPCID.CorruptGoldfish);
+        AddSimple<BuzzKill>(33, NPCID.BloodFeeder, NPCID.CorruptGoldfish);
         Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Kuva>(), 3), NPCID.BigMimicCorruption,
             NPCID.BigMimicCrimson);
 
-        Add(ItemDropRule.OneFromOptions(30,
-                ModContent.ItemType<Tonkor>(),
-                ModContent.ItemType<Seer>(),
-                ModContent.ItemType<Cronus>()),
+        AddOneFromOptions3<Tonkor, Seer, Cronus>(30,
             NPCID.GoblinPeon, NPCID.GoblinSorcerer, NPCID.GoblinThief,
             NPCID.GoblinWarrior, NPCID.GoblinArcher);
 
-        AddExpert(ModContent.ItemType<MagusAggress>(), 200, NPCID.ChaosElemental);
-        AddExpert(ModContent.ItemType<LongbowSharpshot>(), 150, NPCID.SkeletonArcher, NPCID.ElfArcher);
+        AddExpert<MagusAggress>(200, NPCID.ChaosElemental);
+        AddExpert<LongbowSharpshot>(150, NPCID.SkeletonArcher, NPCID.ElfArcher);
 
-        AddSimple(ModContent.ItemType<Rubico>(), 50, NPCID.PirateCorsair);
-        AddExpert(ModContent.ItemType<ExodiaForce>(), 4, NPCID.GoblinShark, NPCID.BloodEelHead);
-        AddSimple(ModContent.ItemType<ShatteringJustice>(), 3, NPCID.BloodNautilus);
+        AddSimple<Rubico>(50, NPCID.PirateCorsair);
+        AddExpert<ExodiaForce>(4, NPCID.GoblinShark, NPCID.BloodEelHead);
+        AddSimple<ShatteringJustice>(3, NPCID.BloodNautilus);
 
-        Add(ItemDropRule.OneFromOptions(2,
-                ModContent.ItemType<EnergyGenerator>(),
-                ModContent.ItemType<Guandao>()),
-            NPCID.SandElemental);
+        AddOneFromOptions2<EnergyGenerator, Guandao>(2, NPCID.SandElemental);
 
-        AddSimple(ModContent.ItemType<HealingReturn>(), 50, NPCID.Unicorn, NPCID.Gastropod);
-        AddConditional(new GrimoireUpgradeDropCondition(), ModContent.ItemType<LohkCanticle>(), 50,
+        AddSimple<HealingReturn>(50, NPCID.Unicorn, NPCID.Gastropod);
+        AddConditional<LohkCanticle>(new GrimoireUpgradeDropCondition(), 50,
             NPCID.DD2DrakinT2, NPCID.DD2OgreT2, NPCID.DD2LightningBugT3);
 
         Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Fieldron>(), 4), NPCID.MartianSaucerCore);
 
-        AddSimple(ModContent.ItemType<Fieldron>(), 250,
+        AddSimple<Fieldron>(250,
             NPCID.Scutlix, NPCID.MartianWalker, NPCID.MartianDrone, NPCID.MartianEngineer,
             NPCID.MartianOfficer, NPCID.MartianTurret, NPCID.GigaZapper,
             NPCID.RayGunner, NPCID.GrayGrunt, NPCID.BrainScrambler);
 
-        AddExpert(ModContent.ItemType<VirtuosTrojan>(), 4, NPCID.QueenBee);
+        AddExpert<VirtuosTrojan>(4, NPCID.QueenBee);
 
-        AddConditional(new GrimoireUpgradeDropCondition(), ModContent.ItemType<VomeInvocation>(), 1, NPCID.WallofFlesh);
-        AddConditional(new DreadDropCondition(), ModContent.ItemType<Dread>(), 1, NPCID.WallofFlesh);
+        AddConditional<VomeInvocation>(new GrimoireUpgradeDropCondition(), 1, NPCID.WallofFlesh);
+        AddConditional<Dread>(new DreadDropCondition(), 1, NPCID.WallofFlesh);
 
-        AddExpert(ModContent.ItemType<PaxSoar>(), 2, NPCID.QueenSlimeBoss);
-        AddExpert(ModContent.ItemType<ResidualShock>(), 2, NPCID.TheDestroyer);
+        AddExpert<PaxSoar>(2, NPCID.QueenSlimeBoss);
+        AddExpert<ResidualShock>(2, NPCID.TheDestroyer);
 
-        AddConditional(new GrimoireDropCondition(), ModContent.ItemType<XataInvocation>(), 1, NPCID.Plantera);
-        AddExpert(ModContent.ItemType<VirtuosTrojan>(), 6, NPCID.Plantera);
+        AddConditional<XataInvocation>(new GrimoireDropCondition(), 1, NPCID.Plantera);
+        AddExpert<VirtuosTrojan>(6, NPCID.Plantera);
 
-        AddConditional(new GrimoireDropCondition(), ModContent.ItemType<RisInvocation>(), 1, NPCID.HallowBoss);
+        AddConditional<RisInvocation>(new GrimoireDropCondition(), 1, NPCID.HallowBoss);
 
         dropRules = rules.ToDictionary(pair => pair.Key, pair => pair.Value.ToArray());
     }
