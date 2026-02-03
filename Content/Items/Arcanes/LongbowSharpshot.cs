@@ -1,5 +1,6 @@
 using Terraria.DataStructures;
 using Terraria.Localization;
+using WarframeMod.Content.Buffs;
 using WarframeMod.Content.Items.Weapons;
 using WarframeMod.Content.Projectiles;
 
@@ -20,11 +21,9 @@ public class LongbowSharpshot : Arcane
 class LongbowSharpshotPlayer : ModPlayer
 {
     public bool enabled;
-    private bool active;
 
     public override void ResetEffects()
     {
-        active &= enabled;
         enabled = false;
     }
 
@@ -38,12 +37,12 @@ class LongbowSharpshotPlayer : ModPlayer
     {
         if (enabled && (proj.arrow || moreArrowProjectiles.Contains(proj.type)) &&
             target.Distance(Player.position) > LongbowSharpshot.MIN_DISTANCE)
-            active = true;
+            Player.AddBuff(ModContent.BuffType<LongbowSharpshotBuff>(), 30 * 60);
     }
 
     public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
     {
-        if (active && IsBow(item))
+        if (Player.HasBuff<LongbowSharpshotBuff>() && IsBow(item))
         {
             damage += LongbowSharpshot.DAMAGE_INCREASE / 100f;
         }
@@ -53,9 +52,9 @@ class LongbowSharpshotPlayer : ModPlayer
         int type, int damage,
         float knockback)
     {
-        if (active && IsBow(item))
+        if (Player.HasBuff<LongbowSharpshotBuff>() && IsBow(item))
         {
-            active = false;
+            Player.ClearBuff(ModContent.BuffType<LongbowSharpshotBuff>());
         }
 
         return base.Shoot(item, source, position, velocity, type, damage, knockback);
