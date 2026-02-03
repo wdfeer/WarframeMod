@@ -34,14 +34,17 @@ internal class NPCLoot : GlobalNPC
         void AddSimple(int itemType, int denominator, params int[] npcs)
             => Add(ItemDropRule.Common(itemType, denominator), npcs);
 
+        void AddConditional(IItemDropRuleCondition condition, int itemType, int denominator, params int[] npcs)
+            => Add(ItemDropRule.ByCondition(condition, itemType, denominator), npcs);
+
         void AddExpert(int itemType, int denominator, params int[] npcs)
-            => Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), itemType, denominator), npcs);
+            => AddConditional(new Conditions.IsExpert(), itemType, denominator, npcs);
 
         // Slimes
         AddSimple(ModContent.ItemType<Vitality>(), 200, NPCID.GreenSlime, NPCID.BlueSlime);
 
         // Corruption / Crimson early
-        Add(ItemDropRule.ByCondition(new GrimoireDropCondition(), ModContent.ItemType<Grimoire>(), 25),
+        AddConditional(new GrimoireDropCondition(), ModContent.ItemType<Grimoire>(), 25,
             NPCID.EaterofSouls, NPCID.DevourerHead, NPCID.BloodCrawler, NPCID.Crimera);
 
         AddSimple(ModContent.ItemType<Furis>(), 40, NPCID.JungleBat);
@@ -60,7 +63,7 @@ internal class NPCLoot : GlobalNPC
         AddExpert(ModContent.ItemType<ExodiaValor>(), 30, NPCID.GreekSkeleton);
 
         // Beetles
-        Add(ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<JahuCanticle>(), 2),
+        AddConditional(new GrimoireUpgradeDropCondition(), ModContent.ItemType<JahuCanticle>(), 2,
             NPCID.CochinealBeetle, NPCID.CyanBeetle, NPCID.LacBeetle);
 
         AddSimple(ModContent.ItemType<PiercingHit>(), 80, NPCID.BloodZombie, NPCID.Drippler);
@@ -101,7 +104,7 @@ internal class NPCLoot : GlobalNPC
             NPCID.SandElemental);
 
         AddSimple(ModContent.ItemType<HealingReturn>(), 50, NPCID.Unicorn, NPCID.Gastropod);
-        Add(ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<LohkCanticle>(), 50),
+        AddConditional(new GrimoireUpgradeDropCondition(), ModContent.ItemType<LohkCanticle>(), 50,
             NPCID.DD2DrakinT2, NPCID.DD2OgreT2, NPCID.DD2LightningBugT3);
 
         Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Fieldron>(), 4), NPCID.MartianSaucerCore);
@@ -113,19 +116,16 @@ internal class NPCLoot : GlobalNPC
 
         AddExpert(ModContent.ItemType<VirtuosTrojan>(), 4, NPCID.QueenBee);
 
-        Add(ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<VomeInvocation>()),
-            NPCID.WallofFlesh);
-        Add(ItemDropRule.ByCondition(new DreadDropCondition(), ModContent.ItemType<Dread>()), NPCID.WallofFlesh);
+        AddConditional(new GrimoireUpgradeDropCondition(), ModContent.ItemType<VomeInvocation>(), 1, NPCID.WallofFlesh);
+        AddConditional(new DreadDropCondition(), ModContent.ItemType<Dread>(), 1, NPCID.WallofFlesh);
 
         AddExpert(ModContent.ItemType<PaxSoar>(), 2, NPCID.QueenSlimeBoss);
         AddExpert(ModContent.ItemType<ResidualShock>(), 2, NPCID.TheDestroyer);
 
-        Add(ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<XataInvocation>()),
-            NPCID.Plantera);
+        AddConditional(new GrimoireDropCondition(), ModContent.ItemType<XataInvocation>(), 1, NPCID.Plantera);
         AddExpert(ModContent.ItemType<VirtuosTrojan>(), 6, NPCID.Plantera);
 
-        Add(ItemDropRule.ByCondition(new GrimoireUpgradeDropCondition(), ModContent.ItemType<RisInvocation>()),
-            NPCID.HallowBoss);
+        AddConditional(new GrimoireDropCondition(), ModContent.ItemType<RisInvocation>(), 1, NPCID.HallowBoss);
 
         dropRules = rules.ToDictionary(pair => pair.Key, pair => pair.Value.ToArray());
     }
