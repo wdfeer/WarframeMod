@@ -28,8 +28,7 @@ public class AkjagaraPrime : ModItem
         Item.DamageType = DamageClass.Ranged;
         Item.width = 32;
         Item.height = 24;
-        Item.useTime = 2;
-        Item.useLimitPerAnimation = 2;
+        Item.useTime = 24;
         Item.useAnimation = 24;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.noMelee = true;
@@ -53,12 +52,18 @@ public class AkjagaraPrime : ModItem
         SoundEngine.PlaySound(SoundID.Item11.WithVolumeScale(0.9f), position);
         
         UpdateBleedChance(player);
+
+        for (int i = 0; i < 2; i++)
+        {
+            if (i == 1) velocity *= 0.95f;
+            
+            var proj = this.ShootWith(player, source, position, velocity, type, damage, knockback, 0.004f, Item.width);
+            proj.GetGlobalProjectile<BuffGlobalProjectile>().AddBleed(bleedChance);
+            proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier += CRIT_DAMAGE_INCREASE / 100f;
+            proj.usesLocalNPCImmunity = true;
+            proj.localNPCHitCooldown = -1;
+        }
         
-        var proj = this.ShootWith(player, source, position, velocity, type, damage, knockback, 0.004f, Item.width);
-        proj.GetGlobalProjectile<BuffGlobalProjectile>().AddBleed(bleedChance);
-        proj.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier += CRIT_DAMAGE_INCREASE / 100f;
-        proj.usesLocalNPCImmunity = true;
-        proj.localNPCHitCooldown = -1;
         return false;
     }
 
