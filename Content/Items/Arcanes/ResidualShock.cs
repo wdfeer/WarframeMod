@@ -84,6 +84,6 @@ class ResidualShockGlobalNPC : GlobalNPC
                 ModContent.ProjectileType<ResidualShockSpawner>(), damage, 0f, owner: player);
         }
 
-        return false;
+        return base.PreKill(npc);
     }
 }
