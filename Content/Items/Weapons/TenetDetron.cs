@@ -55,6 +55,7 @@ public class TenetDetron : ModItem
         for (int i = 0; i < MULTISHOT; i++)
         {
             Projectile proj = this.ShootWith(player, source, position, velocity, type, damage, knockback, 0.08f, Item.width);
+            proj.extraUpdates++;
             proj.GetGlobalProjectile<BuffGlobalProjectile>().buffChances.Add(new Common.BuffChance(BuffID.Confused, 120, 0.1f));
             proj.GetGlobalProjectile<FalloffGlobalProjectile>().SetFalloff(position, FALLOFF_START, FALLOFF_MAX, MAX_FALLOFF_DAMAGE_DECREASE);
         }
