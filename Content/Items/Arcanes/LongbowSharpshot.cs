@@ -9,7 +9,7 @@ namespace WarframeMod.Content.Items.Arcanes;
 public class LongbowSharpshot : Arcane
 {
     public const int MIN_DISTANCE = 50 * 16;
-    public const int DAMAGE_INCREASE = 50;
+    public const int DAMAGE_INCREASE = 25;
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MIN_DISTANCE / 16, DAMAGE_INCREASE);
 
     public override void UpdateArcane(Player player)
