@@ -55,7 +55,7 @@ class ResidualShockPlayer : ModPlayer
 
     public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
     {
-        if (arcane != null)
+        if (arcane != null && target.CanBeChasedBy())
         {
             var globalNPC = target.GetGlobalNPC<ResidualShockGlobalNPC>();
             globalNPC.marked = true;

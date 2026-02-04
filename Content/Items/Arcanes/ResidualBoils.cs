@@ -55,7 +55,7 @@ class ResidualBoilsPlayer : ModPlayer
 
     public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
     {
-        if (arcane != null)
+        if (arcane != null && target.CanBeChasedBy())
         {
             var globalNPC = target.GetGlobalNPC<ResidualBoilsGlobalNPC>();
             globalNPC.marked = true;
