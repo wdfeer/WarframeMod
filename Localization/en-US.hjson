@@ -1829,6 +1829,15 @@ Mods: {
 					+{1}% damage on the next arrow shot
 					'''
 			}
+			
+			MagusCadence: {
+				DisplayName: Magus Cadence
+				Tooltip:
+					'''
+					Whilst affected by Chaos State:
+					+{0}% movement speed
+					'''
+			}
 		}
 
 		Projectiles: {

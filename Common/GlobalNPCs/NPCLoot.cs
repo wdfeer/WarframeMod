@@ -102,6 +102,8 @@ internal class NPCLoot : GlobalNPC
             NPCID.GoblinWarrior, NPCID.GoblinArcher);
 
         AddExpert<MagusAggress>(200, NPCID.ChaosElemental);
+        AddExpert<MagusCadence>(200, NPCID.ChaosElemental);
+        
         AddExpert<LongbowSharpshot>(150, NPCID.SkeletonArcher, NPCID.ElfArcher);
 
         AddSimple<Rubico>(50, NPCID.PirateCorsair);
