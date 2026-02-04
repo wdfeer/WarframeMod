@@ -10,6 +10,7 @@ public class UnseenDread : ModItem
 
     public override void SetDefaults()
     {
+        Item.rare = 6;
         Item.width = 44;
         Item.height = 64;
         Item.consumable = true;

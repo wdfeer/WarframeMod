@@ -45,7 +45,7 @@ internal class Dread : ModItem
 
     public override void UpdateInventory(Player player)
     {
-        Item.rare = unseenDread ? 7 : 5;
+        Item.rare = unseenDread ? 6 : 5;
     }
 
     public override Vector2? HoldoutOffset()

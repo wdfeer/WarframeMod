@@ -24,6 +24,7 @@ public class ShatteringJustice : ModItem
 
     public override void SetDefaults()
     {
+        Item.rare = 4;
         Item.width = 44;
         Item.height = 64;
         Item.consumable = true;
