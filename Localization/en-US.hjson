@@ -1845,12 +1845,8 @@ Mods: {
 			}
 
 			ArcaneIntention: {
-				DisplayName: Magus Cadence
-				Tooltip:
-					'''
-					Whilst affected by Chaos State:
-					+{0}% movement speed
-					'''
+				DisplayName: Arcane Intention
+				Tooltip: "+{0} max life per used minion slot"
 			}
 
 			ArcanePersistence: {
