@@ -66,7 +66,7 @@ internal class DesecrateGlobalNPC : GlobalNPC
         Terraria.DataStructures.PlayerDeathReason reason = new()
             { CustomReason = NetworkText.From(player.name + " was desecrated") };
         player.Hurt(reason, Desecrate.LIFE_DRAIN, 0, dodgeable: false, scalingArmorPenetration: 1f,
-            cooldownCounter: -2);
+            cooldownCounter: 2);
         player.netLife = true;
     }
 }
