@@ -149,6 +149,11 @@ Mods: {
 				DisplayName: Justice
 				Description: +10 defense
 			}
+
+			LongbowSharpshotBuff: {
+				Description: Mods.WarframeMod.Buffs.LongbowSharpshotBuff.Description
+				DisplayName: Longbow Sharpshot Buff
+			}
 		}
 
 		Items: {
@@ -1829,7 +1834,7 @@ Mods: {
 					+{1}% damage on the next arrow shot
 					'''
 			}
-			
+
 			MagusCadence: {
 				DisplayName: Magus Cadence
 				Tooltip:
@@ -1838,7 +1843,7 @@ Mods: {
 					+{0}% movement speed
 					'''
 			}
-			
+
 			ArcaneIntention: {
 				DisplayName: Magus Cadence
 				Tooltip:
@@ -1847,15 +1852,24 @@ Mods: {
 					+{0}% movement speed
 					'''
 			}
-			
+
 			ArcanePersistence: {
 				DisplayName: Arcane Persistence
-				Tooltip: "You cannot be hit for more than {0}% of your max life in one hit"
+				Tooltip: You cannot be hit for more than {0}% of your max life in one hit
 			}
-			
+
 			MoltEfficiency: {
 				DisplayName: Molt Efficiency
-				Tooltip: "Whilst at full life: -{0}% mana usage"
+				Tooltip: Whilst at full life: -{0}% mana usage
+			}
+
+			ResidualBoils: {
+				DisplayName: Residual Boils
+				Tooltip:
+					'''
+					On kill:
+					Create a flaming area around the victim, dealing summon damage to enemies within {0} tiles for {1} seconds
+					'''
 			}
 		}
 
@@ -1910,6 +1924,7 @@ Mods: {
 			ExodiaForceProjectile.DisplayName: Exodia Force Projectile
 			ResidualShockBolt.DisplayName: Residual Shock Bolt
 			ResidualShockSpawner.DisplayName: Residual Shock Spawner
+			ResidualBoilsProjectile.DisplayName: Residual Boils Projectile
 		}
 
 		Configs: {

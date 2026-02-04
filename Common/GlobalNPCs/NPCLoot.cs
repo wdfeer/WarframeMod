@@ -125,11 +125,14 @@ internal class NPCLoot : GlobalNPC
         AddOneFromOptions2<EnergyGenerator, Guandao>(2, NPCID.SandElemental);
 
         AddSimple<HealingReturn>(50, NPCID.Unicorn, NPCID.Gastropod);
-        AddConditional<LohkCanticle>(new GrimoireUpgradeDropCondition(), 50,
-            NPCID.DD2DrakinT2, NPCID.DD2OgreT2, NPCID.DD2LightningBugT3);
-
+        
         AddExpert<PaxSoar>(2, NPCID.QueenSlimeBoss);
         AddExpert<ResidualShock>(2, NPCID.TheDestroyer);
+        
+        AddExpert<ResidualBoils>(120, NPCID.Lavabat, NPCID.RedDevil);
+        
+        AddConditional<LohkCanticle>(new GrimoireUpgradeDropCondition(), 50,
+            NPCID.DD2DrakinT2, NPCID.DD2OgreT2, NPCID.DD2LightningBugT3);
 
         // === Post-Plantera ===
 
