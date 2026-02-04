@@ -142,11 +142,12 @@ internal class NPCLoot : GlobalNPC
 
         AddConditional<XataInvocation>(new GrimoireDropCondition(), 1, NPCID.Plantera);
         AddExpert<VirtuosTrojan>(6, NPCID.Plantera);
+        
+        AddExpert<MoltEfficiency>(200, NPCID.Poltergeist, NPCID.DeadlySphere);
 
         AddConditional<RisInvocation>(new GrimoireDropCondition(), 1, NPCID.HallowBoss);
 
         AddExpert<ArcanePersistence>(7, NPCID.HallowBoss, NPCID.DukeFishron);
-
 
         dropRules = rules.ToDictionary(pair => pair.Key, pair => pair.Value.ToArray());
     }

@@ -1852,6 +1852,11 @@ Mods: {
 				DisplayName: Arcane Persistence
 				Tooltip: "You cannot be hit for more than {0}% of your max life in one hit"
 			}
+			
+			MoltEfficiency: {
+				DisplayName: Molt Efficiency
+				Tooltip: "Whilst at full life: -{0}% mana usage"
+			}
 		}
 
 		Projectiles: {
