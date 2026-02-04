@@ -20,6 +20,7 @@ public class ResidualBoilsProjectile : ModProjectile
         Projectile.penetrate = -1;
         Projectile.usesIDStaticNPCImmunity = true;
         Projectile.idStaticNPCHitCooldown = 20;
+        Projectile.tileCollide = false;
     }
 
     public override void AI()

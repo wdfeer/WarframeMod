@@ -14,6 +14,7 @@ public class ResidualShockSpawner : ModProjectile
         Projectile.friendly = false;
         Projectile.hostile = false;
         Projectile.timeLeft = ResidualShock.DURATION;
+        Projectile.tileCollide = false;
     }
 
     public override void AI()
