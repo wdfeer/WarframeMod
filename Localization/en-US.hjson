@@ -1838,6 +1838,15 @@ Mods: {
 					+{0}% movement speed
 					'''
 			}
+			
+			ArcaneIntention: {
+				DisplayName: Magus Cadence
+				Tooltip:
+					'''
+					Whilst affected by Chaos State:
+					+{0}% movement speed
+					'''
+			}
 		}
 
 		Projectiles: {

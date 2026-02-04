@@ -58,6 +58,8 @@ internal class NPCLoot : GlobalNPC
             where T3 : ModItem
             => AddOneFromOptions(denominator, npcs, ModContent.ItemType<T1>(), ModContent.ItemType<T2>(),
                 ModContent.ItemType<T3>());
+        
+        // === Pre-Hardmode / Both PH & HM ===
 
         // Slimes
         AddSimple<Vitality>(200, NPCID.GreenSlime, NPCID.BlueSlime);
@@ -100,6 +102,10 @@ internal class NPCLoot : GlobalNPC
         AddOneFromOptions3<Tonkor, Seer, Cronus>(30,
             NPCID.GoblinPeon, NPCID.GoblinSorcerer, NPCID.GoblinThief,
             NPCID.GoblinWarrior, NPCID.GoblinArcher);
+        
+        // === Hardmode ===
+        
+        AddExpert<ArcaneIntention>(200, NPCID.Arapaima, NPCID.GiantFlyingFox);
 
         AddExpert<MagusAggress>(200, NPCID.ChaosElemental);
         AddExpert<MagusCadence>(200, NPCID.ChaosElemental);
