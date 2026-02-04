@@ -1846,7 +1846,7 @@ Mods: {
 
 			ArcaneIntention: {
 				DisplayName: Arcane Intention
-				Tooltip: "+{0} max life per used minion slot"
+				Tooltip: +{0} max life per used minion slot
 			}
 
 			ArcanePersistence: {

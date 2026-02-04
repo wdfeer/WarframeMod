@@ -143,12 +143,12 @@ internal class NPCLoot : GlobalNPC
             NPCID.MartianOfficer, NPCID.MartianTurret, NPCID.GigaZapper,
             NPCID.RayGunner, NPCID.GrayGrunt, NPCID.BrainScrambler);
 
-        AddConditional<XataInvocation>(new GrimoireDropCondition(), 1, NPCID.Plantera);
+        AddConditional<XataInvocation>(new GrimoireUpgradeDropCondition(), 1, NPCID.Plantera);
         AddExpert<VirtuosTrojan>(6, NPCID.Plantera);
         
         AddExpert<MoltEfficiency>(200, NPCID.Poltergeist, NPCID.DeadlySphere);
 
-        AddConditional<RisInvocation>(new GrimoireDropCondition(), 1, NPCID.HallowBoss);
+        AddConditional<RisInvocation>(new GrimoireUpgradeDropCondition(), 2, NPCID.HallowBoss);
 
         AddExpert<ArcanePersistence>(7, NPCID.HallowBoss, NPCID.DukeFishron);
 
