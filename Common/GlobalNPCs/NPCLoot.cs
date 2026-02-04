@@ -58,7 +58,7 @@ internal class NPCLoot : GlobalNPC
             where T3 : ModItem
             => AddOneFromOptions(denominator, npcs, ModContent.ItemType<T1>(), ModContent.ItemType<T2>(),
                 ModContent.ItemType<T3>());
-        
+
         // === Pre-Hardmode / Both PH & HM ===
 
         // Slimes
@@ -87,7 +87,23 @@ internal class NPCLoot : GlobalNPC
         AddSimple<PiercingHit>(80, NPCID.BloodZombie, NPCID.Drippler);
         AddSimple<Blaze>(25, NPCID.FireImp);
 
+        // Goblins
+        AddOneFromOptions3<Tonkor, Seer, Cronus>(30,
+            NPCID.GoblinPeon, NPCID.GoblinSorcerer, NPCID.GoblinThief,
+            NPCID.GoblinWarrior, NPCID.GoblinArcher);
+
         AddOneFromOptions2<NaturalTalent, Simulor>(15, NPCID.DarkCaster);
+
+        AddSimple<BuzzKill>(33, NPCID.BloodFeeder, NPCID.CorruptGoldfish);
+        Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Kuva>(), 3), NPCID.BigMimicCorruption,
+            NPCID.BigMimicCrimson);
+
+        AddExpert<VirtuosTrojan>(4, NPCID.QueenBee);
+
+        // === Hardmode ===
+
+        AddConditional<VomeInvocation>(new GrimoireUpgradeDropCondition(), 1, NPCID.WallofFlesh);
+        AddConditional<Dread>(new DreadDropCondition(), 1, NPCID.WallofFlesh);
 
         AddSimple<Kuva>(15,
             NPCID.Corruptor, NPCID.CorruptSlime, NPCID.Slimer, NPCID.CursedHammer, NPCID.Clinger,
@@ -95,21 +111,11 @@ internal class NPCLoot : GlobalNPC
             NPCID.Crimslime, NPCID.BloodJelly, NPCID.CrimsonAxe, NPCID.IchorSticker,
             NPCID.FloatyGross, NPCID.PigronCrimson, NPCID.BloodMummy, NPCID.DesertGhoulCrimson);
 
-        AddSimple<BuzzKill>(33, NPCID.BloodFeeder, NPCID.CorruptGoldfish);
-        Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Kuva>(), 3), NPCID.BigMimicCorruption,
-            NPCID.BigMimicCrimson);
-
-        AddOneFromOptions3<Tonkor, Seer, Cronus>(30,
-            NPCID.GoblinPeon, NPCID.GoblinSorcerer, NPCID.GoblinThief,
-            NPCID.GoblinWarrior, NPCID.GoblinArcher);
-        
-        // === Hardmode ===
-        
         AddExpert<ArcaneIntention>(200, NPCID.Arapaima, NPCID.GiantFlyingFox);
 
         AddExpert<MagusAggress>(200, NPCID.ChaosElemental);
         AddExpert<MagusCadence>(200, NPCID.ChaosElemental);
-        
+
         AddExpert<LongbowSharpshot>(150, NPCID.SkeletonArcher, NPCID.ElfArcher);
 
         AddSimple<Rubico>(50, NPCID.PirateCorsair);
@@ -122,6 +128,11 @@ internal class NPCLoot : GlobalNPC
         AddConditional<LohkCanticle>(new GrimoireUpgradeDropCondition(), 50,
             NPCID.DD2DrakinT2, NPCID.DD2OgreT2, NPCID.DD2LightningBugT3);
 
+        AddExpert<PaxSoar>(2, NPCID.QueenSlimeBoss);
+        AddExpert<ResidualShock>(2, NPCID.TheDestroyer);
+
+        // === Post-Plantera ===
+
         Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Fieldron>(), 4), NPCID.MartianSaucerCore);
 
         AddSimple<Fieldron>(250,
@@ -129,18 +140,13 @@ internal class NPCLoot : GlobalNPC
             NPCID.MartianOfficer, NPCID.MartianTurret, NPCID.GigaZapper,
             NPCID.RayGunner, NPCID.GrayGrunt, NPCID.BrainScrambler);
 
-        AddExpert<VirtuosTrojan>(4, NPCID.QueenBee);
-
-        AddConditional<VomeInvocation>(new GrimoireUpgradeDropCondition(), 1, NPCID.WallofFlesh);
-        AddConditional<Dread>(new DreadDropCondition(), 1, NPCID.WallofFlesh);
-
-        AddExpert<PaxSoar>(2, NPCID.QueenSlimeBoss);
-        AddExpert<ResidualShock>(2, NPCID.TheDestroyer);
-
         AddConditional<XataInvocation>(new GrimoireDropCondition(), 1, NPCID.Plantera);
         AddExpert<VirtuosTrojan>(6, NPCID.Plantera);
 
         AddConditional<RisInvocation>(new GrimoireDropCondition(), 1, NPCID.HallowBoss);
+
+        AddExpert<ArcanePersistence>(7, NPCID.HallowBoss, NPCID.DukeFishron);
+
 
         dropRules = rules.ToDictionary(pair => pair.Key, pair => pair.Value.ToArray());
     }

@@ -1847,6 +1847,11 @@ Mods: {
 					+{0}% movement speed
 					'''
 			}
+			
+			ArcanePersistence: {
+				DisplayName: Arcane Persistence
+				Tooltip: "You cannot be hit for more than {0}% of your max life in one hit"
+			}
 		}
 
 		Projectiles: {
