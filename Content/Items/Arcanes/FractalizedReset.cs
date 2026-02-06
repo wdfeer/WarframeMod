@@ -1,18 +1,19 @@
 using Terraria.Localization;
+using WarframeMod.Content.Buffs;
 
 namespace WarframeMod.Content.Items.Arcanes;
 
 public class FractalizedReset : Arcane
 {
-    public const int MIN_MANA = 300;
     public const int RANGED_FIRE_RATE = 25;
-    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MIN_MANA, RANGED_FIRE_RATE);
+    public const int DURATION_SECONDS = 8;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(RANGED_FIRE_RATE, DURATION_SECONDS);
 
     public override void UpdateArcane(Player player)
     {
-        if (player.statMana >= MIN_MANA)
+        if (player.statMana <= 10 && player.statManaMax2 > 10)
         {
-            player.GetAttackSpeed<RangedDamageClass>() += RANGED_FIRE_RATE / 100f;
+            player.AddBuff(ModContent.BuffType<FractalizedResetBuff>(), DURATION_SECONDS * 60);
         }
     }
 }

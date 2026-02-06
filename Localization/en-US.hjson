@@ -1893,8 +1893,8 @@ Mods: {
 				DisplayName: Fractalized Reset
 				Tooltip:
 				    '''
-				    Whilst above {0} mana:
-				    +{1}% ranged fire rate
+				    After running out of mana:
+				    +{0}% ranged fire rate for {1} seconds
 				    '''
 			}
 		}

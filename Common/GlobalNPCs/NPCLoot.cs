@@ -123,6 +123,7 @@ internal class NPCLoot : GlobalNPC
         AddSimple<ShatteringJustice>(3, NPCID.BloodNautilus);
 
         AddOneFromOptions2<EnergyGenerator, Guandao>(2, NPCID.SandElemental);
+        AddExpert<FractalizedReset>(15, NPCID.SandElemental, NPCID.IceGolem);
 
         AddExpert<PaxCharge>(200, NPCID.Pixie, NPCID.Gastropod);
         AddSimple<HealingReturn>(50, NPCID.Unicorn, NPCID.Gastropod);
