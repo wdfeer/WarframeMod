@@ -1878,6 +1878,16 @@ Mods: {
 					{$Common.DefensePenetration@2}
 					'''
 			}
+
+			PaxCharge: {
+				DisplayName: Pax Charge
+				Tooltip:
+				    '''
+				    Whilst not affected by Mana Sickness:
+				    +{0}% magic damage 
+				    Greatly increased mana regeneration
+				    '''
+			}
 		}
 
 		Projectiles: {

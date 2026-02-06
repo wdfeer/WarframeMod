@@ -124,10 +124,11 @@ internal class NPCLoot : GlobalNPC
 
         AddOneFromOptions2<EnergyGenerator, Guandao>(2, NPCID.SandElemental);
 
+        AddExpert<PaxCharge>(200, NPCID.Pixie, NPCID.Gastropod);
         AddSimple<HealingReturn>(50, NPCID.Unicorn, NPCID.Gastropod);
 
-        AddExpert<PaxSoar>(2, NPCID.QueenSlimeBoss);
-        AddExpert<ResidualShock>(2, NPCID.TheDestroyer);
+        AddExpert<PaxSoar>(3, NPCID.QueenSlimeBoss);
+        AddExpert<ResidualShock>(3, NPCID.TheDestroyer);
 
         AddExpert<ResidualBoils>(120, NPCID.Lavabat, NPCID.RedDevil);
 
