@@ -125,28 +125,28 @@ internal class NPCLoot : GlobalNPC
         AddOneFromOptions2<EnergyGenerator, Guandao>(2, NPCID.SandElemental);
 
         AddSimple<HealingReturn>(50, NPCID.Unicorn, NPCID.Gastropod);
-        
+
         AddExpert<PaxSoar>(2, NPCID.QueenSlimeBoss);
         AddExpert<ResidualShock>(2, NPCID.TheDestroyer);
-        
+
         AddExpert<ResidualBoils>(120, NPCID.Lavabat, NPCID.RedDevil);
-        
+
         AddConditional<LohkCanticle>(new GrimoireUpgradeDropCondition(), 50,
             NPCID.DD2DrakinT2, NPCID.DD2OgreT2, NPCID.DD2LightningBugT3);
 
         // === Post-Plantera ===
 
-        Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Fieldron>(), 4), NPCID.MartianSaucerCore);
+        AddConditional<XataInvocation>(new GrimoireUpgradeDropCondition(), 1, NPCID.Plantera);
+        AddExpert<VirtuosTrojan>(6, NPCID.Plantera);
 
+        AddSimple<Hind>(12, NPCID.HeadlessHorseman);
+        AddExpert<MoltEfficiency>(200, NPCID.Poltergeist, NPCID.DeadlySphere);
+
+        Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Fieldron>(), 4), NPCID.MartianSaucerCore);
         AddSimple<Fieldron>(250,
             NPCID.Scutlix, NPCID.MartianWalker, NPCID.MartianDrone, NPCID.MartianEngineer,
             NPCID.MartianOfficer, NPCID.MartianTurret, NPCID.GigaZapper,
             NPCID.RayGunner, NPCID.GrayGrunt, NPCID.BrainScrambler);
-
-        AddConditional<XataInvocation>(new GrimoireUpgradeDropCondition(), 1, NPCID.Plantera);
-        AddExpert<VirtuosTrojan>(6, NPCID.Plantera);
-        
-        AddExpert<MoltEfficiency>(200, NPCID.Poltergeist, NPCID.DeadlySphere);
 
         AddConditional<RisInvocation>(new GrimoireUpgradeDropCondition(), 2, NPCID.HallowBoss);
 

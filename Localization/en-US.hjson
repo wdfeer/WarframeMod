@@ -1867,6 +1867,17 @@ Mods: {
 					Create a flaming area around the victim, dealing summon damage to enemies within {0} tiles for {1} seconds
 					'''
 			}
+
+			Hind: {
+				DisplayName: Hind
+				Tooltip:
+					'''
+					Shoots a burst of 5 bullets
+					{$Common.AmmoSaveChance}
+					{$Common.ModifyCritDamage@1}
+					{$Common.DefensePenetration@2}
+					'''
+			}
 		}
 
 		Projectiles: {
