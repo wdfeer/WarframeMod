@@ -5,7 +5,7 @@ using Terraria.Localization;
 
 namespace WarframeMod.Content.Items.Weapons;
 
-internal class KuvaTonkor : ModItem
+public class KuvaTonkor : ModItem
 {
     public const int CRIT_DAMAGE_INCREASE_PERCENT = 25;
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs($"+{CRIT_DAMAGE_INCREASE_PERCENT}%");

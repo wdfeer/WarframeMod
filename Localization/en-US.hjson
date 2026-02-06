@@ -1907,6 +1907,11 @@ Mods: {
 				DisplayName: Sarpa of the Dead
 				Tooltip: "{$Items.Sarpa.Tooltip}"
 			}
+
+			DotdTonkor: {
+				DisplayName: Tonkor of the Dead
+				Tooltip: "{$Items.KuvaTonkor.Tooltip}"
+			}
 		}
 
 		Projectiles: {

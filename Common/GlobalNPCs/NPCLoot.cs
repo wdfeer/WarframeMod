@@ -142,7 +142,8 @@ internal class NPCLoot : GlobalNPC
         AddExpert<VirtuosTrojan>(6, NPCID.Plantera);
 
         AddSimple<Hind>(12, NPCID.HeadlessHorseman);
-        AddSimple<DotdSarpa>(6, NPCID.Mothron);
+        AddSimple<DotdSarpa>(10, NPCID.Mothron, NPCID.MourningWood);
+        AddSimple<DotdTonkor>(10, NPCID.Mothron, NPCID.Pumpking);
         AddExpert<MoltEfficiency>(200, NPCID.Poltergeist, NPCID.DeadlySphere);
 
         Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Fieldron>(), 4), NPCID.MartianSaucerCore);
