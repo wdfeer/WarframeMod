@@ -9,6 +9,7 @@ public class DotdSarpa : Sarpa
         Item.height = 15;
         Item.rare = ItemRarityID.Lime;
         Item.shoot = ProjectileID.IchorBullet;
+        Item.value = Item.sellPrice(gold: 9);
     }
     
     public override Vector2? HoldoutOffset()
