@@ -1882,10 +1882,19 @@ Mods: {
 			PaxCharge: {
 				DisplayName: Pax Charge
 				Tooltip:
+					'''
+					Whilst not affected by Mana Sickness:
+					+{0}% magic damage 
+					Greatly increased mana regeneration
+					'''
+			}
+
+			FractalizedReset: {
+				DisplayName: Fractalized Reset
+				Tooltip:
 				    '''
-				    Whilst not affected by Mana Sickness:
-				    +{0}% magic damage 
-				    Greatly increased mana regeneration
+				    Whilst above {0} mana:
+				    +{1}% ranged fire rate
 				    '''
 			}
 		}
