@@ -95,8 +95,6 @@ internal class NPCLoot : GlobalNPC
         AddOneFromOptions2<NaturalTalent, Simulor>(15, NPCID.DarkCaster);
 
         AddSimple<BuzzKill>(33, NPCID.BloodFeeder, NPCID.CorruptGoldfish);
-        Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Kuva>(), 3), NPCID.BigMimicCorruption,
-            NPCID.BigMimicCrimson);
 
         AddExpert<VirtuosTrojan>(4, NPCID.QueenBee);
 
@@ -105,7 +103,9 @@ internal class NPCLoot : GlobalNPC
         AddConditional<VomeInvocation>(new GrimoireUpgradeDropCondition(), 1, NPCID.WallofFlesh);
         AddConditional<Dread>(new DreadDropCondition(), 1, NPCID.WallofFlesh);
 
-        AddSimple<Kuva>(15,
+        Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Kuva>(), 3), NPCID.BigMimicCorruption,
+            NPCID.BigMimicCrimson);
+        AddConditional<Kuva>(new Conditions.IsHardmode(), 15,
             NPCID.Corruptor, NPCID.CorruptSlime, NPCID.Slimer, NPCID.CursedHammer, NPCID.Clinger,
             NPCID.PigronCorruption, NPCID.DarkMummy, NPCID.DesertGhoulCorruption, NPCID.Herpling,
             NPCID.Crimslime, NPCID.BloodJelly, NPCID.CrimsonAxe, NPCID.IchorSticker,
