@@ -2,6 +2,17 @@
   "profiles": {
     "Terraria": {
       "commandName": "Executable",
+      "executablePath": "dotnet/dotnet",
+      "commandLineArgs": "$(tMLPath)",
+      "workingDirectory": "$(tMLSteamPath)",
+      "useShellExecute": true,
+      "launchBrowser": false,
+      "environmentVariables": {
+        "SDL_VIDEODRIVER": "x11"
+      }
+    },
+    "Terraria_Windows": {
+      "commandName": "Executable",
       "executablePath": "dotnet",
       "commandLineArgs": "$(tMLPath)",
       "workingDirectory": "$(tMLSteamPath)"
