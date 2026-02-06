@@ -154,6 +154,11 @@ Mods: {
 				Description: Mods.WarframeMod.Buffs.LongbowSharpshotBuff.Description
 				DisplayName: Longbow Sharpshot Buff
 			}
+
+			FractalizedResetBuff: {
+				Description: Mods.WarframeMod.Buffs.FractalizedResetBuff.Description
+				DisplayName: Fractalized Reset Buff
+			}
 		}
 
 		Items: {
@@ -1892,10 +1897,15 @@ Mods: {
 			FractalizedReset: {
 				DisplayName: Fractalized Reset
 				Tooltip:
-				    '''
-				    After running out of mana:
-				    +{0}% ranged fire rate for {1} seconds
-				    '''
+					'''
+					After running out of mana:
+					+{0}% ranged fire rate for {1} seconds
+					'''
+			}
+
+			DotdSarpa: {
+				DisplayName: Sarpa of the Dead
+				Tooltip: "{$Items.Sarpa.Tooltip}"
 			}
 		}
 

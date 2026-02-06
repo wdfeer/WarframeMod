@@ -12,6 +12,7 @@ public class BulletDance : ModItem
         Item.rare = ItemRarityID.Yellow;
         Item.value = Item.sellPrice(gold: 8);
     }
+
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetModPlayer<BulletDancePlayer>().active = true;
@@ -21,18 +22,27 @@ public class BulletDance : ModItem
 class BulletDancePlayer : ModPlayer
 {
     public bool active;
+
     public override void ResetEffects()
     {
         active = false;
     }
 
-    private int[] gunblades = [ModContent.ItemType<Redeemer>(), ModContent.ItemType<Sarpa>(), ModContent.ItemType<RedeemerPrime>()];
+    private int[] gunblades =
+    [
+        ModContent.ItemType<Redeemer>(),
+        ModContent.ItemType<Sarpa>(),
+        ModContent.ItemType<RedeemerPrime>(),
+        ModContent.ItemType<DotdSarpa>(),
+    ];
+
     public override float UseSpeedMultiplier(Item item)
     {
         if (active && gunblades.Contains(item.type))
         {
             return 1.5f;
         }
+
         return base.UseSpeedMultiplier(item);
     }
 }
