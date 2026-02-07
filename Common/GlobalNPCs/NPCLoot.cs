@@ -146,11 +146,15 @@ internal class NPCLoot : GlobalNPC
         AddSimple<DotdTonkor>(10, NPCID.Mothron, NPCID.Pumpking);
         AddExpert<MoltEfficiency>(200, NPCID.Poltergeist, NPCID.DeadlySphere);
 
+        // === Post-Golem ===
+
         Add(ItemDropRule.NotScalingWithLuck(ModContent.ItemType<Fieldron>(), 4), NPCID.MartianSaucerCore);
         AddSimple<Fieldron>(250,
             NPCID.Scutlix, NPCID.MartianWalker, NPCID.MartianDrone, NPCID.MartianEngineer,
             NPCID.MartianOfficer, NPCID.MartianTurret, NPCID.GigaZapper,
             NPCID.RayGunner, NPCID.GrayGrunt, NPCID.BrainScrambler);
+
+        AddSimple<CernosPrime>(10, NPCID.DD2Betsy);
 
         AddConditional<RisInvocation>(new GrimoireUpgradeDropCondition(), 2, NPCID.HallowBoss);
 

@@ -1912,6 +1912,15 @@ Mods: {
 				DisplayName: Tonkor of the Dead
 				Tooltip: "{$Items.KuvaTonkor.Tooltip}"
 			}
+
+			CernosPrime: {
+				DisplayName: Cernos Prime
+				Tooltip:
+					'''
+					Increased arrow velocity
+					Doubled effect from use speed modifiers
+					'''
+			}
 		}
 
 		Projectiles: {
