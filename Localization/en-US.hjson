@@ -1949,7 +1949,7 @@ Mods: {
 
 			Despair: {
 				DisplayName: Despair
-				Tooltip: 
+				Tooltip:
 					'''
 					Increased projectile velocity and penetration
 					{0}% cursed flames chance

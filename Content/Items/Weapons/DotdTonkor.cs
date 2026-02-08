@@ -6,6 +6,7 @@ public class DotdTonkor : KuvaTonkor
 {
     public const int CRIT_DAMAGE_INCREASE_PERCENT = 25;
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs($"+{CRIT_DAMAGE_INCREASE_PERCENT}%");
+
     public override void SetDefaults()
     {
         base.SetDefaults();
@@ -18,5 +19,9 @@ public class DotdTonkor : KuvaTonkor
         Item.useAnimation = 36;
         Item.rare = ItemRarityID.Lime;
         Item.value = Item.sellPrice(gold: 9);
+    }
+
+    public override void AddRecipes()
+    {
     }
 }
