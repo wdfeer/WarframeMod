@@ -7,7 +7,7 @@ public class Calamity : ModSystem
         loaded = ModLoader.TryGetMod("CalamityMod", out calamityMod);
         if (loaded)
         {
-            string rogueName = "CalamityMod/RogueDamageClas";
+            string rogueName = "CalamityMod/RogueDamageClass";
             if (DamageClass.Search.ContainsName(rogueName))
             {
                 int id = DamageClass.Search.GetId(rogueName);
