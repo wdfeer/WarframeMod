@@ -1,4 +1,3 @@
-using Terraria.GameContent;
 using Terraria.Localization;
 using Terraria.ModLoader.IO;
 using WarframeMod.Common;
@@ -42,6 +41,21 @@ public class Kunai : ModItem
             Item.rare = 5;
             Item.value = Item.sellPrice(gold: 6);
         }
+    }
+
+    public override void AddRecipes()
+    {
+        CreateRecipe()
+            .AddIngredient(ItemID.ThrowingKnife, 100)
+            .AddIngredient(ItemID.Sapphire, 2)
+            .AddTile(TileID.Anvils)
+            .Register();
+        
+        CreateRecipe()
+            .AddIngredient<MK1Kunai>()
+            .AddIngredient(ItemID.Diamond, 1)
+            .AddTile(TileID.Anvils)
+            .Register();
     }
 
     public override void LoadData(TagCompound tag)
