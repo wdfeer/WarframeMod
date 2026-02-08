@@ -1,3 +1,4 @@
+using Terraria.Localization;
 using WarframeMod.Common;
 using WarframeMod.Content.Projectiles;
 
@@ -5,6 +6,9 @@ namespace WarframeMod.Content.Items.Weapons;
 
 public class Hikou : ModItem
 {
+    public const int DEFENSE_PENETRATION = 10;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(DEFENSE_PENETRATION);
+
     public override void SetDefaults()
     {
         Item.damage = 16;
@@ -22,5 +26,6 @@ public class Hikou : ModItem
         Item.value = Item.sellPrice(gold: 2);
         Item.shoot = ModContent.ProjectileType<HikouProjectile>();
         Item.shootSpeed = 20f;
+        Item.ArmorPenetration = DEFENSE_PENETRATION;
     }
 }

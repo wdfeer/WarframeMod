@@ -1924,7 +1924,7 @@ Mods: {
 
 			Hikou: {
 				DisplayName: Hikou
-				Tooltip: ""
+				Tooltip: "{$Common.DefensePenetration}"
 			}
 		}
 
