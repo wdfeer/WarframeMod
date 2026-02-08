@@ -62,6 +62,7 @@ internal class NPCLoot : GlobalNPC
         // === Pre-Hardmode / Both PH & HM ===
 
         // Slimes
+        AddSimple<Kunai>(50, NPCID.PurpleSlime, NPCID.YellowSlime);
         AddSimple<Vitality>(200, NPCID.GreenSlime, NPCID.BlueSlime);
 
         // Corruption / Crimson early

@@ -1926,6 +1926,11 @@ Mods: {
 				DisplayName: Hikou
 				Tooltip: "{$Common.DefensePenetration}"
 			}
+
+			Kunai: {
+				DisplayName: Kunai
+				Tooltip: "{$Common.BleedChance}"
+			}
 		}
 
 		Projectiles: {
@@ -1981,6 +1986,7 @@ Mods: {
 			ResidualShockSpawner.DisplayName: Residual Shock Spawner
 			ResidualBoilsProjectile.DisplayName: Residual Boils Projectile
 			HikouProjectile.DisplayName: Hikou Projectile
+			KunaiProjectile.DisplayName: Kunai Projectile
 		}
 
 		Configs: {

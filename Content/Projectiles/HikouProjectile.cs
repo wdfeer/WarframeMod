@@ -4,7 +4,6 @@ internal class HikouProjectile : ModProjectile
 {
     public override void SetDefaults()
     {
-        base.SetDefaults();
         Projectile.friendly = true;
         Projectile.width = 32;
         Projectile.height = 38;
