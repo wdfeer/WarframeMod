@@ -14,8 +14,8 @@ internal class HikouProjectile : ModProjectile
 
     public override void AI()
     {
-        const float gravity = 8f / 60f;
-        if (Projectile.velocity.Y < 16f)
+        const float gravity = 16f / 60f;
+        if (Projectile.velocity.Y < 32f)
         {
             Projectile.velocity.Y += gravity;
         }

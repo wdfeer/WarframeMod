@@ -21,6 +21,6 @@ public class Hikou : ModItem
         Item.rare = 2;
         Item.value = Item.sellPrice(gold: 2);
         Item.shoot = ModContent.ProjectileType<HikouProjectile>();
-        Item.shootSpeed = 16f;
+        Item.shootSpeed = 20f;
     }
 }
