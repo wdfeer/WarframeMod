@@ -1057,12 +1057,12 @@ Mods: {
 			}
 
 			MK1Bo: {
-				DisplayName: MK1-Bo
+				DisplayName: Mk1-Bo
 				Tooltip: "{$Common.DefensePenetration}"
 			}
 
 			MK1Paris: {
-				DisplayName: MK1-Paris
+				DisplayName: Mk1-Paris
 				Tooltip: ""
 			}
 
@@ -1929,6 +1929,11 @@ Mods: {
 
 			Kunai: {
 				DisplayName: Kunai
+				Tooltip: "{$Common.BleedChance}"
+			}
+			
+			MK1Kunai: {
+				DisplayName: Mk1-Kunai
 				Tooltip: "{$Common.BleedChance}"
 			}
 		}

@@ -12,6 +12,7 @@ internal class TownNPCWares : GlobalNPC
             case NPCID.Merchant:
                 shop.Add<MK1Paris>();
                 shop.Add<MK1Bo>();
+                shop.Add<MK1Kunai>();
                 return;
             case NPCID.ArmsDealer:
                 shop.Add<Burston>();
