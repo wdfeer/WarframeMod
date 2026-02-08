@@ -120,6 +120,8 @@ internal class NPCLoot : GlobalNPC
         AddExpert<LongbowSharpshot>(150, NPCID.SkeletonArcher, NPCID.ElfArcher);
 
         AddSimple<Rubico>(50, NPCID.PirateCorsair);
+        AddSimple<StockpiledBlight>(150, NPCID.PirateGhost, NPCID.PirateDeckhand);
+        
         AddExpert<ExodiaForce>(4, NPCID.GoblinShark, NPCID.BloodEelHead);
         AddSimple<ShatteringJustice>(3, NPCID.BloodNautilus);
 

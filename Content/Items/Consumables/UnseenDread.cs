@@ -18,6 +18,7 @@ public class UnseenDread : ModItem
         Item.useAnimation = 30;
         Item.useStyle = ItemUseStyleID.HoldUp;
         Item.UseSound = SoundID.Item4;
+        Item.value = Item.sellPrice(gold: 2);
     }
 
     public override bool? UseItem(Player player)

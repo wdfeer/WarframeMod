@@ -1931,10 +1931,20 @@ Mods: {
 				DisplayName: Kunai
 				Tooltip: "{$Common.BleedChance}"
 			}
-			
+
 			MK1Kunai: {
 				DisplayName: Mk1-Kunai
 				Tooltip: "{$Common.BleedChance}"
+			}
+
+			StockpiledBlight: {
+				DisplayName: Stockpiled Blight
+				Tooltip:
+					'''
+					Permanently upgrades a Kunai in inventory:
+					+{0} base damage
+					+{1}% base use speed
+					'''
 			}
 		}
 
