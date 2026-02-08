@@ -1,6 +1,4 @@
 using Terraria.Localization;
-using WarframeMod.Common.Players;
-using WarframeMod.Content.Projectiles;
 
 namespace WarframeMod.Content.Items.Arcanes;
 

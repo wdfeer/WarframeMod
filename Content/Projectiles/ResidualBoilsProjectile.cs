@@ -1,5 +1,4 @@
 using WarframeMod.Common;
-using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Items.Arcanes;
 
 namespace WarframeMod.Content.Projectiles;

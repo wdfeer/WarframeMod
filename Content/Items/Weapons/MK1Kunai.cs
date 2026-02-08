@@ -1,7 +1,3 @@
-using Terraria.Localization;
-using WarframeMod.Common;
-using WarframeMod.Content.Projectiles;
-
 namespace WarframeMod.Content.Items.Weapons;
 
 public class MK1Kunai : Kunai
