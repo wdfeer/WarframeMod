@@ -1946,6 +1946,15 @@ Mods: {
 					+{1}% base use speed
 					'''
 			}
+
+			Despair: {
+				DisplayName: Despair
+				Tooltip: 
+					'''
+					Increased projectile velocity and penetration
+					{0}% cursed flames chance
+					'''
+			}
 		}
 
 		Projectiles: {
@@ -2002,6 +2011,7 @@ Mods: {
 			ResidualBoilsProjectile.DisplayName: Residual Boils Projectile
 			HikouProjectile.DisplayName: Hikou Projectile
 			KunaiProjectile.DisplayName: Kunai Projectile
+			DespairProjectile.DisplayName: Despair Projectile
 		}
 
 		Configs: {
