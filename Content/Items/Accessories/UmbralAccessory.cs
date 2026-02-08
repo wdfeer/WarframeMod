@@ -70,7 +70,7 @@ class UmbralAccessoryPlayer : ModPlayer
     }
     public override void ModifyHurt(ref Player.HurtModifiers modifiers)
     {
-        if (umbraCount <= 0 || WarframeMod.IsBossAlive())
+        if (umbraCount <= 0 || WarframeMod.IsABossAlive())
             return;
         float damageMult = 1f - UmbralAccessory.TOTAL_DAMAGE_REDUCTION_NOBOSS[umbraCount - 1];
         modifiers.SourceDamage *= damageMult;

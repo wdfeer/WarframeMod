@@ -6,6 +6,6 @@ public partial class WarframeMod : Mod
     {
         instance = this;
     }
-    public static bool IsBossAlive()
+    public static bool IsABossAlive()
         => Main.npc.Any(npc => npc.active && (npc.boss || npc.type == NPCID.EaterofWorldsBody));
 }

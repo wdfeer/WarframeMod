@@ -16,7 +16,7 @@ internal class ColdDebuffGlobalNPC : GlobalNPC
     {
         if (!npc.HasBuff<ColdDebuff>())
             return;
-        if (Main.rand.NextBool(WarframeMod.IsBossAlive() ? 4 : 1))
+        if (Main.rand.NextBool(WarframeMod.IsABossAlive() ? 4 : 1))
         {
             npc.velocity.X *= 0.95f;
             npc.velocity.Y *= 0.975f;
