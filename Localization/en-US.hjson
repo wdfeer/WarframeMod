@@ -1921,6 +1921,11 @@ Mods: {
 					Doubled effect from use speed modifiers
 					'''
 			}
+
+			Hikou: {
+				DisplayName: Hikou
+				Tooltip: ""
+			}
 		}
 
 		Projectiles: {
@@ -1975,6 +1980,7 @@ Mods: {
 			ResidualShockBolt.DisplayName: Residual Shock Bolt
 			ResidualShockSpawner.DisplayName: Residual Shock Spawner
 			ResidualBoilsProjectile.DisplayName: Residual Boils Projectile
+			HikouProjectile.DisplayName: Hikou Projectile
 		}
 
 		Configs: {

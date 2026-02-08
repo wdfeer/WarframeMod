@@ -26,7 +26,8 @@ public class BossBags : GlobalItem
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1,
                     ModContent.ItemType<Tetra>(),
                     ModContent.ItemType<Physique>(),
-                    ModContent.ItemType<InfectedClip>());
+                    ModContent.ItemType<InfectedClip>(),
+                    ModContent.ItemType<Hikou>());
             case ItemID.EyeOfCthulhuBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1,
                     ModContent.ItemType<HunterSynergy>(),
