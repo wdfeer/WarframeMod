@@ -10,6 +10,14 @@ internal class HikouProjectile : ModProjectile
         Projectile.timeLeft = 360;
         Projectile.rotation = Main.rand.NextFloat() * MathF.PI;
     }
+    
+    public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
+    {
+        width = 8;
+        height = 8;
+        hitboxCenterFrac = new Vector2(0.4f, 0.4f);
+        return base.TileCollideStyle(ref width, ref height, ref fallThrough, ref hitboxCenterFrac);
+    }
 
     public override void AI()
     {

@@ -16,6 +16,14 @@ public class DespairProjectile : ModProjectile
         Projectile.GetGlobalProjectile<BuffGlobalProjectile>().AddBuff(new BuffChance(
             BuffID.CursedInferno, 300, Despair.CURSED_FLAMES_CHANCE));
     }
+    
+    public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
+    {
+        width = 1;
+        height = 1;
+        hitboxCenterFrac = Vector2.Zero;
+        return base.TileCollideStyle(ref width, ref height, ref fallThrough, ref hitboxCenterFrac);
+    }
 
     public override void AI()
     {
