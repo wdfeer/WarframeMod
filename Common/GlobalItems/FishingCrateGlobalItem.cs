@@ -1,5 +1,6 @@
 using Terraria.GameContent.ItemDropRules;
 using WarframeMod.Content.Items.Arcanes;
+using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Common.GlobalItems;
 
@@ -9,16 +10,18 @@ public class FishingCrateGlobalItem : GlobalItem
     {
         if (ItemID.Sets.IsFishingCrate[item.type])
         {
-            foreach (var rule in GetCrateDropRules())
+            foreach (var rule in GetGenericCrateDropRules())
             {
                 itemLoot.Add(rule);
             }
         }
     }
 
-    public List<IItemDropRule> GetCrateDropRules()
+    public List<IItemDropRule> GetGenericCrateDropRules()
     {
         var list = new List<IItemDropRule>();
+        
+        list.Add(ItemDropRule.Common(ModContent.ItemType<PlasmaSword>(), 20));
         
         list.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(),
             ModContent.ItemType<MagusVigor>(), 12));
