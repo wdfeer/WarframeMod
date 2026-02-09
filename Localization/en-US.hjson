@@ -46,6 +46,11 @@ Mods: {
 				Description: +20% movement speed and +12% wing flight speed
 			}
 
+			ArcaneAgilityBuff: {
+				DisplayName: Arcane Agility
+				Description: +10% movement speed and +20% wing flight speed
+			}
+
 			ArcaneFuryBuff: {
 				DisplayName: Arcane Fury
 				Description: +15% melee Damage
@@ -1959,6 +1964,15 @@ Mods: {
 			Spira: {
 				DisplayName: Spira
 				Tooltip: "{$Common.DefensePenetration}"
+			}
+
+			ArcaneAgility: {
+				DisplayName: Arcane Agility
+				Tooltip:
+					'''
+					Upon taking damage:
+					+{0}% movement speed and +{1}% wing flight speed for {2} seconds
+					'''
 			}
 		}
 
