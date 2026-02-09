@@ -21,6 +21,8 @@ public class FishingCrateGlobalItem : GlobalItem
         var list = new List<IItemDropRule>();
         
         list.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(),
+            ModContent.ItemType<MagusVigor>(), 12));
+        list.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(),
             ModContent.ItemType<ArcaneAgility>(), 50));
 
         return list;

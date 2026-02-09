@@ -1,4 +1,4 @@
 displayName = Warframe Mod
 author = wdfeer
-version = 0.4.122.0
+version = 0.4.123.0
 homepage = https://github.com/wdfeer/WarframeMod

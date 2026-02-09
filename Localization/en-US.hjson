@@ -1974,6 +1974,11 @@ Mods: {
 					+{0}% movement speed and +{1}% wing flight speed for {2} seconds
 					'''
 			}
+			
+			MagusVigor: {
+				DisplayName: Magus Vigor
+				Tooltip: "+{0} max life, increased life regeneration"
+			}
 		}
 
 		Projectiles: {
