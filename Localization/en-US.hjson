@@ -1955,6 +1955,11 @@ Mods: {
 					{0}% cursed flames chance
 					'''
 			}
+
+			Spira: {
+				DisplayName: Spira
+				Tooltip: "{$Common.DefensePenetration}"
+			}
 		}
 
 		Projectiles: {
@@ -2012,6 +2017,7 @@ Mods: {
 			HikouProjectile.DisplayName: Hikou Projectile
 			KunaiProjectile.DisplayName: Kunai Projectile
 			DespairProjectile.DisplayName: Despair Projectile
+			SpiraProjectile.DisplayName: Spira Projectile
 		}
 
 		Configs: {
