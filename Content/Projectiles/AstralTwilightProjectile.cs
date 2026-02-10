@@ -9,7 +9,6 @@ public class AstralTwilightProjectile : ModProjectile
 
     public override void SetDefaults()
     {
-        Projectile.DamageType = DamageClass.Melee;
         Projectile.width = 32;
         Projectile.height = 32;
         Projectile.friendly = true;
@@ -49,7 +48,8 @@ public class AstralTwilightProjectile : ModProjectile
         Rectangle frame = texture.Frame();
         Vector2 origin = new Vector2(frame.Width / 2f, frame.Height / 2f);
 
-        float scale = (float)Projectile.width / frame.Width;
+        float scale = (float)Projectile.width
+                      / 46; // radius of the full-white circle of the texture
 
         Vector2 pos = Projectile.Center - Main.screenPosition;
 
