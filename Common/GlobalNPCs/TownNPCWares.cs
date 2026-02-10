@@ -1,4 +1,5 @@
-﻿using WarframeMod.Content.Items.Accessories;
+﻿using Terraria.Enums;
+using WarframeMod.Content.Items.Accessories;
 using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Common.GlobalNPCs;
@@ -26,6 +27,9 @@ internal class TownNPCWares : GlobalNPC
                 return;
             case NPCID.SkeletonMerchant:
                 shop.Add<Snipetron>(Condition.DownedSkeletron);
+                shop.Add<AstralTwilight>(Condition.MoonPhaseWaxingGibbous);
+                shop.Add<AstralTwilight>(Condition.MoonPhaseFull);
+                shop.Add<AstralTwilight>(Condition.MoonPhaseWaningGibbous);
                 return;
             case NPCID.WitchDoctor:
                 shop.Add<AnabolicPollination>(Condition.DownedPlantera);

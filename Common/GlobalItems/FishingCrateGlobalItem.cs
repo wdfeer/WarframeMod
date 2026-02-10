@@ -1,4 +1,5 @@
 using Terraria.GameContent.ItemDropRules;
+using WarframeMod.Content.Items.Accessories;
 using WarframeMod.Content.Items.Arcanes;
 using WarframeMod.Content.Items.Weapons;
 
@@ -13,6 +14,12 @@ public class FishingCrateGlobalItem : GlobalItem
             foreach (var rule in GetGenericCrateDropRules())
             {
                 itemLoot.Add(rule);
+            }
+
+            if (item.type == ItemID.FloatingIslandFishingCrate)
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<AstralTwilight>(), 50));
+
             }
         }
     }

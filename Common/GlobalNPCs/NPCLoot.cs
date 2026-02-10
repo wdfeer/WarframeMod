@@ -95,6 +95,8 @@ internal class NPCLoot : GlobalNPC
         AddOneFromOptions2<NaturalTalent, Simulor>(15, NPCID.DarkCaster);
 
         AddSimple<BuzzKill>(33, NPCID.BloodFeeder, NPCID.CorruptGoldfish);
+        
+        AddSimple<AstralTwilight>(500, NPCID.Harpy, NPCID.WyvernHead);
 
         AddExpert<VirtuosTrojan>(4, NPCID.QueenBee);
 

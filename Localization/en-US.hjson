@@ -1989,6 +1989,15 @@ Mods: {
 					Shoots beam swords
 					'''
 			}
+
+			AstralTwilight: {
+				DisplayName: Astral Twilight
+				Tooltip:
+					'''
+					Every second, upon melee or throwing projectile hit:
+					Shoot a slow projectile dealing one third of the damage dealt
+					'''
+			}
 		}
 
 		Projectiles: {
@@ -2047,6 +2056,7 @@ Mods: {
 			KunaiProjectile.DisplayName: Kunai Projectile
 			DespairProjectile.DisplayName: Despair Projectile
 			SpiraProjectile.DisplayName: Spira Projectile
+			AstralTwilightProjectile.DisplayName: Astral Twilight Projectile
 		}
 
 		Configs: {
