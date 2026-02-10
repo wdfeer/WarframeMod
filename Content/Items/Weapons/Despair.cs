@@ -14,7 +14,7 @@ public class Despair : ModItem
         Item.damage = 66;
         Item.crit = 12;
         Item.knockBack = 1.2f;
-        Item.DamageType = Calamity.rogue != null ? Calamity.rogue : DamageClass.Ranged;
+        Item.DamageType = Calamity.Throwing;
         Item.noMelee = true;
         Item.noUseGraphic = true;
         Item.useStyle = ItemUseStyleID.Swing;

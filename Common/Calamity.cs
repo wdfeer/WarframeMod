@@ -19,4 +19,6 @@ public class Calamity : ModSystem
     public static bool loaded;
     public static Mod calamityMod;
     public static DamageClass rogue;
+
+    public static DamageClass Throwing => rogue != null ? rogue : DamageClass.Throwing;
 }

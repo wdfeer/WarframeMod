@@ -14,7 +14,7 @@ public class Spira : ModItem
         Item.damage = 120;
         Item.crit = 26;
         Item.knockBack = 1f;
-        Item.DamageType = Calamity.rogue != null ? Calamity.rogue : DamageClass.Ranged;
+        Item.DamageType = Calamity.Throwing;
         Item.noMelee = true;
         Item.noUseGraphic = true;
         Item.useStyle = ItemUseStyleID.Swing;

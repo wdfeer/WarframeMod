@@ -18,7 +18,7 @@ public class Kunai : ModItem
         Item.damage = 21;
         Item.crit = 14;
         Item.knockBack = 0.8f;
-        Item.DamageType = Calamity.rogue != null ? Calamity.rogue : DamageClass.Ranged;
+        Item.DamageType = Calamity.Throwing;
         Item.noMelee = true;
         Item.noUseGraphic = true;
         Item.useStyle = ItemUseStyleID.Swing;

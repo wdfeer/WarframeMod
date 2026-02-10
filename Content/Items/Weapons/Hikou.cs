@@ -14,7 +14,7 @@ public class Hikou : ModItem
         Item.damage = 16;
         Item.crit = 0;
         Item.knockBack = 0.2f;
-        Item.DamageType = Calamity.rogue != null ? Calamity.rogue : DamageClass.Ranged;
+        Item.DamageType = Calamity.Throwing;
         Item.noMelee = true;
         Item.noUseGraphic = true;
         Item.useStyle = ItemUseStyleID.Swing;
