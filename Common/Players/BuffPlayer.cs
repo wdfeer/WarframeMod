@@ -12,7 +12,12 @@ public class BuffPlayer : CritPlayerHooks
         if (damageClass == null)
             damageClass = DamageClass.Generic;
 
-        stackableBuffsOnHitNPC[damageClass].Add(new StackableBuffChance(type, chancePercent));
+        var chance = new StackableBuffChance(type, chancePercent);
+
+        if (stackableBuffsOnHitNPC.ContainsKey(damageClass))
+            stackableBuffsOnHitNPC[damageClass].Add(chance);
+        else
+            stackableBuffsOnHitNPC[damageClass] = new List<StackableBuffChance>() { chance };
     }
 
     [Obsolete]
@@ -25,7 +30,7 @@ public class BuffPlayer : CritPlayerHooks
     {
         buffsOnHitNPC = [];
         stackableBuffsOnHitNPC = new()
-            { { DamageClass.Generic, new() } };
+            { { DamageClass.Generic, [] } };
     }
 
     public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
@@ -38,7 +43,9 @@ public class BuffPlayer : CritPlayerHooks
         int critLvl, int damagePostCrit)
     {
         foreach (var pair in stackableBuffsOnHitNPC)
-            if (item.DamageType.CountsAsClass(pair.Key))
+            if (item.DamageType.CountsAsClass(pair.Key)
+                // Shouldn't be necessary but is for some reason
+                || item.DamageType == DamageClass.Generic)
                 StackableBuffChance.ApplyBuffs(target, pair.Value, damagePostCrit);
     }
 
@@ -46,7 +53,9 @@ public class BuffPlayer : CritPlayerHooks
         float critMult, int critLvl, int damagePostCrit)
     {
         foreach (var pair in stackableBuffsOnHitNPC)
-            if (proj.DamageType.CountsAsClass(pair.Key))
+            if (proj.DamageType.CountsAsClass(pair.Key)
+                // Shouldn't be necessary but is for some reason
+                || proj.DamageType == DamageClass.Generic)
                 StackableBuffChance.ApplyBuffs(target, pair.Value, damagePostCrit);
     }
 }
