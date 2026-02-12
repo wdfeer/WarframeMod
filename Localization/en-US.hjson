@@ -1650,7 +1650,7 @@ Mods: {
 				Tooltip:
 					'''
 					{$Common.ModifySummonDamageDealt}
-					{$Common.SummonBleedChance}
+					{$Common.SummonBleedChance@1}
 					'''
 			}
 
