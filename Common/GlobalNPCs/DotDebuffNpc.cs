@@ -60,6 +60,11 @@ public class DotDebuffNpc : GlobalNPC
             StackableBuff.Electricity,
             (npc, damage) => new NPC.HitInfo()
                 { Damage = (int)(damage - npc.defense * 0.75f), Knockback = 0 }
+        },
+        {
+            StackableBuff.Toxin,
+            (npc, damage) => new NPC.HitInfo()
+                { Damage = (int)(damage - npc.defense * 0.75f), Knockback = 0 }
         }
     };
 
@@ -71,11 +76,22 @@ public class DotDebuffNpc : GlobalNPC
 
     private void CreateDust(NPC npc, StackableBuff type)
     {
-        if (type == StackableBuff.Electricity)
-            DustHelper.NewDustsCircle((int)(MathF.Min(100f, npc.width / 16f + 8)),
-                npc.Center,
-                npc.width * 0.8f,
-                DustID.Electric,
-                d => d.noGravity = true);
+        switch (type)
+        {
+            case StackableBuff.Electricity:
+                DustHelper.NewDustsCircle((int)(MathF.Min(100f, npc.width / 16f + 8)),
+                    npc.Center,
+                    npc.width * 0.8f,
+                    DustID.Electric,
+                    d => d.noGravity = true);
+                break;
+            case StackableBuff.Toxin:
+                DustHelper.NewDustsCircle((int)(MathF.Min(100f, npc.width / 16f + 8)),
+                    npc.Center,
+                    npc.width * 0.8f,
+                    DustID.Toxikarp,
+                    d => d.noGravity = true);
+                break;
+        }
     }
 }

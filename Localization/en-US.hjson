@@ -519,9 +519,8 @@ Mods: {
 				DisplayName: Infected Clip
 				Tooltip:
 					'''
-					+25% on-hit poison chance for 6 seconds
-					+10 extra damage per second on poisoned enemies
-					Poisoned enemies under the effect of cold or frostburn take 15% more damage
+					+10% toxin chance
+					Affected enemies under the effect of cold or frostburn take 15% more damage
 					'''
 			}
 
@@ -539,9 +538,8 @@ Mods: {
 				DisplayName: Malignant Force
 				Tooltip:
 					'''
-					+100% on-hit poison chance for 10 seconds
-					+25 damage per second on poisoned enemies
-					Poisoned enemies under the effect of cold or frostburn take 15% more damage
+					+15% toxin chance
+					Affected enemies under the effect of cold or frostburn take 15% more damage
 					'''
 			}
 

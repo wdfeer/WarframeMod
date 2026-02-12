@@ -2,11 +2,11 @@
 public enum StackableBuff
 {
     Bleeding,
-    Electricity
+    Electricity,
+    Toxin
 }
 public struct StackableBuffChance
 {
-
     public StackableBuff type;
     public float chance;
     public StackableBuffChance(StackableBuff type, float chance)
