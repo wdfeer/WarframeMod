@@ -1452,11 +1452,7 @@ Mods: {
 
 			AnabolicPollination: {
 				DisplayName: Anabolic Pollination
-				Tooltip:
-					'''
-					+{0}% poison chance per minion slot above 1
-					+{1} poison damage per second per minion slot above 1
-					'''
+				Tooltip: +{0}% toxin chance per minion slot
 			}
 
 			EnergyConversion: {
