@@ -10,6 +10,7 @@ public class DotDebuffNpc : GlobalNPC
 
     // Damage timers for each proc type
     public Dictionary<StackableBuff, int> timers = new();
+    public bool HasDoT(StackableBuff type) => timers.ContainsKey(type);
 
     const int tickTime = 60;
 
@@ -74,7 +75,7 @@ public class DotDebuffNpc : GlobalNPC
         npc.StrikeNPC(hitInfo);
     }
 
-    private void CreateDust(NPC npc, StackableBuff type)
+    private static void CreateDust(NPC npc, StackableBuff type)
     {
         switch (type)
         {
