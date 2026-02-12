@@ -16,8 +16,8 @@ public class GrimoireAltProjectile : ModProjectile
         Projectile.friendly = true;
         Projectile.DamageType = DamageClass.Magic;
         Projectile.hide = true;
-        Projectile.height = 64;
-        Projectile.width = 64;
+        Projectile.height = 90;
+        Projectile.width = 90;
         Projectile.timeLeft = baseTimeLeft;
         Projectile.penetrate = -1;
         Projectile.tileCollide = false;
@@ -30,14 +30,15 @@ public class GrimoireAltProjectile : ModProjectile
         float dustMultiplier = (float)Projectile.timeLeft / baseTimeLeft;
         DustHelper.NewDustsCircleEdge((int)(9 * dustMultiplier),
             Projectile.Center,
-            Projectile.width / 2,
+            Projectile.width / 2f,
             DustID.GemAmethyst,
             dust => dust.noGravity = true);
         DustHelper.NewDustsCircleFromCenter((int)(3 * dustMultiplier),
             Projectile.Center,
-            Projectile.width / 3,
+            Projectile.width / 3f,
             DustID.Electric,
-            2f);
+            2f,
+            d => d.noGravity = true);
     }
 
     public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
