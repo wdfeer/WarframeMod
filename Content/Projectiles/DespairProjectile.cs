@@ -8,6 +8,7 @@ public class DespairProjectile : ModProjectile
 {
     public override void SetDefaults()
     {
+        Projectile.DamageType = Calamity.Throwing;
         Projectile.friendly = true;
         Projectile.width = 31;
         Projectile.height = 31;

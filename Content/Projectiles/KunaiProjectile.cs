@@ -1,3 +1,4 @@
+using WarframeMod.Common;
 using WarframeMod.Common.GlobalProjectiles;
 using WarframeMod.Content.Items.Weapons;
 
@@ -7,6 +8,7 @@ public class KunaiProjectile : ModProjectile
 {
     public override void SetDefaults()
     {
+        Projectile.DamageType = Calamity.Throwing;
         Projectile.friendly = true;
         Projectile.width = 31;
         Projectile.height = 31;

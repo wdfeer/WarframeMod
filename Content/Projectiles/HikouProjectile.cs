@@ -1,9 +1,12 @@
+using WarframeMod.Common;
+
 namespace WarframeMod.Content.Projectiles;
 
 internal class HikouProjectile : ModProjectile
 {
     public override void SetDefaults()
     {
+        Projectile.DamageType = Calamity.Throwing;
         Projectile.friendly = true;
         Projectile.width = 32;
         Projectile.height = 38;
