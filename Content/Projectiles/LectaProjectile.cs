@@ -10,7 +10,7 @@ public class LectaProjectile : WhipProjectile
 	{
 		base.SetDefaults();
 		Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances =
-            [new Common.StackableBuffChance(Common.StackableBuff.Electro, Lecta.ELECTRO_CHANCE)];
+            [new Common.StackableBuffChance(Common.StackableBuff.Electricity, Lecta.ELECTRO_CHANCE)];
 		Projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier = 0.75f;
 	}
     

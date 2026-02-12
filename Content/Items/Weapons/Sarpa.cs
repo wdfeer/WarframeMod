@@ -52,7 +52,7 @@ public class Sarpa : ModItem
         projectile.usesLocalNPCImmunity = true;
         projectile.localNPCHitCooldown = 2;
         var buffProj = projectile.GetGlobalProjectile<BuffGlobalProjectile>();
-        buffProj.stackableBuffChances.Add(new Common.StackableBuffChance(Common.StackableBuff.Bleed, chancePercent: BLEED_CHANCE));
+        buffProj.stackableBuffChances.Add(new Common.StackableBuffChance(Common.StackableBuff.Bleeding, chancePercent: BLEED_CHANCE));
 
         return false;
     }

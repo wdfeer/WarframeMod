@@ -1,8 +1,8 @@
 ﻿namespace WarframeMod.Common;
 public enum StackableBuff
 {
-    Bleed,
-    Electro
+    Bleeding,
+    Electricity
 }
 public struct StackableBuffChance
 {
@@ -17,19 +17,17 @@ public struct StackableBuffChance
     public StackableBuffChance(StackableBuff type, int chancePercent)
     {
         this.type = type;
-        this.chance = chancePercent / 100f;
+        chance = chancePercent / 100f;
     }
     public void Apply(NPC npc, int damage)
     {
         switch (type)
         {
-            case StackableBuff.Bleed:
+            case StackableBuff.Bleeding:
                 BleedingBuff.Create(damage, npc);
                 break;
-            case StackableBuff.Electro:
+            case StackableBuff.Electricity:
                 ElectricityBuff.Create(damage, npc);
-                break;
-            default:
                 break;
         }
     }
@@ -51,13 +49,11 @@ public struct StackableBuffChance
         NPC target = Main.npc[targetId];
         switch (type)
         {
-            case StackableBuff.Bleed:
+            case StackableBuff.Bleeding:
                 BleedingBuff.Create(damage, target, false);
                 break;
-            case StackableBuff.Electro:
+            case StackableBuff.Electricity:
                 ElectricityBuff.Create(damage, target, false);
-                break;
-            default:
                 break;
         }
     }

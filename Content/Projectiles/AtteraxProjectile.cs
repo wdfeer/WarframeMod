@@ -11,7 +11,7 @@ public class AtteraxProjectile : WhipProjectile
 		base.SetDefaults();
 		Projectile.GetGlobalProjectile<BuffGlobalProjectile>().stackableBuffChances =
         [
-            new Common.StackableBuffChance(Common.StackableBuff.Bleed, chancePercent: Atterax.BLEED_CHANCE)
+            new Common.StackableBuffChance(Common.StackableBuff.Bleeding, chancePercent: Atterax.BLEED_CHANCE)
         ];
 		Projectile.GetGlobalProjectile<CritGlobalProjectile>().CritMultiplier += Atterax.EXTRA_CRIT_MULT;
 	}

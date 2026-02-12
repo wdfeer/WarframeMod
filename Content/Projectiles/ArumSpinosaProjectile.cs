@@ -18,7 +18,7 @@ internal class ArumSpinosaProjectile : ModProjectile
         Projectile.localNPCHitCooldown = -1;
 
         var buffProj = Projectile.GetGlobalProjectile<BuffGlobalProjectile>();
-        buffProj.stackableBuffChances.Add(new Common.StackableBuffChance(Common.StackableBuff.Bleed, 0.4f));
+        buffProj.stackableBuffChances.Add(new Common.StackableBuffChance(Common.StackableBuff.Bleeding, 0.4f));
     }
     public override void AI()
     {

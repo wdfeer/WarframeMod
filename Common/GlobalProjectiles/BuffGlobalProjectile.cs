@@ -4,10 +4,10 @@ internal class BuffGlobalProjectile : GlobalProjectile
 {
     public override bool InstancePerEntity => true;
     public List<StackableBuffChance> stackableBuffChances = [];
-    public void AddBleed(float chance) => stackableBuffChances.Add(new StackableBuffChance(StackableBuff.Bleed, chance));
-    public void AddBleed(int chance) => stackableBuffChances.Add(new StackableBuffChance(StackableBuff.Bleed, chancePercent: chance));
-    public void AddElectro(float chance) => stackableBuffChances.Add(new StackableBuffChance(StackableBuff.Electro, chance));
-    public void AddElectro(int chance) => stackableBuffChances.Add(new StackableBuffChance(StackableBuff.Electro, chancePercent: chance));
+    public void AddBleed(float chance) => stackableBuffChances.Add(new StackableBuffChance(StackableBuff.Bleeding, chance));
+    public void AddBleed(int chance) => stackableBuffChances.Add(new StackableBuffChance(StackableBuff.Bleeding, chancePercent: chance));
+    public void AddElectro(float chance) => stackableBuffChances.Add(new StackableBuffChance(StackableBuff.Electricity, chance));
+    public void AddElectro(int chance) => stackableBuffChances.Add(new StackableBuffChance(StackableBuff.Electricity, chancePercent: chance));
     public List<BuffChance> buffChances = [];
     public void AddBuff(BuffChance bc)
     {

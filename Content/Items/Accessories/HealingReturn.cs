@@ -33,8 +33,8 @@ class HealingReturnPlayer : ModPlayer
         if (active && !item.noMelee && lastHealTimer >= 60)
         {
             int buffs = target.buffTime.Count(time => time > 0);
-            buffs += target.GetGlobalNPC<StackableDebuffNPC>().bleeds.Count == 0 ? 0 : 1;
-            buffs += target.GetGlobalNPC<StackableDebuffNPC>().electricity.Count == 0 ? 0 : 1;
+            buffs += target.GetGlobalNPC<DotDebuffNpc>().timers.Count;
+            
             if (buffs > 0)
             {
                 Player.Heal(buffs);
