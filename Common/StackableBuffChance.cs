@@ -21,15 +21,7 @@ public struct StackableBuffChance
     }
     public void Apply(NPC npc, int damage)
     {
-        switch (type)
-        {
-            case StackableBuff.Bleeding:
-                BleedingBuff.Create(damage, npc);
-                break;
-            case StackableBuff.Electricity:
-                ElectricityBuff.Create(damage, npc);
-                break;
-        }
+        DotBuff.Create(type, damage, npc);
     }
     public void RollAndApply(NPC npc, int damage)
     {
@@ -47,14 +39,6 @@ public struct StackableBuffChance
     public static void AddDebuffNoSync(int targetId, StackableBuff type, float damage)
     {
         NPC target = Main.npc[targetId];
-        switch (type)
-        {
-            case StackableBuff.Bleeding:
-                BleedingBuff.Create(damage, target, false);
-                break;
-            case StackableBuff.Electricity:
-                ElectricityBuff.Create(damage, target, false);
-                break;
-        }
+        DotBuff.Create(type, (int)damage, target, false);
     }
 }
