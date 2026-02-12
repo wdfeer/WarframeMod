@@ -6,8 +6,8 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class PrecisionConditioning : ModItem
 {
-    public const int SUMMON_DAMAGE_INCREASE_PERCENT = 15;
-    public const int SUMMON_BLEED_CHANCE_PERCENT = 15;
+    public const int SUMMON_DAMAGE_INCREASE_PERCENT = 11;
+    public const int SUMMON_BLEED_CHANCE_PERCENT = 11;
 
     public override LocalizedText Tooltip =>
         base.Tooltip.WithFormatArgs($"+{SUMMON_DAMAGE_INCREASE_PERCENT}%", "+"+SUMMON_BLEED_CHANCE_PERCENT);
