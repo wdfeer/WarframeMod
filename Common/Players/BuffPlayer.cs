@@ -45,7 +45,7 @@ public class BuffPlayer : CritPlayerHooks
         foreach (var pair in stackableBuffsOnHitNPC)
             if (item.DamageType.CountsAsClass(pair.Key)
                 // Shouldn't be necessary but is for some reason
-                || item.DamageType == DamageClass.Generic)
+                || pair.Key == DamageClass.Generic)
                 StackableBuffChance.ApplyBuffs(target, pair.Value, damagePostCrit);
     }
 
@@ -55,7 +55,7 @@ public class BuffPlayer : CritPlayerHooks
         foreach (var pair in stackableBuffsOnHitNPC)
             if (proj.DamageType.CountsAsClass(pair.Key)
                 // Shouldn't be necessary but is for some reason
-                || proj.DamageType == DamageClass.Generic)
+                || pair.Key == DamageClass.Generic)
                 StackableBuffChance.ApplyBuffs(target, pair.Value, damagePostCrit);
     }
 }
