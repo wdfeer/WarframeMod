@@ -20,7 +20,7 @@ public class DotDebuffNpc : GlobalNPC
         foreach (DotBuff dot in dots.ToList())
         {
             timers.TryAdd(dot.type, 0);
-            
+
             if (dps.ContainsKey(dot.type))
                 dps[dot.type] += dot.dps;
             else
@@ -72,6 +72,10 @@ public class DotDebuffNpc : GlobalNPC
     private void CreateDust(NPC npc, StackableBuff type)
     {
         if (type == StackableBuff.Electricity)
-            Dust.NewDust(npc.position, npc.width, npc.height, DustID.Electric);
+            DustHelper.NewDustsCircle((int)(MathF.Min(100f, npc.width / 16f + 8)),
+                npc.Center,
+                npc.width * 0.8f,
+                DustID.Electric,
+                d => d.noGravity = true);
     }
 }
