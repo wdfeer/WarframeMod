@@ -1996,6 +1996,16 @@ Mods: {
 					Shoot a slow projectile dealing one third of the damage dealt
 					'''
 			}
+
+			ToxicFlight: {
+				DisplayName: Toxic Flight
+				Tooltip:
+					'''
+					+{0}% movement speed
+					+{1} seconds of wing flight
+					+{2}% toxin chance
+					'''
+			}
 		}
 
 		Projectiles: {

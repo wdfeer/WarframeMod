@@ -85,6 +85,9 @@ public class BossBags : GlobalItem
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(2,
                     ModContent.ItemType<BazaPrime>(),
                     ModContent.ItemType<BulletDance>());
+            case ItemID.FishronBossBag:
+                return ItemDropRule.OneFromOptionsNotScalingWithLuck(3,
+                    ModContent.ItemType<ToxicFlight>());
             case ItemID.MoonLordBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(2,
                     ModContent.ItemType<PrismaGorgon>(),
