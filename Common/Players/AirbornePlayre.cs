@@ -1,3 +1,4 @@
+
 namespace WarframeMod.Common.Players;
 
 public class AirbornePlayer : ModPlayer
@@ -22,8 +23,9 @@ public class AirbornePlayer : ModPlayer
     private void CheckAirborne()
     {
         checkedThisFrame = true;
-        Player.UpdateTouchingTiles();
-        bool touchingTiles = Player.TouchedTiles.Any();
-        airborne = !touchingTiles;
+        
+        List<Point> touchingTiles = new();
+        Collision.GetEntityEdgeTiles(touchingTiles, Player);
+        airborne = touchingTiles.All(pos => !Main.tile[pos].HasTile);
     }
 }
