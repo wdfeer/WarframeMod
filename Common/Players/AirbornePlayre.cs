@@ -21,6 +21,7 @@ public class AirbornePlayer : ModPlayer
 
     private void CheckAirborne()
     {
+        checkedThisFrame = true;
         Player.UpdateTouchingTiles();
         bool touchingTiles = Player.TouchedTiles.Any();
         airborne = !touchingTiles;
