@@ -295,7 +295,7 @@ Hellfire: {
 
 HighVoltage: {
 	DisplayName: High Voltage
-	Tooltip: +12% on-hit electrified chance
+	Tooltip: +{0}% electricity chance
 }
 
 HollowPoint: {

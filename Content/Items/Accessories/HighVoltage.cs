@@ -1,4 +1,5 @@
-﻿using WarframeMod.Common;
+﻿using Terraria.Localization;
+using WarframeMod.Common;
 using WarframeMod.Common.Players;
 
 namespace WarframeMod.Content.Items.Accessories;
@@ -6,6 +7,8 @@ namespace WarframeMod.Content.Items.Accessories;
 public class HighVoltage : ModItem
 {
     public const int ELECTRO_CHANCE_PERCENT = 15;
+    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(ELECTRO_CHANCE_PERCENT);
+
     public override void SetDefaults()
     {
         Item.accessory = true;
