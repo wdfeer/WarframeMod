@@ -1837,3 +1837,12 @@ ToxicFlight: {
 		+{2}% toxin chance
 		'''
 }
+
+MotusImpact: {
+	DisplayName: Motus Impact
+	Tooltip:
+		'''
+		+{0} tiles of True Melee range whilst airborne
+		+{1}% knockback reduction whilst airborne
+		'''
+}

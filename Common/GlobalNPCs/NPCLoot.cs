@@ -76,7 +76,7 @@ internal class NPCLoot : GlobalNPC
             NPCID.Skeleton, NPCID.SkeletonAlien, NPCID.SkeletonAstonaut, NPCID.SkeletonTopHat,
             NPCID.BoneThrowingSkeleton, NPCID.BoneThrowingSkeleton2);
 
-        AddOneFromOptions2<MotusSetup, MotusSignal>(30, NPCID.Harpy);
+        AddOneFromOptions3<MotusSetup, MotusSignal, MotusImpact>(30, NPCID.Harpy);
 
         AddExpert<ExodiaValor>(30, NPCID.GreekSkeleton);
 
