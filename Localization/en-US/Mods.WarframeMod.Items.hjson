@@ -1041,10 +1041,9 @@ Scoliac: {
 	Tooltip:
 		'''
 		Your summons will focus struck enemies
-		10 summon tag damage
-		50% summon tag poison chance
-		20% summon tag venom chance
-		{$Common.BleedChance}
+		{0} summon tag damage
+		{1} summon tag toxin chance
+		{$Common.BleedChance@2}
 		-25% Critical damage
 		Damage is increased by 25% multiplied by the number of max minion slots
 		'''

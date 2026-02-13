@@ -7,10 +7,9 @@ public class Scoliac : ModItem
 	public const int BASE_CRIT_CHANCE = 9;
 	public const int BLEED_CHANCE = 25;
 	public const float DMG_MULT_PER_MINION_SLOT = 0.25f;
-	public const int TAG_DAMAGE = 10;
-	public const int TAG_POISON_CHANCE = 50;
-	public const int TAG_VENOM_CHANCE = 20;
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(BLEED_CHANCE);
+	public const int TAG_DAMAGE = 5;
+	public const int TAG_TOXIN_CHANCE = 10;
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(TAG_DAMAGE, TAG_TOXIN_CHANCE, BLEED_CHANCE);
 	public override void SetDefaults()
 	{
 		Item.DefaultToWhip(ModContent.ProjectileType<ScoliacProjectile>(), 16, 4f, 5f, 35);

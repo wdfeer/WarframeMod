@@ -1,3 +1,4 @@
+using WarframeMod.Common;
 using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Buffs;
@@ -9,19 +10,22 @@ public class ScoliacDebuff : ModBuff
         Main.buffNoSave[Type] = true;
         Main.debuff[Type] = true;
     }
+
     public override string Texture => "Terraria/Images/Buff_" + BuffID.ThornWhipNPCDebuff;
 }
+
 internal class ScoliacDebuffGlobalNPC : GlobalNPC
 {
     public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
     {
         if (npc.HasBuff<ScoliacDebuff>() && projectile.DamageType == DamageClass.Summon)
-        {
             modifiers.FlatBonusDamage += Scoliac.TAG_DAMAGE;
-            if (Main.rand.Next(0, 100) < Scoliac.TAG_POISON_CHANCE)
-                npc.AddBuff(BuffID.Poisoned, 600);
-            if (Main.rand.Next(0, 100) < Scoliac.TAG_VENOM_CHANCE)
-                npc.AddBuff(BuffID.Venom, 420);
-        }
+    }
+
+    public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
+    {
+        if (npc.HasBuff<ScoliacDebuff>() && projectile.DamageType == DamageClass.Summon &&
+            Main.rand.Next(0, 100) < Scoliac.TAG_TOXIN_CHANCE)
+            DotBuff.Create(StackableBuff.Toxin, damageDone, npc);
     }
 }
