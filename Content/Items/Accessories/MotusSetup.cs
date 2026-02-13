@@ -6,7 +6,7 @@ namespace WarframeMod.Content.Items.Accessories;
 public class MotusSetup : MotusAccessory
 {
     public const int RELATIVE_CRIT_PERCENT = CriticalDelay.RELATIVE_CRIT_PERCENT;
-    public const int DURATION_SECONDS = 6;
+    public const int DURATION_SECONDS = 8;
     public override LocalizedText Tooltip =>
         base.Tooltip.WithFormatArgs(RELATIVE_CRIT_PERCENT, DURATION_SECONDS, KNOCKBACK_REDUCTION);
 
