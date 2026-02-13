@@ -1,0 +1,143 @@
+ArcaneAccelerationBuff: {
+	DisplayName: Arcane Acceleration
+	Description: +15% use speed
+}
+
+ArcaneArachneBuff: {
+	DisplayName: Arcane Arachne Cooldown
+	Description: -25% Damage
+}
+
+ArcaneAvengerBuff: {
+	DisplayName: Arcane Avenger
+	Description: +1% Critical Chance
+}
+
+ArcaneBodyguardBuff: {
+	DisplayName: Arcane Bodyguard
+	Description: +15% Damage Reduction
+}
+
+ArcaneConsequenceBuff: {
+	DisplayName: Arcane Consequence
+	Description: +20% movement speed and +12% wing flight speed
+}
+
+ArcaneAgilityBuff: {
+	DisplayName: Arcane Agility
+	Description: +10% movement speed and +20% wing flight speed
+}
+
+ArcaneFuryBuff: {
+	DisplayName: Arcane Fury
+	Description: +15% melee Damage
+}
+
+ArcaneGraceBuff: {
+	DisplayName: Arcane Grace
+	Description: +1% max life per second
+}
+
+ArcaneGuardianBuff: {
+	DisplayName: Arcane Guardian
+	Description: +1 Defense
+}
+
+ArcanePistoleerBuff: {
+	DisplayName: Arcane Pistoleer
+	Description: +33% ammo damage
+}
+
+ArcanePrecisionBuff: {
+	DisplayName: Arcane Precision
+	Description: +15% Damage
+}
+
+ArcaneStrikeBuff: {
+	DisplayName: Arcane Strike
+	Description: +16% Melee Speed
+}
+
+ArcaneVictoryBuff: {
+	DisplayName: Arcane Victory
+	Description: +0.45% max life per second
+}
+
+ArcaSciscoBuff: {
+	DisplayName: Arca Scisco
+	Description: +5% Crit and Bleed chance on the Arca Scisco
+}
+
+CatsEyeBuff: {
+	DisplayName: Cat's Eye
+	Description: +50 summon Critical Chance
+}
+
+ColdDebuff: {
+	DisplayName: Slowed
+	Description: BuffDescription.ColdDebuff
+}
+
+EmergenceSaviorBuff: {
+	DisplayName: Emergence Savior Cooldown
+	Description:
+		'''
+		Cannot negate lethal damage
+		If Emergence Savior is not equipped, damage taken is increased tenfold
+		'''
+}
+
+EternalOnslaughtBuff: {
+	DisplayName: Eternal Onslaught
+	Description: +25% magic crit chance
+}
+
+MotusSetupBuff: {
+	DisplayName: Motus Setup
+	Description: +80% relative critical chance
+}
+
+ScoliacDebuff: {
+	DisplayName: Scoliac
+	Description: BuffDescription.ScoliacDebuff
+}
+
+VirtuosStrikeBuff: {
+	DisplayName: Virtuos Strike
+	Description: +33% Critical Damage
+}
+
+VomeInvocationBuff: {
+	DisplayName: Grimoire Damage
+	Description: Buffs.VomeInvocationBuff.Description
+}
+
+LohkCanticleBuff: {
+	DisplayName: Lohk Canticle Buff
+	Description: +15% fire rate
+}
+
+MoltVigorBuff: {
+	DisplayName: Molt Vigor Buff
+	Description: +25% damage with other magic weapons
+}
+
+SecuraLectaDebuff: {
+	DisplayName: Secura Lecta Debuff
+	Description: Mods.WarframeMod.Buffs.SecuraLectaDebuff.Description
+}
+
+JusticeBuff: {
+	DisplayName: Justice
+	Description: +10 defense
+}
+
+LongbowSharpshotBuff: {
+	Description: +25% bow damage
+	DisplayName: Longbow Sharpshot Buff
+}
+
+FractalizedResetBuff: {
+	Description: +25% ranged fire rate
+	DisplayName: Fractalized Reset Buff
+}

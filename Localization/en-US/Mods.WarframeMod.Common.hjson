@@ -1,0 +1,17 @@
+ModifyDamageDealt: "{0} damage dealt"
+ModifyDamageTaken: "{0} damage taken"
+ModifyMeleeDamageDealt: "{0} melee damage"
+ModifyRangedDamageDealt: "{0} ranged damage"
+ModifyMagicDamageDealt: "{0} magic damage"
+ModifySummonDamageDealt: "{0} summon damage"
+ModifyCritChance: "{0} critical chance"
+ModifyCritDamage: "{0} critical damage"
+ModifyMaxLife: "{0} max life"
+DefensePenetration: "{0} defense penetration"
+NoAmmoConsumption: Doesn't consume ammo
+AmmoSaveChance: "{0}% chance to save ammo"
+ModifyAmmoDamage: "{0} ammo damage"
+BleedChance: "{0}% bleeding chance"
+SummonBleedChance: "{0}% summon bleeding chance"
+ElectroChance: "{0}% electricity chance"
+IncreaseRelativeCritChance: +{0}% crit chance relative to the weapon's base crit chance

@@ -1,0 +1,63 @@
+WarframeClientConfig: {
+	DisplayName: Warframe Client Config
+	Headers.Config.hitcolors: Hit Colors
+
+	noCritHitColor: {
+		Label: Non-Crit Hit Color
+		Tooltip: ""
+	}
+
+	tier1CritColor: {
+		Label: Tier 1 Crit Color
+		Tooltip: ""
+	}
+
+	tier2CritColor: {
+		Label: Tier 2 Crit Color
+		Tooltip: ""
+	}
+
+	maxCritColor: {
+		Label: Tier 3+ Crit Color
+		Tooltip: ""
+	}
+}
+
+WarframeServerConfig: {
+	DisplayName: Warframe Server Config
+
+	Headers: {
+		Slots: Slots
+		Stats: Stats
+	}
+
+	enableArcaneSlot: {
+		Label: Arcane Slot
+		Tooltip: Whether the player should have an additional arcane-exclusive accessory slot in expert mode
+	}
+
+	enableStatChanges: {
+		Label: Stat Adjustments
+		Tooltip: Enable/Disable the stat changes below
+	}
+
+	vanillaCritIncrease: {
+		Label: Vanilla Weapon Crit Increase
+		Tooltip: Increases crit chance of every vanilla weapon to make them more crit-build-viable
+	}
+
+	enemyDamageIncreasePercent: {
+		Label: NPC Damage Increase % in expert mode
+		Tooltip: Designed to compensate for the arcane slot in expert mode, has no effect in normal mode
+	}
+
+	enemyDefenseIncreasePercent: {
+		Label: NPC Defense Increase % in expert mode
+		Tooltip: Designed to compensate for the arcane slot in expert mode, has no effect in normal mode
+	}
+
+	enemyMaxLifeIncreasePercent: {
+		Label: NPC Life Increase % in expert mode
+		Tooltip: Designed to compensate for the arcane slot in expert mode, has no effect in normal mode
+	}
+}
