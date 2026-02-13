@@ -3,17 +3,20 @@ using WarframeMod.Content.Buffs;
 
 namespace WarframeMod.Content.Items.Accessories;
 
-public class MotusSetup : ModItem
+public class MotusSetup : MotusAccessory
 {
     public const int RELATIVE_CRIT_PERCENT = CriticalDelay.RELATIVE_CRIT_PERCENT;
     public const int DURATION_SECONDS = 6;
-    public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(RELATIVE_CRIT_PERCENT, DURATION_SECONDS);
+    public override LocalizedText Tooltip =>
+        base.Tooltip.WithFormatArgs(RELATIVE_CRIT_PERCENT, DURATION_SECONDS, KNOCKBACK_REDUCTION);
+
     public override void SetDefaults()
     {
         Item.accessory = true;
         Item.rare = 2;
         Item.value = Item.sellPrice(gold: 1);
     }
+
     public override void AddRecipes()
     {
         Recipe recipe = CreateRecipe();
@@ -21,19 +24,25 @@ public class MotusSetup : ModItem
         recipe.AddTile(TileID.Solidifier);
         recipe.Register();
     }
+
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
+        base.UpdateAccessory(player, hideVisual);
         player.GetModPlayer<MotusSetupPlayer>().enabled = true;
     }
 }
+
 class MotusSetupPlayer : ModPlayer
 {
     public bool enabled;
+
     public override void ResetEffects()
     {
         enabled = false;
     }
+
     public bool doubleJumpingOrWinging;
+
     public override void PostUpdate()
     {
         if (!enabled)
@@ -50,6 +59,7 @@ class MotusSetupPlayer : ModPlayer
         }
     }
 }
+
 class MotusSetupGlobalItem : GlobalItem
 {
     public override bool WingUpdate(int wings, Player player, bool inUse)

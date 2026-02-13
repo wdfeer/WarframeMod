@@ -1,8 +1,15 @@
+using Terraria.Localization;
+using WarframeMod.Common.Players;
+
 namespace WarframeMod.Content.Items.Accessories;
 
-public class MotusSignal : ModItem
+public class MotusSignal : MotusAccessory
 {
-    const int DOUBLE_JUMP_EXTRA_VELOCITY_PERCENT = 80;
+    public const int DOUBLE_JUMP_EXTRA_VELOCITY_PERCENT = 80;
+
+    public override LocalizedText Tooltip =>
+        base.Tooltip.WithFormatArgs(DOUBLE_JUMP_EXTRA_VELOCITY_PERCENT, KNOCKBACK_REDUCTION);
+    
     public const float DOUBLE_JUMP_VELOCITY_MULT = 1f + DOUBLE_JUMP_EXTRA_VELOCITY_PERCENT / 100f;
     public override void SetDefaults()
     {
@@ -19,6 +26,7 @@ public class MotusSignal : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
+        base.UpdateAccessory(player, hideVisual);
         player.GetModPlayer<MotusSignalPlayer>().enabled = true;
     }
 }
@@ -33,16 +41,17 @@ class MotusSignalPlayer : ModPlayer
     {
         if (!enabled)
             return;
-        bool touchingTiles = Player.TouchedTiles.Any();
+        
         if (canDoubleJump != null)
             couldDoubleJump = canDoubleJump;
         else
             couldDoubleJump = new bool[Player.ExtraJumps.Length];
         canDoubleJump = Player.ExtraJumps.ToArray().Select(x => x.Available).ToArray();
-        if (touchingTiles)
+        
+        if (!Player.GetModPlayer<AirbornePlayer>().Airborne)
             return;
 
-        bool started = false;
+        bool started;
         for (int i = 0; i < canDoubleJump.Length; i++)
         {
             started = !canDoubleJump[i] && couldDoubleJump[i];

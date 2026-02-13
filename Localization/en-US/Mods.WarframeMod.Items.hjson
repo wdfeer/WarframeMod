@@ -378,14 +378,18 @@ MotusSetup: {
 	DisplayName: Motus Setup
 	Tooltip:
 		'''
-		Upon landing from a Double Jump or from Wing flight: 
-		{$Common.IncreaseRelativeCritChance} for {1} seconds
+		Upon landing from a Double Jump or from Wing flight: {$Common.IncreaseRelativeCritChance} for {1} seconds
+		+{2}% knockback reduction whilst airborne
 		'''
 }
 
 MotusSignal: {
 	DisplayName: Motus Signal
-	Tooltip: +80% Double Jump velocity
+	Tooltip:
+		'''
+		+{0}% Double Jump velocity
+		+{1}% knockback reduction whilst airborne
+		'''
 }
 
 NaturalTalent: {
