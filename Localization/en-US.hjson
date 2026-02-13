@@ -1802,8 +1802,8 @@ Mods: {
 				Tooltip:
 					'''
 					+{0}% cold chance
-					+{1}% poison chance
-					Poisoned enemies under the effect of cold take 15% more damage from all sources
+					+{1}% toxin chance
+					Enemies suffering from cold and toxin at the same time take 15% more damage from all sources
 					'''
 			}
 
