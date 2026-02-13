@@ -18,7 +18,7 @@ public class Aviator : ModItem
         Recipe recipe = CreateRecipe();
         recipe.AddIngredient(ItemID.WormScarf);
         recipe.AddIngredient(ItemID.CloudinaBottle);
-        recipe.AddTile(TileID.Anvils);
+        recipe.AddTile(TileID.TinkerersWorkbench);
         recipe.Register();
     }
 
