@@ -83,6 +83,11 @@ public class Grimoire : ModItem
             knockback += 5f;
             velocity /= 3;
         }
+        else
+        {
+            // to make effective velocity 120% with extraUpdates
+            velocity *= 0.6f;
+        }
     }
 
     public override void LoadData(TagCompound tag)
