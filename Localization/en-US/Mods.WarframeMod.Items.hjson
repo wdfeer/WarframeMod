@@ -1845,3 +1845,8 @@ MotusImpact: {
 		+{1}% knockback reduction whilst airborne
 		'''
 }
+
+CascadiaOvercharge: {
+	DisplayName: Cascadia Overcharge
+	Tooltip: Whilst at full life: {$Common.ModifyCritChance}
+}
