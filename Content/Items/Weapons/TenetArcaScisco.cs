@@ -67,6 +67,7 @@ public class TenetArcaScisco : ModItem
         };
         var buffProj = proj.GetGlobalProjectile<BuffGlobalProjectile>();
         buffProj.AddElectro(ELECTRO_CHANCE);
+        buffProj.AddBleed(stacks * 5);
 
         return false;
     }
