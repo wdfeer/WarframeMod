@@ -1,3 +1,4 @@
+using Terraria.DataStructures;
 using Terraria.Localization;
 
 namespace WarframeMod.Content.Items.Weapons;
@@ -55,5 +56,13 @@ public class FluxRifle : ModItem
         ref float knockback)
     {
         WeaponCommon.ModifyProjectileSpawnPosition(ref position, velocity, Item.width);
+    }
+
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type,
+        int damage, float knockback)
+    {
+        var proj = this.ShootWith(player, source, position, velocity, type, damage, knockback);
+        proj.penetrate = 1;
+        return false;
     }
 }
