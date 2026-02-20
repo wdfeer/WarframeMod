@@ -1851,3 +1851,8 @@ CascadiaOvercharge: {
 	DisplayName: Cascadia Overcharge
 	Tooltip: Whilst at full life: {$Common.ModifyCritChance}
 }
+
+TenetFluxRifle: {
+	DisplayName: Tenet Flux Rifle
+	Tooltip: "{$Common.BleedChance}"
+}
