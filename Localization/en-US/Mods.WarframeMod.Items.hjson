@@ -1550,6 +1550,7 @@ AkjagaraPrime: {
 		Shoots a burst of two bullets in rapid succession
 		{$Common.BleedChance}, scales with damage modifiers
 		{$Common.ModifyCritDamage@1}
+		Bullets gain penetration
 		'''
 }
 
