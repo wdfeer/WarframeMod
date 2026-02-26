@@ -1859,5 +1859,5 @@ TenetFluxRifle: {
 
 ConditionOverload: {
 	DisplayName: Condition Overload
-	Tooltip: "+{0}% damage per status effect or buff on the target"
+	Tooltip: +{0}% damage per status effect or buff on the target
 }

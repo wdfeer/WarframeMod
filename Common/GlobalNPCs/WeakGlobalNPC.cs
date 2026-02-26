@@ -5,7 +5,7 @@ internal class WeakGlobalNPC : GlobalNPC
     public override bool InstancePerEntity => true;
     List<int> weakTimes = [];
     int WeakPower => weakTimes.Count;
-    float DamageMultiplier => 1f / (MathF.Sqrt(WeakPower) + 1f);
+
     public override void AI(NPC npc)
     {
         if (npc.HasBuff(BuffID.Weak))
@@ -15,21 +15,25 @@ internal class WeakGlobalNPC : GlobalNPC
             weakTimes.Add(buffTime);
             npc.DelBuff(buffIndex);
         }
+
         for (int i = 0; i < weakTimes.Count; i++)
         {
             weakTimes[i]--;
         }
+
         weakTimes = weakTimes.Where(x => x > 0).ToList();
     }
+
+    float DamageDealtMult => WeakPower > 0 ? 0.75f / (MathF.Sqrt(WeakPower) + 1f) : 1f;
+    private float BossDamageMult => 0.6f + DamageDealtMult * 0.4f;
+
     public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
     {
-        if (npc.boss)
-            modifiers.SourceDamage *= 0.5f + (DamageMultiplier * 0.5f);
-        else
-            modifiers.SourceDamage *= DamageMultiplier;
+        modifiers.SourceDamage *= npc.boss ? BossDamageMult : DamageDealtMult;
     }
+
     public override void ModifyHitNPC(NPC npc, NPC target, ref NPC.HitModifiers modifiers)
     {
-        modifiers.SourceDamage *= DamageMultiplier;
+        modifiers.SourceDamage *= DamageDealtMult;
     }
 }
