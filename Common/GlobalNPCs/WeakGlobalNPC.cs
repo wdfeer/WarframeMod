@@ -22,7 +22,7 @@ internal class WeakGlobalNPC : GlobalNPC
         weakTimes = weakTimes.Where(x => x > 0).ToList();
     }
 
-    float DamageDealtMult => WeakPower > 0 ? 0.75f / (MathF.Sqrt(WeakPower) + 1f) : 1f;
+    private float DamageDealtMult => WeakPower > 0 ? 0.75f / (MathF.Sqrt(WeakPower) + 1f) : 1f;
     private float BossDamageMult => 0.6f + DamageDealtMult * 0.4f;
 
     public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
@@ -33,5 +33,11 @@ internal class WeakGlobalNPC : GlobalNPC
     public override void ModifyHitNPC(NPC npc, NPC target, ref NPC.HitModifiers modifiers)
     {
         modifiers.SourceDamage *= DamageDealtMult;
+    }
+
+    private float CritDamageTaken => WeakPower > 0 ? 0.1f + MathF.Sqrt(WeakPower) / 30f : 0f;
+    public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
+    {
+        modifiers.CritDamage += CritDamageTaken;
     }
 }
