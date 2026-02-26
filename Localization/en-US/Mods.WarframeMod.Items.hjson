@@ -105,7 +105,7 @@ Kuva: {
 
 SupraVandal: {
 	DisplayName: Supra Vandal
-	Tooltip: 20% weak debuff chance
+	Tooltip: 20% weakened chance
 }
 
 KuvaAyanga: {
@@ -399,12 +399,12 @@ NaturalTalent: {
 
 PiercingCaliber: {
 	DisplayName: Piercing Caliber
-	Tooltip: +20% Chance to inflict the Weakened debuff for 12 seconds, decreasing enemy contact damage with each proc
+	Tooltip: +20% weakened chance, decreasing contact damage of the target and increasing critical damage taken
 }
 
 PiercingHit: {
 	DisplayName: Piercing Hit
-	Tooltip: +12% Chance to inflict the Weakened debuff for 6 seconds, decreasing enemy contact damage with each proc
+	Tooltip: +12% weakened chance, decreasing contact damage of the target and increasing critical damage taken
 }
 
 PointStrike: {
