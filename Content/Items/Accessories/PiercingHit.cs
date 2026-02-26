@@ -5,8 +5,7 @@ namespace WarframeMod.Content.Items.Accessories;
 
 public class PiercingHit : ModItem
 {
-    public const float CHANCE = 0.12f;
-    public const int DURATION = 360;
+    public const int CHANCE = 12;
     public override void SetDefaults()
     {
         Item.accessory = true;
@@ -17,6 +16,6 @@ public class PiercingHit : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetModPlayer<BuffPlayer>().buffsOnHitNPC.Add(new BuffChance(BuffID.Weak, DURATION, CHANCE));
+        player.GetModPlayer<BuffPlayer>().AddBuffChance(StackableBuff.Weak, CHANCE);
     }
 }

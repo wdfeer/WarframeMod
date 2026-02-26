@@ -1,9 +1,12 @@
-﻿namespace WarframeMod.Common;
+﻿using WarframeMod.Common.GlobalNPCs;
+
+namespace WarframeMod.Common;
 public enum StackableBuff
 {
     Bleeding,
     Electricity,
-    Toxin
+    Toxin,
+    Weak
 }
 public struct StackableBuffChance
 {
@@ -21,7 +24,15 @@ public struct StackableBuffChance
     }
     public void Apply(NPC npc, int damage)
     {
-        DotBuff.Create(type, damage, npc);
+        switch (type)
+        {
+            case StackableBuff.Weak:
+                WeakGlobalNPC.ApplyWeak(npc);
+                break;
+            default:
+                DotBuff.Create(type, damage, npc);
+                break;
+        }
     }
     public void RollAndApply(NPC npc, int damage)
     {

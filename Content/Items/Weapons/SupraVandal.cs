@@ -1,4 +1,5 @@
 using Terraria.DataStructures;
+using WarframeMod.Common;
 using WarframeMod.Common.GlobalProjectiles;
 
 namespace WarframeMod.Content.Items.Weapons;
@@ -26,7 +27,7 @@ public class SupraVandal : Supra
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         var proj = this.ShootWith(player, source, position, velocity * 4, ProjectileID.LaserMachinegunLaser, damage, knockback, timeSinceLastShot > 20 ? 0 : 0.06f, 50);
-        proj.GetGlobalProjectile<BuffGlobalProjectile>().AddBuff(new Common.BuffChance(BuffID.Weak, 300, WEAK_CHANCE));
+        proj.GetGlobalProjectile<BuffGlobalProjectile>().AddBuff(StackableBuff.Weak, WEAK_CHANCE);
         return false;
     }
 }
