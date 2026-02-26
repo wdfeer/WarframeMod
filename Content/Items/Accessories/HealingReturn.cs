@@ -1,4 +1,5 @@
-﻿using WarframeMod.Common.GlobalNPCs;
+﻿using WarframeMod.Common;
+using WarframeMod.Common.GlobalNPCs;
 
 namespace WarframeMod.Content.Items.Accessories;
 
@@ -32,9 +33,7 @@ class HealingReturnPlayer : ModPlayer
     {
         if (active && !item.noMelee && lastHealTimer >= 60)
         {
-            int buffs = target.buffTime.Count(time => time > 0);
-            buffs += target.GetGlobalNPC<DotDebuffNpc>().timers.Count;
-            
+            int buffs = target.GetStatusCount();
             if (buffs > 0)
             {
                 Player.Heal(buffs);

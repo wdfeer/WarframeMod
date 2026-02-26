@@ -80,7 +80,8 @@ public class BossBags : GlobalItem
             case ItemID.PlanteraBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(1,
                     ModContent.ItemType<StradavarPrime>(),
-                    ModContent.ItemType<SerratedRounds>());
+                    ModContent.ItemType<SerratedRounds>(),
+                    ModContent.ItemType<ConditionOverload>());
             case ItemID.GolemBossBag:
                 return ItemDropRule.OneFromOptionsNotScalingWithLuck(2,
                     ModContent.ItemType<BazaPrime>(),

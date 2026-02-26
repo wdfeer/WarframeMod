@@ -1,3 +1,5 @@
+using WarframeMod.Common.GlobalNPCs;
+
 namespace WarframeMod.Common;
 
 public static class CustomExtensions
@@ -8,4 +10,7 @@ public static class CustomExtensions
         modifiersWithoutDefense.Defense *= 0f;
         return modifiersWithoutDefense.GetDamage(baseDamage, crit);
     }
+
+    public static int GetStatusCount(this NPC npc)
+        => npc.buffTime.Count(it => it > 0) + npc.GetGlobalNPC<DotDebuffNpc>().DotTypeCount;
 }

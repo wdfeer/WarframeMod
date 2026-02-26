@@ -1856,3 +1856,8 @@ TenetFluxRifle: {
 	DisplayName: Tenet Flux Rifle
 	Tooltip: "{$Common.BleedChance}"
 }
+
+ConditionOverload: {
+	DisplayName: Condition Overload
+	Tooltip: "+{0}% damage per status effect or buff on the target"
+}
