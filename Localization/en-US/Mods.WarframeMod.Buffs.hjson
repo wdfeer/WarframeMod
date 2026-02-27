@@ -141,3 +141,8 @@ FractalizedResetBuff: {
 	Description: +25% ranged fire rate
 	DisplayName: Fractalized Reset Buff
 }
+
+ArcaneCamisadoBuff: {
+	DisplayName: Arcane Camisado Buff
+	Description: +{0}% magic damage
+}

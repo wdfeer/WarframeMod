@@ -163,6 +163,8 @@ internal class NPCLoot : GlobalNPC
         AddConditional<RisInvocation>(new GrimoireUpgradeDropCondition(), 2, NPCID.HallowBoss);
 
         AddExpert<ArcanePersistence>(7, NPCID.HallowBoss, NPCID.DukeFishron);
+        
+        AddExpert<ArcaneCamisado>(100, NPCID.StardustSoldier);
 
         dropRules = rules.ToDictionary(pair => pair.Key, pair => pair.Value.ToArray());
     }

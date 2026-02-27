@@ -1861,3 +1861,12 @@ ConditionOverload: {
 	DisplayName: Condition Overload
 	Tooltip: +{0}% damage per status effect or buff on the target
 }
+
+ArcaneCamisado: {
+	DisplayName: Arcane Camisado
+	Tooltip:
+		'''
+		On summon hit:
+		+{0}% magic damage on the next magic shot up to +{1}%
+		'''
+}
