@@ -7,7 +7,7 @@ namespace WarframeMod.Content.Items.Arcanes;
 public class ArcaneCamisado : Arcane
 {
     public const int MAGIC_DAMAGE_PER_PROC = 3;
-    public const int MAGIC_DAMAGE_MAX = 33;
+    public const int MAGIC_DAMAGE_MAX = 39;
     public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MAGIC_DAMAGE_PER_PROC, MAGIC_DAMAGE_MAX);
     public override void UpdateArcane(Player player)
     {
