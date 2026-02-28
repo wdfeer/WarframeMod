@@ -1870,3 +1870,13 @@ ArcaneCamisado: {
 		+{0}% magic damage on the next magic shot up to +{1}%
 		'''
 }
+
+Riot848: {
+	DisplayName: Riot-848
+	Tooltip:
+		'''
+		{0}% weak chance
+		Shoots lunar bullets that stay stuck in hit surfaces
+		After 16 shots, reload, exploding and calling back all impaled bullets
+		'''
+}
