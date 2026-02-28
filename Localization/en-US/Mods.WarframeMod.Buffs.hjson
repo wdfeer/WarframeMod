@@ -40,7 +40,7 @@ ArcaneGraceBuff: {
 
 ArcaneGuardianBuff: {
 	DisplayName: Arcane Guardian
-	Description: +1 defense
+	Description: +{0} defense
 }
 
 ArcanePistoleerBuff: {
