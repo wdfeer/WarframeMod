@@ -1,3 +1,4 @@
+using Humanizer;
 using WarframeMod.Content.Items.Weapons;
 
 namespace WarframeMod.Content.Buffs;
@@ -16,6 +17,6 @@ public class ArcaSciscoBuff : ModBuff
     }
     public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
     {
-        tip = $"+{5 * stacks}% Crit and Slash chance on the Arca Scisco";
+        tip = tip.FormatWith(stacks * 5);
     }
 }

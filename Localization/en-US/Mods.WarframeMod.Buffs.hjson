@@ -5,17 +5,17 @@ ArcaneAccelerationBuff: {
 
 ArcaneArachneBuff: {
 	DisplayName: Arcane Arachne Cooldown
-	Description: -25% Damage
+	Description: -25% damage
 }
 
 ArcaneAvengerBuff: {
 	DisplayName: Arcane Avenger
-	Description: +1% Critical Chance
+	Description: +1% critical chance
 }
 
 ArcaneBodyguardBuff: {
 	DisplayName: Arcane Bodyguard
-	Description: +15% Damage Reduction
+	Description: +15% damage reduction
 }
 
 ArcaneConsequenceBuff: {
@@ -40,7 +40,7 @@ ArcaneGraceBuff: {
 
 ArcaneGuardianBuff: {
 	DisplayName: Arcane Guardian
-	Description: +1 Defense
+	Description: +1 defense
 }
 
 ArcanePistoleerBuff: {
@@ -50,27 +50,27 @@ ArcanePistoleerBuff: {
 
 ArcanePrecisionBuff: {
 	DisplayName: Arcane Precision
-	Description: +15% Damage
+	Description: +15% damage
 }
 
 ArcaneStrikeBuff: {
 	DisplayName: Arcane Strike
-	Description: +16% Melee Speed
+	Description: +16% melee Speed
 }
 
 ArcaneVictoryBuff: {
 	DisplayName: Arcane Victory
-	Description: +0.45% max life per second
+	Description: +0.45% life regeneration per second
 }
 
 ArcaSciscoBuff: {
 	DisplayName: Arca Scisco
-	Description: +5% Crit and Bleed chance on the Arca Scisco
+	Description: +{0}% crit and bleed chance on the Arca Scisco
 }
 
 CatsEyeBuff: {
 	DisplayName: Cat's Eye
-	Description: +50 summon Critical Chance
+	Description: +50 summon critical chance
 }
 
 ColdDebuff: {
