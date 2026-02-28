@@ -29,11 +29,11 @@ public static class DustHelper
         /// <summary>
         /// Spawns dusts in a circle and applies a velocity from the center of the circle to them
         /// </summary>
-        public static void NewDustsCircleFromCenter(int count, Vector2 center, float radius, int type, float velocityMult, Action<Dust> edit = null)
+        public static void NewDustsCircleFromCenter(int count, Vector2 center, float radius, int type, float speed, Action<Dust> edit = null)
         {
             NewDustsCircle(count, center, radius, type, (dust) =>
             {
-                dust.velocity += Vector2.Normalize(dust.position - center) * velocityMult;
+                dust.velocity += Vector2.Normalize(dust.position - center) * speed;
                 if (edit != null)
                     edit(dust);
             });
