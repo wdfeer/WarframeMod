@@ -1504,6 +1504,17 @@ Nagantaka: {
 		'''
 }
 
+NagantakaPrime: {
+	DisplayName: Nagantaka Prime
+	Tooltip:
+		'''
+		+100% primary fire projectile velocity
+		Alt fire shoots 11 arrows at once with a longer downtime
+		{$Common.ModifyCritDamage}
+		{$Common.BleedChance@1}
+		'''
+}
+
 Ion: {
 	DisplayName: Ion
 	Tooltip:
