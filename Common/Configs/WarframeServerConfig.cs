@@ -35,4 +35,8 @@ public class WarframeServerConfig : ModConfig
     [Range(0, 20)]
     [ReloadRequired]
     public int enemyDamageIncreasePercent;
+
+    [Header("Eximus")]
+    [Range(0, 100)]
+    public int eximusChancePercent;
 }
