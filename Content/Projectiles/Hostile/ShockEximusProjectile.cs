@@ -17,14 +17,14 @@ public class ShockEximusProjectile : ModProjectile
     }
 
     private const int HomingDistance = 16 * 64;
-    private const float MaxSpeed = 48 / 60f;
-    private const float Acceleration = MaxSpeed / 4f / 60f;
+    private const float MaxSpeed = 10 * 16f / 60f;
+    private const float Acceleration = MaxSpeed / 2f / 60f;
 
     public override void AI()
     {
         Player target = Main.player.Where(player => player.active && !player.dead)
             .MinBy(player => player.Distance(Projectile.position));
-        
+
         if (target != null && target.Distance(Projectile.position) < HomingDistance)
         {
             var direction = Projectile.Center.DirectionTo(target.Center);
@@ -41,7 +41,12 @@ public class ShockEximusProjectile : ModProjectile
 
     public override void PostAI()
     {
-        DustHelper.NewDustsCircleEdge(16, Projectile.Center, Projectile.width / 2, DustID.Electric);
+        DustHelper.NewDustsCircleEdge(1, Projectile.Center, Projectile.width / 2, DustID.Electric, 
+            dust =>
+            {
+                dust.velocity *= 0.1f;
+                dust.noGravity = true;
+            });
     }
 
     public override void OnHitPlayer(Player target, Player.HurtInfo info)
