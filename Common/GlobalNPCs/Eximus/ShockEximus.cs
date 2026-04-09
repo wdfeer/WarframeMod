@@ -6,7 +6,7 @@ public class ShockEximus : EximusVariant
 {
     private const int ProjSpawnInterval = 8 * 60;
     private int projSpawnTimer;
-    public static float OrbDamage => (Main.hardMode ? 80 : 30) * (Main.expertMode ? 2f : 1f);
+    public static float OrbDamage => (Main.hardMode ? 60 : 20) * (Main.expertMode ? 1.5f : 1f);
     public override void AI(NPC npc)
     {
         if (enabled)
