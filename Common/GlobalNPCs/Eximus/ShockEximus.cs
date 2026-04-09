@@ -18,6 +18,7 @@ public class ShockEximus : EximusVariant
 
                 Projectile.NewProjectileDirect(npc.GetSource_FromThis(), npc.Center, Vector2.Zero,
                     ModContent.ProjectileType<ShockEximusProjectile>(), (int)OrbDamage, 0f);
+                DustHelper.NewDustsCircleFromCenter(10, npc.Center, npc.width, DustID.Electric, 64f);
             }
         }
     }
