@@ -14,7 +14,7 @@ public class EximusGlobalNPC : GlobalNPC
     }
     public EximusType eximus;
 
-    private const float lifeMult = 2;
+    private const float LifeMult = 2;
     
     public override void SetDefaults(NPC entity)
     {
@@ -23,7 +23,7 @@ public class EximusGlobalNPC : GlobalNPC
             var allTypes = Enum.GetValues<EximusType>();
             eximus = allTypes[Main.rand.Next(allTypes.Length - 1) + 1]; // without None
 
-            entity.lifeMax = (int)(entity.lifeMax * lifeMult);
+            entity.lifeMax = (int)(entity.lifeMax * LifeMult);
             entity.life = entity.lifeMax;
             
             // TODO: implement overguard

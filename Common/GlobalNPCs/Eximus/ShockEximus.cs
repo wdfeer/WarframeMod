@@ -1,12 +1,24 @@
+using WarframeMod.Content.Projectiles.Hostile;
+
 namespace WarframeMod.Common.GlobalNPCs.Eximus;
 
 public class ShockEximus : EximusVariant
 {
+    private const int ProjSpawnInterval = 8 * 60;
+    private int projSpawnTimer = 0;
+    public static float OrbDamage => (Main.hardMode ? 80 : 30) * (Main.expertMode ? 2f : 1f);
     public override void AI(NPC npc)
     {
         if (enabled)
         {
-            // TODO: spawn electric orbs and do stuff
+            projSpawnTimer++;
+            if (projSpawnTimer >= ProjSpawnInterval)
+            {
+                projSpawnTimer = 0;
+
+                Projectile.NewProjectileDirect(npc.GetSource_FromThis(), npc.Center, Vector2.Zero,
+                    ModContent.ProjectileType<ShockEximusProjectile>(), (int)OrbDamage, 0f);
+            }
         }
     }
 }
