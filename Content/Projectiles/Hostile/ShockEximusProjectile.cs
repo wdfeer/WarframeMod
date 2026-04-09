@@ -13,7 +13,6 @@ public class ShockEximusProjectile : ModProjectile
         Projectile.friendly = false;
         Projectile.hostile = true;
         Projectile.hide = true;
-        Projectile.timeLeft = 120;
         Projectile.tileCollide = false;
     }
 
@@ -34,10 +33,9 @@ public class ShockEximusProjectile : ModProjectile
             {
                 Projectile.velocity = Projectile.velocity.SafeNormalize(Vector2.Zero) * MaxSpeed;
             }
-        }
-        else
-        {
-            Projectile.timeLeft -= 2;
+
+            // Don't decay if a player is nearby
+            Projectile.timeLeft = 60;
         }
     }
 
