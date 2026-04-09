@@ -1,6 +1,6 @@
 using WarframeMod.Common.Configs;
 
-namespace WarframeMod.Common.GlobalNPCs;
+namespace WarframeMod.Common.GlobalNPCs.Eximus;
 
 public class EximusGlobalNPC : GlobalNPC
 {
@@ -18,7 +18,6 @@ public class EximusGlobalNPC : GlobalNPC
     
     public override void SetDefaults(NPC entity)
     {
-        base.SetDefaults(entity);
         if (!entity.boss && Main.rand.Next(100) < ModContent.GetInstance<WarframeServerConfig>().eximusChancePercent)
         {
             var allTypes = Enum.GetValues<EximusType>();
@@ -29,5 +28,21 @@ public class EximusGlobalNPC : GlobalNPC
             
             // TODO: implement overguard
         }
+    }
+
+    public override bool PreAI(NPC npc)
+    {
+        switch (eximus)
+        {
+            case EximusType.None:
+                break;
+            case EximusType.Shock:
+                npc.GetGlobalNPC<ShockEximus>().enabled = true;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+        return base.PreAI(npc);
     }
 }
