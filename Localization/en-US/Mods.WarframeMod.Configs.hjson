@@ -29,6 +29,7 @@ WarframeServerConfig: {
 	Headers: {
 		Slots: Slots
 		Stats: Stats
+		Eximus: Eximus
 	}
 
 	enableArcaneSlot: {
@@ -59,5 +60,10 @@ WarframeServerConfig: {
 	enemyMaxLifeIncreasePercent: {
 		Label: NPC Life Increase % in expert mode
 		Tooltip: Designed to compensate for the arcane slot in expert mode, has no effect in normal mode
+	}
+
+	eximusChancePercent: {
+		Label: eximus Chance Percent
+		Tooltip: ""
 	}
 }
